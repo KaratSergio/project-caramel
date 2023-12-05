@@ -4,8 +4,6 @@
   --white: #FAFAFA;
   --gray: #6D8434;
   --dark-gray: #586F1F;
-  --accent: #FDC152;
-  --transition: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
