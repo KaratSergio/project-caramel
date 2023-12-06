@@ -7,3 +7,4 @@ import './js/pagination';
 import './js/popular';
 import './js/discount';
 import './js/footer';
+import './js/modal-product';
