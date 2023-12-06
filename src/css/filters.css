@@ -1,0 +1,118 @@
+.filters-section {
+  margin: 100px 0 40px 0;
+}
+.filter-form {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  color: var(--text-color);
+  font-family: inherit;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.28;
+}
+.filter-input-container {
+  position: relative;
+}
+.filter-form input {
+  display: flex;
+  background-color: transparent;
+  min-width: 335px;
+  padding: 14px 20px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  border: 1px solid rgba(1, 1, 1, 0.3);
+  outline: transparent;
+  cursor: pointer;
+}
+.filter-form input::placeholder {
+  color: var(--text-color);
+}
+.filter-form input:hover,
+.filter-form input:focus {
+  border-color: var(--gray);
+}
+
+.filter-icon-search {
+  position: absolute;
+  top: 30%;
+  right: 20px;
+  fill: var(--text-color);
+}
+.filter-select-container {
+  position: relative;
+}
+.filter-select {
+  display: flex;
+  background-color: transparent;
+  min-width: 335px;
+  padding: 14px 20px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  border: 1px solid rgba(1, 1, 1, 0.3);
+  cursor: pointer;
+  appearance: none;
+}
+.filter-select:hover,
+.filter-select:focus {
+  border: 1px solid var(--gray);
+}
+.filter-icon-select {
+  position: absolute;
+  top: 30%;
+  right: 20px;
+  fill: var(--text-color);
+}
+.filter-sort-container {
+  position: relative;
+}
+.filter-sort {
+  display: flex;
+  min-width: 335px;
+  padding: 14px 20px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  appearance: none;
+}
+.filter-sort:hover,
+.filter-sort:focus {
+  border: 1px solid var(--gray);
+}
+.filter-icon-sort {
+  position: absolute;
+  top: 30%;
+  right: 20px;
+  fill: var(--text-color);
+}
+@media screen and (min-width: 768px) {
+  .filter-form {
+    display: flex;
+    flex-direction: row;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.33;
+  }
+  .filter-form input {
+    max-width: 269px;
+  }
+  .filter-select {
+    min-width: 189px;
+  }
+  .filter-sort {
+    min-width: 200px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .filters-section {
+    margin-bottom: 60px;
+  }
+}
