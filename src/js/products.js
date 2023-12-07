@@ -1,18 +1,13 @@
-import axios from 'axios';
-
-async function getProducts() {
-  try {
-    const response = await axios.get(
-      'https://food-boutique.b.goit.study/api/products/'
-    );
-    return response.data.results;
-  } catch (error) {
-    console.error('Ошибка при получении данных:', error);
-    return [];
-  }
-}
+import { getProductsByParams } from './get-api';
 
 const productsList = document.querySelector('.list-prod');
+
+const defaultParameters = {
+  keyword: '',
+  category: '',
+  page: 1,
+  limit: 9,
+};
 
 function addMarkup(el, markup) {
   el.innerHTML = markup;
@@ -20,7 +15,7 @@ function addMarkup(el, markup) {
 
 async function displayProducts() {
   try {
-    const results = await getProducts();
+    const { results } = await getProductsByParams(defaultParameters);
     const markup = createCardMarkup(results);
     addMarkup(productsList, markup);
   } catch (error) {
