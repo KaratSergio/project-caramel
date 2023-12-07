@@ -5,26 +5,29 @@ axios.defaults.baseURL = BASE_URL;
 
 export async function getProductsCategories() {
   const response = await axios.get(`${BASE_URL}products/categories`);
-  console.log(response.data);
+
   return response.data;
 }
 
-export async function getProductsByParams(
+export async function getProductsByParams({
   keyword,
   category,
   page,
   limit,
-  sort
-) {
-  const response = await axios.get(`${BASE_URL}products`, {
-    params: {
-      keyword,
-      category,
-      page,
-      limit,
-      [sort.key]: sort.value,
-    },
-  });
+  sort,
+} = {}) {
+  const params = {
+    keyword,
+    category,
+    page,
+    limit,
+  };
+
+  if (sort && sort.key && sort.value) {
+    params[sort.key] = sort.value;
+  }
+
+  const response = await axios.get(`${BASE_URL}products`, { params });
 
   return response.data;
 }
