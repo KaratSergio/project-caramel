@@ -4,6 +4,7 @@
   --white: #FAFAFA;
   --gray: #6D8434;
   --dark-gray: #586F1F;
+  --transparent-text: rgba(1, 1, 1, 0.3);
 }
 
 body {
