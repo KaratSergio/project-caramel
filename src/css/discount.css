@@ -1,0 +1,41 @@
+.products {
+}
+.cart-product-discount {
+  padding: 16px;
+  border-radius: 15px;
+  background: #fafafa;
+  width: 335px;
+}
+.card-product-wrapper {
+  border-radius: 10px;
+  background: #e8e8e2;
+  padding: 18px;
+  display: flex;
+  justify-content: center;
+}
+.cart-product-img {
+}
+.card-product-info {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding-top: 16px;
+}
+.cart-product-title,
+.cart-product-price {
+  color: #010101;
+  font-family: Neue Montreal;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.11;
+}
+.card-product-info-right {
+  display: flex;
+  gap: 7px;
+}
+
+.cart-product-btn {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+}
