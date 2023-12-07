@@ -8,11 +8,13 @@ async function servicePopularProducts() {
   return response.data;
 }
 
-function createMarkup(item) {
-  return item
-    .map(
-      ({ _id, name, img, category, popularity, size }) =>
-        `  <li class="popular-item">
+function createMarkup(items) {
+  return items
+    .map(({ _id, name, img, category, popularity, size }) => {
+      // додав строку 15  та ретерн на 17 
+      const firstDigit = parseInt(popularity.toString()[0]);
+
+      return `  <li class="popular-item">
         <button class="btn-add" type="submit">svg</button>
         <span class="product-added" >OK</span>
         <div class="popular-card" id="${_id}">
@@ -27,12 +29,12 @@ function createMarkup(item) {
             )}</span></p>
             <div class="card-descr">
               <p class="popular-card-text">Size: <span class="popular-text">${size}</span></p>
-              <p class="popular-card-text">Popularity: <span class="popular-text">${popularity}</span></p>
+              <p class="popular-card-text">Popularity: <span class="popular-text">${firstDigit}</span></p>
             </div>
           </div>
         </div>
-      </li>`
-    )
+      </li>`;
+    })
     .join('');
 }
 
