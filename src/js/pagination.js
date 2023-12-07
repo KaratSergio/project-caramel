@@ -1,58 +1,58 @@
-/**
- |============================
- | ОТРИМАЛИ ДАННІ З СЕРВЕРУ 
- |============================
-*/
-async function getProducts(pageNumber) {
-  const response = await fetch(
-    `https://food-boutique.b.goit.study/api/products?page=${pageNumber}&limit=9`
-  );
-  const data = await response.json();
-  return data.results;
-}
-// Кількість карток на сторінці
-const cardsPerPage = 9;
+// /**
+//  |============================
+//  | ОТРИМАЛИ ДАННІ З СЕРВЕРУ 
+//  |============================
+// */
+// async function getProducts(pageNumber) {
+//   const response = await fetch(
+//     `https://food-boutique.b.goit.study/api/products?page=${pageNumber}&limit=9`
+//   );
+//   const data = await response.json();
+//   return data.results;
+// }
+// // Кількість карток на сторінці
+// const cardsPerPage = 9;
 
-// Отримати контейнери для карток та пагінації
-const cardsContainer = document.getElementById('cards-container');
-const paginationContainer = document.getElementById('pagination');
+// // Отримати контейнери для карток та пагінації
+// const cardsContainer = document.getElementById('cards-container');
+// const paginationContainer = document.getElementById('pagination');
 
-// Функція для відображення карток на сторінці
-async function displayCards(page) {
-  const products = await getProducts(page);
+// // Функція для відображення карток на сторінці
+// async function displayCards(page) {
+//   const products = await getProducts(page);
 
-  cardsContainer.innerHTML = '';
-  products.forEach(product => {
-    const cardElement = createCard(product);
-    cardsContainer.appendChild(cardElement);
-  });
-}
+//   cardsContainer.innerHTML = '';
+//   products.forEach(product => {
+//     const cardElement = createCard(product);
+//     cardsContainer.appendChild(cardElement);
+//   });
+// }
 
-/**
-   |============================
-   | ТИМЧАСОВА КАРТКА ПРОДУКТУ  
-   |============================
-  */
-function createCard(product) {
-  const card = document.createElement('div');
-  card.className = 'card';
+// /**
+//    |============================
+//    | ТИМЧАСОВА КАРТКА ПРОДУКТУ  
+//    |============================
+//   */
+// function createCard(product) {
+//   const card = document.createElement('div');
+//   card.className = 'card';
 
-  const img = document.createElement('img');
-  img.src = product.img;
-  img.alt = product.name;
+//   const img = document.createElement('img');
+//   img.src = product.img;
+//   img.alt = product.name;
 
-  const name = document.createElement('p');
-  name.textContent = product.name;
+//   const name = document.createElement('p');
+//   name.textContent = product.name;
 
-  const price = document.createElement('p');
-  price.textContent = `Price: $${product.price}`;
+//   const price = document.createElement('p');
+//   price.textContent = `Price: $${product.price}`;
 
-  card.appendChild(img);
-  card.appendChild(name);
-  card.appendChild(price);
+//   card.appendChild(img);
+//   card.appendChild(name);
+//   card.appendChild(price);
 
-  return card;
-}
+//   return card;
+// }
 
 /**
    |============================
@@ -123,5 +123,5 @@ function onPageLinkClick(pageNumber) {
 
 // Відображення початкової сторінки
 const initialPage = 1;
-displayCards(initialPage);
+// displayCards(initialPage);
 displayPagination(initialPage, 60); // Загальна кількість сторінок

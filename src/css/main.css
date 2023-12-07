@@ -1,0 +1,9 @@
+  .main-container {
+    display: flex;
+    width: 1440px;
+    padding: 0 100px;
+  }
+  .main-sidebar {
+    display: flex;
+    flex-direction: column;
+  }

@@ -1,20 +1,22 @@
 .products {
+  display: flex;
+  flex-direction: column;
 }
 .cart-product-discount {
   padding: 16px;
   border-radius: 15px;
-  background: #fafafa;
+  background-color: #fafafa;
   width: 335px;
 }
 .card-product-wrapper {
   border-radius: 10px;
-  background: #e8e8e2;
+  background-color: #e8e8e2;
   padding: 18px;
   display: flex;
   justify-content: center;
 }
-.cart-product-img {
-}
+/* .cart-product-img {
+} */
 .card-product-info {
   display: flex;
   justify-content: space-between;
