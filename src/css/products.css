@@ -61,8 +61,8 @@
 
 .feature {
   display: flex;
-  flex-direction: row;
-  margin-bottom: 40px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
   gap: 8px;
 }
 
@@ -110,7 +110,7 @@
 }
 
 .buy-svg {
-  fill: white;
+  fill: black;
   justify-content: center;
   align-items: center;
 }

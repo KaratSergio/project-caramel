@@ -1,4 +1,5 @@
 import { getProductsByParams } from './get-api';
+import icons from '../images/icons.svg';
 
 const productsList = document.querySelector('.list-prod');
 
@@ -23,14 +24,14 @@ async function displayProducts() {
   }
 }
 
-function createCardMarkup(results) {
+export function createCardMarkup(results) {
   return results
     .map(({ id, name, img, category, size, price, popularity }) => {
       return `
         <li class="prod-item" js-product-id=${id}>   
           <div class="prod-pic">
             <svg class="discont-prod" width="60" height="60" style="visibility: hidden;">
-              <use href=""></use>
+              <use href="../images/icons.svg#shopping-cart"></use>
             </svg>
             <img class="prod-img" src=${img} alt=${name} loading="lazy">
           </div>
@@ -41,10 +42,10 @@ function createCardMarkup(results) {
             <p class="feature-prod push">Popularity:<span class="feature-value">${popularity}</span></p>
           </div>
           <div class="buing-prod">
-            <p class="price-prod">${price}</p>
+            <p class="price-prod"> &#36;${price}</p>
             <button class="buy-btn" type="button">
               <svg class="buy-svg" width="18" height="18">
-                <use href=""></use>
+                <use href="../images/icons.svg#shopping-cart"></use>"></use>
               </svg>
             </button>
           </div>
