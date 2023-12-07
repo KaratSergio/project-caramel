@@ -12,7 +12,7 @@
     
     <script type="module" crossorigin src="/project-caramel/commonHelpers.js"></script>
     <link rel="modulepreload" crossorigin href="/project-caramel/assets/vendor-a61d8330.js">
-    <link rel="stylesheet" href="/project-caramel/assets/index-57cc62b0.css">
+    <link rel="stylesheet" href="/project-caramel/assets/index-2408b02d.css">
   </head>
   <body>
     <header class="header">
@@ -62,7 +62,8 @@
   </div>
 </section>
 
-      <div class="list-prod-conteiner">
+      <div class="main-container">
+        <div class="list-prod-container">
   <ul class="list-prod">
     <!-- <li class="prod-item">
       <div class="prod-pic">
@@ -88,23 +89,15 @@
     </li> -->
   </ul>
 </div>
-      <section>
-  <h1 class="title">Products</h1>
-
-  <div class="window">
-    <div class="products" id="cards-container"></div>
-    <ul id="pagination" class="pagination"></ul>
-  </div>
-</section>
-
-      <section class="popular">
+        <div class="main-sidebar">
+          <section class="popular">
   <div class="popular-container">
     <h2 class="popular-title">Popular products</h2>
     <ul class="popular-list"></ul>
   </div>
 </section>
 
-      <section class="Discount products">
+          <section class="products">
     <h2>Discount products</h2>
     <div class="products-discount">
         <!-- <div class="cart-product-discount">
@@ -126,10 +119,16 @@
                 </div>
             </div>
         </div> -->
-
     </div>
 
 </section>
+        </div>
+      </div>
+      <section>
+    <div class="products" id="cards-container"></div>
+    <ul id="pagination" class="pagination"></ul>
+</section>
+
       
     </main>
 
