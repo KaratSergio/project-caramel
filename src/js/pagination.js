@@ -12,7 +12,10 @@ const defaultParameters = {
 };
 
 getProductsByParams(defaultParameters).then(({results, totalPages}) => {
-  displayPagination(results, totalPages)
+  if (totalPages > 1) {
+    displayPagination(results, totalPages)
+  }
+  return
 })
 
 
