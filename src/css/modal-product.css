@@ -1,0 +1,36 @@
+/* modal-product.css */
+
+#modalProduct {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    width: 70%; /* Змініть розмір за вашим бажанням */
+    max-width: 600px; /* Максимальна ширина вікна */
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+  }
+  
+  /* Додайте інші стилі, які вам потрібні */
+  
+  .modal-content {
+    /* Додайте стилі вмісту модального вікна за вашим бажанням */
+  }
+  
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .product-details {
+    /* Додайте стилі для деталей продукту */
+  }
+  
+  /* Додайте інші стилі, які вам потрібні */

@@ -1,20 +1,24 @@
-import axios from 'axios';
+import { getPopularProducts } from './get-api';
 
 const popularList = document.querySelector('.popular-list');
 
-async function servicePopularProducts() {
-  const URL = 'https://food-boutique.b.goit.study/api/products/popular';
-  const response = await axios.get(`${URL}`);
-  return response.data;
-}
+function createMarkup(items) {
+  return items
+    .map(({ _id, name, img, category, popularity, size }) => {
+      // додав строку 15  та ретерн на 17
+      const firstDigit = parseInt(popularity.toString()[0]);
 
-function createMarkup(item) {
-  return item
-    .map(
-      ({ _id, name, img, category, popularity, size }) =>
-        `  <li class="popular-item">
-        <button class="btn-add" type="submit">svg</button>
-        <span class="product-added" >OK</span>
+      return `  <li class="popular-item">
+      <button class="btn-add" type="button">
+        <svg class="svg-add" width="12" height="12">
+          <use href="./images/icons.svg#shopping-cart"></use>
+        </svg>
+      </button>
+      <span class="product-added">
+        <svg class="svg-added" width="12" height="12">
+          <use href="./images/icons.svg#check"></use>
+        </svg>
+      </span>
         <div class="popular-card" id="${_id}">
           <div class="popular-box-img">
             <img src="${img}" alt="${name}" loading="lazy"  width="56" />
@@ -27,43 +31,59 @@ function createMarkup(item) {
             )}</span></p>
             <div class="card-descr">
               <p class="popular-card-text">Size: <span class="popular-text">${size}</span></p>
-              <p class="popular-card-text">Popularity: <span class="popular-text">${popularity}</span></p>
+              <p class="popular-card-text">Popularity: <span class="popular-text">${firstDigit}</span></p>
             </div>
           </div>
         </div>
-      </li>`
-    )
+      </li>`;
+    })
     .join('');
 }
 
-servicePopularProducts()
+getPopularProducts(5)
   .then(data => {
     popularList.insertAdjacentHTML('beforeend', createMarkup(data));
 
-    const refs = {
-      btnAdd: document.querySelector('.btn-add'),
-      productAdded: document.querySelector('.product-added'),
-      popularCard: document.querySelector('.popular-card'),
-    };
+    const popularItem = document.querySelectorAll('.popular-item');
 
-    refs.btnAdd.addEventListener('click', handleOrder);
+    [...popularItem].forEach(item => {
+      const productAdded = item.children[1];
+      productAdded.classList.add('visually-hidden');
 
-    refs.popularCard.addEventListener('click', handleProductCard);
+      const btnAdd = item.children[0];
+      btnAdd.addEventListener('click', handleOrder);
 
-    refs.productAdded.classList.remove('product-added');
-    refs.productAdded.classList.add('is-hidden');
+      function handleOrder(event) {
+        alert('Product add to Order');
+        btnAdd.classList.add('visually-hidden');
+        productAdded.classList.remove('visually-hidden');
+        btnAdd.removeEventListener('click', handleOrder);
+      }
 
-    function handleOrder() {
-      refs.btnAdd.classList.add('is-hidden');
-      refs.productAdded.classList.add('product-added');
-      refs.productAdded.classList.remove('is-hidden');
-      alert('Product add to Order');
-    }
+      const popularCard = item.children[2];
+      popularCard.addEventListener('click', handleProductCard);
+
+      function handleProductCard() {
+        alert('This is product cart');
+        popularCard.removeEventListener('click', handleProductCard);
+      }
+    });
+
+    // function onF(event) {
+    //   event.preventDefault();
+    //   let target = event.target;
+    //   // if (target.className === 'popular-card') {
+    //   //   alert('This is product cart');
+    //   //   console.log(target);
+    //   // }
+
+    //   if ( target.nodeName === 'LI') {
+    //     console.log('pppp');
+    //   }
+    //   console.log(event.target);
+    // }
+    // popularList.addEventListener('click', onF);
   })
   .catch(error => {
     console.error(error);
   });
-
-function handleProductCard() {
-  alert('Thi is product cart');
-}
