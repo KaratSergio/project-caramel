@@ -92,7 +92,7 @@ function appendPageLink(pageNumber, isActive = false) {
   paginationContainer.appendChild(li);
 }
 
-// Обробник кліку на посилання пагінації
+
 function onPageLinkClick(pageNumber) {
   displayProducts(pageNumber); //! змінила на імпортовану функцію
   displayPagination(pageNumber, 60); // Загальна кількість сторінок
