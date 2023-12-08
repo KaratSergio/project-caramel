@@ -1,63 +1,104 @@
-import Pagination from 'tui-pagination';
-import axios from 'axios';
-import { getProductsByParams } from './get-api';
-import { createCardMarkup } from './products';
+// import Pagination from 'tui-pagination';
+// import 'tui-pagination/dist/tui-pagination.css';
+// import { displayProducts } from './products';
 
-const paginationContainer = document.querySelector('#tui-pagination-container');
+// const itemsPerPage = 9;  
+// let totalItems = 540; //! Загальна кількість елементів  540 : 9 = 60 сторінок
+// let currentPage = 1;
 
-let page = 1;
+// const paginationContainer = document.getElementById('pagination');
 
-async function fetchDataAndDisplayPage(page) {
-  try {
-    const { totalPages, results } = await getProductsByParams(page);
-    const BASE_URL = 'https://food-boutique.b.goit.study/api/';
-    const productsList = document.querySelector('.list-prod');
+// // Ініціалізація екземпляру пагінації
+// const pagination = new Pagination(paginationContainer, {
+//   totalItems,
+//   itemsPerPage,
+//   visiblePages: 5, 
+//   centerAlign: true,
+// });
 
-    function addMarkup(el, markup) {
-      el.innerHTML = markup;
+// pagination.on('beforeMove', (event) => {
+//   currentPage = event.page;
+//   updatePage(currentPage);
+// });
+
+// async function updatePage(pageNumber) {
+//   displayProducts(pageNumber);
+// }
+
+// updatePage(currentPage);
+
+
+
+//! Варіант 2 
+import { displayProducts } from './products'; //! імпортувала
+
+const paginationContainer = document.getElementById('pagination');
+
+// Функція для відображення пагінації
+async function displayPagination(currentPage, totalPages) {
+  const paginationContainer = document.getElementById('pagination'); 
+  paginationContainer.innerHTML = '';
+
+  if (totalPages > 1) {
+    const MAX_VISIBLE_PAGES = 5; 
+
+    // Додаємо посилання для поточної та сусідніх сторінок
+    for (
+      let i = Math.max(1, currentPage - 1);
+      i <= Math.min(totalPages, currentPage + 1);
+      i += 1
+    ) {
+      appendPageLink(i, i === currentPage);
     }
 
-    function displayPagination(results, totalPages) {
-      const options = {
-        totalItems: results.length * totalPages,
-        itemsPerPage: 9,
-        visiblePages: 3,
-        page: page,
-        centerAlign: false,
-        firstItemClassName: 'tui-first-child',
-        lastItemClassName: 'tui-last-child',
-        template: {
-          page: '<a href="#" class="tui-page-btn">{{page}}</a>',
-          currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
-          moveButton:
-            '<a href="#" class="tui-page-btn tui-{{type}}">' +
-            '<span class="tui-ico-{{type}}">{{type}}</span>' +
-            '</a>',
-          disabledMoveButton:
-            '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
-            '<span class="tui-ico-{{type}}">{{type}}</span>' +
-            '</span>',
-          moreButton:
-            '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
-            '<span class="tui-ico-ellip">...</span>' +
-            '</a>',
-        },
-      };
-
-      const pagination = new Pagination(paginationContainer, options);
-      pagination.on('afterMove', async (e) => {
-        page = e.page;
-        const { results: newResults } = await getProducts(page);
-        const newMarkup = createCardMarkup(newResults);
-        addMarkup(productsList, newMarkup);
-      });
+    // Додаємо "..."
+    if (totalPages - currentPage > MAX_VISIBLE_PAGES - 2) {
+      const ellipsis = document.createElement('span');
+      ellipsis.textContent = '. . .';
+      paginationContainer.appendChild(ellipsis);
     }
 
-    displayPagination(results, totalPages);
-  } catch (error) {
-    console.error('Error fetching data:', error);
+    // Додаємо посилання на останні дві сторінки
+    for (
+      let i = Math.max(
+        totalPages - MAX_VISIBLE_PAGES + 4
+        // totalPages - MAX_VISIBLE_PAGES + 1
+      );
+      i <= totalPages;
+      i += 1
+    ) {
+      appendPageLink(i);
+    }
   }
 }
 
-fetchDataAndDisplayPage(page);
+// Функція для додавання посилання на сторінку до пагінації
+function appendPageLink(pageNumber, isActive = false) {
+  const paginationContainer = document.getElementById('pagination'); // Додав цей рядок
+  const li = document.createElement('li');
+  const linkWrapper = document.createElement('div');
+  linkWrapper.classList.add('pagination-link');
+  const link = document.createElement('a');
+  link.href = `javascript:void(0);`;
+  link.textContent = pageNumber;
 
+  if (isActive) {
+    linkWrapper.classList.add('active');
+  }
+
+  link.addEventListener('click', () => onPageLinkClick(pageNumber));
+  linkWrapper.appendChild(link);
+  li.appendChild(linkWrapper);
+  paginationContainer.appendChild(li);
+}
+
+// Обробник кліку на посилання пагінації
+function onPageLinkClick(pageNumber) {
+  displayProducts(pageNumber); //! змінила на імпортовану функцію
+  displayPagination(pageNumber, 60); // Загальна кількість сторінок
+}
+
+// Відображення початкової сторінки
+const initialPage = 1;
+displayProducts(initialPage); //! змінила на імпортовану функцію
+displayPagination(initialPage, 60); // Загальна кількість сторінок
