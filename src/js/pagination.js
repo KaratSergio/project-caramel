@@ -61,6 +61,7 @@
   */
 // Функція для відображення пагінації
 async function displayPagination(currentPage, totalPages) {
+  const paginationContainer = document.getElementById('pagination');  // Додав цей рядок
   paginationContainer.innerHTML = '';
 
   if (totalPages > 1) {
@@ -98,6 +99,7 @@ async function displayPagination(currentPage, totalPages) {
 
 // Функція для додавання посилання на сторінку до пагінації
 function appendPageLink(pageNumber, isActive = false) {
+  const paginationContainer = document.getElementById('pagination');   // Додав цей рядок
   const li = document.createElement('li');
   const linkWrapper = document.createElement('div');
   linkWrapper.classList.add('pagination-link');
