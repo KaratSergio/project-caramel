@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="/image/svg+xml" href="/project-caramel/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart Food Boutique</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/modern-normalize@2.0.0/modern-normalize.min.css"
+    />
+    
+    
+    <script type="module" crossorigin src="/project-caramel/assets/vendor-a61d8330.js"></script>
+    <script type="module" crossorigin src="/project-caramel/assets/discount-f2fe1467.js"></script>
+    <link rel="stylesheet" href="/project-caramel/assets/discount-791d1db9.css">
+    <link rel="stylesheet" href="/project-caramel/assets/cart-8816e547.css">
+  </head>
+  <body>
+    <header class="header">
+
+</header>
+
+
+    <main>
+      <section class="container">
+  <!-- <h1><a href="../cart.html">HERO</a></h1> -->
+  <div class="title-container">
+    <div class="basket-border">
+      <svg class="basket-icon" width="18" height="18">
+        <use href="./images/icons1.svg#basket-icon"></use>
+        <!-- <use href="./images/icons.svg#shopping-cart"></use> -->
+      </svg>
+    </div>
+    <h2 class="title-cart">Cart (<span class="js-item-count">0</span>)</h2>
+  </div>
+  <div class="empty-basket-container js-empty-basket hide">
+    <img
+      class="empty-basket-img"
+      src="../images/empty_yellow_shopping_basket.png"
+      alt="Empty yellow shopping basket"
+    />
+    <div class="basket-text-container">
+      <p class="basket-text-bold">
+        Your basket is <span class="color">empty...</span>
+      </p>
+      <p class="basket-text">
+        Go to the main page to select your favorite products and add them to the
+        cart.
+      </p>
+    </div>
+  </div>
+  <div class="basket-container js-filled-basket">
+    <div class="basket-item-container">
+      <button class="basket-clear-container" type="button">
+        <p class="basket-clear-text">Delete all</p>
+        <svg class="delete-icon" width="24" height="24">
+          <use href="./images/icons1.svg#delete-icon"></use>
+          <!-- <use href="./images/icons.svg#delete-icon"></use> -->
+        </svg>
+      </button>
+      <ul class="items-block-container js-items-container"></ul>
+    </div>
+    <div class="basket-total-container">
+      <h3 class="total-title">Your Order</h3>
+      <ul class="total-count-container">
+        <li class="total-main-text">Total</li>
+        <li>
+          <span class="total-small-text">Sum:</span>
+          <span class="total-count-text">$0</span>
+        </li>
+      </ul>
+      <form class="checkout-form">
+        <label class="email-label" for="email">
+          Mail
+          <input
+            class="email-input"
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+          />
+        </label>
+        <button class="checkout-button" type="submit">Checkout</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+    </main>
+
+    <footer class="footer">
+
+</footer>
+
+    
+  </body>
+</html>
