@@ -1,4 +1,6 @@
 .products {
+  display: flex;
+  flex-direction: column;
 }
 .card-product-discount {
   margin-top: 20px;
@@ -15,8 +17,8 @@
   display: flex;
   justify-content: center;
 }
-.card-product-img {
-}
+/* .cart-product-img {
+} */
 .card-product-info {
   display: flex;
   justify-content: space-between;

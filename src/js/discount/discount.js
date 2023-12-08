@@ -1,6 +1,6 @@
-import { getProducts } from '../api/discount-api';
-import { getData, saveData } from '../api/storage';
-import { createMarkup } from '../markup/discount';
+import { getProducts } from './api/discount-api';
+import { getData, saveData } from './api/storage';
+import { createMarkup } from './markup-discount';
 
 let products = [];
 const productEl = document.querySelector('.products-discount');
