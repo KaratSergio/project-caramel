@@ -1,5 +1,5 @@
 import { getProductsByParams } from './get-api';
-import icons from '../images/icons.svg';
+
 
 const productsList = document.querySelector('.list-prod');
 
@@ -10,7 +10,27 @@ const defaultParameters = {
   limit: 9,
 };
 
-function addMarkup(el, markup) {
+
+// ________________
+
+export function saveData(data) {
+  localStorage.setItem('defaultParameters', JSON.stringify(defaultParameters));
+}
+
+export function getData() {
+  try {
+    return result = localStorage.getItem('defaultParameters');
+     
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+saveData();
+
+// _______________________________
+
+export function addMarkup(el, markup) {
   el.innerHTML = markup;
 }
 
@@ -20,7 +40,7 @@ async function displayProducts() {
     const markup = createCardMarkup(results);
     addMarkup(productsList, markup);
   } catch (error) {
-    console.error('Ошибка при отображении продуктов:', error);
+    console.error(error);
   }
 }
 
@@ -42,7 +62,7 @@ export function createCardMarkup(results) {
             <p class="feature-prod push">Popularity:<span class="feature-value">${popularity}</span></p>
           </div>
           <div class="buing-prod">
-            <p class="price-prod"> &#36;${price}</p>
+            <p class="price-prod">&#36; ${price}</p>
             <button class="buy-btn" type="button">
               <svg class="buy-svg" width="18" height="18">
                 <use href="../images/icons.svg#shopping-cart"></use>"></use>
