@@ -8,16 +8,14 @@
           autocomplete="off"
           placeholder="Search for anything"
         />
-        <button class="filter-search-btn" type="submit">
-          <svg class="filter-icon-search" width="20" height="20">
-            <use href="./images/icons.svg#icon-search"></use>
-          </svg>
-        </button>
+        <svg class="filter-icon-search" width="20" height="20">
+          <use href="./images/icons.svg#icon-search"></use>
+        </svg>
       </div>
 
       <div class="filter-select-container">
         <select class="filter-select" name="categories">
-          <option value="select" disabled selected hidden>Categories</option>
+          <option value="select">Categories</option>
         </select>
 
         <svg class="filter-icon-select" width="20" height="20">
@@ -26,7 +24,9 @@
       </div>
 
       <div class="filter-sort-container">
-        <select class="filter-sort" name="sort"></select>
+        <select class="filter-sort" name="categories">
+          <option value="sort">A to Z</option>
+        </select>
 
         <svg class="filter-icon-sort" width="20" height="20">
           <use href="./images/icons.svg#icon-down"></use>

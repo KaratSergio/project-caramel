@@ -1,14 +1,8 @@
 .filters-section {
   margin: 100px 0 40px 0;
 }
-.filters-container {
-  width: 100%;
-  padding-left: 20px;
-  padding-right: 20px;
-  margin: 0 auto;
-}
 .filter-form {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
@@ -19,42 +13,35 @@
   font-weight: 400;
   line-height: 1.28;
 }
-.filter-label {
-  display: flex;
-}
 .filter-input-container {
-  display: flex;
-  /* position: relative; */
-  background-color: transparent;
-  min-width: 335px;
-  padding: 14px 20px;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 30px;
-  border: 1px solid rgba(1, 1, 1, 0.3);
-  outline: none;
-  cursor: pointer;
+  position: relative;
 }
 .filter-form input {
   display: flex;
-  border: none;
   background-color: transparent;
-  outline: none;
+  min-width: 335px;
+  padding: 14px 20px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  border: 1px solid rgba(1, 1, 1, 0.3);
+  outline: transparent;
+  cursor: pointer;
 }
 .filter-form input::placeholder {
   color: var(--text-color);
 }
-.filter-input-container:hover,
-.filter-input-container:focus {
+.filter-form input:hover,
+.filter-form input:focus {
   border-color: var(--gray);
 }
-.filter-search-btn {
-  border: none;
-  background-color: transparent;
-  padding: 0;
-}
+
 .filter-icon-search {
-  text-align: center;
+  position: absolute;
+  top: 30%;
+  right: 20px;
+  width: 20px;
+  height: 20px;
   fill: var(--text-color);
 }
 .filter-select-container {
@@ -70,7 +57,6 @@
   border-radius: 30px;
   border: 1px solid rgba(1, 1, 1, 0.3);
   cursor: pointer;
-  outline: none;
   appearance: none;
 }
 .filter-select:hover,
@@ -95,7 +81,6 @@
   border-radius: 30px;
   border: none;
   cursor: pointer;
-  outline: none;
   appearance: none;
 }
 .filter-sort:hover,
@@ -109,10 +94,6 @@
   fill: var(--text-color);
 }
 @media screen and (min-width: 768px) {
-  .filters-container {
-    padding-left: 32px;
-    padding-right: 32px;
-  }
   .filter-form {
     display: flex;
     flex-direction: row;
@@ -133,10 +114,6 @@
 }
 
 @media screen and (min-width: 1440px) {
-  .filters-container {
-    padding-left: 100px;
-    padding-right: 100px;
-  }
   .filters-section {
     margin-bottom: 60px;
   }
