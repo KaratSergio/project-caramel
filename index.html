@@ -12,7 +12,7 @@
     
     <script type="module" crossorigin src="/project-caramel/commonHelpers.js"></script>
     <link rel="modulepreload" crossorigin href="/project-caramel/assets/vendor-a61d8330.js">
-    <link rel="stylesheet" href="/project-caramel/assets/index-cff403d2.css">
+    <link rel="stylesheet" href="/project-caramel/assets/index-ae55dc62.css">
   </head>
   <body>
     <header class="header">
@@ -129,7 +129,23 @@
     <ul id="pagination" class="pagination"></ul>
 </section>
 
-      
+      <!-- modal-product.html -->
+
+<div id="modalProduct" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModalProductBtn">&times;</span>
+        <div class="product-details">
+            <img id="modalProductImage" src="" alt="Product Image">
+            <h2 id="modalProductName"></h2>
+            <p id="modalProductCategory"></p>
+            <p id="modalProductSize"></p>
+            <p id="modalProductPopularity"></p>
+            <p id="modalProductDescription"></p>
+            <p id="modalProductPrice"></p>
+            <button id="addToCartBtn">Add to Cart</button>
+        </div>
+    </div>
+</div>
     </main>
 
     <footer class="footer">
