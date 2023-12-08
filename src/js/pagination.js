@@ -5,6 +5,7 @@ import { getProductsByParams } from './get-api';
 import {createCardMarkup} from './products';
 const paginationContainer = document.querySelector('#tui-pagination-container');
 
+
 let page = 1
 
 
@@ -18,6 +19,7 @@ let page = 1
 // async function getProducts(page) {
 //   const responce = await 
 // }
+
 
 const { totalPages, results } = await getProductsByParams(page);
 

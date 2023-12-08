@@ -8,16 +8,16 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 20px;
-  padding: 20px 20px;
+  gap: 40px 20px;
+  padding-right: 20px;
 }
 
 .prod-item {
   padding: 20px 20px;
   background: #fafafa;
   border-radius: 20px;
-  max-width: 100%;
-  max-height: 356px;
+  width: 295px;
+  height: 363px;
   width: calc((100% - 40px) / 3);
 }
 
@@ -51,7 +51,7 @@
 }
 
 .title-prod {
-  color: black;
+  color: #010101;
   font-size: 18px;
   font-weight: 500;
   line-height: 1.11em;
@@ -67,14 +67,14 @@
 }
 
 .feature-prod {
-  color: gray;
+  color: rgba(1, 1, 1, 0.3);
   font-size: 12px;
   font-weight: 400;
   line-height: 1.17em;
 }
 
 .feature-value {
-  color: black;
+  color: #010101;
   font-size: 12px;
   font-weight: 400;
   line-height: 1.17em;
@@ -89,7 +89,7 @@
 }
 
 .price-prod {
-  color: black;
+  color: #010101;
   font-size: 18px;
   font-weight: 500;
   line-height: 1.11em;
@@ -98,7 +98,7 @@
 
 .buy-btn {
   border-radius: 30px;
-  background: rgb(192, 238, 192);
+  background:#6D8434;
   width: 34px;
   height: 34px;
   display: flex;
@@ -110,12 +110,12 @@
 }
 
 .buy-svg {
-  fill: black;
+  fill: #E8E8E2;
   justify-content: center;
   align-items: center;
 }
 
 .buy-btn:hover,
 .buy-btn:focus {
-  background: green;
+  background:#586F1F;
 }
