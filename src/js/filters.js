@@ -41,7 +41,6 @@ function getLocalStorage() {
     : { keyword: null, category: null, page: 1, limit: 6 };
 }
 
-// try {
 const categories = await getProductsCategories();
 
 let showAllOption = document.createElement('option');
@@ -54,9 +53,6 @@ categories.forEach(category => {
   option.text = category.label;
   filterSelect.appendChild(option);
 });
-// } catch (error) {
-//   console.error('Error fetching categories:', error);
-// }
 
 filterSelect.addEventListener('change', async function () {
   updateLocalStorage({
@@ -72,11 +68,7 @@ filterSelect.addEventListener('change', async function () {
   productsListFilter.innerHTML = createCardMarkup(products);
 });
 
-// try {
 const initialData = getLocalStorage();
 const initialProducts = await getProductsByParams(initialData);
 
 productsListFilter.innerHTML = createCardMarkup(initialProducts);
-// } catch (error) {
-//   console.error('Error fetching initial products:', error);
-// }
