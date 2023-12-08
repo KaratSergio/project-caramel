@@ -1,6 +1,6 @@
 // /**
 //  |============================
-//  | ОТРИМАЛИ ДАННІ З СЕРВЕРУ 
+//  | ОТРИМАЛИ ДАННІ З СЕРВЕРУ
 //  |============================
 // */
 // async function getProducts(pageNumber) {
@@ -12,10 +12,11 @@
 // }
 // // Кількість карток на сторінці
 // const cardsPerPage = 9;
-
+// import { getProductsByParams } from './get-api';
+import { displayProducts } from './products'; //! імпортувала
 // // Отримати контейнери для карток та пагінації
-// const cardsContainer = document.getElementById('cards-container');
-// const paginationContainer = document.getElementById('pagination');
+const cardsContainer = document.getElementById('cards-container');
+const paginationContainer = document.getElementById('pagination');
 
 // // Функція для відображення карток на сторінці
 // async function displayCards(page) {
@@ -30,7 +31,7 @@
 
 // /**
 //    |============================
-//    | ТИМЧАСОВА КАРТКА ПРОДУКТУ  
+//    | ТИМЧАСОВА КАРТКА ПРОДУКТУ
 //    |============================
 //   */
 // function createCard(product) {
@@ -59,9 +60,10 @@
    | PAGINATION NAVIGATION
    |============================
   */
+
 // Функція для відображення пагінації
 async function displayPagination(currentPage, totalPages) {
-  const paginationContainer = document.getElementById('pagination');  // Додав цей рядок
+  const paginationContainer = document.getElementById('pagination'); // Додав цей рядок
   paginationContainer.innerHTML = '';
 
   if (totalPages > 1) {
@@ -99,7 +101,7 @@ async function displayPagination(currentPage, totalPages) {
 
 // Функція для додавання посилання на сторінку до пагінації
 function appendPageLink(pageNumber, isActive = false) {
-  const paginationContainer = document.getElementById('pagination');   // Додав цей рядок
+  const paginationContainer = document.getElementById('pagination'); // Додав цей рядок
   const li = document.createElement('li');
   const linkWrapper = document.createElement('div');
   linkWrapper.classList.add('pagination-link');
@@ -119,11 +121,11 @@ function appendPageLink(pageNumber, isActive = false) {
 
 // Обробник кліку на посилання пагінації
 function onPageLinkClick(pageNumber) {
-  displayCards(pageNumber);
+  displayProducts(pageNumber); //! змінила на імпортовану функцію
   displayPagination(pageNumber, 60); // Загальна кількість сторінок
 }
 
 // Відображення початкової сторінки
 const initialPage = 1;
-// displayCards(initialPage);
+displayProducts(initialPage); //! змінила на імпортовану функцію
 displayPagination(initialPage, 60); // Загальна кількість сторінок

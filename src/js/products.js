@@ -1,6 +1,5 @@
 import { getProductsByParams } from './get-api';
 
-
 import { openModal } from './modal-product';
 
 const productsList = document.querySelector('.list-prod');
@@ -12,7 +11,6 @@ const defaultParameters = {
   limit: 9,
 };
 
-
 // ________________
 
 export function saveData(data) {
@@ -21,8 +19,7 @@ export function saveData(data) {
 
 export function getData() {
   try {
-    return result = localStorage.getItem('defaultParameters');
-     
+    return (result = localStorage.getItem('defaultParameters'));
   } catch (error) {
     console.log(error);
   }
@@ -40,30 +37,29 @@ async function displayProducts() {
   try {
     const { results } = await getProductsByParams(defaultParameters);
     console.log('Products:', results); // Додайте цей рядок
-
+    defaultParameters.page += 1; //!додала
     const markup = createCardMarkup(results);
     addMarkup(productsList, markup);
 
     const productCards = document.querySelectorAll('.prod-item');
-        productCards.forEach((card) => {
-            card.addEventListener('click', () => {
-                const productId = card.getAttribute('data-js-product-id');
-                // console.log('Selected productId:', productId);
-                const selectedProduct = results.find((product) => product._id.toString() === productId);
+    productCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const productId = card.getAttribute('data-js-product-id');
+        // console.log('Selected productId:', productId);
+        const selectedProduct = results.find(
+          product => product._id.toString() === productId
+        );
 
-                if (selectedProduct) {
-                  openModal(selectedProduct);
-                } else {
-                  console.error('Selected product not found:', productId);
-                }
+        if (selectedProduct) {
+          openModal(selectedProduct);
+        } else {
+          console.error('Selected product not found:', productId);
+        }
 
-                // console.log(productId);
-                // console.log(results);
-            });
-        });
-
-
-
+        // console.log(productId);
+        // console.log(results);
+      });
+    });
   } catch (error) {
     console.error(error);
   }
@@ -100,5 +96,5 @@ export function createCardMarkup(results) {
     .join('');
 }
 
- displayProducts();
- export { displayProducts };
+displayProducts();
+export { displayProducts };
