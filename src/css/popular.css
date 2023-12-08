@@ -1,14 +1,9 @@
-/* .popular {
-  width: 275px;
-} */
 .popular-container {
   width: 275px;
   padding-bottom: 40px;
 }
 .popular-title {
-  color: #010101;
   font-size: 28px;
-  font-style: normal;
   font-weight: 500;
   line-height: 1.14;
   margin-bottom: 20px;
@@ -17,7 +12,7 @@
 .popular-item {
   width: 100%;
   border-radius: 10px;
-  background: #fafafa;
+  background: var(--white);
   padding: 12px;
   margin-bottom: 13px;
   position: relative;
@@ -37,8 +32,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  background: #e8e8e2;
-  border: 1px solad black;
+  background: var(--background);
 }
 
 .btn-add {
@@ -47,7 +41,7 @@
   right: 12px;
   cursor: pointer;
   border-radius: 30px;
-  background: #e8e8e2;
+  background: var(--background);
   display: inline-flex;
   padding: 4px;
   justify-content: center;
@@ -55,10 +49,20 @@
   gap: 10px;
   border: none;
 }
+.svg-add {
+  fill: var(--gray);
+}
+
+.svg-add:hover,
+.svg-add:focus {
+  fill: var(--background);
+}
+
 .btn-add:hover,
 .btn-add:focus {
-  background-color: #6d8434;
+  background-color: var(--gray);
 }
+
 .product-added {
   position: absolute;
   top: 12px;
@@ -69,20 +73,11 @@
   align-items: center;
   gap: 10px;
   border-radius: 30px;
-  background: #6d8434;
+  background: var(--gray);
   border: none;
 }
-.is-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  border: 0;
-  padding: 0;
-  white-space: nowrap;
-  clip-path: inset(100%);
-  clip: rect(0 0 0 0);
-  overflow: hidden;
+.svg-added {
+  fill: var(--background);
 }
 
 .card-descr {
@@ -90,23 +85,22 @@
   gap: 9px;
 }
 .popular-card-title {
-  color: #010101;
-  font-family: Neue Montreal;
   font-size: 20px;
-  font-style: normal;
   font-weight: 500;
   line-height: 1.2;
   margin-bottom: 10px;
 }
 .popular-text {
-  color: #010101;
+  color: var(--text-color);
   font-size: 12px;
-  font-style: normal;
   font-weight: 400;
   line-height: 1.116;
 }
 .popular-card-text {
-  color: rgba(1, 1, 1, 0.3);
+  color: var(--transparent-text);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
 }
 
 .category {
