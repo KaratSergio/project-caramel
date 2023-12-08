@@ -1,10 +1,37 @@
 import { getPopularProducts } from './get-api';
+import { openModal } from './modal-product';
 
 const popularList = document.querySelector('.popular-list');
 
+getPopularProducts(5)
+  .then(data => {
+    popularList.insertAdjacentHTML('beforeend', createMarkup(data));
+
+    function onClick(event) {
+      let target = event.target;
+
+      if (target.closest('.popular-card')) {
+        const popularCard = target.closest('.popular-card');
+        const popularProductId = popularCard.getAttribute('data-js-product-id');
+        const selectedProduct = data.find(
+          product => product._id.toString() === popularProductId
+        );
+        openModal(selectedProduct);
+      } else if (target.closest('.btn-add')) {
+        target.closest('.btn-add').classList.add('visually-hidden');
+        alert('Product add to Order');
+      }
+    }
+
+    popularList.addEventListener('click', onClick);
+  })
+  .catch(error => {
+    console.error(error);
+  });
+
 function createMarkup(items) {
   return items
-    .map(({ _id, name, img, category, popularity, size }) => {
+    .map(({ _id, name, img, category, popularity, size, price }) => {
       // додав строку 15  та ретерн на 17
       const firstDigit = parseInt(popularity.toString()[0]);
 
@@ -19,7 +46,7 @@ function createMarkup(items) {
           <use href="./images/icons.svg#check"></use>
         </svg>
       </span>
-        <div class="popular-card" id="${_id}">
+        <div class="popular-card" data-js-product-id=${_id}>
           <div class="popular-box-img">
             <img src="${img}" alt="${name}" loading="lazy"  width="56" />
           </div>
@@ -39,51 +66,3 @@ function createMarkup(items) {
     })
     .join('');
 }
-
-getPopularProducts(5)
-  .then(data => {
-    popularList.insertAdjacentHTML('beforeend', createMarkup(data));
-
-    const popularItem = document.querySelectorAll('.popular-item');
-
-    [...popularItem].forEach(item => {
-      const productAdded = item.children[1];
-      productAdded.classList.add('visually-hidden');
-
-      const btnAdd = item.children[0];
-      btnAdd.addEventListener('click', handleOrder);
-
-      function handleOrder(event) {
-        alert('Product add to Order');
-        btnAdd.classList.add('visually-hidden');
-        productAdded.classList.remove('visually-hidden');
-        btnAdd.removeEventListener('click', handleOrder);
-      }
-
-      const popularCard = item.children[2];
-      popularCard.addEventListener('click', handleProductCard);
-
-      function handleProductCard() {
-        alert('This is product cart');
-        popularCard.removeEventListener('click', handleProductCard);
-      }
-    });
-
-    // function onF(event) {
-    //   event.preventDefault();
-    //   let target = event.target;
-    //   // if (target.className === 'popular-card') {
-    //   //   alert('This is product cart');
-    //   //   console.log(target);
-    //   // }
-
-    //   if ( target.nodeName === 'LI') {
-    //     console.log('pppp');
-    //   }
-    //   console.log(event.target);
-    // }
-    // popularList.addEventListener('click', onF);
-  })
-  .catch(error => {
-    console.error(error);
-  });
