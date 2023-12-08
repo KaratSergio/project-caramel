@@ -33,11 +33,11 @@ export function addMarkup(el, markup) {
   el.innerHTML = markup;
 }
 
-async function displayProducts() {
+async function displayProducts(pageNumber) {
   try {
+    defaultParameters.page = pageNumber;
     const { results } = await getProductsByParams(defaultParameters);
     console.log('Products:', results); // Додайте цей рядок
-    defaultParameters.page += 1; //!додала
     const markup = createCardMarkup(results);
     addMarkup(productsList, markup);
 
