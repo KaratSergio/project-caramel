@@ -1,131 +1,74 @@
-// /**
-//  |============================
-//  | ОТРИМАЛИ ДАННІ З СЕРВЕРУ
-//  |============================
-// */
-// async function getProducts(pageNumber) {
-//   const response = await fetch(
-//     `https://food-boutique.b.goit.study/api/products?page=${pageNumber}&limit=9`
-//   );
-//   const data = await response.json();
-//   return data.results;
-// }
-// // Кількість карток на сторінці
-// const cardsPerPage = 9;
-// import { getProductsByParams } from './get-api';
-import { displayProducts } from './products'; //! імпортувала
-// // Отримати контейнери для карток та пагінації
-const cardsContainer = document.getElementById('cards-container');
-const paginationContainer = document.getElementById('pagination');
+import Pagination from 'tui-pagination';
+import axios from 'axios';
+// import 'tui-pagination/dist/tui-pagination.css';
+import { getProductsByParams } from './get-api';
+import {createCardMarkup} from './products';
+const paginationContainer = document.querySelector('#tui-pagination-container');
 
-// // Функція для відображення карток на сторінці
-// async function displayCards(page) {
-//   const products = await getProducts(page);
 
-//   cardsContainer.innerHTML = '';
-//   products.forEach(product => {
-//     const cardElement = createCard(product);
-//     cardsContainer.appendChild(cardElement);
-//   });
+let page = 1
+
+
+// const defaultParameters = {
+//   keyword: '',
+//   category: '',
+//   page,
+//   limit: 9,
+// };
+
+// async function getProducts(page) {
+//   const responce = await 
 // }
 
-// /**
-//    |============================
-//    | ТИМЧАСОВА КАРТКА ПРОДУКТУ
-//    |============================
-//   */
-// function createCard(product) {
-//   const card = document.createElement('div');
-//   card.className = 'card';
 
-//   const img = document.createElement('img');
-//   img.src = product.img;
-//   img.alt = product.name;
+const { totalPages, results } = await getProductsByParams(page);
 
-//   const name = document.createElement('p');
-//   name.textContent = product.name;
+const BASE_URL = 'https://food-boutique.b.goit.study/api/';
 
-//   const price = document.createElement('p');
-//   price.textContent = `Price: $${product.price}`;
-
-//   card.appendChild(img);
-//   card.appendChild(name);
-//   card.appendChild(price);
-
-//   return card;
-// }
-
-/**
-   |============================
-   | PAGINATION NAVIGATION
-   |============================
-  */
-
-// Функція для відображення пагінації
-async function displayPagination(currentPage, totalPages) {
-  const paginationContainer = document.getElementById('pagination'); // Додав цей рядок
-  paginationContainer.innerHTML = '';
-
-  if (totalPages > 1) {
-    const MAX_VISIBLE_PAGES = 5; // Максимальна кількість видимих сторінок
-
-    // Додаємо посилання для поточної та сусідніх сторінок
-    for (
-      let i = Math.max(1, currentPage - 1);
-      i <= Math.min(totalPages, currentPage + 1);
-      i += 1
-    ) {
-      appendPageLink(i, i === currentPage);
-    }
-
-    // Додаємо "..."
-    if (totalPages - currentPage > MAX_VISIBLE_PAGES - 2) {
-      const ellipsis = document.createElement('span');
-      ellipsis.textContent = '. . .';
-      paginationContainer.appendChild(ellipsis);
-    }
-
-    // Додаємо посилання на останні дві сторінки
-    for (
-      let i = Math.max(
-        totalPages - MAX_VISIBLE_PAGES + 4
-        // totalPages - MAX_VISIBLE_PAGES + 1
-      );
-      i <= totalPages;
-      i += 1
-    ) {
-      appendPageLink(i);
-    }
-  }
+async function getProducts(page) {
+  const responce = await axios.get(`${BASE_URL}products?page=${page}&limit=9`)
+  return responce.data.results
 }
 
-// Функція для додавання посилання на сторінку до пагінації
-function appendPageLink(pageNumber, isActive = false) {
-  const paginationContainer = document.getElementById('pagination'); // Додав цей рядок
-  const li = document.createElement('li');
-  const linkWrapper = document.createElement('div');
-  linkWrapper.classList.add('pagination-link');
-  const link = document.createElement('a');
-  link.href = `javascript:void(0);`;
-  link.textContent = pageNumber;
-
-  if (isActive) {
-    linkWrapper.classList.add('active');
-  }
-
-  link.addEventListener('click', () => onPageLinkClick(pageNumber));
-  linkWrapper.appendChild(link);
-  li.appendChild(linkWrapper);
-  paginationContainer.appendChild(li);
+const productsList = document.querySelector('.list-prod');
+function addMarkup(el, markup) {
+  el.innerHTML = markup;
+}
+function displayPagination(results, totalPages) {
+  const options = {
+    totalItems: results.length * totalPages,
+    itemsPerPage: 9,
+    visiblePages: 3,
+    page: page,
+    centerAlign: false,
+    firstItemClassName: 'tui-first-child',
+    lastItemClassName: 'tui-last-child',
+    template: {
+      page: '<a href="#" class="tui-page-btn">{{page}}</a>',
+      currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+      moveButton:
+        '<a href="#" class="tui-page-btn tui-{{type}}">' +
+          '<span class="tui-ico-{{type}}">{{type}}</span>' +
+        '</a>',
+      disabledMoveButton:
+        '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
+          '<span class="tui-ico-{{type}}">{{type}}</span>' +
+        '</span>',
+      moreButton:
+        '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
+          '<span class="tui-ico-ellip">...</span>' +
+        '</a>'
+    }
+  };
+  
+  const pagination = new Pagination(paginationContainer, options);
+  pagination.on('afterMove', (e) => {
+    page = e.page;
+    getProducts(page).then(result => {
+      const markup = createCardMarkup(result)
+      addMarkup(productsList, markup)
+    })
+});
 }
 
-// Обробник кліку на посилання пагінації
-function onPageLinkClick(pageNumber) {
-  displayProducts(pageNumber); //! змінила на імпортовану функцію
-  displayPagination(pageNumber, 60); // Загальна кількість сторінок
-}
-
-// Відображення початкової сторінки
-const initialPage = 1;
-displayProducts(initialPage); //! змінила на імпортовану функцію
-displayPagination(initialPage, 60); // Загальна кількість сторінок
+displayPagination(results, totalPages)
