@@ -1,6 +1,7 @@
 .products {
 }
 .card-product-discount {
+  margin-top: 20px;
   padding: 16px;
   border-radius: 15px;
   background: var(--white);
