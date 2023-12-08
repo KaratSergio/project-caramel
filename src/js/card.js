@@ -1,4 +1,4 @@
-import axios from 'axios';
+// import axios from 'axios';
 // import { createNewOrder } from './get-api';
 
 
@@ -149,16 +149,16 @@ async function onSubmit(event) {
   }
 }
 
-const BASE_URL = 'https://food-boutique.b.goit.study/api/';
-axios.defaults.baseURL = BASE_URL;
+// const BASE_URL = 'https://food-boutique.b.goit.study/api/';
+// axios.defaults.baseURL = BASE_URL;
 
-async function createNewOrder(email, products) {
-  return await axios
-    .post(`${BASE_URL}orders`, {
-      email,
-      products
-    })
-    .then(response => response.data);
-}
+// async function createNewOrder(email, products) {
+//   return await axios
+//     .post(`${BASE_URL}orders`, {
+//       email,
+//       products
+//     })
+//     .then(response => response.data);
+// }
 
 
