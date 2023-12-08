@@ -1,6 +1,8 @@
 import { getProductsByParams } from './get-api';
 import icons from '../images/icons.svg';
 
+import { openModal } from './modal-product';
+
 const productsList = document.querySelector('.list-prod');
 
 const defaultParameters = {
@@ -17,8 +19,31 @@ function addMarkup(el, markup) {
 async function displayProducts() {
   try {
     const { results } = await getProductsByParams(defaultParameters);
+    console.log('Products:', results); // Додайте цей рядок
+
     const markup = createCardMarkup(results);
     addMarkup(productsList, markup);
+
+    const productCards = document.querySelectorAll('.prod-item');
+        productCards.forEach((card) => {
+            card.addEventListener('click', () => {
+                const productId = card.getAttribute('data-js-product-id');
+                // console.log('Selected productId:', productId);
+                const selectedProduct = results.find((product) => product._id.toString() === productId);
+
+                if (selectedProduct) {
+                  openModal(selectedProduct);
+                } else {
+                  console.error('Selected product not found:', productId);
+                }
+
+                // console.log(productId);
+                // console.log(results);
+            });
+        });
+
+
+
   } catch (error) {
     console.error('Ошибка при отображении продуктов:', error);
   }
@@ -26,9 +51,9 @@ async function displayProducts() {
 
 export function createCardMarkup(results) {
   return results
-    .map(({ id, name, img, category, size, price, popularity }) => {
+    .map(({ _id, name, img, category, size, price, popularity }) => {
       return `
-        <li class="prod-item" js-product-id=${id}>   
+        <li class="prod-item" data-js-product-id=${_id}>   
           <div class="prod-pic">
             <svg class="discont-prod" width="60" height="60" style="visibility: hidden;">
               <use href="../images/icons.svg#shopping-cart"></use>
@@ -55,4 +80,5 @@ export function createCardMarkup(results) {
     .join('');
 }
 
-displayProducts();
+ displayProducts();
+ export { displayProducts };
