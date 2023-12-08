@@ -13,31 +13,32 @@ const defaultParameters = {
 
 // ________________
 
-export function saveData(data) {
-  localStorage.setItem('defaultParameters', JSON.stringify(defaultParameters));
-}
+// export function saveData(data) {
+//   localStorage.setItem('defaultParameters', JSON.stringify(defaultParameters));
+// }
 
-export function getData() {
-  try {
-    return (result = localStorage.getItem('defaultParameters'));
-  } catch (error) {
-    console.log(error);
-  }
-}
+// export function getData() {
+//   try {
+//     const result = localStorage.getItem('defaultParameters');
+//     return result ? JSON.parse(result) : {};
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
 
-saveData();
+// saveData();
 
-// _______________________________
+// // _______________________________
 
 export function addMarkup(el, markup) {
   el.innerHTML = markup;
 }
 
-async function displayProducts() {
+async function displayProducts(pageNumber) {
   try {
+    defaultParameters.page = pageNumber;
     const { results } = await getProductsByParams(defaultParameters);
     console.log('Products:', results); // Додайте цей рядок
-    defaultParameters.page += 1; //!додала
     const markup = createCardMarkup(results);
     addMarkup(productsList, markup);
 
@@ -72,7 +73,7 @@ export function createCardMarkup(results) {
         <li class="prod-item" data-js-product-id=${_id}>   
           <div class="prod-pic">
             <svg class="discont-prod" width="60" height="60" style="visibility: hidden;">
-              <use href="../images/icons.svg#shopping-cart"></use>
+              <use href="./images/icons.svg#shopping-cart"></use>
             </svg>
             <img class="prod-img" src=${img} alt=${name} loading="lazy">
           </div>
@@ -86,7 +87,7 @@ export function createCardMarkup(results) {
             <p class="price-prod">&#36; ${price}</p>
             <button class="buy-btn" type="button">
               <svg class="buy-svg" width="18" height="18">
-                <use href="../images/icons.svg#shopping-cart"></use>"></use>
+                <use href="./images/icons.svg#shopping-cart"></use>"></use>
               </svg>
             </button>
           </div>
