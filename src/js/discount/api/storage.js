@@ -5,7 +5,7 @@ export function getData() {
     const data = localStorage.getItem(STORAGE_KEY);
     return data ? JSON.parse(data) : [];
   } catch (error) {
-    console.lof(error.message);
+    console.log(error.message);
   }
 }
 
