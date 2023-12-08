@@ -45,18 +45,18 @@ import{a as i}from"./assets/vendor-a61d8330.js";(function(){const o=document.cre
             </div>
           </div>
         </div>
-      </li>`}).join("")}k(5).then(t=>{N.insertAdjacentHTML("beforeend",D(t)),[...document.querySelectorAll(".popular-item")].forEach(s=>{const a=s.children[1];a.classList.add("visually-hidden");const e=s.children[0];e.addEventListener("click",n);function n(X){alert("Product add to Order"),e.classList.add("visually-hidden"),a.classList.remove("visually-hidden"),e.removeEventListener("click",n)}const c=s.children[2];c.addEventListener("click",r);function r(){alert("This is product cart"),c.removeEventListener("click",r)}})}).catch(t=>{console.error(t)});i.defaults.baseURL="https://food-boutique.b.goit.study/api/";function G(){return i.get("products/discount").then(t=>t.data)}const P="product-discount";function H(){try{const t=localStorage.getItem(P);return t?JSON.parse(t):[]}catch(t){console.lof(t.message)}}function v(t){localStorage.setItem(P,JSON.stringify(t))}function R(t=[]){return t.map(o=>` <div class="cart-product-discount" data-id="${o._id}">
+      </li>`}).join("")}k(5).then(t=>{N.insertAdjacentHTML("beforeend",D(t)),[...document.querySelectorAll(".popular-item")].forEach(s=>{const a=s.children[1];a.classList.add("visually-hidden");const e=s.children[0];e.addEventListener("click",n);function n(X){alert("Product add to Order"),e.classList.add("visually-hidden"),a.classList.remove("visually-hidden"),e.removeEventListener("click",n)}const c=s.children[2];c.addEventListener("click",r);function r(){alert("This is product cart"),c.removeEventListener("click",r)}})}).catch(t=>{console.error(t)});i.defaults.baseURL="https://food-boutique.b.goit.study/api/";function G(){return i.get("products/discount").then(t=>t.data)}const P="product-discount";function H(){try{const t=localStorage.getItem(P);return t?JSON.parse(t):[]}catch(t){console.lof(t.message)}}function v(t){localStorage.setItem(P,JSON.stringify(t))}function R(t=[]){return t.map(o=>` <div class="card-product-discount" data-id="${o._id}">
     <div class="card-product-wrapper">
-        <img class="cart-product-img"
+        <img class="card-product-img"
             src="${o.img}"
             width="180" height="180" alt="${o.desc}" />
     </div>
     <div class="card-product-info">
-        <h3 class="cart-product-title">${o.name}</h3>
+        <h3 class="card-product-title">${o.name}</h3>
         <div class="card-product-info-right">
-            <p class="cart-product-price">${o.price}</p>
+            <p class="card-product-price">${o.price}</p>
 
-            <button type="button" class="cart-product-btn">
+            <button type="button" class="card-product-btn">
                 <svg>
                     <use href="тут посилання на іконку зі спрайту"></use>
                 </svg>
