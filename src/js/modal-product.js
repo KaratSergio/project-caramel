@@ -44,7 +44,7 @@ export function openModal(product) {
     // }
 
 
-    document.body.style.overflow = 'hidden';
+    // document.body.style.overflow = 'hidden';
     modalProduct.style.display = 'block';
     window.addEventListener('click', outsideModalClick);
 }
