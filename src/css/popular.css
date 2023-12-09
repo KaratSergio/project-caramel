@@ -1,0 +1,158 @@
+.popular-container {
+  width: 275px;
+  padding-bottom: 40px;
+}
+.popular-title {
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.14;
+  margin-bottom: 20px;
+}
+
+.popular-item {
+  width: 100%;
+  margin-bottom: 13px;
+  position: relative;
+}
+.popular-item:last-child {
+  margin-bottom: 0;
+}
+.popular-card {
+  cursor: pointer;
+  display: flex;
+  gap: 10px;
+  border-radius: 10px;
+  background: var(--white);
+  padding: 12px;
+}
+.popular-box-img {
+  width: 74px;
+  height: 74px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background: var(--background);
+}
+
+.btn-add {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  cursor: pointer;
+  border-radius: 30px;
+  background: var(--background);
+  display: inline-flex;
+  padding: 4px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border: none;
+  z-index: 3;
+}
+.svg-add {
+  fill: var(--gray);
+}
+
+.svg-add:hover,
+.svg-add:focus {
+  fill: var(--background);
+}
+
+.btn-add:hover,
+.btn-add:focus {
+  background-color: var(--gray);
+}
+
+.product-added {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: inline-flex;
+  padding: 4px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 30px;
+  background: var(--gray);
+  border: none;
+  z-index: 1;
+}
+.svg-added {
+  fill: var(--background);
+}
+
+.card-descr {
+  display: flex;
+  gap: 9px;
+}
+.popular-card-title {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+.popular-text {
+  color: var(--text-color);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.116;
+}
+.popular-card-text {
+  color: var(--transparent-text);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+}
+
+.category {
+  margin-bottom: 9px;
+}
+
+@media screen and (max-width: 768px) {
+  .popular {
+    max-width: 768px;
+    padding: 0 32px 64px 32px;
+  }
+  .popular-container {
+    width: 563px;
+  }
+
+  .popular-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 13px;
+  }
+  .popular-item {
+    width: calc((100% - 13px) / 2);
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 376px) {
+  .popular {
+    max-width: 375px;
+    padding: 0 20px 80px 20px;
+  }
+  .popular-container {
+    width: 100%;
+  }
+  .popular-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .popular-item {
+    width: 100%;
+  }
+
+  .popular-title {
+    font-size: 24px;
+    line-height: 1.166;
+  }
+  .popular-card-title {
+    font-size: 18px;
+    line-height: 1.11;
+    margin-bottom: 12px;
+  }
+}
