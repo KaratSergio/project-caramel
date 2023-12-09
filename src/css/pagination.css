@@ -18,6 +18,7 @@
 
 .tui-pagination {
   margin-top: 40px;
+  margin-bottom: 61px;
   line-height: normal;
   text-align: center;
   font-size: 0;
@@ -31,7 +32,7 @@
   width: 40px;
   height: 40px;
   padding: 16px 10px;
-  margin-left: 0;
+  margin-left: 8px;
   color: #A3A3A3;
   font-family: Neue Montreal;
   font-size: 14px;
@@ -43,7 +44,7 @@
 }
  
 .tui-pagination .tui-page-btn:hover {
-  background-color: #f4f4f4;
+  background-color: #ffffff;
 }
  
 .tui-pagination .tui-is-selected, .tui-pagination strong {
@@ -96,11 +97,11 @@
 }
  
 .tui-pagination .tui-prev {
-  margin-right: 10px;
+  margin-right: 80px;
 }
  
 .tui-pagination .tui-next {
-  margin-left: 10px;
+  margin-left: 80px;
 }
  
 .tui-pagination .tui-ico-first {
@@ -136,7 +137,7 @@
 }
  
 .tui-pagination .tui-is-disabled:hover {
-  background: #fff;
+  background: inherit;
   cursor: default
 }
  
@@ -154,4 +155,8 @@
  
 .tui-pagination .tui-is-disabled .tui-ico-last {
   background-position: -13px -12px
+}
+
+.tui-pagination:not(:last-child) {
+  margin-left: 8px;
 }
