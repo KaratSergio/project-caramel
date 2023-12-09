@@ -14,59 +14,11 @@ const checkoutForm = document.querySelector('.js-checkout-form');
 const itemButton = document.querySelector('.js-item-button');
 const headerCount = document.querySelector('#countProducts');
 
-const path = pathSvg.ownerDocument.location.origin;
+const path = pathSvg.ownerDocument.location;
 console.dir(path);
 
 checkoutForm.addEventListener('submit', onOrderSubmit);
 itemButton.addEventListener('click', onClick);
-
-// addLocalStorageData();
-
-// function addLocalStorageData() {
-//   dataForm = [
-//     {
-//       _id: '640c2dd963a319ea671e37d4',
-//       name: 'Banana',
-//       img: 'https://ftp.goit.study/img/so-yummy/ingredients/640c2dd963a319ea671e37d4.png',
-//       category: 'Fresh_Produce',
-//       price: 0.69,
-//       size: '1 piece',
-//       is10PercentOff: true,
-//       popularity: 108,
-//     },
-//     {
-//       _id: '640c2dd963a319ea671e383b',
-//       name: 'Ackee',
-//       img: 'https://ftp.goit.study/img/so-yummy/ingredients/640c2dd963a319ea671e383b.png',
-//       category: 'Fresh_Produce',
-//       price: 8.99,
-//       size: '16 oz',
-//       is10PercentOff: false,
-//       popularity: 0,
-//     },
-//     {
-//       _id: '640c2dd963a319ea671e3864',
-//       name: 'Black Beans',
-//       img: 'https://ftp.goit.study/img/so-yummy/ingredients/640c2dd963a319ea671e3864.png',
-//       category: 'Pantry_Items',
-//       price: 1.99,
-//       size: '16oz',
-//       is10PercentOff: false,
-//       popularity: 0,
-//     },
-//     {
-//       _id: '640c2dd963a319ea671e37ad',
-//       name: 'Black Olives',
-//       img: 'https://ftp.goit.study/img/so-yummy/ingredients/640c2dd963a319ea671e37ad.png',
-//       category: 'Fresh_Produce',
-//       price: 3.99,
-//       size: '1 jar (16 oz)',
-//       is10PercentOff: false,
-//       popularity: 0,
-//     },
-//   ];
-//   localStorage.setItem(STORAGE_KEY, JSON.stringify(dataForm));
-// }
 
 onLoad();
 
@@ -136,6 +88,7 @@ function deleteSelectedItem(item) {
     if (itemId === item) {
       dataForm.splice(i, 1);
       updateLocalStorageData(dataForm);
+      countAddedItems(dataForm);
       totalSumCount(dataForm);
       return;
     }
@@ -226,7 +179,7 @@ function basketItemsMarkup(array) {
               <h4 class="item-title">${name}</h4>
               <button type="button" class="delete-item-button">
                 <svg class="delete-item-icon" width="20" height="20">
-                  <use href="${path}/images/icons.svg#delete-icon"></use>
+                  <use href="../images/icons.svg#delete-icon"></use>
                 </svg>
               </button>
             </div>
@@ -241,13 +194,13 @@ function basketItemsMarkup(array) {
               <div class="item-counter-container">
                 <button class="decrease-button" disabled name="decrease" type="button">
                   <svg class="decrease-icon hide" width="18" height="18">
-                    <use href="${path}/images/icons.svg#minus"></use>
+                    <use href="../images/icons.svg#minus"></use>
                   </svg>
                 </button>
                 <p class="item-counter" name="counter">${count}</p>
                 <button class="increase-button" name="increase" type="button">
                   <svg class="increase-icon" width="18" height="18">
-                    <use href="${path}/images/icons.svg#plus"></use>
+                    <use href="../images/icons.svg#plus"></use>
                   </svg>
                 </button>
               </div>
