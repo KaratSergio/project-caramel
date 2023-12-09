@@ -126,7 +126,11 @@
 }
 
 .filter-title {
+<<<<<<< Updated upstream
   color: rgba(1, 1, 1, 0.3);
+=======
+  color: #0101014d;
+>>>>>>> Stashed changes
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -276,6 +280,10 @@
     display: flex;
     position: relative;
     margin-top: 8px;
+<<<<<<< Updated upstream
+=======
+    margin-bottom: ;
+>>>>>>> Stashed changes
   }
 
   .filter-sort {
