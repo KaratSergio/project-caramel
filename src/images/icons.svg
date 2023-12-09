@@ -46,7 +46,7 @@
 </symbol>
 
 <symbol id="check" viewBox="0 0 32 32">
-<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3.5556" d="M26.667 8l-14.667 14.667-6.667-6.667"></path>
+<path fill="none" style="stroke: var(--color1, #e8e8e2)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3.5556" d="M26.667 8l-14.667 14.667-6.667-6.667"></path>
 </symbol>
 
 <symbol id="shopping-cart" viewBox="0 0 32 32">
