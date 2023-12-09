@@ -293,7 +293,7 @@ function isEmailValid(value) {
 }
 
 function success(response) {
-  // clearBasket();
+  clearBasket();
   checkoutForm.reset();
 
   console.log(response);
