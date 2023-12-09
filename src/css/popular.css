@@ -11,9 +11,6 @@
 
 .popular-item {
   width: 100%;
-  border-radius: 10px;
-  background: var(--white);
-  padding: 12px;
   margin-bottom: 13px;
   position: relative;
 }
@@ -24,6 +21,9 @@
   cursor: pointer;
   display: flex;
   gap: 10px;
+  border-radius: 10px;
+  background: var(--white);
+  padding: 12px;
 }
 .popular-box-img {
   width: 74px;
@@ -48,6 +48,7 @@
   align-items: center;
   gap: 10px;
   border: none;
+  z-index: 3;
 }
 .svg-add {
   fill: var(--gray);
@@ -75,6 +76,7 @@
   border-radius: 30px;
   background: var(--gray);
   border: none;
+  z-index: 1;
 }
 .svg-added {
   fill: var(--background);
