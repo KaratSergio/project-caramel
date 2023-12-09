@@ -8,3 +8,4 @@ import './js/popular';
 import './js/discount/discount';
 import './js/footer';
 import './js/modal-product';
+import './js/scroll';
