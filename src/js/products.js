@@ -1,6 +1,7 @@
 import { getProductsByParams } from './get-api';
 
 import { openModal } from './modal-product';
+import { getProductById } from './get-api';
 
 const productsList = document.querySelector('.list-prod');
 
@@ -44,18 +45,23 @@ async function displayProducts(pageNumber) {
 
     const productCards = document.querySelectorAll('.prod-item');
     productCards.forEach(card => {
-      card.addEventListener('click', () => {
+      card.addEventListener('click', async () => {
         const productId = card.getAttribute('data-js-product-id');
         // console.log('Selected productId:', productId);
-        const selectedProduct = results.find(
-          product => product._id.toString() === productId
-        );
+        try {
+          // const selectedProduct = results.find(
+          //   product => product._id.toString() === productId
+          // );
+          const selectedProduct = await getProductById(productId);
 
         if (selectedProduct) {
           openModal(selectedProduct);
         } else {
           console.error('Selected product not found:', productId);
         }
+      } catch (error) {
+        console.error('Error fetching product by ID:', error);
+      }
 
         // console.log(productId);
         // console.log(results);
