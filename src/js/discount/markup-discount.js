@@ -1,3 +1,5 @@
+import sprite from '../../images/icons.svg';
+
 export function createMarkup(items = []) {
   return items
     .map(item => {
@@ -14,12 +16,12 @@ export function createMarkup(items = []) {
 
             <button type="button" class="card-product-btn" >
             <svg class="card-product-svg" width="18" height="18">
-            <use href="./images/icons.svg#shopping-cart"></use>
+            <use href="${sprite}#shopping-cart"></use>
           </svg>
             </button>
             <span class="product-added">
             <svg class="svg-added" width="12" height="12">
-              <use href="./images/icons.svg#check"></use>
+              <use href="${sprite}#check"></use>
             </svg>
           
         </div>
