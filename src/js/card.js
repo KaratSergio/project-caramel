@@ -1,4 +1,5 @@
-// import sprite from './images/icons.svg';
+import sprite from '../images/icons.svg';
+// import { forEach } from 'lodash';
 import { createNewOrder } from './get-api';
 
 const STORAGE_KEY = 'added-item';
@@ -26,6 +27,10 @@ function onLoad() {
   try {
     getLocalStorageData();
     countAddedItems(dataForm);
+
+    counterItem(event, 0);
+
+
     itemsContainer.innerHTML = basketItemsMarkup(dataForm);
     totalSumCount(dataForm);
     // totalSum.textContent = `$${totalSumCount(dataForm)}`;
@@ -179,7 +184,7 @@ function basketItemsMarkup(array) {
               <h4 class="item-title">${name}</h4>
               <button type="button" class="delete-item-button">
                 <svg class="delete-item-icon" width="20" height="20">
-                  <use href="../images/icons.svg#delete-icon"></use>
+                  <use href="${sprite}#delete-icon"></use>
                 </svg>
               </button>
             </div>
@@ -194,13 +199,13 @@ function basketItemsMarkup(array) {
               <div class="item-counter-container">
                 <button class="decrease-button" disabled name="decrease" type="button">
                   <svg class="decrease-icon hide" width="18" height="18">
-                    <use href="../images/icons.svg#minus"></use>
+                    <use href="${sprite}#minus"></use>
                   </svg>
                 </button>
                 <p class="item-counter" name="counter">${count}</p>
                 <button class="increase-button" name="increase" type="button">
                   <svg class="increase-icon" width="18" height="18">
-                    <use href="../images/icons.svg#plus"></use>
+                    <use href="${sprite}#plus"></use>
                   </svg>
                 </button>
               </div>
