@@ -1,4 +1,5 @@
 import axios from 'axios';
+import sprite from './images/icons.svg';
 // import { createNewOrder } from './get-api';
 
 const STORAGE_KEY = 'added-item';
@@ -235,13 +236,13 @@ function basketItemsMarkup(array) {
               <div class="item-counter-container">
                 <button class="decrease-button" disabled name="decrease" type="button">
                   <svg class="decrease-icon hide" width="18" height="18">
-                    <use href="./images/icons.svg#minus"></use>
+                    <use href="${sprite}#minus"></use>
                   </svg>
                 </button>
                 <p class="item-counter" name="counter">${count}</p>
                 <button class="increase-button" name="increase" type="button">
                   <svg class="increase-icon" width="18" height="18">
-                    <use href="./images/icons.svg#plus"></use>
+                    <use href="${sprite}#plus"></use>
                   </svg>
                 </button>
               </div>
