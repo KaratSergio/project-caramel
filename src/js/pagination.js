@@ -24,11 +24,7 @@ export function displayPagination(results, totalPages) {
     totalItems: results.length * totalPages,
     itemsPerPage: 9,
     visiblePages: 3,
-<<<<<<< Updated upstream
     centerAlign: true,
-=======
-    // page: currentPage,
->>>>>>> Stashed changes
     usageStatistics: false
   };
   
