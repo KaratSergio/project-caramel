@@ -57,6 +57,7 @@
   border-radius: 30px;
   border: 1px solid rgba(1, 1, 1, 0.3);
   cursor: pointer;
+  outline: transparent;
   appearance: none;
 }
 .filter-select:hover,
@@ -81,6 +82,7 @@
   border-radius: 30px;
   border: none;
   cursor: pointer;
+  outline: transparent;
   appearance: none;
 }
 .filter-sort:hover,
