@@ -7,8 +7,8 @@
   padding: 16px;
   border-radius: 15px;
   background: var(--white);
-  width: 335px;
-  margin-bottom: 20px;
+  width: 275px;
+  height: 232px;
 }
 .card-product-wrapper {
   border-radius: 10px;
@@ -16,6 +16,8 @@
   padding: 18px;
   display: flex;
   justify-content: center;
+  width: 243px;
+  height: 150px;
 }
 /* .cart-product-img {
 } */
@@ -23,7 +25,7 @@
   display: flex;
   justify-content: space-between;
   position: relative;
-  padding-top: 16px;
+  padding-top: 21px;
 }
 .card-product-title,
 .card-product-price {
@@ -41,5 +43,14 @@
 .card-product-btn {
   width: 18px;
   height: 18px;
-  border-radius: 50%;
+  border-radius: 30px;
+  background-color: var(--gray);
+  border: none;
+}
+.card-product-svg {
+  fill: var(--background);
+}
+.card-product-add {
+  width: 18px;
+  height: 18px;
 }

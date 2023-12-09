@@ -5,18 +5,23 @@ export function createMarkup(items = []) {
     <div class="card-product-wrapper">
         <img class="card-product-img"
             src="${item.img}"
-            width="180" height="180" alt="${item.desc}" />
+            width="105" height="105" alt="${item.desc}" />
     </div>
     <div class="card-product-info">
         <h3 class="card-product-title">${item.name}</h3>
         <div class="card-product-info-right">
             <p class="card-product-price">${item.price}</p>
 
-            <button type="button" class="card-product-btn">
-                <svg>
-                    <use href="тут посилання на іконку зі спрайту"></use>
-                </svg>
+            <button type="button" class="card-product-btn" >
+            <svg class="card-product-svg" width="18" height="18">
+            <use href="./images/icons.svg#shopping-cart"></use>
+          </svg>
             </button>
+            <span class="product-added">
+            <svg class="svg-added" width="12" height="12">
+              <use href="./images/icons.svg#check"></use>
+            </svg>
+          
         </div>
     </div>
 </div>
