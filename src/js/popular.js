@@ -1,25 +1,61 @@
 import { getPopularProducts } from './get-api';
 import { openModal } from './modal-product';
+import sprite from '../images/icons.svg';
+
+// import { Notify } from 'notiflix';
+
+// const options = {
+//   timeout: 1000,
+//   position: 'center-center',
+//   width: '400px',
+//   fontSize: '24px',
+// };
 
 const popularList = document.querySelector('.popular-list');
+
+const STORAGE_KEY = 'added-item';
+let productData = [];
+
+let localProduct = JSON.parse(localStorage.getItem(STORAGE_KEY));
+console.log(localProduct);
 
 getPopularProducts(5)
   .then(data => {
     popularList.insertAdjacentHTML('beforeend', createMarkup(data));
 
+    // const localProduct = JSON.parse(localStorage.getItem(LS_KEY));
+    // console.log(localProduct);
+
     function onClick(event) {
       let target = event.target;
-
       if (target.closest('.popular-card')) {
         const popularCard = target.closest('.popular-card');
         const popularProductId = popularCard.getAttribute('data-js-product-id');
         const selectedProduct = data.find(
           product => product._id.toString() === popularProductId
         );
+        // console.log('f:', selectedProduct);
+        // console.log('g:', data);
         openModal(selectedProduct);
       } else if (target.closest('.btn-add')) {
+        const elem = target.closest('.btn-add').nextElementSibling;
+        const btnProductId = elem.getAttribute('data-js-product-id');
+        const selProduct = data.find(
+          product => product._id.toString() === btnProductId
+        );
+
+        //const ppp = localProduct.includes(btnProductId);
+        //const ddd = localProduct.find(item => item === btnProductId);
+        if (!1) {
+          //Notify.info('Cogito ergo sum', options);
+          alert('Product also added to Order');
+        } else {
+          productData.push(selProduct);
+          //localStorage.setItem(STORAGE_KEY, JSON.stringify(productData));
+          //Notify.success('Product add to Order', options);
+          alert('Product add to Order');
+        }
         target.closest('.btn-add').classList.add('visually-hidden');
-        alert('Product add to Order');
       }
     }
 
@@ -31,21 +67,31 @@ getPopularProducts(5)
 
 function createMarkup(items) {
   return items
-    .map(({ _id, name, img, category, popularity, size, price }) => {
-      // додав строку 15  та ретерн на 17
-      const firstDigit = parseInt(popularity.toString()[0]);
+    .map(
+      ({
+        _id,
+        name,
+        img,
+        category,
+        popularity,
+        size,
+        price,
+        is10PercentOff,
+      }) => {
+        // додав строку 15  та ретерн на 17
+        const firstDigit = parseInt(popularity.toString()[0]);
 
-      return `  <li class="popular-item">
-      <button class="btn-add" type="button">
-        <svg class="svg-add" width="12" height="12">
-          <use href="./images/icons.svg#shopping-cart"></use>
-        </svg>
-      </button>
-      <span class="product-added">
+        return `  <li class="popular-item">
+            <span class="product-added">
         <svg class="svg-added" width="12" height="12">
-          <use href="./images/icons.svg#check"></use>
+          <use href="${sprite}#check"></use>
         </svg>
       </span>
+      <button class="btn-add" type="button">
+        <svg class="svg-add" width="12" height="12">
+          <use href="${sprite}#shopping-cart"></use>
+        </svg>
+      </button>
         <div class="popular-card" data-js-product-id=${_id}>
           <div class="popular-box-img">
             <img src="${img}" alt="${name}" loading="lazy"  width="56" />
@@ -63,6 +109,7 @@ function createMarkup(items) {
           </div>
         </div>
       </li>`;
-    })
+      }
+    )
     .join('');
 }
