@@ -1,6 +1,7 @@
 import { getProductsByParams } from './get-api';
 
 import { openModal } from './modal-product';
+import { getProductById } from './get-api';
 
 const productsList = document.querySelector('.list-prod');
 
@@ -54,7 +55,7 @@ export async function displayProducts(pageNumber) {
     const productCards = document.querySelectorAll('.prod-item');
 
     productCards.forEach(card => {
-      
+
       card.addEventListener('click', () => {
         const productId = card.getAttribute('data-js-product-id');
         const buyBtn = card.querySelector('.buy-btn');

@@ -3,8 +3,7 @@
   <div class="title-container">
     <div class="basket-border">
       <svg class="basket-icon" width="18" height="18">
-        <use href="./images/icons1.svg#basket-icon"></use>
-        <!-- <use href="./images/icons.svg#shopping-cart"></use> -->
+        <use href="./images/icons.svg#shopping-cart"></use>
       </svg>
     </div>
     <h2 class="title-cart">Cart (<span class="js-item-count">0</span>)</h2>
@@ -12,7 +11,7 @@
   <div class="empty-basket-container js-empty-basket hide">
     <img
       class="empty-basket-img"
-      src="../images/empty_yellow_shopping_basket.png"
+      src="./images/empty_yellow_shopping_basket.png"
       alt="Empty yellow shopping basket"
     />
     <div class="basket-text-container">
@@ -26,12 +25,11 @@
     </div>
   </div>
   <div class="basket-container js-filled-basket">
-    <div class="basket-item-container">
+    <div class="basket-item-container js-item-button">
       <button class="basket-clear-container" type="button">
         <p class="basket-clear-text">Delete all</p>
         <svg class="delete-icon" width="24" height="24">
-          <use href="./images/icons1.svg#delete-icon"></use>
-          <!-- <use href="./images/icons.svg#delete-icon"></use> -->
+          <use href="./images/icons.svg#delete-icon"></use>
         </svg>
       </button>
       <ul class="items-block-container js-items-container"></ul>
@@ -45,7 +43,7 @@
           <span class="total-count-text">$0</span>
         </li>
       </ul>
-      <form class="checkout-form">
+      <form class="checkout-form js-checkout-form">
         <label class="email-label" for="email">
           Mail
           <input

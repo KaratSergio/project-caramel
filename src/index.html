@@ -1,35 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Food Boutique</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/modern-normalize@2.0.0/modern-normalize.min.css"
-    />
-    <link rel="stylesheet" href="./css/styles.css" />
-  </head>
-  <body>
-    <load ="partials/header.html" />
 
-    <main>
-      <load ="partials/hero.html" />
-      <load ="partials/filters.html" />
-      <div class="main-container">
-        <load ="partials/products.html" />
-        <div class="main-sidebar">
-          <load ="partials/popular.html" />
-          <load ="partials/discount.html" />
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Food Boutique</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-normalize@2.0.0/modern-normalize.min.css" />
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+
+<body>
+  <load="partials/header.html" />
+
+  <main>
+
+    <load="partials/scroll.html" />
+    <load="partials/hero.html" />
+    <load="partials/filters.html" />
+    <div class="main-container">
+      <load="partials/products.html" />
+      <div class="main-sidebar">
+        <load="partials/popular.html" />
+        <load="partials/discount.html" />
       </div>
-      <load ="partials/pagination.html" />
-      <load ="partials/modal-product.html" />
-    </main>
+    </div>
+    <load="partials/pagination.html" />
+    <load="partials/modal-product.html" />
+  </main>
 
-    <load ="partials/footer.html" />
+  <load="partials/footer.html" />
 
-    <script type="module" src="/main.js"></script>
-  </body>
+  <script type="module" src="/main.js"></script>
+</body>
+
 </html>

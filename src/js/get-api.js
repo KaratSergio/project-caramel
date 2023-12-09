@@ -60,16 +60,11 @@ export async function orderSubscriptionToNewProducts(email) {
   return response.data;
 }
 
-export async function createNewOrder(email, [{ productId, amount }]) {
-  const response = await axios.post(`${BASE_URL}orders`, {
-    email,
-    products: [
-      {
-        productId,
-        amount,
-      },
-    ],
-  });
-
-  return response.data;
+export async function createNewOrder(email, products) {
+  return await axios
+    .post(`${BASE_URL}orders`, {
+      email,
+      products,
+    })
+    .then(response => response.data);
 }
