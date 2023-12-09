@@ -1,6 +1,9 @@
 .filters-section {
   margin: 100px 0 40px 0;
 }
+.filters-container {
+  padding-left: 20px;
+}
 .filter-form {
   display: inline-flex;
   flex-direction: column;
@@ -96,6 +99,9 @@
   fill: var(--text-color);
 }
 @media screen and (min-width: 768px) {
+  .filters-container {
+    padding-left: 32px;
+  }
   .filter-form {
     display: flex;
     flex-direction: row;
@@ -116,6 +122,9 @@
 }
 
 @media screen and (min-width: 1440px) {
+  .filters-container {
+    padding-left: 100px;
+  }
   .filters-section {
     margin-bottom: 60px;
   }
