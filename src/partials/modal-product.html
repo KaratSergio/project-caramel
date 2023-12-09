@@ -1,9 +1,9 @@
 <!-- modal-product.html -->
 
-<div id="modalProduct" class="modal">
-    <div class="modal-content">
+<div id="modalProduct" class="modal ">
+    <!-- <div class="modal-content"> -->
         <span class="close" id="closeModalProductBtn">&times;</span>
-        <div class="product-details">
+        <!-- <div class="product-details">
             <img id="modalProductImage" src="" alt="Product Image">
             <h2 id="modalProductName"></h2>
             <p id="modalProductCategory"></p>
@@ -12,6 +12,35 @@
             <p id="modalProductDescription"></p>
             <p id="modalProductPrice"></p>
             <button id="addToCartBtn">Add to Cart</button>
-        </div>
+        </div> -->
+        <div class="product-info">
+            <div class="pro">
+             <div class="product-image">
+               <img id="modalProductImage" src="" alt="Product Image">
+             </div>
+             <div class="product-details">
+              <h2 id="modalProductName"></h2>
+              <div class="product-bloc">
+                <p id="modalProductCategory"></p>
+                <p id="modalProductSize"></p>
+                <p id="modalProductPopularity"></p>
+              </div>
+
+              <p id="modalProductDescription"></p>
+             
+            </div>
+            </div>
+            <div class="product-add">
+                <p id="modalProductPrice"></p>
+                <button id="addToCartBtn" class="buy-btn" type="button">Add to 
+                   
+                <svg class="buy-svg"  width="18" height="18">
+                    <use href="../images/icons.svg#shopping-cart"></use>
+                </svg>
+                   
+                </button>
+
+            </div>
+          <!-- </div> -->
     </div>
 </div>

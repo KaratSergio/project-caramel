@@ -12,7 +12,7 @@ const itemsContainer = document.querySelector('.js-items-container');
 const totalSum = document.querySelector('.total-count-text');
 const checkoutForm = document.querySelector('.checkout-form');
 
-checkoutForm.addEventListener('submit', onSubmit);
+// checkoutForm.addEventListener('submit', onSubmit);
 
 addLocalStorageData();
 

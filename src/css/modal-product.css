@@ -7,30 +7,160 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1;
-    width: 70%; /* Змініть розмір за вашим бажанням */
-    max-width: 600px; /* Максимальна ширина вікна */
-    background-color: white;
-    padding: 20px;
+    width: 70%; 
+    max-width: 630px; 
+    height: 380px;
+    background: #FAFAFA;
+    padding: 40px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* background-color: rgba(0, 0, 0, 0.5); */
     box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
   }
-  
-  /* Додайте інші стилі, які вам потрібні */
-  
-  .modal-content {
-    /* Додайте стилі вмісту модального вікна за вашим бажанням */
-  }
-  
-  .close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 20px;
-    cursor: pointer;
-  }
-  
-  .product-details {
-    /* Додайте стилі для деталей продукту */
-  }
-  
-  /* Додайте інші стилі, які вам потрібні */
+
+.close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  font-size: 30px;
+  cursor: pointer;
+  width: 28px;
+height: 28px;
+flex-shrink: 0;
+}
+.pro{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 48px;
+}
+.product-info {
+  display: block;
+  margin-bottom: 0%;
+  height: 328px;
+}
+
+.product-image {
+  display: flex;
+  margin-right: 20px;
+  width: 240px;
+  height: 212px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #E8E8E2;
+  align-items: center;
+  justify-content: center;
+  margin-right: 24px;
+}
+.product-image img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 10px;
+}
+
+.product-details {
+  flex-grow: 1;
+  width: 256px;
+}
+
+#modalProductName {
+ 
+margin-bottom: 10px;
+color: #010101;
+font-family: Neue Montreal;
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: 24px; /* 120% */
+}
+
+#modalProductCategory,
+#modalProductSize,
+#modalProductPopularity,
+#modalProductDescription,
+#modalProductPrice {
+  /* color: #010101; */
+}
+#modalProductPrice{
+  font-family: Neue Montreal;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 120% */
+  width: 70px;
+  height: 30px;
+}
+#modalProductDescription{
+margin-top: 24px;
+color: rgba(1, 1, 1, 0.70);
+font-family: Neue Montreal;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 20px; /* 125% */
+width: 256px;
+max-height: 118px;
+overflow-y: auto;
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(1, 1, 1, 0.40); /* Задний фон с затемнением */
+  z-index: 999; /* Выше других элементов */
+}
+
+
+.product-bloc{
+display: flex;
+flex-wrap: wrap;
+/* align-items: flex-start; */
+gap: 9px;
+color: rgba(1, 1, 1, 0.30);
+font-family: Neue Montreal;
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: 1.17em; /* 116.667% */
+
+width: 246px;
+height: 37px;
+margin-bottom: 10px;
+}
+.feature-value {
+  color: #010101;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.17em;
+  margin-left: 4px;
+}
+.product-add{
+  margin-bottom: -70px;
+   display: inline-flex;
+   align-items: flex-end;
+   gap: 350px;
+width: 550px;
+height: 40px;
+/* background-color: #c8e77a; */
+}
+
+.buy-btn{
+display: flex;
+padding: 10px 28px;
+justify-content: center;
+align-items: center;
+gap: 10px;
+border-radius: 30px;
+background: #6D8434;
+width: 130px;
+height: 40px;
+color: #E8E8E2;
+margin-left: 0;
+}
+.buy-svg {
+ color: #E8E8E2;
+}
+
