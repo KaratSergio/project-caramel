@@ -59,18 +59,18 @@ saveData('firstGet', results);
       card.addEventListener('click', () => {
         const productId = card.getAttribute('data-js-product-id');
         const buyBtn = card.querySelector('.buy-btn');
+        const modalImg = card.querySelector('.prod-img');
         const selectedProduct = results.find(
           product => product._id.toString() === productId
         );
         console.log('Selected productId:', productId);
-        saveProductId(productId, results)
-        
-  
-        // if (selectedProduct) {
-        //   openModal(selectedProduct);
-        // } else {
-        //   console.error('Selected product not found:', productId);
-        // }
+        saveProductId(productId, results);
+
+        if (modalImg) {
+          openModal(selectedProduct);
+        } else {
+          console.error('Selected product not found:', productId);
+        }
 
         // console.log(productId);
         // console.log(results);
@@ -111,6 +111,8 @@ export function createCardMarkup(results) {
     })
     .join('');
 }
+
+displayProducts();
 
 
 const STORAGE_KEY = 'added-item';
