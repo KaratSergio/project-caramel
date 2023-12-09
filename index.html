@@ -10,8 +10,8 @@
   
   <script type="module" crossorigin src="/project-caramel/commonHelpers2.js"></script>
   <link rel="modulepreload" crossorigin href="/project-caramel/assets/vendor-8c378b12.js">
-  <link rel="modulepreload" crossorigin href="/project-caramel/assets/get-api-84ce37bb.js">
-  <link rel="stylesheet" href="/project-caramel/assets/get-api-84121ae4.css">
+  <link rel="modulepreload" crossorigin href="/project-caramel/assets/get-api-d562484e.js">
+  <link rel="stylesheet" href="/project-caramel/assets/get-api-ef12bb34.css">
 </head>
 
 <body>
@@ -74,21 +74,18 @@
   </div>
 </section>
 
-    <section class="filters-section">
-  <div class="filters-container">
-    <form class="filter-form" id="filter-form">
-      <div class="filter-input-container">
-        <input
-          type="text"
-          name="searchQuery"
-          autocomplete="off"
-          placeholder="Search for anything"
-        />
-        <svg class="filter-icon-search" width="20" height="20">
-          <use href="/project-caramel/assets/icons-ef02320f.svg#icon-search"></use>
-        </svg>
-      </div>
-
+    <section class="filters-section container">
+  <div class="filter-container">
+    <h3 class="filter-title">Filter:</h3>
+    <div class="filter">
+      <form class="filter-form" id="filter-form">
+        <div class="filter-input-container">
+          <input type="text" name="searchQuery" autocomplete="off" placeholder="Search for anything" />
+          <svg class="filter-icon-search" width="20" height="20">
+            <use href="/project-caramel/assets/icons-ef02320f.svg#icon-search"></use>
+          </svg>
+        </div>
+      </form>
       <div class="filter-select-container">
         <select class="filter-select" name="categories">
           <option value="select" disabled selected hidden>Categories</option>
@@ -108,11 +105,11 @@
           <use href="/project-caramel/assets/icons-ef02320f.svg#icon-down"></use>
         </svg>
       </div>
-    </form>
+      </form>
+    </div>
   </div>
 </section>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
     <div class="main-container">
       <div class="list-prod-container">
   <ul class="list-prod">
