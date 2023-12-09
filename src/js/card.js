@@ -11,6 +11,7 @@ const itemsContainer = document.querySelector('.js-items-container');
 const totalSum = document.querySelector('.total-count-text');
 const checkoutForm = document.querySelector('.js-checkout-form');
 const itemButton = document.querySelector('.js-item-button');
+const headerCount = document.querySelector('#countProducts');
 
 checkoutForm.addEventListener('submit', onOrderSubmit);
 itemButton.addEventListener('click', onClick);
@@ -121,6 +122,7 @@ function clearBasket() {
 
 function countAddedItems(item) {
   itemCount.textContent = item.length;
+  headerCount.textContent = `Cart (${item.length})`;
   isBasketEmpty(item.length);
 }
 
@@ -220,7 +222,7 @@ function basketItemsMarkup(array) {
               <h4 class="item-title">${name}</h4>
               <button type="button" class="delete-item-button">
                 <svg class="delete-item-icon" width="20" height="20">
-                  <use href="./images/icons.svg#delete-icon"></use>
+                  <use href="./src/images/icons.svg#delete-icon"></use>
                 </svg>
               </button>
             </div>
@@ -235,13 +237,13 @@ function basketItemsMarkup(array) {
               <div class="item-counter-container">
                 <button class="decrease-button" disabled name="decrease" type="button">
                   <svg class="decrease-icon hide" width="18" height="18">
-                    <use href="./images/icons.svg#minus"></use>
+                    <use href="/images/icons.svg#minus"></use>
                   </svg>
                 </button>
                 <p class="item-counter" name="counter">${count}</p>
                 <button class="increase-button" name="increase" type="button">
                   <svg class="increase-icon" width="18" height="18">
-                    <use href="./images/icons.svg#plus"></use>
+                    <use href="../src/images/icons.svg#plus"></use>
                   </svg>
                 </button>
               </div>
