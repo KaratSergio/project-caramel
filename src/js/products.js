@@ -11,22 +11,28 @@ const defaultParameters = {
   limit: 9,
 };
 
+// ---------------------------
+
+
+
+export function saveData(key, data) {
+  localStorage.setItem(key, JSON.stringify(data));
+}
+export function getData(key) {
+  try {
+    const result = localStorage.getItem(key);
+    return result ? JSON.parse(result) : {};
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// ---------------------------
+
+
 // ________________
 
-// export function saveData(data) {
-//   localStorage.setItem('defaultParameters', JSON.stringify(defaultParameters));
-// }
-
-// export function getData() {
-//   try {
-//     const result = localStorage.getItem('defaultParameters');
-//     return result ? JSON.parse(result) : {};
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
-
-// saveData();
+saveData("defaultParameters",defaultParameters);
 
 // // _______________________________
 
@@ -34,28 +40,35 @@ export function addMarkup(el, markup) {
   el.innerHTML = markup;
 }
 
-async function displayProducts(pageNumber) {
+export async function displayProducts(pageNumber) {
   try {
     defaultParameters.page = pageNumber;
     const { results } = await getProductsByParams(defaultParameters);
-    console.log('Products:', results); // Додайте цей рядок
+
+    console.log('Products:', results); 
+   
     const markup = createCardMarkup(results);
+   
     addMarkup(productsList, markup);
 
     const productCards = document.querySelectorAll('.prod-item');
+
     productCards.forEach(card => {
+      
       card.addEventListener('click', () => {
         const productId = card.getAttribute('data-js-product-id');
-        // console.log('Selected productId:', productId);
+        const buyBtn = card.querySelector('.buy-btn');
         const selectedProduct = results.find(
           product => product._id.toString() === productId
         );
-
-        if (selectedProduct) {
-          openModal(selectedProduct);
-        } else {
-          console.error('Selected product not found:', productId);
-        }
+        console.log('Selected productId:', productId);
+        saveProductId(productId, results);
+  
+        // if (selectedProduct) {
+        //   openModal(selectedProduct);
+        // } else {
+        //   console.error('Selected product not found:', productId);
+        // }
 
         // console.log(productId);
         // console.log(results);
@@ -97,5 +110,23 @@ export function createCardMarkup(results) {
     .join('');
 }
 
-displayProducts();
-export { displayProducts };
+
+const STORAGE_KEY = 'added-item';
+
+function saveProductId(productId, results) {
+  let data = getData(STORAGE_KEY);
+  if (!data.products) {
+    data.products = [];
+  }
+  const selectedProduct = results.find(
+    product => product._id.toString() === productId
+  );
+  if (selectedProduct) {
+    data.products.push(selectedProduct);
+    saveData(STORAGE_KEY, data);
+    console.log(data);
+  } else {
+    console.error('Selected product not found:', productId);
+  }
+}
+

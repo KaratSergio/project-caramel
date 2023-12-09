@@ -26,7 +26,7 @@ export function openModal(product) {
     modalProductDescription.textContent = product.description;
     modalProductPrice.textContent = `Price: ${product.price}`;
 
-    document.body.style.overflow = 'hidden';
+    // document.body.style.overflow = 'hidden';
     modalProduct.style.display = 'block';
     window.addEventListener('click', outsideModalClick);
 }
