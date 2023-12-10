@@ -13,13 +13,13 @@
     
     <script type="module" crossorigin src="/project-caramel/commonHelpers.js"></script>
     <link rel="modulepreload" crossorigin href="/project-caramel/assets/vendor-8c378b12.js">
-    <link rel="modulepreload" crossorigin href="/project-caramel/assets/get-api-69bce14c.js">
-    <link rel="stylesheet" href="/project-caramel/assets/get-api-6cde6585.css">
+    <link rel="modulepreload" crossorigin href="/project-caramel/assets/get-api-b955b5b9.js">
+    <link rel="stylesheet" href="/project-caramel/assets/get-api-843e7d49.css">
     <link rel="stylesheet" href="/project-caramel/assets/cart-adffabe4.css">
   </head>
   <body>
-    <header class="header">
-  <div class="container header-container">
+    <header class="container">
+  <div class="header-container">
     <div class="box-hover">
       <a class="header-logo link" href="">
         <div class="header__shop-icon-container">
@@ -30,19 +30,22 @@
         Food Boutique
       </a>
     </div>
-    <nav class="header-navigation">
-      <a class="header-home link" href="./index.html">Home</a>
-
-      <a id="cartLink" class="header-cart link" href="./cart.html">
-        <div class="header__icon-container">
-          <svg class="cart-icon" width="16" height="16">
-            <use
-              href="/project-caramel/assets/icons-89cc0206.svg#icon-heroicons-solid_shopping-cart"
-            ></use>
-          </svg>
-        </div>
-        <span id="countProducts">Cart(0)</span>
-      </a>
+    <nav>
+      <ul class="header-navigation">
+        <li><a class="header-home link" href="./index.html">Home</a></li>
+        <li>
+          <a id="cartLink" class="header-cart link" href="./cart.html">
+            <div class="header__icon-container">
+              <svg class="cart-icon" width="16" height="16">
+                <use
+                  href="/project-caramel/assets/icons-89cc0206.svg#icon-heroicons-solid_shopping-cart"
+                ></use>
+              </svg>
+            </div>
+            <span id="countProducts">Cart(0)</span>
+          </a>
+        </li>
+      </ul>
     </nav>
   </div>
 </header>

@@ -1,4 +1,4 @@
-import{g as _,a as I,b as q,s as u,d as j,e as z}from"./assets/get-api-69bce14c.js";import{a as H,P as R,l as Q}from"./assets/vendor-8c378b12.js";class K{constructor(){this.URL="https://food-boutique.b.goit.study/api",this.searchQuery="",this.category="",this.currentPage=1,this.perPage=90}paramsFromApi(e){return Object.entries(e).map(([s,o])=>`${encodeURIComponent(s)}=${encodeURIComponent(o)}`).join("&")}getFoodList(){const e={keyword:this.searchQuery,category:this.category,page:this.currentPage,limit:this.perPage},s=this.paramsFromApi(e);return H.get(`${this.URL}/products?${s}`).then(o=>o.data)}}class V{updateLsWithList(e,s){localStorage.getItem("options")||this.defaultApiOptions(),localStorage.setItem("products",JSON.stringify(e.results)),localStorage.setItem("options",JSON.stringify(s))}defaultApiOptions(){const e={keyword:null,category:null,page:1,limit:6};localStorage.setItem("options",JSON.stringify(e))}}function k(t){const{_id:e,name:s,img:o,category:c,size:n,price:a,popularity:r}=t;return`
+import{g as _,s as u,a as I,b as q,d as j,e as z}from"./assets/get-api-b955b5b9.js";import{a as H,P as R,l as Q}from"./assets/vendor-8c378b12.js";class K{constructor(){this.URL="https://food-boutique.b.goit.study/api",this.searchQuery="",this.category="",this.currentPage=1,this.perPage=90}paramsFromApi(e){return Object.entries(e).map(([s,o])=>`${encodeURIComponent(s)}=${encodeURIComponent(o)}`).join("&")}getFoodList(){const e={keyword:this.searchQuery,category:this.category,page:this.currentPage,limit:this.perPage},s=this.paramsFromApi(e);return H.get(`${this.URL}/products?${s}`).then(o=>o.data)}}class V{updateLsWithList(e,s){localStorage.getItem("options")||this.defaultApiOptions(),localStorage.setItem("products",JSON.stringify(e.results)),localStorage.setItem("options",JSON.stringify(s))}defaultApiOptions(){const e={keyword:null,category:null,page:1,limit:6};localStorage.setItem("options",JSON.stringify(e))}}function k(t){const{_id:e,name:s,img:o,category:c,size:n,price:a,popularity:r}=t;return`
         <li class="prod-item" data-js-product-id=${e}>   
           <div class="prod-pic">
             <svg class="discont-prod" width="60" height="60" style="visibility: hidden;">
@@ -25,7 +25,7 @@ import{g as _,a as I,b as q,s as u,d as j,e as z}from"./assets/get-api-69bce14c.
         <li class="prod-item" data-js-product-id=${e}>   
           <div class="prod-pic">
             <svg class="discont-prod" width="60" height="60" style="visibility: hidden;">
-              <use href="./images/icons.svg#shopping-cart"></use>
+              <use href="${u}#shopping-cart"></use>
             </svg>
             <img class="prod-img" src=${o} alt=${s} loading="lazy">
           </div>
@@ -39,7 +39,7 @@ import{g as _,a as I,b as q,s as u,d as j,e as z}from"./assets/get-api-69bce14c.
             <p class="price-prod">&#36; ${a}</p>
             <button class="buy-btn" type="button">
               <svg class="buy-svg" width="18" height="18">
-                <use href="./images/icons.svg#shopping-cart"></use>"></use>
+                <use href="${u}#shopping-cart"></use>"></use>
               </svg>
             </button>
           </div>
@@ -83,7 +83,7 @@ import{g as _,a as I,b as q,s as u,d as j,e as z}from"./assets/get-api-69bce14c.
     <div class="card-product-info">
         <h3 class="card-product-title">${a}</h3>
         <div class="card-product-info-right">
-            <p class="card-product-price">$${s.price}</p>
+            <p class="card-product-price">&#36; ${s.price}</p>
             <button type="button" class="card-product-btn" >
             <svg class="card-product-svg ${c}" width="18" height="18">
             <use href="${u}#check"></use>

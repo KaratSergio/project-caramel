@@ -10,13 +10,13 @@
   
   <script type="module" crossorigin src="/project-caramel/commonHelpers2.js"></script>
   <link rel="modulepreload" crossorigin href="/project-caramel/assets/vendor-8c378b12.js">
-  <link rel="modulepreload" crossorigin href="/project-caramel/assets/get-api-69bce14c.js">
-  <link rel="stylesheet" href="/project-caramel/assets/get-api-6cde6585.css">
+  <link rel="modulepreload" crossorigin href="/project-caramel/assets/get-api-b955b5b9.js">
+  <link rel="stylesheet" href="/project-caramel/assets/get-api-843e7d49.css">
 </head>
 
 <body>
-  <header class="header">
-  <div class="container header-container">
+  <header class="container">
+  <div class="header-container">
     <div class="box-hover">
       <a class="header-logo link" href="">
         <div class="header__shop-icon-container">
@@ -27,19 +27,22 @@
         Food Boutique
       </a>
     </div>
-    <nav class="header-navigation">
-      <a class="header-home link" href="./index.html">Home</a>
-
-      <a id="cartLink" class="header-cart link" href="./cart.html">
-        <div class="header__icon-container">
-          <svg class="cart-icon" width="16" height="16">
-            <use
-              href="/project-caramel/assets/icons-89cc0206.svg#icon-heroicons-solid_shopping-cart"
-            ></use>
-          </svg>
-        </div>
-        <span id="countProducts">Cart(0)</span>
-      </a>
+    <nav>
+      <ul class="header-navigation">
+        <li><a class="header-home link" href="./index.html">Home</a></li>
+        <li>
+          <a id="cartLink" class="header-cart link" href="./cart.html">
+            <div class="header__icon-container">
+              <svg class="cart-icon" width="16" height="16">
+                <use
+                  href="/project-caramel/assets/icons-89cc0206.svg#icon-heroicons-solid_shopping-cart"
+                ></use>
+              </svg>
+            </div>
+            <span id="countProducts">Cart(0)</span>
+          </a>
+        </li>
+      </ul>
     </nav>
   </div>
 </header>
@@ -55,14 +58,11 @@
   <div class="container hero-container">
     <div class="hero-title">
       <h1 class="hero-title__text">
-        Welcome to the <br />
-        <span>Food</span> Boutique!
+        Welcome to the <span>Food</span> Boutique!
       </h1>
       <p class="hero-subtitle">
-        With Food Boutique, you're not just subscribing to
-        <br class="to" />food, you're <br class="you" />signing up for a
-        fresher, fitter, and <br class="and" />
-        happier you.
+        With Food Boutique, you're not just subscribing to food, you're signing
+        up for a fresher, fitter, and happier you.
       </p>
     </div>
     <div class="hero-background">
