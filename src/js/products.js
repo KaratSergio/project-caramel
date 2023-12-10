@@ -1,6 +1,6 @@
 import sprite from '../images/icons.svg';
-import { first, result } from 'lodash';
-import { getProductsByParams } from './get-api';
+// import { first, result } from 'lodash';
+// import { getProductsByParams } from './get-api';
 
 
 import { openModal } from './modal-product';
