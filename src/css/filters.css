@@ -283,6 +283,10 @@
     font-size: 18px;
     height: 52px;
   }
+
+  .filter-icon-sort {
+    top: 25%;
+  }
 }
 
 @media screen and (min-width: 1440px) {
