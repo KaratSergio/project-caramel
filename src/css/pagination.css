@@ -250,7 +250,7 @@
 .tui-pagination .tui-prev-is-ellip,
 .tui-pagination .tui-next-is-ellip {
   overflow: hidden;
-  width: 26px;
+  width: 14px;
   height: 40px;
   padding: 0;
   font-size: 0;
