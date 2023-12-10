@@ -1,9 +1,8 @@
 import Pagination from 'tui-pagination';
-import { saveData, displayProducts, saveProductId } from './products';
+import { saveData, displayProducts } from './products';
 import {getProductsByParams} from './get-api';
 
 const paginationContainer = document.querySelector('#pagination');
-const productsList = document.querySelector('.list-prod');
 
 const paginationParameters = {
   keyword: '',
@@ -25,6 +24,11 @@ export async function newDisplayPagination(searchParamsObj) {
     limit: 9,
   }
 
+  if (window.matchMedia("(max-width: 375px)").matches) {
+    paginationSearchParams.limit = 6
+  } else if (window.matchMedia("(min-width: 768px) and (max-width: 900px)").matches) {
+    paginationSearchParams.limit = 8
+  }
   const {results, totalPages} = await getProductsByParams(paginationSearchParams)
 
   saveData('firstGet', results);
