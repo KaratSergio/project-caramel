@@ -271,12 +271,13 @@ async function onOrderSubmit(event) {
 function isEmailValid(value) {
   return EMAIL_REGEXP.test(value);
 }
+// ------- order to Modal window
 
 function success(response) {
   console.dir(modalInfo);
   modalInfo.message = response.message;
   modalInfo.title = 'Order success';
-  modalInfo.image = '../images/success_order.png';
+  modalInfo.image = './images/success_order.png';
   createModalMarkup(modalInfo);
   openModalWindow();
   resetCart();
@@ -285,7 +286,7 @@ function success(response) {
 function onError(response) {
   modalInfo.message = response.message;
   modalInfo.title = 'Something went wrong';
-  modalInfo.image = '../images/error.png';
+  modalInfo.image = './images/error.png';
   createModalMarkup(modalInfo);
   openModalWindow();
 }
