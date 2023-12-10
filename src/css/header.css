@@ -1,11 +1,5 @@
-.container {
-  /* max-width: 375px; */
-  min-width: 320px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-/* dddddddddddddddddddddddddddddd */
 .header-container {
+  padding-top: 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -13,19 +7,20 @@
 .header-logo {
   display: flex;
   align-items: center;
+  justify-content: center;
+  width: 155px;
+  height: 38px;
   cursor: pointer;
   color: var(--text-color);
-
   font-family: FONTSPRINGDEMO-QuincyCFBlackRegular;
   font-size: 18px;
-
   font-weight: 900;
-  line-height: 1.11; /* 111.111% */
+  line-height: 1.11;
   letter-spacing: -0.36px;
+  border: none;
 }
-
 .header__shop-icon-container {
-  background-color: #6d8434;
+  background-color: var(--gray);
   border-radius: 30px;
   width: 28px;
   height: 28px;
@@ -34,36 +29,22 @@
   justify-content: center;
   margin-right: 8px;
 }
-
-/* .header__shop-icon-container:hover,
-.header__shop-icon-container:focus {
-  background-color: #e8e8e2;
-} */
-
 .cart-shop-icon {
-  fill: #e8e8e2;
+  fill: var(--background);
 }
-
-/* .cart-shop-icon:hover,
-.cart-shop-icon:focus {
-  fill: #586f1f;
-} */
-
 .header-logo:hover,
 .header-logo:focus {
-  width: 190px;
-  height: 53px;
-  background-color: #6d8434;
+  background-color: var(--gray);
+  color: var(--background);
   border-radius: 9px;
-  flex-shrink: 0;
 }
 
 .box-hover:hover .cart-shop-icon {
-  fill: #586f1f;
+  fill: var(--dark-gray);
 }
 
 .box-hover:hover .header__shop-icon-container {
-  background-color: #e8e8e2;
+  background-color: var(--background);
 }
 
 .header-navigation {
@@ -73,9 +54,7 @@
 
 .header-home {
   color: var(--background);
-  font-family: Neue Montreal;
   font-size: 14px;
-
   font-weight: 500;
   line-height: 1.28;
   border-radius: 30px;
@@ -84,32 +63,31 @@
   padding: 10px 20px;
   justify-content: center;
   align-items: center;
-  gap: 10px;
   margin-right: 6px;
+}
+
+.header-home:hover,
+.header-home:focus {
+  background-color: var(--dark-gray);
 }
 
 .header-cart {
   color: var(--text-color);
-  font-family: Neue Montreal;
   font-size: 18px;
-
   font-weight: 500;
-  line-height: 1.33; /* 133.333% */
+  line-height: 1.33;
   text-transform: uppercase;
   display: flex;
   align-items: center;
   cursor: pointer;
-  /* background: #6d8434; */
-  /* width: 40px;
-  height: 40px; */
 }
 
 .cart-icon {
-  fill: #e8e8e2;
+  fill: var(--background);
 }
 
 .header__icon-container {
-  background-color: #6d8434;
+  background-color: var(--gray);
   border-radius: 30px;
   width: 36px;
   height: 36px;
@@ -120,80 +98,24 @@
 
 .header__icon-container:hover,
 .header__icon-container:focus {
-  background-color: #586f1f;
-  border-radius: 30px;
+  background-color: var(--dark-gray);
 }
 
 .header-cart span {
   display: none;
 }
 
-.hero-title {
-  margin-top: 72px;
-  margin-bottom: 32px;
-}
-
-.hero-title__text {
-  color: var(--text-color);
-  text-align: center;
-  font-family: Neue Montreal;
-  font-size: 44px;
-  font-weight: 500;
-  line-height: 1.09; /* 109.091% */
-  letter-spacing: -0.88px;
-  margin-bottom: 16px;
-}
-
-.hero-title__text span {
-  color: var(--gray);
-  font-family: Neue Montreal;
-  font-size: 44px;
-
-  font-weight: 500;
-  line-height: 1.09;
-  letter-spacing: -0.88px;
-}
-.you {
-  display: none;
-}
-.hero-subtitle {
-  color: rgba(1, 1, 1, 0.8);
-  text-align: center;
-  font-family: Neue Montreal;
-  font-size: 14px;
-
-  font-weight: 400;
-  line-height: 1.28; /* 128.571% */
-}
-
-.hero-background {
-  /* max-height: 600px; */
-  height: 480px;
-  background: url('../images/hero-bg-mob-1x.jpg') 0 0 / cover no-repeat;
-  position: relative;
-  border-radius: 30px;
-}
-
-@media (min-device-pixel-ratio: 2),
-  (min-resolution: 192dpi),
-  (min-resolution: 2dppx) {
-  .hero-background {
-    background: url('../images/hero-bg-mob-2x.jpg') 0 0 / cover no-repeat;
-  }
-}
-
-.hero-background svg {
-  width: 100px;
-  height: 100px;
-  position: absolute;
-  right: 8px;
-  top: -7px;
-}
-
 @media screen and (min-width: 768px) {
-  .container {
-    max-width: 768px;
-    padding: 0 32px;
+  .header-logo {
+    width: 200px;
+    height: 44px;
+  }
+  .header__shop-icon-container {
+    width: 32px;
+    height: 32px;
+  }
+  .header-container {
+    padding-top: 24px;
   }
   .header-cart span {
     display: block;
@@ -201,7 +123,6 @@
 
   .header-logo {
     font-size: 24px;
-    font-weight: 900;
     line-height: 1;
     letter-spacing: -0.48px;
   }
@@ -216,185 +137,13 @@
     margin-right: 16px;
   }
 
-  .header-cart {
-    color: var(--text-color);
-    font-family: Neue Montreal;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 1.33; /* 133.333% */
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-  }
-
   .header__icon-container {
     margin-right: 14px;
-  }
-
-  .hero-title {
-    margin-top: 116px;
-    margin-bottom: 40px;
-  }
-
-  .hero-title__text {
-    color: var(--text-color);
-    text-align: center;
-    font-family: Neue Montreal;
-    font-size: 80px;
-    font-weight: 500;
-    line-height: 1;
-    letter-spacing: -1.6px;
-    margin-bottom: 20px;
-  }
-
-  .hero-title__text span {
-    color: var(--gray);
-    font-family: Neue Montreal;
-    font-size: 80px;
-
-    font-weight: 500;
-    line-height: 1;
-    letter-spacing: -1.6px;
-  }
-
-  .hero-subtitle {
-    color: rgba(1, 1, 1, 0.8);
-    text-align: center;
-    font-family: Neue Montreal;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 1.33;
-  }
-
-  .hero-background {
-    /* max-height: 600px; */
-    height: 580px;
-    background: url('../images/hero-bg-mob-2x.jpg') 0 0 / cover no-repeat;
-    position: relative;
-    border-radius: 30px;
-  }
-
-  @media (min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi),
-    (min-resolution: 2dppx) {
-    .hero-background {
-      background: url('../images/hero-bg-mob-2x.jpg') 0 0 / cover no-repeat;
-    }
-  }
-
-  .hero-background svg {
-    width: 100px;
-    height: 100px;
-    position: absolute;
-    right: 8px;
-    top: -30px;
   }
 }
+
 @media screen and (min-width: 1440px) {
-  .container {
-    max-width: 1440px;
-    padding: 0 100px;
-  }
-
-  .header-logo {
-    font-size: 24px;
-    font-weight: 900;
-    line-height: 1;
-    letter-spacing: -0.48px;
-  }
-
-  .header-logo__img {
-    margin-right: 8px;
-  }
-
   .header-home {
-    font-size: 18px;
-    line-height: 1.33;
     margin-right: 24px;
-  }
-
-  .header-cart {
-    color: var(--text-color);
-    font-family: Neue Montreal;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 1.33; /* 133.333% */
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-  }
-
-  .header__icon-container {
-    margin-right: 14px;
-  }
-
-  .hero-title {
-    margin-top: 77px;
-    margin-bottom: 40px;
-  }
-  .hero-title__text br {
-    display: none;
-  }
-  .hero-title__text {
-    color: var(--text-color);
-    text-align: center;
-    font-family: Neue Montreal;
-    font-size: 80px;
-    font-weight: 500;
-    line-height: 1;
-    letter-spacing: -1.6px;
-    margin-bottom: 20px;
-  }
-  .and,
-  .to {
-    display: none;
-  }
-  .you {
-    display: block;
-  }
-
-  .hero-title__text span {
-    color: var(--gray);
-    font-family: Neue Montreal;
-    font-size: 80px;
-
-    font-weight: 500;
-    line-height: 1;
-    letter-spacing: -1.6px;
-  }
-
-  .hero-subtitle {
-    color: rgba(1, 1, 1, 0.8);
-    text-align: center;
-    font-family: Neue Montreal;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 1.33;
-  }
-
-  .hero-background {
-    /* max-height: 600px; */
-    height: 300px;
-    background: url('../images/hero-bg-1x.jpg') 0 0 / cover no-repeat;
-    position: relative;
-    border-radius: 30px;
-  }
-
-  @media (min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi),
-    (min-resolution: 2dppx) {
-    .hero-background {
-      background: url('../images/hero-bg-2x.jpg') 0 0 / cover no-repeat;
-    }
-  }
-
-  .hero-background svg {
-    width: 100px;
-    height: 100px;
-    position: absolute;
-    right: 20px;
-    top: -50px;
   }
 }

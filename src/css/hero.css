@@ -1,0 +1,121 @@
+.hero-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 72px;
+  margin-bottom: 32px;
+}
+
+.hero-title__text {
+  color: var(--text-color);
+  font-size: 44px;
+  font-weight: 500;
+  line-height: 1.09;
+  letter-spacing: -0.88px;
+  margin-bottom: 16px;
+}
+
+.hero-title__text span {
+  color: var(--gray);
+}
+
+.hero-subtitle {
+  color: var(--text-color);
+  font-size: 14px;
+  line-height: 1.28;
+  width: 292px;
+}
+
+.hero-background {
+  height: 480px;
+  background: url('../images/hero-bg-mob-1x.jpg') 0 0 / cover no-repeat;
+  position: relative;
+  border-radius: 30px;
+}
+
+.hero-background svg {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  right: 8px;
+  top: -7px;
+}
+
+@media (min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+  .hero-background {
+    background: url('../images/hero-bg-mob-2x.jpg') 0 0 / cover no-repeat;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .hero-title {
+    margin-top: 116px;
+    margin-bottom: 40px;
+  }
+
+  .hero-title__text {
+    font-size: 80px;
+    line-height: 1;
+    letter-spacing: -1.6px;
+    margin-bottom: 20px;
+    width: 658px;
+  }
+
+  .hero-subtitle {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.33;
+    width: 492px;
+  }
+
+  .hero-background {
+    height: 580px;
+    background: url('../images/hero-bg-mob-2x.jpg') 0 0 / cover no-repeat;
+    position: relative;
+  }
+
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .hero-background {
+      background: url('../images/hero-bg-mob-2x.jpg') 0 0 / cover no-repeat;
+    }
+  }
+
+  .hero-background svg {
+    top: -30px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .hero-title {
+    margin-top: 77px;
+    margin-bottom: 40px;
+  }
+
+  .hero-title__text {
+    width: 1042px;
+  }
+
+  .hero-background {
+    height: 300px;
+    background: url('../images/hero-bg-1x.jpg') 0 0 / cover no-repeat;
+    position: relative;
+    border-radius: 50px;
+  }
+
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .hero-background {
+      background: url('../images/hero-bg-2x.jpg') 0 0 / cover no-repeat;
+    }
+  }
+
+  .hero-background svg {
+    right: 20px;
+    top: -50px;
+  }
+}
