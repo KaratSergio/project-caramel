@@ -4,18 +4,11 @@ import {getProductsByParams} from './get-api';
 
 const paginationContainer = document.querySelector('#pagination');
 
-const paginationParameters = {
-  keyword: '',
-  category: '',
-  page: 1,
-  limit: 9,
-};
-
-newDisplayPagination(paginationParameters)
 
 
-export async function newDisplayPagination(searchParamsObj) {
-  const {keyword, category} = searchParamsObj
+newDisplayPagination()
+
+export async function newDisplayPagination(keyword, category) {
 
   const paginationSearchParams = {
     keyword: keyword || '',
