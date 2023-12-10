@@ -7,7 +7,12 @@
   display: flex;
   align-items: center;
   justify-content: start;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
+}
+@media screen and (max-width: 768px) {
+  .title-container {
+    margin-bottom: 24px;
+  }
 }
 
 .basket-border {
@@ -76,11 +81,21 @@
   display: flex;
   justify-content: space-between;
 }
+@media screen and (max-width: 768px) {
+  .basket-container {
+    flex-direction: column;
+  }
+}
 
 .basket-item-container {
   display: flex;
   flex-direction: column;
   align-items: end;
+}
+@media screen and (max-width: 768px) {
+  .basket-item-container {
+    align-items: stretch;
+  }
 }
 
 .basket-clear-container {
@@ -97,6 +112,12 @@
 }
 .basket-clear-container:hover {
   transform: scale(1.1);
+}
+@media screen and (max-width: 768px) {
+  .basket-clear-container {
+    margin-right: 32px;
+    margin-bottom: 0;
+  }
 }
 
 .basket-clear-text {
@@ -126,6 +147,12 @@
 .items-block-container::-webkit-scrollbar-thumb:vertical {
   height: 90px;
 }
+@media screen and (max-width: 768px) {
+  .items-block-container {
+    min-width: 672px;
+    align-items: start;
+  }
+}
 
 .item-container {
   display: flex;
@@ -152,9 +179,12 @@
   width: 500px;
   border-bottom: 1px solid rgba(1, 1, 1, 0.1);
 }
-/* .item-img-link:not(:last-child)::before {
-  border-bottom: none;
-} */
+@media screen and (max-width: 768px) {
+  .item-container:not(:last-child)::before  {
+  right: 25px;
+  width: 672px;
+  }
+}
 
 .item-img {
   width: 72px;
@@ -164,6 +194,11 @@
 .item-info {
   margin-left: 40px;
   min-width: 340px;
+}
+@media screen and (max-width: 768px) {
+  .item-info  {
+  min-width: 512px;
+  }
 }
 
 .item-title-container {
@@ -178,6 +213,7 @@
   line-height: 1.2;
   margin-bottom: 10px;
 }
+
 
 .delete-item-button {
   padding: 0;
@@ -250,9 +286,11 @@
 .decrease-icon:hover {
   scale: 1.2;
 }
-/* .decrease-icon-hidden {
-  stroke: inherit;
-} */
+@media screen and (max-width: 768px) {
+  .decrease-icon:hover {
+  scale: 1;
+}
+}
 .item-counter {
   color: var(--text-color);
   font-size: 20px;

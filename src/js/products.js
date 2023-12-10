@@ -45,8 +45,8 @@ export async function displayProducts(pageNumber) {
   try {
     defaultParameters.page = pageNumber;
     const { results } = await getProductsByParams(defaultParameters);
-
-    console.log('Products:', results); 
+saveData('firstGet', results);
+    // console.log('Products:', results); 
    
     const markup = createCardMarkup(results);
    
@@ -59,17 +59,18 @@ export async function displayProducts(pageNumber) {
       card.addEventListener('click', () => {
         const productId = card.getAttribute('data-js-product-id');
         const buyBtn = card.querySelector('.buy-btn');
+        const modalImg = card.querySelector('.prod-img');
         const selectedProduct = results.find(
           product => product._id.toString() === productId
         );
         console.log('Selected productId:', productId);
         saveProductId(productId, results);
-  
-        // if (selectedProduct) {
-        //   openModal(selectedProduct);
-        // } else {
-        //   console.error('Selected product not found:', productId);
-        // }
+
+        if (modalImg) {
+          openModal(selectedProduct);
+        } else {
+          console.error('Selected product not found:', productId);
+        }
 
         // console.log(productId);
         // console.log(results);
@@ -111,21 +112,29 @@ export function createCardMarkup(results) {
     .join('');
 }
 
+displayProducts();
+
 
 const STORAGE_KEY = 'added-item';
-
 function saveProductId(productId, results) {
   let data = getData(STORAGE_KEY);
-  if (!data.products) {
-    data.products = [];
+  if (!data) {
+    data = [];
   }
   const selectedProduct = results.find(
     product => product._id.toString() === productId
   );
+  console.log(`tut ${selectedProduct}`);
   if (selectedProduct) {
-    data.products.push(selectedProduct);
+    data.push(selectedProduct);
     saveData(STORAGE_KEY, data);
     console.log(data);
+    const buyBtn = document.querySelector(
+      `[data-js-product-id="${productId}"] .buy-btn`
+    );
+    if (buyBtn) {
+      buyBtn.disabled = true; // Зробити кнопку неактивною
+    }
   } else {
     console.error('Selected product not found:', productId);
   }

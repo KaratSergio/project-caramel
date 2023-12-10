@@ -1,6 +1,6 @@
 import Pagination from 'tui-pagination';
 import { displayProducts } from './products';
-import {getProductsByParams} from './get-api';
+import {getProductsByParams} from './get-api'; //видалити
 
 const paginationContainer = document.querySelector('#pagination');
 
@@ -11,7 +11,7 @@ const paginationParameters = {
   limit: 9,
 };
 
-getProductsByParams(paginationParameters).then((({results, totalPages}) => {
+getProductsByParams(paginationParameters).then((({results, totalPages}) => {  //видалити
   displayPagination(results, totalPages)
 }))
 
@@ -24,7 +24,8 @@ export function displayPagination(results, totalPages) {
     totalItems: results.length * totalPages,
     itemsPerPage: 9,
     visiblePages: 3,
-    page: currentPage,
+    // page: currentPage,
+    usageStatistics: false
   };
   
   const pagination = new Pagination(paginationContainer, options);

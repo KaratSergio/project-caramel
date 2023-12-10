@@ -9,6 +9,18 @@
   background: var(--white);
   width: 275px;
   height: 232px;
+  position: relative;
+}
+.card-product-label {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  top: -3px;
+  right: 10px;
+}
+.card-product-label svg {
+  width: 100%;
+  height: 100%;
 }
 .card-product-wrapper {
   border-radius: 10px;
@@ -26,6 +38,7 @@
   justify-content: space-between;
   position: relative;
   padding-top: 21px;
+  align-items: center;
 }
 .card-product-title,
 .card-product-price {
@@ -38,14 +51,22 @@
 .card-product-info-right {
   display: flex;
   gap: 7px;
+  align-items: center;
 }
 
 .card-product-btn {
-  width: 18px;
-  height: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 34px;
+  height: 34px;
   border-radius: 30px;
   background-color: var(--gray);
   border: none;
+}
+
+.is-hidden {
+  display: none;
 }
 .card-product-svg {
   fill: var(--background);

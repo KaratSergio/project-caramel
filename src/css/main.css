@@ -1,10 +1,31 @@
+/* .main-container {
+  display: flex;
+  width: 1440px;
+  padding: 0 100px;
+  margin: auto;
+} */
+.main-sidebar {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-container {
+  max-width: 375px;
+  min-width: 320px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .main-container {
+    max-width: 768px;
+    padding: 0 32px;
+  }
+}
+@media screen and (min-width: 1440px) {
   .main-container {
     display: flex;
-    width: 1440px;
+    max-width: 1440px;
     padding: 0 100px;
-    margin: auto;
   }
-  .main-sidebar {
-    display: flex;
-    flex-direction: column;
-  }
+}
