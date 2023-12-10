@@ -1,17 +1,40 @@
 .popular-container {
-  width: 275px;
-  padding-bottom: 40px;
+  margin-bottom: 80px;
+}
+
+.popular {
+  /* max-width: 375px; */
+}
+.popular-container {
+  /* width: 100%; */
+}
+.popular-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.popular-item {
+  width: 100%;
+}
+
+.popular-title {
+  font-size: 24px;
+  line-height: 1.166;
+}
+.popular-card-title {
+  font-size: 18px;
+  line-height: 1.11;
+  margin-bottom: 12px;
 }
 .popular-title {
   font-size: 28px;
   font-weight: 500;
-  line-height: 1.14;
+  line-height: 1.166;
   margin-bottom: 20px;
 }
 
 .popular-item {
   width: 100%;
-  margin-bottom: 13px;
   position: relative;
 }
 .popular-item:last-child {
@@ -109,10 +132,10 @@
   margin-bottom: 9px;
 }
 
-@media screen and (max-width: 768px) {
-  .popular {
-    max-width: 768px;
-    padding: 0 32px 64px 32px;
+@media screen and (min-width: 768px) {
+  .popular-title {
+    font-size: 28px;
+    line-height: 1.14;
   }
   .popular-container {
     width: 563px;
@@ -122,6 +145,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 13px;
+    flex-direction: row;
   }
   .popular-item {
     width: calc((100% - 13px) / 2);
@@ -129,30 +153,23 @@
   }
 }
 
-@media screen and (max-width: 376px) {
-  .popular {
-    max-width: 375px;
-    padding: 0 20px 80px 20px;
-  }
-  .popular-container {
-    width: 100%;
-  }
+.popular-card-title {
+  font-size: 18px;
+  line-height: 1.11;
+  margin-bottom: 12px;
+}
+
+@media screen and (min-width: 1440px) {
   .popular-list {
-    display: flex;
     flex-direction: column;
-    gap: 14px;
-  }
-  .popular-item {
-    width: 100%;
   }
 
-  .popular-title {
-    font-size: 24px;
-    line-height: 1.166;
+  .popular-container {
+    width: 275px;
+    margin-bottom: 40px;
   }
-  .popular-card-title {
-    font-size: 18px;
-    line-height: 1.11;
-    margin-bottom: 12px;
+
+  .popular-item {
+    width: 100%;
   }
 }
