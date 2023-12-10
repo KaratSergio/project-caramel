@@ -10,8 +10,8 @@
   
   <script type="module" crossorigin src="/project-caramel/commonHelpers2.js"></script>
   <link rel="modulepreload" crossorigin href="/project-caramel/assets/vendor-8c378b12.js">
-  <link rel="modulepreload" crossorigin href="/project-caramel/assets/get-api-ee5ddfef.js">
-  <link rel="stylesheet" href="/project-caramel/assets/get-api-68407681.css">
+  <link rel="modulepreload" crossorigin href="/project-caramel/assets/get-api-5319586d.js">
+  <link rel="stylesheet" href="/project-caramel/assets/get-api-6cde6585.css">
 </head>
 
 <body>
@@ -75,14 +75,21 @@
 
     <section class="filters-section container">
   <div class="filter-container">
-    <h3 class="filter-title">Filter:</h3>
+    <h3 class="filter-title hidden">Filter:</h3>
     <div class="filter">
       <form class="filter-form" id="filter-form">
         <div class="filter-input-container">
-          <input type="text" name="searchQuery" autocomplete="off" placeholder="Search for anything" />
-          <svg class="filter-icon-search" width="20" height="20">
-            <use href="/project-caramel/assets/icons-89cc0206.svg#icon-search"></use>
-          </svg>
+          <input
+            type="text"
+            name="searchQuery"
+            autocomplete="off"
+            placeholder="Search for anything"
+          />
+          <button type="submit" class="search-btn">
+            <svg class="filter-icon-search" width="20" height="20">
+              <use href="/project-caramel/assets/icons-89cc0206.svg#icon-search"></use>
+            </svg>
+          </button>
         </div>
       </form>
       <div class="filter-select-container">
@@ -104,11 +111,10 @@
           <use href="/project-caramel/assets/icons-89cc0206.svg#icon-down"></use>
         </svg>
       </div>
-      </form>
     </div>
   </div>
 </section>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
     <div class="main-container">
       <div>
         <div class="list-prod-container">
