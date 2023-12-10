@@ -5,6 +5,9 @@
   --gray: #6D8434;
   --dark-gray: #586F1F;
   --transparent-text: rgba(1, 1, 1, 0.3);
+  --transparent-footer-text:  rgba(232, 232, 226, 0.7);
+  --transparent-border: rgba(232, 232, 226, 0.3);
+  --transparent-fon: rgba(1, 1, 1, 0.4);
 }
 
 body {
