@@ -1,5 +1,7 @@
 import sprite from '../images/icons.svg';
 import { createNewOrder } from './get-api';
+import successImg from '../images/success_order.png';
+import errorImg from '../images/error.png';
 
 const STORAGE_KEY = 'added-item';
 let dataForm = [];
@@ -54,7 +56,7 @@ function updateItemCount(item, count) {
 function checkLoadCount() {
   hiddenElements = [];
   dataForm.forEach(element => {
-    if (element.count < 2  || element.count === undefined ) {
+    if (element.count < 2 || element.count === undefined) {
       hiddenElements.push({ hide: 'hide', disabled: 'disabled' });
     } else {
       hiddenElements.push({ hide: '', disabled: '' });
@@ -277,7 +279,7 @@ function success(response) {
   console.dir(modalInfo);
   modalInfo.message = response.message;
   modalInfo.title = 'Order success';
-  modalInfo.image = '../images/success_order.png';
+  modalInfo.image = successImg;
   createModalMarkup(modalInfo);
   openModalWindow();
   resetCart();
@@ -286,7 +288,7 @@ function success(response) {
 function onError(response) {
   modalInfo.message = response.message;
   modalInfo.title = 'Something went wrong';
-  modalInfo.image = '../images/error.png';
+  modalInfo.image = errorImg;
   createModalMarkup(modalInfo);
   openModalWindow();
 }
