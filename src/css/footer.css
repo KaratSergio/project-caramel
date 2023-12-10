@@ -1,14 +1,8 @@
 .footer {
   background-color: var(--gray);
   min-height: 386px;
-  padding-left: 100px;
-  padding-right: 100px;
   margin-top: 60px;
-}
-.conteiner {
-  width: 1240px;
-  transform: translate(-50%);
-  margin-left: 50%;
+  padding-bottom: 20px;
 }
 .conteiner-div {
   display: flex;
@@ -86,6 +80,7 @@
   font-size: 18px;
   line-height: 24px;
 }
+
 .footer-form {
   width: 310px;
 }
@@ -97,7 +92,6 @@
 .footer-div {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
 }
 .food-boutique,
 .footer-socials-icon {
@@ -154,11 +148,31 @@
   width: 28px;
   height: 28px;
 }
-
-/* @media screen and (min-width: 768px) {
-
+@media screen and (max-width: 768px) {
+  .conteiner-div {
+    display: block;
+    margin-bottom: 80px;
+  }
+  .footer-div-text,
+  .footer-media {
+    margin-bottom: 40px;
+}
+  .footer-div {
+    display: block;
+    gap: 8px;
+  }
+  .ppts {
+    margin-top: 8px;
+  }
 }
 
+@media screen and (min-width: 768px) {
+}
 @media screen and (min-width: 1440px) {
+  .footer-form-text {
+    display: flex;
+    width: 840px;
+    justify-content: space-between;
 
-} */
+  }
+}
