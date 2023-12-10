@@ -1,8 +1,7 @@
 /* .list-prod-container { */
 /* width: 925px; */
 /* } */
-
-/* .list-prod {
+.list-prod {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
@@ -113,9 +112,9 @@
   align-items: center;
 }
 
-.buy-btn:hover,
+/* .buy-btn:hover,
 .buy-btn:focus {
-
+} */
 .list-prod {
   list-style: none;
   display: flex;
@@ -272,4 +271,4 @@
     gap: 40px 20px;
     margin-right: 40px;
   }
- */
+}
