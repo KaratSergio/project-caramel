@@ -27,7 +27,9 @@
   border-radius: 30px;
   border: 1px solid var(--background);
   width: 336px;
+  outline: transparent;
 }
+
 .footer-button {
   display: flex;
   width: 336px;
@@ -35,8 +37,9 @@
   justify-content: center;
   align-items: center;
   gap: 8px;
+  border: none;
   border-radius: 30px;
-  background-color: var(--background);
+  outline: transparent;
 }
 .footer-socials-link {
   display: flex;
@@ -112,7 +115,7 @@
 }
 .mob-menu {
   position: fixed;
-
+  
   top: 0;
   z-index: 20;
   width: 100vw;
