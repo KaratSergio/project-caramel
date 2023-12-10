@@ -142,11 +142,14 @@
 
   .prod-item {
     width: 295px;
-    width: calc((100% - 40px) / 3);
   }
 
   .list-prod {
     gap: 40px 20px;
     margin-right: 40px;
+  }
+
+  .list-prod-container {
+    width: 965px;
   }
 }
