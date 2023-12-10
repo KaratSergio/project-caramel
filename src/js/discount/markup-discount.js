@@ -7,7 +7,7 @@ export function createMarkup(items = [], idProducts = []) {
 
       const card = toggle ? 'is-hidden' : '';
 
-      //   is10PercentOff
+      const newName = truncate(item.name, 14);
 
       return ` <div class="card-product-discount" data-id="${item._id}">
       ${
@@ -25,9 +25,9 @@ export function createMarkup(items = [], idProducts = []) {
             width="105" height="105" alt="${item.desc}" />
     </div>
     <div class="card-product-info">
-        <h3 class="card-product-title">${item.name}</h3>
+        <h3 class="card-product-title">${newName}</h3>
         <div class="card-product-info-right">
-            <p class="card-product-price">${item.price}</p>
+            <p class="card-product-price">$${item.price}</p>
             <button type="button" class="card-product-btn" >
             <svg class="card-product-svg ${check}" width="18" height="18">
             <use href="./images/icons.svg#check"></use>
@@ -42,4 +42,7 @@ export function createMarkup(items = [], idProducts = []) {
 `;
     })
     .join('');
+}
+function truncate(str, maxlength) {
+  return str.length > maxlength ? str.slice(0, maxlength - 1) + '…' : str;
 }
