@@ -1,20 +1,18 @@
-import { getProductsByParams } from './get-api';
+// import { getProductsByParams } from './get-api';
 
 import { openModal } from './modal-product';
-import { getProductById } from './get-api';
+// import { getProductById } from './get-api';
 
 const productsList = document.querySelector('.list-prod');
 
-const defaultParameters = {
-  keyword: '',
-  category: '',
-  page: 1,
-  limit: 9,
-};
+// const defaultParameters = {
+//   keyword: '',
+//   category: '',
+//   page: 1,
+//   limit: 9,
+// };
 
 // ---------------------------
-
-
 
 export function saveData(key, data) {
   localStorage.setItem(key, JSON.stringify(data));
@@ -30,10 +28,9 @@ export function getData(key) {
 
 // ---------------------------
 
-
 // ________________
 
-saveData("defaultParameters",defaultParameters);
+// saveData('defaultParameters', defaultParameters);
 
 // // _______________________________
 
@@ -41,44 +38,34 @@ export function addMarkup(el, markup) {
   el.innerHTML = markup;
 }
 
-export async function displayProducts(pageNumber) {
-  try {
-    defaultParameters.page = pageNumber;
-    const { results } = await getProductsByParams(defaultParameters);
-saveData('firstGet', results);
-    // console.log('Products:', results); 
-   
-    const markup = createCardMarkup(results);
-   
-    addMarkup(productsList, markup);
+export async function displayProducts(results) {
+  const markup = createCardMarkup(results);
 
-    const productCards = document.querySelectorAll('.prod-item');
+  addMarkup(productsList, markup);
 
-    productCards.forEach(card => {
+  const productCards = document.querySelectorAll('.prod-item');
 
-      card.addEventListener('click', () => {
-        const productId = card.getAttribute('data-js-product-id');
-        const buyBtn = card.querySelector('.buy-btn');
-        const modalImg = card.querySelector('.prod-img');
-        const selectedProduct = results.find(
-          product => product._id.toString() === productId
-        );
-        console.log('Selected productId:', productId);
-        saveProductId(productId, results);
+  productCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const productId = card.getAttribute('data-js-product-id');
+      const buyBtn = card.querySelector('.buy-btn');
+      const modalImg = card.querySelector('.prod-img');
+      const selectedProduct = results.find(
+        product => product._id.toString() === productId
+      );
+      console.log('Selected productId:', productId);
+      saveProductId(productId, results);
 
-        if (modalImg) {
-          openModal(selectedProduct);
-        } else {
-          console.error('Selected product not found:', productId);
-        }
+      if (modalImg) {
+        openModal(selectedProduct);
+      } else {
+        console.error('Selected product not found:', productId);
+      }
 
-        // console.log(productId);
-        // console.log(results);
-      });
+      // console.log(productId);
+      // console.log(results);
     });
-  } catch (error) {
-    console.error(error);
-  }
+  });
 }
 
 export function createCardMarkup(results) {
@@ -112,11 +99,10 @@ export function createCardMarkup(results) {
     .join('');
 }
 
-displayProducts();
-
+// displayProducts();
 
 const STORAGE_KEY = 'added-item';
-function saveProductId(productId, results) {
+export function saveProductId(productId, results) {
   let data = getData(STORAGE_KEY);
   if (!data) {
     data = [];
@@ -139,4 +125,3 @@ function saveProductId(productId, results) {
     console.error('Selected product not found:', productId);
   }
 }
-
