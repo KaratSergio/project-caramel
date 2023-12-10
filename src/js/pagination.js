@@ -1,8 +1,9 @@
 import Pagination from 'tui-pagination';
-import { displayProducts } from './products';
-import {getProductsByParams} from './get-api'; //видалити
+import { saveData, displayProducts, saveProductId } from './products';
+import {getProductsByParams} from './get-api';
 
 const paginationContainer = document.querySelector('#pagination');
+const productsList = document.querySelector('.list-prod');
 
 const paginationParameters = {
   keyword: '',
@@ -11,28 +12,41 @@ const paginationParameters = {
   limit: 9,
 };
 
-getProductsByParams(paginationParameters).then((({results, totalPages}) => {  //видалити
-  displayPagination(results, totalPages)
-}))
+newDisplayPagination(paginationParameters)
 
 
-export function displayPagination(results, totalPages) {
+export async function newDisplayPagination(searchParamsObj) {
+  const {keyword, category} = searchParamsObj
+
+  const paginationSearchParams = {
+    keyword: keyword || '',
+    category: category || '',
+    page: 1,
+    limit: 9,
+  }
+
+  const {results, totalPages} = await getProductsByParams(paginationSearchParams)
+
+  saveData('firstGet', results);
+
+  displayProducts(results)
+
   if (totalPages > 1) {
-    let currentPage = 1
-    
     const options = {
-    totalItems: results.length * totalPages,
-    itemsPerPage: 9,
-    visiblePages: 3,
-    // page: currentPage,
-    usageStatistics: false
-  };
-  
-  const pagination = new Pagination(paginationContainer, options);
-  pagination.on('afterMove', (e) => {
-    currentPage = e.page;
-    displayProducts(e.page)
-});
+      totalItems: results.length * totalPages,
+      itemsPerPage: paginationSearchParams.limit,
+      visiblePages: 5,
+      centerAlign: true,
+      usageStatistics: false
+    };
+
+    const pagination = new Pagination(paginationContainer, options);
+
+    pagination.on('afterMove', async (e) => {
+      paginationSearchParams.page = e.page;
+      const {results} = await getProductsByParams(paginationSearchParams)
+      displayProducts(results)
+    });
   }
   return
 }
