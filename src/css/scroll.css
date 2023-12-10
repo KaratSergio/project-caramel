@@ -1,0 +1,33 @@
+.scroll-to-top-btn {
+  fill: currentColor;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  background-color: var(--gray);
+  color: var(--background);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 9999;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
+
+  transition: opacity 0.3s ease-in-out,
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-to-top-btn:hover {
+  background-color: var(--dark-gray);
+}
+
+.scroll-to-top-btn .arrow-up {
+  position: relative;
+  top: 17%;
+  left: 17%;
+}
+
+.scroll-to-top-btn.show {
+  opacity: 1;
+}

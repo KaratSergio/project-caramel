@@ -1,6 +1,7 @@
 import { getProductsByParams } from './get-api';
 
 import { openModal } from './modal-product';
+import { getProductById } from './get-api';
 
 const productsList = document.querySelector('.list-prod');
 
@@ -11,22 +12,28 @@ const defaultParameters = {
   limit: 9,
 };
 
+// ---------------------------
+
+
+
+export function saveData(key, data) {
+  localStorage.setItem(key, JSON.stringify(data));
+}
+export function getData(key) {
+  try {
+    const result = localStorage.getItem(key);
+    return result ? JSON.parse(result) : {};
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// ---------------------------
+
+
 // ________________
 
-// export function saveData(data) {
-//   localStorage.setItem('defaultParameters', JSON.stringify(defaultParameters));
-// }
-
-// export function getData() {
-//   try {
-//     const result = localStorage.getItem('defaultParameters');
-//     return result ? JSON.parse(result) : {};
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
-
-// saveData();
+saveData("defaultParameters",defaultParameters);
 
 // // _______________________________
 
@@ -34,24 +41,32 @@ export function addMarkup(el, markup) {
   el.innerHTML = markup;
 }
 
-async function displayProducts(pageNumber) {
+export async function displayProducts(pageNumber) {
   try {
     defaultParameters.page = pageNumber;
     const { results } = await getProductsByParams(defaultParameters);
-    console.log('Products:', results); // Додайте цей рядок
+saveData('firstGet', results);
+    // console.log('Products:', results); 
+   
     const markup = createCardMarkup(results);
+   
     addMarkup(productsList, markup);
 
     const productCards = document.querySelectorAll('.prod-item');
+
     productCards.forEach(card => {
+
       card.addEventListener('click', () => {
         const productId = card.getAttribute('data-js-product-id');
-        // console.log('Selected productId:', productId);
+        const buyBtn = card.querySelector('.buy-btn');
+        const modalImg = card.querySelector('.prod-img');
         const selectedProduct = results.find(
           product => product._id.toString() === productId
         );
+        console.log('Selected productId:', productId);
+        saveProductId(productId, results);
 
-        if (selectedProduct) {
+        if (modalImg) {
           openModal(selectedProduct);
         } else {
           console.error('Selected product not found:', productId);
@@ -98,4 +113,30 @@ export function createCardMarkup(results) {
 }
 
 displayProducts();
-export { displayProducts };
+
+
+const STORAGE_KEY = 'added-item';
+function saveProductId(productId, results) {
+  let data = getData(STORAGE_KEY);
+  if (!data) {
+    data = [];
+  }
+  const selectedProduct = results.find(
+    product => product._id.toString() === productId
+  );
+  console.log(`tut ${selectedProduct}`);
+  if (selectedProduct) {
+    data.push(selectedProduct);
+    saveData(STORAGE_KEY, data);
+    console.log(data);
+    const buyBtn = document.querySelector(
+      `[data-js-product-id="${productId}"] .buy-btn`
+    );
+    if (buyBtn) {
+      buyBtn.disabled = true; // Зробити кнопку неактивною
+    }
+  } else {
+    console.error('Selected product not found:', productId);
+  }
+}
+
