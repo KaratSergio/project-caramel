@@ -69,6 +69,9 @@ const autoFillForm = () => {
 
 autoFillForm();
 
+//прокрутка
+document.body.style.overflow = 'auto';
+
 // Модалка
 (() => {
   const refs = {
@@ -83,6 +86,7 @@ autoFillForm();
   function toggleMenu() {
     refs.menu.classList.toggle('is-hidden');
     document.body.classList.toggle('no-scroll');
+    document.body.style.overflow = 'hidden';
   }
 
   const links = Array.from(refs.menu.children);
@@ -93,5 +97,6 @@ autoFillForm();
   function closeOnClick() {
     refs.menu.classList.toggle('is-hidden');
     document.body.classList.toggle('no-scroll');
+    document.body.style.overflow = 'auto';
   }
 })();
