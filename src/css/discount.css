@@ -31,7 +31,6 @@
   width: 243px;
   height: 150px;
 }
-
 .card-product-info {
   display: flex;
   justify-content: space-between;
@@ -126,7 +125,6 @@
 .card-product-title,
 .card-product-price {
   color: var(--text-color);
-  font-family: Neue Montreal;
   font-size: 18px;
   font-weight: 500;
   line-height: 1.11;
