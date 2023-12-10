@@ -1,8 +1,10 @@
-import { getPopularProducts } from './get-api';
+import { getPopularProducts, getProductById } from './get-api';
 import { openModal } from './modal-product';
 import sprite from '../images/icons.svg';
 
-// import { Notify } from 'notiflix';
+//import { Notify } from 'notiflix';
+//import Notiflix from 'notiflix';
+//import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 // const options = {
 //   timeout: 1000,
@@ -37,12 +39,17 @@ getPopularProducts(5)
       if (target.closest('.popular-card')) {
         const popularCard = target.closest('.popular-card');
         const popularProductId = popularCard.getAttribute('data-js-product-id');
-        openModal(productSelected(popularProductId, data));
+        getProductById(popularProductId)
+          .then(res => {
+            openModal(res);
+          })
+          .catch(error => {
+            console.error(error);
+          });
       } else if (target.closest('.btn-add')) {
         const elem = target.closest('.btn-add').nextElementSibling;
         const btnProductId = elem.getAttribute('data-js-product-id');
         const selectedProduct = productSelected(btnProductId, data);
-
         const listProducts = getData();
         const productAdded = listProducts.find(
           item => item._id === selectedProduct._id
@@ -52,6 +59,7 @@ getPopularProducts(5)
           saveData(listProducts);
           //Notify.success('Product add to Order', options);
         }
+
         //Notify.info('Product also added to Order', options);
         target.closest('.btn-add').classList.add('visually-hidden');
       }
@@ -66,6 +74,10 @@ getPopularProducts(5)
 function productSelected(val, data) {
   const selectedProduct = data.find(product => product._id.toString() === val);
   return selectedProduct;
+}
+
+function truncate(str, maxlength) {
+  return str.length > maxlength ? str.slice(0, maxlength - 1) + '…' : str;
 }
 
 function createMarkup(items) {
@@ -83,6 +95,7 @@ function createMarkup(items) {
       }) => {
         // додав строку 15  та ретерн на 17
         const firstDigit = parseInt(popularity.toString()[0]);
+        const newName = truncate(name, 14);
 
         return `  <li class="popular-item">
             <span class="product-added">
@@ -100,7 +113,7 @@ function createMarkup(items) {
             <img src="${img}" alt="${name}" loading="lazy"  width="56" />
           </div>
           <div class="popular-description">
-            <h3 class="popular-card-title">${name}</h3>
+            <h3 class="popular-card-title">${newName}</h3>
             <p class="popular-card-text category">Category: <span class="popular-text">${category.replace(
               '_',
               ' '
