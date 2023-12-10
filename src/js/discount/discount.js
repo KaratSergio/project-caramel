@@ -1,6 +1,7 @@
 import { getProducts } from '../get-api';
 import { getData, saveData } from './api/storage';
 import { createMarkup } from './markup-discount';
+import { openModal } from '../modal-product';
 
 let products = [];
 const productEl = document.querySelector('.products-discount');
@@ -25,6 +26,7 @@ function addMarkup(markup) {
 }
 
 productEl.addEventListener('click', onClick);
+productEl.addEventListener('click', onShowModal);
 
 function onClick(event) {
   const btnEl = event.target.closest('.card-product-btn');
@@ -50,6 +52,18 @@ function onClick(event) {
   icons.forEach(element => {
     element.classList.toggle('is-hidden');
   });
+}
+
+function onShowModal(event) {
+  const cardEl = event.target.closest('.card-product-discount');
+  const btnEl = event.target.closest('.card-product-btn');
+
+  if (!cardEl || btnEl) {
+    return;
+  }
+  const id = cardEl.dataset.id;
+  const data = products.find(item => id === item._id);
+  openModal(data);
 }
 
 function getIdProducts(items = []) {
