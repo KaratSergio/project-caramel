@@ -1,5 +1,8 @@
 import sprite from '../images/icons.svg';
 import { first, result } from 'lodash';
+import { getProductsByParams } from './get-api';
+
+
 import { openModal } from './modal-product';
 
 const productsList = document.querySelector('.list-prod');
@@ -107,7 +110,7 @@ export function createCardMarkup(results) {
         <li class="prod-item" data-js-product-id=${_id}>   
           <div class="prod-pic">
             <svg class="discont-prod" width="60" height="60" style="visibility: hidden;">
-              <use href="./images/icons.svg#shopping-cart"></use>
+              <use href="${sprite}#shopping-cart"></use>
             </svg>
             <img class="prod-img" src=${img} alt=${name} loading="lazy">
           </div>

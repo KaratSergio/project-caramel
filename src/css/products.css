@@ -1,125 +1,3 @@
-/* .list-prod-container { */
-/* width: 925px; */
-/* } */
-
-/* .list-prod {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 40px 20px;
-  padding-right: 20px;
-}
-
-.prod-item {
-  padding: 20px 20px;
-  background: #fafafa;
-  border-radius: 20px;
-  width: 295px;
-  height: 363px;
-  width: calc((100% - 40px) / 3);
-}
-
-.prod-pic {
-  border-radius: 10px;
-  background-color: #e8e8e2;
-  height: 178px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-.prod-img {
-  max-width: 140px;
-  max-height: 140px;
-}
-
-.discont-prod {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  left: 92%;
-  top: 12%;
-  transform: translate(-50%, -50%);
-  background-color: #6d8434;
-  width: 60px;
-  height: 60px;
-}
-
-.title-prod {
-  color: #010101;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 1.11em;
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
-
-.feature {
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: 15px;
-  gap: 8px;
-}
-
-.feature-prod {
-  color: rgba(1, 1, 1, 0.3);
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 1.17em;
-}
-
-.feature-value {
-  color: #010101;
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 1.17em;
-  margin-left: 4px;
-}
-
-.buing-prod {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  height: 34px;
-}
-
-.price-prod {
-  color: #010101;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 1.11em;
-  align-self: self-end;
-}
-
-.buy-btn {
-  border-radius: 30px;
-  background:#6D8434;
-  width: 34px;
-  height: 34px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  appearance: auto;
-  border: none;
-}
-
-.buy-svg {
-  fill: #E8E8E2;
-  justify-content: center;
-  align-items: center;
-}
-
-.buy-btn:hover,
-.buy-btn:focus {
-  background:#586F1F;
-} */
-
 .list-prod {
   list-style: none;
   display: flex;
@@ -133,7 +11,7 @@
 
 .prod-item {
   padding: 20px 20px;
-  background: #fafafa;
+  background: var(--white);
   border-radius: 20px;
   height: 363px;
   max-width: 335px;
@@ -142,15 +20,14 @@
   justify-content: space-between;
 }
 
-@media screen and (min-width: 375px) {
-  .prod-item {
-    width: 335px;
-  }
+.prod-item {
+  width: 335px;
 }
+
 .prod-pic {
   border-radius: 10px;
-  background-color: #e8e8e2;
-  height: 178px;
+  background-color: var(--background);
+  min-height: 178px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -171,39 +48,36 @@
   left: 92%;
   top: 12%;
   transform: translate(-50%, -50%);
-  background-color: #6d8434;
+  background-color: var(--gray);
   width: 60px;
   height: 60px;
 }
 
 .title-prod {
-  color: #010101;
   font-size: 18px;
   font-weight: 500;
-  line-height: 1.11em;
+  line-height: 1.11;
   margin-top: 20px;
   margin-bottom: 10px;
 }
 
 .feature {
   display: flex;
+  width: 220px;
   flex-wrap: wrap;
-  margin-bottom: 40px;
   gap: 8px;
 }
 
 .feature-prod {
-  color: rgba(1, 1, 1, 0.3);
+  color: var(--transparent-text);
   font-size: 12px;
   font-weight: 400;
-  line-height: 1.17em;
+  line-height: 1.17;
 }
 
 .feature-value {
-  color: #010101;
   font-size: 12px;
-  font-weight: 400;
-  line-height: 1.17em;
+  line-height: 1.17;
   margin-left: 4px;
 }
 
@@ -216,10 +90,9 @@
 }
 
 .price-prod {
-  color: #010101;
   font-size: 18px;
   font-weight: 500;
-  line-height: 1.11em;
+  line-height: 1.11;
   align-self: self-end;
 }
 
@@ -229,8 +102,8 @@
   justify-content: center;
   align-items: center;
   border-radius: 30px;
-  background: #6d8434;
-  color: #e8e8e2;
+  background-color: var(--gray);
+  color: var(--background);
   margin-left: 0;
   cursor: pointer;
   appearance: auto;
@@ -238,14 +111,14 @@
 }
 
 .buy-svg {
-  fill: #e8e8e2;
+  fill: var(--background);
   justify-content: center;
   align-items: center;
 }
 
 .buy-btn:hover,
 .buy-btn:focus {
-  background: #586f1f;
+  background: var(--dark-gray);
 }
 
 @media screen and (min-width: 768px) {
