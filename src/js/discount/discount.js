@@ -1,5 +1,5 @@
 import { getProducts } from '../get-api';
-import { getData, saveData } from './api/storage';
+import { getData, saveData } from './storage';
 import { createMarkup } from './markup-discount';
 import { openModal } from '../modal-product';
 
