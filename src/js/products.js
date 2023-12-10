@@ -85,14 +85,18 @@ console.log(id);
 
 function onShowModal(event) {
   const cardEl = event.target.closest('.prod-item');
+  // console.log(cardEl);
   const btnEl = event.target.closest('.buy-btn');
+  // console.log(btnEl);
 
   if (!cardEl || btnEl) {
     return;
   }
-  const id = cardEl.getAttribute('data-js-product-id');
-  const data = products.find(item => id === item._id);
-  openModal(data);
+  const idProduct = cardEl.getAttribute('data-js-product-id');
+  // console.log(idProduct);
+  const dataID = items.find(item => idProduct === item._id);
+  // console.log(dataID);
+  openModal(dataID);
 }
 
 function getIdProducts(items = []) {
