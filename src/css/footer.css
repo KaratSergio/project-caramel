@@ -122,10 +122,12 @@
   transition: transform 500ms ease-in-out;
 }
 
-.mob-container {
+.mob-container,
+.mob-container-two {
   border-radius: 20px;
   background: var(--background);
-  width: 490px;
+  max-width: 490px;
+  margin: 0 20px;
   height: 400px;
   position: fixed;
   top: 50%;
@@ -135,18 +137,51 @@
 
 .header-button-close {
   display: block;
-
   border: none;
   margin-left: 428px;
   margin-right: 24px;
-  margin-top: 24px;
-  cursor: pointer;
+  margin-top: 22px;
   background-color: transparent;
 }
 
 .header-close-icon {
   width: 28px;
   height: 28px;
+}
+.modal-h-p {
+  width: 245px;
+  color: #010101;
+  text-align: center;
+  font-family: Neue Montreal;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  margin-top: 38px;
+}
+.modal-p-p {
+  width: 328px;
+  color: rgba(1, 1, 1, 0.7);
+  text-align: center;
+  font-family: Neue Montreal;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  margin-top: 20px;
+}
+.modal-div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.span-modal {
+  color: #6d8434;
+  font-family: Neue Montreal;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
 }
 @media screen and (max-width: 768px) {
   .conteiner-div {
@@ -156,7 +191,7 @@
   .footer-div-text,
   .footer-media {
     margin-bottom: 40px;
-}
+  }
   .footer-div {
     display: block;
     gap: 8px;
@@ -173,6 +208,5 @@
     display: flex;
     width: 840px;
     justify-content: space-between;
-
   }
 }
