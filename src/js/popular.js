@@ -13,48 +13,46 @@ import sprite from '../images/icons.svg';
 
 const popularList = document.querySelector('.popular-list');
 
-const STORAGE_KEY = 'added-item';
-let productData = [];
+const STORAGE_KEY = 'added-itemX';
 
-let localProduct = JSON.parse(localStorage.getItem(STORAGE_KEY));
-console.log(localProduct);
+function saveData(data) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+function getData() {
+  try {
+    const result = localStorage.getItem(STORAGE_KEY);
+    return result ? JSON.parse(result) : [];
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 getPopularProducts(5)
   .then(data => {
     popularList.insertAdjacentHTML('beforeend', createMarkup(data));
-
-    // const localProduct = JSON.parse(localStorage.getItem(LS_KEY));
-    // console.log(localProduct);
 
     function onClick(event) {
       let target = event.target;
       if (target.closest('.popular-card')) {
         const popularCard = target.closest('.popular-card');
         const popularProductId = popularCard.getAttribute('data-js-product-id');
-        const selectedProduct = data.find(
-          product => product._id.toString() === popularProductId
-        );
-        // console.log('f:', selectedProduct);
-        // console.log('g:', data);
-        openModal(selectedProduct);
+        openModal(productSelected(popularProductId, data));
       } else if (target.closest('.btn-add')) {
         const elem = target.closest('.btn-add').nextElementSibling;
         const btnProductId = elem.getAttribute('data-js-product-id');
-        const selProduct = data.find(
-          product => product._id.toString() === btnProductId
-        );
+        const selectedProduct = productSelected(btnProductId, data);
 
-        //const ppp = localProduct.includes(btnProductId);
-        //const ddd = localProduct.find(item => item === btnProductId);
-        if (!1) {
-          //Notify.info('Cogito ergo sum', options);
-          alert('Product also added to Order');
-        } else {
-          productData.push(selProduct);
-          //localStorage.setItem(STORAGE_KEY, JSON.stringify(productData));
+        const listProducts = getData();
+        const productAdded = listProducts.find(
+          item => item._id === selectedProduct._id
+        );
+        if (!productAdded) {
+          listProducts.push(selectedProduct);
+          saveData(listProducts);
           //Notify.success('Product add to Order', options);
-          alert('Product add to Order');
         }
+        //Notify.info('Product also added to Order', options);
         target.closest('.btn-add').classList.add('visually-hidden');
       }
     }
@@ -64,6 +62,11 @@ getPopularProducts(5)
   .catch(error => {
     console.error(error);
   });
+
+function productSelected(val, data) {
+  const selectedProduct = data.find(product => product._id.toString() === val);
+  return selectedProduct;
+}
 
 function createMarkup(items) {
   return items
