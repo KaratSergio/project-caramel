@@ -1,74 +1,106 @@
-// import { getProductsByParams } from './get-api';
-
+import sprite from '../images/icons.svg';
+import { first, result } from 'lodash';
 import { openModal } from './modal-product';
-// import { getProductById } from './get-api';
 
 const productsList = document.querySelector('.list-prod');
+const STORAGE_KEY = 'added-item';
+const GetLocal = 'firstGet';
 
-// const defaultParameters = {
-//   keyword: '',
-//   category: '',
-//   page: 1,
-//   limit: 9,
-// };
-
-// ---------------------------
-
+// LocalStorage
 export function saveData(key, data) {
   localStorage.setItem(key, JSON.stringify(data));
 }
-export function getData(key) {
+export function getData(GetLocal) {
   try {
-    const result = localStorage.getItem(key);
-    return result ? JSON.parse(result) : {};
+    const result = localStorage.getItem(GetLocal);
+    return result ? JSON.parse(result) : [];
   } catch (error) {
     console.log(error);
   }
 }
 
-// ---------------------------
-
-// ________________
-
-// saveData('defaultParameters', defaultParameters);
-
-// // _______________________________
-
+// Markup
 export function addMarkup(el, markup) {
   el.innerHTML = markup;
 }
 
+// передаєм на пвгінацію для відмальовки карток
 export async function displayProducts(results) {
   const markup = createCardMarkup(results);
-
   addMarkup(productsList, markup);
+}
 
-  const productCards = document.querySelectorAll('.prod-item');
+// достаем дані з локал
+const items = getData(GetLocal);
+console.log(items);
 
-  productCards.forEach(card => {
-    card.addEventListener('click', () => {
-      const productId = card.getAttribute('data-js-product-id');
-      const buyBtn = card.querySelector('.buy-btn');
-      const modalImg = card.querySelector('.prod-img');
-      const selectedProduct = results.find(
-        product => product._id.toString() === productId
-      );
-      console.log('Selected productId:', productId);
-      saveProductId(productId, results);
+const productId = getIdProducts(items);
+console.log(productId);
 
-      if (modalImg) {
-        openModal(selectedProduct);
-      } else {
-        console.error('Selected product not found:', productId);
-      }
 
-      // console.log(productId);
-      // console.log(results);
-    });
+
+const toggle = productId.includes(items._id);
+console.log(toggle);
+
+
+
+
+productsList.addEventListener('click', onClick);
+productsList.addEventListener('click', onShowModal);
+
+function onClick(event) {
+  const btnEl = event.target.closest('.buy-btn');
+  if (!btnEl) {
+    return;
+  }
+  // elemets
+  const cardEl = event.target.closest('.prod-item');
+console.log(cardEl);
+  const icons = btnEl.querySelectorAll('svg');
+
+// data- id
+  const id = cardEl.getAttribute('data-js-product-id');
+console.log(id);
+ 
+  // отримуєм дані з локалки для зрівнняня
+  const items = getData(GetLocal);
+  console.log(items);
+// перевіряєм і додаєм до локал покищо не віднімає
+ if (items.find(item => id === item._id)) {
+   const updatedItems = items.filter(item => id !== item._id);
+   saveData(STORAGE_KEY, updatedItems);
+ } else {
+   const data = products.find(item => id === item._id);
+   items.push(data);
+   saveData(STORAGE_KEY, items);
+ }
+
+  icons.forEach(element => {
+    element.classList.toggle('is-hidden');
   });
 }
 
+function onShowModal(event) {
+  const cardEl = event.target.closest('.prod-item');
+  const btnEl = event.target.closest('.buy-btn');
+
+  if (!cardEl || btnEl) {
+    return;
+  }
+  const id = cardEl.getAttribute('data-js-product-id');
+  const data = products.find(item => id === item._id);
+  openModal(data);
+}
+
+function getIdProducts(items = []) {
+  return items.map(item => item._id);
+}
+
 export function createCardMarkup(results) {
+  const check = toggle ? '' : 'is-hidden';
+
+  const card = toggle ? 'is-hidden' : '';
+
   return results
     .map(({ _id, name, img, category, size, price, popularity }) => {
       return `
@@ -88,40 +120,16 @@ export function createCardMarkup(results) {
           <div class="buing-prod">
             <p class="price-prod">&#36; ${price}</p>
             <button class="buy-btn" type="button">
-              <svg class="buy-svg" width="18" height="18">
-                <use href="./images/icons.svg#shopping-cart"></use>"></use>
-              </svg>
+            <svg class="card-product-svg ${check}" width="18" height="18">
+            <use href="${sprite}#check"></use>
+             </svg>
+             <svg class="card-product-svg ${card}" width="18" height="18">
+             <use href="${sprite}#shopping-cart"></use>
+             </svg>
             </button>
           </div>
         </li>
       `;
     })
     .join('');
-}
-
-// displayProducts();
-
-const STORAGE_KEY = 'added-item';
-export function saveProductId(productId, results) {
-  let data = getData(STORAGE_KEY);
-  if (!data) {
-    data = [];
-  }
-  const selectedProduct = results.find(
-    product => product._id.toString() === productId
-  );
-  console.log(`tut ${selectedProduct}`);
-  if (selectedProduct) {
-    data.push(selectedProduct);
-    saveData(STORAGE_KEY, data);
-    console.log(data);
-    const buyBtn = document.querySelector(
-      `[data-js-product-id="${productId}"] .buy-btn`
-    );
-    if (buyBtn) {
-      buyBtn.disabled = true; // Зробити кнопку неактивною
-    }
-  } else {
-    console.error('Selected product not found:', productId);
-  }
 }

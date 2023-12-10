@@ -1,5 +1,5 @@
 import Pagination from 'tui-pagination';
-import { saveData, displayProducts, saveProductId } from './products';
+import { saveData, displayProducts } from './products';
 import {getProductsByParams} from './get-api';
 
 const paginationContainer = document.querySelector('#pagination');
