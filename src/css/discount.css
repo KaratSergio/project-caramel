@@ -1,4 +1,4 @@
-.products {
+/* .products {
   display: flex;
   flex-direction: column;
 }
@@ -41,6 +41,7 @@
 .card-product-title,
 .card-product-price {
   color: var(--text-color);
+  font-family: Neue Montreal;
   font-size: 18px;
   font-weight: 500;
   line-height: 1.11;
@@ -71,4 +72,115 @@
 .card-product-add {
   width: 18px;
   height: 18px;
+} */
+
+.products {
+  display: flex;
+  flex-direction: column;
+}
+
+.products h2 {
+  font-size: 24px;
+  line-height: 1.166;
+  font-weight: 500;
+}
+
+.card-product-discount {
+  margin-top: 20px;
+  padding: 16px;
+  border-radius: 15px;
+  background: var(--white);
+  max-width: 335px;
+  height: 232px;
+  position: relative;
+}
+.card-product-label {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  top: -3px;
+  right: 10px;
+}
+.card-product-label svg {
+  width: 100%;
+  height: 100%;
+}
+.card-product-wrapper {
+  border-radius: 10px;
+  background: var(--background);
+  padding: 18px;
+  display: flex;
+  justify-content: center;
+  max-width: 304px;
+  height: 150px;
+}
+
+.card-product-info {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding-top: 21px;
+  align-items: center;
+}
+.card-product-title,
+.card-product-price {
+  color: var(--text-color);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.11;
+}
+.card-product-info-right {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+}
+
+.card-product-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 30px;
+  background-color: var(--gray);
+  border: none;
+}
+
+.is-hidden {
+  display: none;
+}
+.card-product-svg {
+  fill: var(--background);
+}
+.card-product-add {
+  width: 18px;
+  height: 18px;
+}
+
+@media screen and (min-width: 768px) {
+  .products-discount {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .card-product-discount {
+    width: 335px;
+    height: 232px;
+  }
+
+  .products h2 {
+    font-size: 28px;
+    line-height: 1.14;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .products-discount {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-product-discount {
+    width: 275px;
+  }
 }
