@@ -3,9 +3,8 @@
   position: fixed;
   bottom: 50px;
   right: 50px;
-  background-color: #6d8434;
-  color: #e8e8e2;
-  border: none;
+  background-color: var(--gray);
+  color: var(--background);
   border-radius: 50%;
   width: 60px;
   height: 60px;
@@ -20,7 +19,7 @@
 }
 
 .scroll-to-top-btn:hover {
-  background-color: #586f1f;
+  background-color: var(--dark-gray);
 }
 
 .scroll-to-top-btn .arrow-up {
