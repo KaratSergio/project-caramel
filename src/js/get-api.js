@@ -3,6 +3,9 @@ import axios from 'axios';
 const BASE_URL = 'https://food-boutique.b.goit.study/api/';
 axios.defaults.baseURL = BASE_URL;
 
+export function getProducts() {
+  return axios.get('products/discount').then(response => response.data);
+}
 export async function getProductsCategories() {
   const response = await axios.get(`${BASE_URL}products/categories`);
 
