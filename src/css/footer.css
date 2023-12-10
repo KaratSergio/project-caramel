@@ -1,5 +1,5 @@
 .footer {
-  background-color: #6d8434;
+  background-color: var(--gray);
   min-height: 386px;
   padding-left: 100px;
   padding-right: 100px;
@@ -20,11 +20,8 @@
   width: 200px;
 }
 .form-p {
-  color: #e8e8e2;
-  font-family: Neue Montreal;
+  color: var(--background);
   font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
   line-height: 24px;
   margin-bottom: 20px;
 }
@@ -34,7 +31,7 @@
   align-items: center;
   gap: 10px;
   border-radius: 30px;
-  border: 1px solid #e8e8e2;
+  border: 1px solid var(--background);
   width: 336px;
 }
 .footer-button {
@@ -45,24 +42,23 @@
   align-items: center;
   gap: 8px;
   border-radius: 30px;
-  background: #e8e8e2;
+  background-color: var(--background);
 }
 .footer-socials-link {
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: #fff;
+  color: var(--white);
   margin-bottom: 20px;
   height: 28px;
 }
 
 .footer-socials-text {
-  color: #e8e8e2;
+  color: var(--background);
   width: 157px;
   margin-left: 8px;
   font-family: FONTSPRING DEMO - Quincy CF Black;
   font-size: 24px;
-  font-style: normal;
   font-weight: 900;
   line-height: 24px;
   letter-spacing: -0.5px;
@@ -78,10 +74,8 @@
   width: 410px;
 }
 .footer-p-h {
-  color: #e8e8e2;
-  font-family: Neue Montreal;
+  color: var(--background);
   font-size: 40px;
-  font-style: normal;
   font-weight: 500;
   line-height: 44px;
   letter-spacing: -0.8px;
@@ -89,21 +83,14 @@
 }
 .footer-p-text {
   color: rgba(232, 232, 226, 0.7);
-  font-family: Neue Montreal;
   font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
   line-height: 24px;
 }
 .footer-form {
   width: 310px;
 }
 .footer-p {
-  color: #e8e8e2;
-  font-family: Neue Montreal;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
+  color: var(--background);
   line-height: 18px;
   opacity: 0.9;
 }
@@ -114,7 +101,7 @@
 }
 .food-boutique,
 .footer-socials-icon {
-  fill: white;
+  fill: var(--white);
 }
 .footer-social-list {
   gap: 12px;
@@ -143,7 +130,7 @@
 
 .mob-container {
   border-radius: 20px;
-  background: #e8e8e2;
+  background: var(--background);
   width: 490px;
   height: 400px;
   position: fixed;
@@ -167,4 +154,3 @@
   width: 28px;
   height: 28px;
 }
-
