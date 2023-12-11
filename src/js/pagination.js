@@ -31,6 +31,7 @@ export async function newDisplayPagination(options) {
   if (totalPages === 0) {
     productsList.classList.add('visually-hidden')
     filterNomatches.classList.remove('visually-hidden')
+    paginationContainer.classList.add('visually-hidden')
   }
 
   saveData('firstGet', results);
