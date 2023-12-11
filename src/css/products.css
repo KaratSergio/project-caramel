@@ -14,14 +14,10 @@
   background: var(--white);
   border-radius: 20px;
   height: 363px;
-  max-width: 335px;
+  width: 100%;
   flex-direction: column;
   display: flex;
   justify-content: space-between;
-}
-
-.prod-item {
-  width: 335px;
 }
 
 .prod-pic {
