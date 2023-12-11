@@ -1,4 +1,4 @@
-import{g as Z,a as G,s as p,b as q,d as tt,e as et}from"./assets/get-api-92145fd3.js";import{a as ot,P as st,l as ct}from"./assets/vendor-8c378b12.js";class nt{constructor(){this.URL="https://food-boutique.b.goit.study/api",this.searchQuery="",this.category="",this.currentPage=1,this.perPage=90}paramsFromApi(e){return Object.entries(e).map(([o,s])=>`${encodeURIComponent(o)}=${encodeURIComponent(s)}`).join("&")}getFoodList(){const e={keyword:this.searchQuery,category:this.category,page:this.currentPage,limit:this.perPage},o=this.paramsFromApi(e);return ot.get(`${this.URL}/products?${o}`).then(s=>s.data)}}class at{updateLsWithList(e,o){localStorage.getItem("options")||this.defaultApiOptions(),localStorage.setItem("products",JSON.stringify(e.results)),localStorage.setItem("options",JSON.stringify(o))}defaultApiOptions(){const e={keyword:null,category:null,page:1,limit:6};localStorage.setItem("options",JSON.stringify(e))}}function D(t){const{_id:e,name:o,img:s,category:c,size:n,price:a,popularity:r}=t;return`
+import{g as Z,a as G,s as p,b as q,d as tt,e as et}from"./assets/get-api-096223fb.js";import{a as ot,P as st,l as ct}from"./assets/vendor-8c378b12.js";class nt{constructor(){this.URL="https://food-boutique.b.goit.study/api",this.searchQuery="",this.category="",this.currentPage=1,this.perPage=90}paramsFromApi(e){return Object.entries(e).map(([o,s])=>`${encodeURIComponent(o)}=${encodeURIComponent(s)}`).join("&")}getFoodList(){const e={keyword:this.searchQuery,category:this.category,page:this.currentPage,limit:this.perPage},o=this.paramsFromApi(e);return ot.get(`${this.URL}/products?${o}`).then(s=>s.data)}}class at{updateLsWithList(e,o){localStorage.getItem("options")||this.defaultApiOptions(),localStorage.setItem("products",JSON.stringify(e.results)),localStorage.setItem("options",JSON.stringify(o))}defaultApiOptions(){const e={keyword:null,category:null,page:1,limit:6};localStorage.setItem("options",JSON.stringify(e))}}function D(t){const{_id:e,name:o,img:s,category:c,size:n,price:a,popularity:r}=t;return`
         <li class="prod-item" data-js-product-id=${e}>   
           <div class="prod-pic">
             <svg class="discont-prod" width="60" height="60" style="visibility: hidden;">
@@ -40,10 +40,10 @@ import{g as Z,a as G,s as p,b as q,d as tt,e as et}from"./assets/get-api-92145fd
             <button class="buy-btn" type="button">
             <svg class="card-product-svg ${e}" width="18" height="18">
             <use href="${p}#check"></use>
-             </svg>
-             <svg class="card-product-svg ${o}" width="18" height="18">
-             <use href="${p}#shopping-cart"></use>
-             </svg>
+            </svg>
+            <svg class="card-product-svg ${o}" width="18" height="18">
+            <use href="${p}#shopping-cart"></use>
+            </svg>
             </button>
           </div>
         </li>
