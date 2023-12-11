@@ -1,7 +1,5 @@
-
-
 #modalProduct {
-  display: none;  
+  display: none;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -141,7 +139,7 @@
   justify-content: space-between;
 }
 
-.buy-btn {
+.product-add .buy-btn {
   padding: 12px 24px;
   justify-content: center;
   align-items: center;
@@ -162,7 +160,7 @@
   #modalProduct {
     z-index: 9999;
 
-    max-width: 630px;
+    max-width: 600px;
     height: 380px;
     padding: 40px;
   }
@@ -213,7 +211,7 @@
     width: 520px;
   }
 
-  .buy-btn {
+  .product-add .buy-btn {
     padding: 10px 28px;
   }
 }
