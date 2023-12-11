@@ -1,5 +1,6 @@
 import { getProductsCategories } from './get-api';
 import axios from 'axios';
+import { newDisplayPagination } from './pagination';
 
 class FoodApi {
   constructor() {
@@ -145,7 +146,7 @@ getProductsCategories().then(categories => {
 export function createShowAll() {
   const showAllOption = document.createElement('option');
   showAllOption.textContent = 'Show All';
-  showAllOption.value = 'show-all';
+  showAllOption.value = '';
   return showAllOption;
 }
 
@@ -165,7 +166,8 @@ filterForm.addEventListener('submit', function (event) {
         const productsArray = JSON.parse(localStorage.getItem('products'));
         const arrayLength = productsArray.length;
         console.log(arrayLength);
-        createFirstFilter(productsArray);
+        // createFirstFilter(productsArray);
+        newDisplayPagination(options)
       })
       .catch(function (error) {
         console.error('Error fetching food list:', error.message);
@@ -195,7 +197,9 @@ filterSelect.addEventListener('change', function () {
           const productsArray = JSON.parse(localStorage.getItem('products'));
           const arrayLength = productsArray.length;
 
-          createFirstFilter(productsArray);
+          // createFirstFilter(productsArray);
+          console.log(options)
+          newDisplayPagination(options)
         })
         .catch(function (error) {
           console.error('Error fetching list:', error.message);
@@ -209,7 +213,7 @@ filterSelect.addEventListener('change', function () {
 export function createFirstFilter(currentPage) {
   let pageProd = 1;
   const page = 1;
-  const limit = 90;
+  const limit = 9;
   const productKey = JSON.parse(localStorage.getItem('products'));
 
   productsListFilter.innerHTML = '';
