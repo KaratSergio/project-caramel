@@ -1,5 +1,9 @@
 import { getProducts } from '../get-api';
+<<<<<<< Updated upstream
 import { getData, saveData } from './api/storage';
+=======
+import { STORAGE_KEY, countAddedItems, getData, saveData } from '../STORAGE';
+>>>>>>> Stashed changes
 import { createMarkup } from './markup-discount';
 import { openModal } from '../modal-product';
 
@@ -11,7 +15,7 @@ async function onLoad() {
 
   products = response.slice(0, 2);
 
-  const items = getData();
+  const items = getData(STORAGE_KEY);
 
   const idProducts = getIdProducts(items);
 
@@ -40,13 +44,18 @@ function onClick(event) {
   const id = cardEl.dataset.id;
 
   //   console.log(data);
-  const items = getData();
+  const items = getData(STORAGE_KEY);
   if (items.find(item => id === item._id)) {
-    saveData(items.filter(item => id !== item._id));
+    saveData(
+      STORAGE_KEY,
+      items.filter(item => id !== item._id)
+    );
+    countAddedItems();
   } else {
     const data = products.find(item => id === item._id);
     items.push(data);
-    saveData(items);
+    saveData(STORAGE_KEY, items);
+    countAddedItems();
   }
 
   icons.forEach(element => {
