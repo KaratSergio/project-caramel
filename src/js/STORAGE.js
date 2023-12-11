@@ -1,7 +1,5 @@
 export const STORAGE_KEY = 'added-item';
 
-
-
 countAddedItems();
 
 export function saveData(key, data) {
