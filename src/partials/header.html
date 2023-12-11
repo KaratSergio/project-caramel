@@ -1,7 +1,7 @@
-<header class="header">
-  <div class="container header-container">
+<header class="container">
+  <div class="header-container">
     <div class="box-hover">
-      <a class="header-logo link" href="">
+      <a class="header-logo link" href="./index.html">
         <div class="header__shop-icon-container">
           <svg class="cart-shop-icon" width="16" height="16">
             <use href="./images/icons.svg#icon-tdesign_cabbage-1"></use>
@@ -10,19 +10,22 @@
         Food Boutique
       </a>
     </div>
-    <nav class="header-navigation">
-      <a class="header-home link" href="./index.html">Home</a>
-
-      <a id="cartLink" class="header-cart link" href="./cart.html">
-        <div class="header__icon-container">
-          <svg class="cart-icon" width="16" height="16">
-            <use
-              href="./images/icons.svg#icon-heroicons-solid_shopping-cart"
-            ></use>
-          </svg>
-        </div>
-        <span id="countProducts">Cart(0)</span>
-      </a>
+    <nav>
+      <ul class="header-navigation">
+        <li><a class="header-home link" href="./index.html">Home</a></li>
+        <li>
+          <a id="cartLink" class="header-cart link" href="./cart.html">
+            <div class="header__icon-container">
+              <svg class="cart-icon" width="16" height="16">
+                <use
+                  href="./images/icons.svg#icon-heroicons-solid_shopping-cart"
+                ></use>
+              </svg>
+            </div>
+            <span id="countProducts">Cart(0)</span>
+          </a>
+        </li>
+      </ul>
     </nav>
   </div>
 </header>

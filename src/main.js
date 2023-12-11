@@ -1,5 +1,4 @@
 import './js/get-api';
-import './js/header';
 import './js/filters';
 import './js/products';
 import './js/pagination';

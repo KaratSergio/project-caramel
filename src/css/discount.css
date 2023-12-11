@@ -2,12 +2,19 @@
   display: flex;
   flex-direction: column;
 }
+
+.products h2 {
+  font-size: 24px;
+  line-height: 1.166;
+  font-weight: 500;
+}
+
 .card-product-discount {
   margin-top: 20px;
   padding: 16px;
   border-radius: 15px;
   background: var(--white);
-  width: 275px;
+  max-width: 335px;
   height: 232px;
   position: relative;
 }
@@ -28,11 +35,10 @@
   padding: 18px;
   display: flex;
   justify-content: center;
-  width: 243px;
+  max-width: 304px;
   height: 150px;
 }
-/* .cart-product-img {
-} */
+
 .card-product-info {
   display: flex;
   justify-content: space-between;
@@ -42,8 +48,6 @@
 }
 .card-product-title,
 .card-product-price {
-  color: var(--text-color);
-  font-family: Neue Montreal;
   font-size: 18px;
   font-weight: 500;
   line-height: 1.11;
@@ -74,4 +78,32 @@
 .card-product-add {
   width: 18px;
   height: 18px;
+}
+
+@media screen and (min-width: 768px) {
+  .products-discount {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .card-product-discount {
+    width: 335px;
+    height: 232px;
+  }
+
+  .products h2 {
+    font-size: 28px;
+    line-height: 1.14;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .products-discount {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-product-discount {
+    width: 275px;
+  }
 }

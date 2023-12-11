@@ -5,6 +5,10 @@
   --gray: #6D8434;
   --dark-gray: #586F1F;
   --transparent-text: rgba(1, 1, 1, 0.3);
+  --transparent-footer-text:  rgba(232, 232, 226, 0.7);
+  --transparent-border: rgba(232, 232, 226, 0.3);
+  --transparent-fon: rgba(1, 1, 1, 0.4);
+  --social-hover: #E8E8E280;
 }
 
 body {
@@ -65,10 +69,9 @@ body {
 }
 
 @font-face {
-  font-family: 'FONTSPRING DEMO - Quincy CF';
-  src: url('../fonts/FONTSPRINGDEMO-QuincyCFBlackRegular.woff2') format('woff2'),
-    url('../fonts/FONTSPRINGDEMO-QuincyCFBlackRegular.woff') format('woff');
+  font-family: 'Quincy CF';
+  src: url('../fonts/QuincyCF-Black.woff2') format('woff2'),
+      url('../fonts/QuincyCF-Black.ttf') format('truetype');
   font-weight: 900;
   font-style: normal;
-  font-display: swap;
 }

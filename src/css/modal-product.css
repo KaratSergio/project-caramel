@@ -1,19 +1,15 @@
-/* modal-product.css */
-
 #modalProduct {
   display: none;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 1;
-  width: 70%;
-  max-width: 630px;
-  height: 380px;
-  background: #fafafa;
-  padding: 40px;
+  z-index: 9999;
+  max-width: 335px;
+  height: 535px;
+  background: var(--white);
+  padding: 40px 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  /* background-color: rgba(0, 0, 0, 0.5); */
   box-sizing: border-box;
   justify-content: center;
   align-items: center;
@@ -22,18 +18,18 @@
 
 .close {
   position: absolute;
-  top: 24px;
-  right: 24px;
+  top: 7px;
   font-size: 30px;
   cursor: pointer;
-  width: 28px;
-  height: 28px;
-  flex-shrink: 0;
+  width: 22px;
+  line-height: 1;
+  height: 22px;
+  right: 14px;
 }
 .pro {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 48px;
+  flex-direction: column;
 }
 .product-info {
   display: block;
@@ -43,110 +39,107 @@
 
 .product-image {
   display: flex;
-  margin-right: 20px;
-  width: 240px;
+  width: 100%;
   height: 212px;
   flex-shrink: 0;
   border-radius: 10px;
   background: #e8e8e2;
   align-items: center;
   justify-content: center;
-  margin-right: 24px;
+  margin-bottom: 20px;
 }
 .product-image img {
-  max-width: 100%;
-  max-height: 100%;
-  border-radius: 10px;
+  max-width: 160px;
+  max-height: 160px;
 }
 
 .product-details {
   flex-grow: 1;
-  width: 256px;
+  max-width: 295px;
 }
 
 #modalProductName {
   margin-bottom: 10px;
-  color: #010101;
   font-family: Neue Montreal;
-  font-size: 20px;
-  font-style: normal;
+  font-size: 18px;
   font-weight: 500;
-  line-height: 24px; /* 120% */
+  line-height: 1.11;
 }
 
-#modalProductCategory,
-#modalProductSize,
-#modalProductPopularity,
-#modalProductDescription,
-#modalProductPrice {
-  /* color: #010101; */
-}
 #modalProductPrice {
   font-family: Neue Montreal;
-  font-size: 20px;
-  font-style: normal;
+  font-size: 18px;
   font-weight: 500;
-  line-height: 24px; /* 120% */
-  width: 70px;
-  height: 30px;
+  line-height: 1.11;
 }
 #modalProductDescription {
-  margin-top: 24px;
   color: rgba(1, 1, 1, 0.7);
   font-family: Neue Montreal;
-  font-size: 16px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
-  line-height: 20px; /* 125% */
-  width: 256px;
-  max-height: 118px;
+  line-height: 1.25;
+  max-height: 54px;
   overflow-y: auto;
+  margin-bottom: 40px;
 }
+
+#modalProductDescription::-webkit-scrollbar {
+  width: 4px;
+}
+
+#modalProductDescription::-webkit-scrollbar-thumb {
+  background-color: #808080;
+  border-radius: 4px;
+}
+
+#modalProductDescription::-webkit-scrollbar-track {
+  background-color: #f0f0f0;
+}
+
 .modal-overlay {
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(1, 1, 1, 0.4); /* Задний фон с затемнением */
-  z-index: 999; /* Выше других элементов */
+  background: rgba(1, 1, 1, 0.4);
+  z-index: 999;
 }
 
 .product-bloc {
   display: flex;
+  display: flex;
   flex-wrap: wrap;
-  /* align-items: flex-start; */
-  gap: 9px;
+  row-gap: 9px;
   color: rgba(1, 1, 1, 0.3);
   font-family: Neue Montreal;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
-  line-height: 1.17em; /* 116.667% */
-
+  line-height: 1.17;
   width: 246px;
   height: 37px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  column-gap: 8px;
 }
 .feature-value {
-  color: #010101;
   font-size: 12px;
   font-weight: 400;
   line-height: 1.17em;
   margin-left: 4px;
 }
 .product-add {
-  margin-bottom: -70px;
-  display: inline-flex;
+  display: flex;
   align-items: flex-end;
-  gap: 350px;
-  width: 550px;
+  width: 295px;
   height: 40px;
-  /* background-color: #c8e77a; */
+  justify-content: space-between;
 }
 
-.buy-btn {
-  padding: 8px;
+.product-add .buy-btn {
+  padding: 12px 24px;
   justify-content: center;
   align-items: center;
   border-radius: 30px;
@@ -156,7 +149,68 @@
   cursor: pointer;
   appearance: auto;
   border: none;
+  gap: 10px;
 }
 .buy-svg {
   color: #e8e8e2;
+}
+
+@media screen and (min-width: 768px) {
+  #modalProduct {
+    z-index: 9999;
+
+    max-width: 600px;
+    height: 380px;
+    padding: 40px;
+  }
+
+  .close {
+    top: 24px;
+    right: 24px;
+    width: 28px;
+    height: 28px;
+  }
+
+  .pro {
+    flex-direction: row;
+    margin-bottom: 48px;
+    justify-content: start;
+  }
+
+  .product-image {
+    margin-bottom: 0px;
+    margin-right: 24px;
+    width: 240px;
+    height: 212px;
+  }
+
+  #modalProductName {
+    font-size: 20px;
+    line-height: 1.2;
+  }
+
+  #modalProductPrice {
+    font-size: 20px;
+    line-height: 1.2;
+    width: 70px;
+  }
+  #modalProductDescription {
+    margin-bottom: 0px;
+
+    margin-top: 24px;
+    font-size: 16px;
+    max-height: 118px;
+  }
+
+  .product-bloc {
+    margin-bottom: 10px;
+  }
+
+  .product-add {
+    width: 520px;
+  }
+
+  .product-add .buy-btn {
+    padding: 10px 28px;
+  }
 }
