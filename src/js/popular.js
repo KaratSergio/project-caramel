@@ -1,67 +1,55 @@
 import { getPopularProducts, getProductById } from './get-api';
+import { getData, saveData } from './STORAGE';
 import { openModal } from './modal-product';
 import sprite from '../images/icons.svg';
 
-//import { Notify } from 'notiflix';
-//import Notiflix from 'notiflix';
-//import { Notify } from 'notiflix/build/notiflix-notify-aio';
-
-// const options = {
-//   timeout: 1000,
-//   position: 'center-center',
-//   width: '400px',
-//   fontSize: '24px',
-// };
-
 const popularList = document.querySelector('.popular-list');
-
-const STORAGE_KEY = 'added-itemX';
-
-function saveData(data) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-}
-
-function getData() {
-  try {
-    const result = localStorage.getItem(STORAGE_KEY);
-    return result ? JSON.parse(result) : [];
-  } catch (error) {
-    console.log(error);
-  }
-}
 
 getPopularProducts(5)
   .then(data => {
     popularList.insertAdjacentHTML('beforeend', createMarkup(data));
 
+    const productAdded = document.getElementsByClassName('product-added');
+
+    [...productAdded].forEach(elem => {
+      const idBtn = elem.getAttribute('data-js-btn');
+      const selIdBtn = productSelected(idBtn, data);
+      if (checkLocalStorage(selIdBtn._id)) {
+        elem.nextElementSibling.classList.add('visually-hidden');
+      }
+    });
+
     function onClick(event) {
       let target = event.target;
+
       if (target.closest('.popular-card')) {
         const popularCard = target.closest('.popular-card');
         const popularProductId = popularCard.getAttribute('data-js-product-id');
-        getProductById(popularProductId)
-          .then(res => {
-            openModal(res);
-          })
-          .catch(error => {
-            console.error(error);
-          });
+
+        onSHowModal(popularProductId);
       } else if (target.closest('.btn-add')) {
-        const elem = target.closest('.btn-add').nextElementSibling;
-        const btnProductId = elem.getAttribute('data-js-product-id');
+        const elemAdded = target.closest('.btn-add').previousElementSibling;
+        const btnProductId = elemAdded.getAttribute('data-js-btn');
         const selectedProduct = productSelected(btnProductId, data);
         const listProducts = getData();
-        const productAdded = listProducts.find(
-          item => item._id === selectedProduct._id
-        );
-        if (!productAdded) {
+        if (!checkLocalStorage(selectedProduct._id)) {
           listProducts.push(selectedProduct);
           saveData(listProducts);
-          //Notify.success('Product add to Order', options);
         }
-
-        //Notify.info('Product also added to Order', options);
         target.closest('.btn-add').classList.add('visually-hidden');
+        elemAdded.classList.remove('visually-hidden');
+      } else if (target.closest('.product-added')) {
+        const idBtnLS = target
+          .closest('.product-added')
+          .getAttribute('data-js-btn');
+        const selIdBtnLS = productSelected(idBtnLS, data);
+        const products = getData();
+        const productAdded = checkLocalStorage(selIdBtnLS._id);
+        saveData(products.filter(product => productAdded._id !== product._id));
+        target.closest('.product-added').classList.add('visually-hidden');
+        target
+          .closest('.product-added')
+          .nextElementSibling.classList.remove('visually-hidden');
       }
     }
 
@@ -71,9 +59,24 @@ getPopularProducts(5)
     console.error(error);
   });
 
+function onSHowModal(dataId) {
+  getProductById(dataId)
+    .then(res => {
+      openModal(res);
+    })
+    .catch(error => {
+      console.error(error);
+    });
+}
+
 function productSelected(val, data) {
   const selectedProduct = data.find(product => product._id.toString() === val);
   return selectedProduct;
+}
+
+function checkLocalStorage(id) {
+  const listProducts = getData();
+  return listProducts.find(item => item._id === id);
 }
 
 function truncate(str, maxlength) {
@@ -98,12 +101,12 @@ function createMarkup(items) {
         const newName = truncate(name, 14);
 
         return `  <li class="popular-item">
-            <span class="product-added">
+            <span class="product-added" data-js-btn=${_id}>
         <svg class="svg-added" width="12" height="12">
           <use href="${sprite}#check"></use>
         </svg>
       </span>
-      <button class="btn-add" type="button">
+      <button class="btn-add" type="button" >
         <svg class="svg-add" width="12" height="12">
           <use href="${sprite}#shopping-cart"></use>
         </svg>
