@@ -1,6 +1,5 @@
 import { getProducts } from '../get-api';
 import { STORAGE_KEY, countAddedItems, getData, saveData } from '../STORAGE';
-import { getData, saveData } from '../STORAGE';
 import { createMarkup } from './markup-discount';
 import { openModal } from '../modal-product';
 
