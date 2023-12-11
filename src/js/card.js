@@ -2,8 +2,10 @@ import sprite from '../images/icons.svg';
 import { createNewOrder } from './get-api';
 import successImg from '../images/success_order.png';
 import errorImg from '../images/error.png';
+import { STORAGE_KEY } from './STORAGE';
 
-const STORAGE_KEY = 'added-item';
+// const STORAGE_KEY = 'added-item';
+
 let dataForm = [];
 let hiddenElements = [];
 
@@ -28,19 +30,26 @@ function onLoad() {
     countAddedItems(dataForm);
     checkLoadCount();
     itemsContainer.innerHTML = basketItemsMarkup(dataForm, hiddenElements);
-
     totalSumCount(dataForm);
-    // totalSum.textContent = `$${totalSumCount(dataForm)}`;
   } catch (error) {
-    // add notifix message about something wrong
-    console.log(error.message);
+    onError(error);
   }
 }
 
-function getLocalStorageData() {
+// import { getLocalStorageData, countAddedItems } from './card';
+// let dataForm = [];
+
+// getLocalStorageData()
+// countAddedItems(dataForm);
+
+//  ------- get data for CART from local storage
+export function getLocalStorageData() {
   const data = localStorage.getItem(STORAGE_KEY);
   if (!data) return;
   dataForm = JSON.parse(data);
+}
+function updateLocalStorageData(dataForm) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(dataForm));
 }
 function updateItemCount(item, count) {
   for (let i = 0; i <= dataForm.length; i += 1) {
@@ -62,11 +71,9 @@ function checkLoadCount() {
       hiddenElements.push({ hide: '', disabled: '' });
     }
   });
-  console.log(hiddenElements);
 }
 
 // ------- Created Category without "_"
-
 export function changeCategory() {
   getLocalStorageData();
   dataForm.forEach(element => {
@@ -81,7 +88,6 @@ function onClick(event) {
     return;
   }
   const itemTarget = clickTarget.attributes.class.value;
-
   switch (itemTarget) {
     case 'basket-clear-container':
       clearBasket();
@@ -122,8 +128,11 @@ function deleteSelectedItem(item) {
   }
 }
 
-function countAddedItems(item) {
-  itemCount.textContent = item.length;
+//  ------- Created count into header
+export function countAddedItems(item) {
+  if (itemCount) {
+    itemCount.textContent = item.length;
+  }
   headerCount.textContent = `Cart (${item.length})`;
   isBasketEmpty(item.length);
 }
@@ -141,15 +150,13 @@ function counterItem(event, increment) {
     parentItem.children.counter.textContent = item;
     updateItemCount(itemId, item);
     totalSumCount(dataForm);
-    // totalSum.textContent = `$${totalSumCount(dataForm)}`;
     if (item <= 1) {
       lockDecrese(parentItem);
       return;
     }
     unlockDecrese(parentItem);
   } catch (error) {
-    // add notifix message about something wrong
-    console.log(error.message);
+    onError(error);
   }
 }
 
@@ -160,10 +167,6 @@ function lockDecrese(parentItem) {
 function unlockDecrese(parentItem) {
   parentItem.children.decrease.children[0].classList.remove('hide');
   parentItem.children.decrease.disabled = false;
-}
-
-function updateLocalStorageData(dataForm) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(dataForm));
 }
 
 function isBasketEmpty(itemAdded) {
@@ -254,9 +257,7 @@ async function onOrderSubmit(event) {
   try {
     event.preventDefault();
     const email = event.target.elements.email.value;
-    console.log(isEmailValid(email));
     if (!isEmailValid(email)) {
-      console.dir(email);
       throw new Error(`Your E-mail is not valid`);
     }
     let order = [];
@@ -266,7 +267,7 @@ async function onOrderSubmit(event) {
     const apiResponse = await createNewOrder(email, order);
     success(apiResponse);
   } catch (error) {
-    onError(error);
+    onError(`Your E-mail is not valid`);
   }
 }
 
@@ -281,15 +282,17 @@ function success(response) {
   modalInfo.title = 'Order success';
   modalInfo.image = successImg;
   createModalMarkup(modalInfo);
+  lockScroll();
   openModalWindow();
   resetCart();
 }
 
-function onError(response) {
-  modalInfo.message = response.message;
+function onError() {
+  modalInfo.message = "Sorry, Go to the main page and try again...";
   modalInfo.title = 'Something went wrong';
   modalInfo.image = errorImg;
   createModalMarkup(modalInfo);
+  lockScroll();
   openModalWindow();
 }
 
@@ -321,16 +324,22 @@ function toggleModal() {
   document.removeEventListener('keydown', escClick);
   backdrop.removeEventListener('click', toggleModal);
   modal.classList.toggle('is-hidden');
+  unlockScroll();
   modalWindow.innerHTML = '';
 }
 function escClick(event) {
   if (event.code === 'Escape') {
-    backdrop.removeEventListener('click', toggleModal);
-    document.removeEventListener('keydown', escClick);
-    modal.classList.toggle('is-hidden');
-    modalWindow.innerHTML = '';
+    toggleModal();
   }
 }
+
+function lockScroll() {
+  document.body.style.overflow = 'hidden';
+}
+function unlockScroll() {
+  document.body.style.overflow = '';
+}
+
 function resetCart() {
   clearBasket();
   checkoutForm.reset();
