@@ -130,7 +130,7 @@ function deleteSelectedItem(item) {
 
 //  ------- Created count into header
 export function countAddedItems(item) {
-  if (!itemCount) {
+  if (itemCount) {
     itemCount.textContent = item.length;
   }
   headerCount.textContent = `Cart (${item.length})`;
