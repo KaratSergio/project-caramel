@@ -29,7 +29,7 @@ export function addMarkup(el, markup) {
 
 // передаєм на пвгінацію для відмальовки карток
 export async function displayProducts(results) {
-  const markup = createCardMarkup(results);
+  const markup = createCardMarkup(results, toggle);
   addMarkup(productsList, markup);
 }
 
@@ -84,18 +84,66 @@ console.log(id);
 }
 
 function onShowModal(event) {
-  const cardEl = event.target.closest('.prod-item');
-  // console.log(cardEl);
-  const btnEl = event.target.closest('.buy-btn');
-  // console.log(btnEl);
+  // const cardEl = event.target.closest('.prod-item');
+  // const productData = cardEl.dataset.product; // або використовуйте data-* атрибут, наприклад, data-product
+  // const product = JSON.parse(productData);
 
-  if (!cardEl || btnEl) {
-    return;
+
+  // const idProduct = cardEl.getAttribute('data-js-product-id');
+  // const dataID = items.find(item => idProduct === item._id);
+
+  // try {
+  //     const parsedData = JSON.parse(JSON.stringify(dataID));
+  //     openModal(parsedData);
+  // } catch (error) {
+  //     console.error('Error parsing JSON:', error);
+  // }
+
+
+
+  
+  // const idProduct = cardEl.getAttribute('data-js-product-id');
+  // const dataID = items.find(item => idProduct === item._id);
+
+  // if (dataID) {
+  //     openModal(dataID);
+  // } else {
+  //     console.error('Data for parsing is undefined or not found.');
+  // }
+
+
+  const cardEl = event.target.closest('.prod-item');
+  if (!cardEl) {
+      console.error('Card element is not defined.');
+      return;
   }
   const idProduct = cardEl.getAttribute('data-js-product-id');
-  // console.log(idProduct);
   const dataID = items.find(item => idProduct === item._id);
-  // console.log(dataID);
+  if (dataID) {
+      openModal(dataID);
+  } else {
+      console.error('Data for parsing is undefined or not found.');
+  }
+
+
+
+
+
+
+  // // console.log(cardEl);
+  // const btnEl = event.target.closest('.buy-btn');
+  // // console.log(btnEl);
+
+  // if (!cardEl || btnEl) {
+  //   return;
+  // }
+  // const idProduct = cardEl.getAttribute('data-js-product-id');
+  // // console.log(idProduct);
+  // const dataID = items.find(item => idProduct === item._id);
+  // // console.log(dataID);
+
+
+
   openModal(dataID);
 }
 
@@ -103,13 +151,13 @@ function getIdProducts(items = []) {
   return items.map(item => item._id);
 }
 
-export function createCardMarkup(results) {
+export function createCardMarkup(results, toggle) {
   const check = toggle ? '' : 'is-hidden';
 
   const card = toggle ? 'is-hidden' : '';
 
   return results
-    .map(({ _id, name, img, category, size, price, popularity }) => {
+    .map(({ _id, name, img, category, size, price, popularity, desc }) => {
       return `
         <li class="prod-item" data-js-product-id=${_id}>   
           <div class="prod-pic">
