@@ -2,12 +2,6 @@
   margin-bottom: 80px;
 }
 
-/* .popular {
-  max-width: 375px;
-} */
-/* .popular-container {
-  width: 100%;
-} */
 .popular-list {
   display: flex;
   flex-direction: column;
