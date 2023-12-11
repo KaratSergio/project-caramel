@@ -108,7 +108,7 @@ function createMarkup(items) {
         price,
         is10PercentOff,
       }) => {
-        // додав строку 15  та ретерн на 17
+        
         const firstDigit = parseInt(popularity.toString()[0]);
         const newName = truncate(name, 14);
 
