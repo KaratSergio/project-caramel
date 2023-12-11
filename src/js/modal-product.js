@@ -1,8 +1,13 @@
-// modal-product.js
+import { getData, saveData } from './STORAGE';
+
+const addToCartIcon = document.getElementById('addToCartIcon');
+const removeFromIcon = document.getElementById('removeFromIcon');
+removeFromIcon.classList.add('visually-hidden');
 
 const modalProduct = document.getElementById('modalProduct');
 const closeModalProductBtn = document.getElementById('closeModalProductBtn');
 const addToCartBtn = document.getElementById('addToCartBtn');
+const removeFromBtn = document.getElementById('removeFrom'); 
 const modalProductImage = document.getElementById('modalProductImage');
 const modalProductName = document.getElementById('modalProductName');
 const modalProductCategory = document.getElementById('modalProductCategory');
@@ -11,95 +16,118 @@ const modalProductPopularity = document.getElementById('modalProductPopularity')
 const modalProductDescription = document.getElementById('modalProductDescription');
 const modalProductPrice = document.getElementById('modalProductPrice');
 
+let isProductAdded = false;
+
 export function openModal(product) {
-    if (!product || !product.img) {
-        console.error('Product data is missing or incomplete.');
-        return;
+  if (!product || !product.img) {
+    console.error('Product data is missing or incomplete.');
+    return;
+  }
+
+  modalProduct.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+  document.querySelector('.modal-overlay').style.display = 'flex'; 
+  window.addEventListener('click', outsideModalClick);
+
+  addToCartBtn.addEventListener('click', () => {
+    const listProducts = getData();
+    const productAdded = listProducts.find(item => item._id === product._id);
+    if (!productAdded) {
+      listProducts.push(product);
+      saveData(listProducts);
+      updateCartIcon(true);
+      isProductAdded = true;
     }
-    // console.log(product); 
+  });
 
-    modalProductImage.src = product.img;
-    modalProductName.textContent = product.name;
+  removeFromBtn.addEventListener('click', () => {
+    manageCart(product, true);
+    updateCartIcon(false);
+    isProductAdded = false;
+  });
 
-  
-    modalProductCategory.innerHTML = `Category: <span id="priceText">$ ${product.category}</span>`;
-    document.getElementById('priceText').style.color = 'black';
-    modalProductSize.innerHTML = `Size: <span id="priceTexte">$ ${product.size}</span>`;
-    document.getElementById('priceTexte').style.color = 'black';
-    modalProductPopularity.innerHTML = `Popularity: <span id="priceTex">$ ${product.popularity}</span>`;
-    document.getElementById('priceTex').style.color = 'black';
-     // modalProductCategory.textContent = `Category: ${product.category}`;
-     // modalProductSize.textContent = `Size: ${product.size}`;
-      // modalProductPopularity.textContent = `Popularity: ${product.popularity}`;
-    modalProductDescription.textContent = `${product.desc}`;
-    modalProductPrice.textContent = `$ ${product.price}`;
+  modalProductImage.src = product.img;
+  modalProductName.textContent = product.name;
 
-       // const existingOverlay = document.querySelector('.modal-overlay');
-    // if (!existingOverlay) {
+  modalProductCategory.innerHTML = `Category: <span id="priceText">$ ${product.category}</span>`;
+  document.getElementById('priceText').style.color = 'black';
+  modalProductSize.innerHTML = `Size: <span id="priceTexte">$ ${product.size}</span>`;
+  document.getElementById('priceTexte').style.color = 'black';
+  modalProductPopularity.innerHTML = `Popularity: <span id="priceTex">$ ${product.popularity}</span>`;
+  document.getElementById('priceTex').style.color = 'black';
 
-    // const overlay = document.createElement('div');
-    // overlay.classList.add('modal-overlay');
-    // document.body.appendChild(overlay);
-    // overlay.addEventListener('click', closeModal);
-    // }
+  modalProductDescription.textContent = `${product.desc}`;
+  modalProductPrice.textContent = `$ ${product.price}`;
 
+  modalProduct.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+  document.querySelector('.modal-overlay').style.display = 'block';
+  window.addEventListener('click', outsideModalClick);
+}
 
-    // document.body.style.overflow = 'hidden';
-    modalProduct.style.display = 'block';
-    window.addEventListener('click', outsideModalClick);
+function manageCart(product, remove = false) {
+  const listProducts = getData();
+  const productInCart = listProducts.find(item => item._id === product._id);
+
+  if (remove) {
+    if (productInCart) {
+      saveData(listProducts.filter(item => item._id !== product._id));
+    }
+  } else {
+    if (!productInCart) {
+      listProducts.push(product);
+      saveData(listProducts);
+    }
+  }
 }
 
 function closeModal() {
-    document.body.style.overflow = '';
-    modalProduct.style.display = 'none';
-    window.removeEventListener('click', outsideModalClick);
-
-       // const overlay = document.querySelector('.modal-overlay');
-    // if (overlay) {
-    //   document.body.removeChild(overlay);
-    // }
+  document.body.style.overflow = '';
+  modalProduct.style.display = 'none';
+  document.querySelector('.modal-overlay').style.display = 'none'; 
+  window.removeEventListener('click', outsideModalClick);
+  isProductAdded = false;
 }
 
-// Event listeners
 closeModalProductBtn.addEventListener('click', closeModal);
-
-// Close the modal if the user clicks outside of it
-// window.addEventListener('click', function (event) {
-//     if (event.target === modalProduct) {
-//         closeModal();
-//     }
-// });
-
-window.addEventListener('click', outsideModalClick);
-
 document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape') {
-        closeModal();
-    }
+  if (event.key === 'Escape') {
+    closeModal();
+  }
 });
 
 function outsideModalClick(event) {
-    if (event.target === modalProduct) {
-        closeModal();
-    }
-}
-// Close the modal if the user clicks outside of it
-window.addEventListener('click', function (event) {
-    if (event.target === modalProduct) {
-        closeModal();
-    }
-});
-
-// Add product to cart logic
-addToCartBtn.addEventListener('click', function () {
-    // Implement logic to add the product to the cart and update the UI
-    // You can use localStorage to store the cart information
-    // Example:
-    // const productId = product.id;
-    // const cart = JSON.parse(localStorage.getItem('cart')) || {};
-    // cart[productId] = (cart[productId] || 0) + 1;
-    // localStorage.setItem('cart', JSON.stringify(cart));
-
-    // After updating the cart, you might want to close the modal
+  if (event.target === modalProduct) {
     closeModal();
+  }
+}
+
+function updateCartIcon(itemAdded) {
+  const listProducts = getData();
+
+  if (itemAdded) {
+    addToCartIcon.classList.add('added-to-cart');
+    removeFromIcon.classList.remove('added-to-cart');
+  } else {
+    addToCartIcon.classList.remove('added-to-cart');
+    removeFromIcon.classList.add('added-to-cart');
+  }
+
+  if (listProducts.length > 0) {
+    removeFromBtn.classList.remove('visually-hidden');
+    addToCartBtn.classList.add('visually-hidden');
+  } else {
+    removeFromBtn.classList.add('visually-hidden');
+    addToCartBtn.classList.remove('visually-hidden');
+  }
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const listProducts = getData();
+  const productAdded = listProducts.find(item => item._id === product._id);
+  if (productAdded) {
+    isProductAdded = true;
+  }
+  updateCartIcon(isProductAdded);
 });

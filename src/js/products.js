@@ -2,8 +2,8 @@ import sprite from '../images/icons.svg';
 // import { first, result } from 'lodash';
 // import { getProductsByParams } from './get-api';
 
-
 import { openModal } from './modal-product';
+import { getProductById } from './get-api';
 
 const productsList = document.querySelector('.list-prod');
 const STORAGE_KEY = 'added-item';
@@ -40,13 +40,8 @@ console.log(items);
 const productId = getIdProducts(items);
 console.log(productId);
 
-
-
 const toggle = productId.includes(items._id);
 console.log(toggle);
-
-
-
 
 productsList.addEventListener('click', onClick);
 productsList.addEventListener('click', onShowModal);
@@ -56,27 +51,31 @@ function onClick(event) {
   if (!btnEl) {
     return;
   }
-  // elemets
-  const cardEl = event.target.closest('.prod-item');
-console.log(cardEl);
-  const icons = btnEl.querySelectorAll('svg');
 
-// data- id
+  const cardEl = event.target.closest('.prod-item');
+  const icons = btnEl.querySelectorAll('svg');
   const id = cardEl.getAttribute('data-js-product-id');
-console.log(id);
- 
+  console.log(id);
+  
+  // getProductById(id)
+  //         .then(res => {
+  //           openModal(res);
+  //         })
+  //         .catch(error => {
+  //           console.error(error);
+  //         });
   // отримуєм дані з локалки для зрівнняня
   const items = getData(GetLocal);
   console.log(items);
-// перевіряєм і додаєм до локал покищо не віднімає
- if (items.find(item => id === item._id)) {
-   const updatedItems = items.filter(item => id !== item._id);
-   saveData(STORAGE_KEY, updatedItems);
- } else {
-   const data = products.find(item => id === item._id);
-   items.push(data);
-   saveData(STORAGE_KEY, items);
- }
+  // перевіряєм і додаєм до локал покищо не віднімає
+  if (items.find(item => id === item._id)) {
+    const updatedItems = items.filter(item => id !== item._id);
+    saveData(STORAGE_KEY, updatedItems);
+  } else {
+    const data = products.find(item => id === item._id);
+    items.push(data);
+    saveData(STORAGE_KEY, items);
+  }
 
   icons.forEach(element => {
     element.classList.toggle('is-hidden');
@@ -93,10 +92,18 @@ function onShowModal(event) {
     return;
   }
   const idProduct = cardEl.getAttribute('data-js-product-id');
+  
   // console.log(idProduct);
   const dataID = items.find(item => idProduct === item._id);
   // console.log(dataID);
-  openModal(dataID);
+  getProductById(idProduct)
+  .then(res => {
+    openModal(res);
+  })
+  .catch(error => {
+    console.error(error);
+  });
+  // openModal(dataID);
 }
 
 function getIdProducts(items = []) {

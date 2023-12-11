@@ -86,7 +86,8 @@ document.body.style.overflow = 'auto';
   function toggleMenu() {
     refs.menu.classList.toggle('is-hidden');
     document.body.classList.toggle('no-scroll');
-    document.body.style.overflow = 'hidden';
+
+    document.body.style.overflow = refs.menu.classList.contains('is-hidden') ? 'auto' : 'hidden';
   }
 
   const links = Array.from(refs.menu.children);
@@ -95,8 +96,9 @@ document.body.style.overflow = 'auto';
   });
 
   function closeOnClick() {
-    refs.menu.classList.toggle('is-hidden');
-    document.body.classList.toggle('no-scroll');
+    refs.menu.classList.add('is-hidden');
+    document.body.classList.remove('no-scroll');
     document.body.style.overflow = 'auto';
   }
 })();
+

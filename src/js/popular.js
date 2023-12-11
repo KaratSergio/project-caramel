@@ -1,4 +1,5 @@
 import { getPopularProducts, getProductById } from './get-api';
+import { getData, saveData } from './STORAGE';
 import { openModal } from './modal-product';
 import sprite from '../images/icons.svg';
 
@@ -15,20 +16,20 @@ import sprite from '../images/icons.svg';
 
 const popularList = document.querySelector('.popular-list');
 
-const STORAGE_KEY = 'added-itemX';
+// const STORAGE_KEY = 'added-itemX';
 
-function saveData(data) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-}
+// function saveData(data) {
+//   localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+// }
 
-function getData() {
-  try {
-    const result = localStorage.getItem(STORAGE_KEY);
-    return result ? JSON.parse(result) : [];
-  } catch (error) {
-    console.log(error);
-  }
-}
+// function getData() {
+//   try {
+//     const result = localStorage.getItem(STORAGE_KEY);
+//     return result ? JSON.parse(result) : [];
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
 
 getPopularProducts(5)
   .then(data => {
