@@ -1,18 +1,21 @@
 import { getPopularProducts, getProductById } from './get-api';
-import { getData, saveData } from './STORAGE';
+import { getData, saveData, countAddedItems, STORAGE_KEY } from './STORAGE';
 import { openModal } from './modal-product';
 import sprite from '../images/icons.svg';
 
 const popularList = document.querySelector('.popular-product-list');
+//const STORAGE_KEY = 'added-item';
 
 getPopularProducts(5)
   .then(data => {
     popularList.insertAdjacentHTML('beforeend', createMarkup(data));
 
-    const productAdded = document.getElementsByClassName('btn-remove-product');
+    const productAdded = document.getElementsByClassName(
+      'button-remove-product'
+    );
 
     [...productAdded].forEach(elem => {
-      const idBtn = elem.getAttribute('data-js-btn');
+      const idBtn = elem.getAttribute('data-js-button');
       const selIdBtn = productSelected(idBtn, data);
       if (checkLocalStorage(selIdBtn._id)) {
         elem.nextElementSibling.classList.add('visually-hidden');
@@ -27,29 +30,37 @@ getPopularProducts(5)
         const popularProductId = popularCard.getAttribute('data-js-product-id');
 
         onSHowModal(popularProductId);
-      } else if (target.closest('.btn-add-product')) {
-        const elemAdded =
-          target.closest('.btn-add-product').previousElementSibling;
-        const btnProductId = elemAdded.getAttribute('data-js-btn');
+      } else if (target.closest('.button-add-product')) {
+        const elemAdded = target.closest(
+          '.button-add-product'
+        ).previousElementSibling;
+        const btnProductId = elemAdded.getAttribute('data-js-button');
         const selectedProduct = productSelected(btnProductId, data);
-        const listProducts = getData();
+        const listProducts = getData(STORAGE_KEY);
         if (!checkLocalStorage(selectedProduct._id)) {
           listProducts.push(selectedProduct);
-          saveData(listProducts);
+          saveData(STORAGE_KEY, listProducts);
+          countAddedItems();
         }
-        target.closest('.btn-add-product').classList.add('visually-hidden');
+        target.closest('.button-add-product').classList.add('visually-hidden');
         elemAdded.classList.remove('visually-hidden');
-      } else if (target.closest('.btn-remove-product')) {
+      } else if (target.closest('.button-remove-product')) {
         const idBtnLS = target
-          .closest('.btn-remove-product')
-          .getAttribute('data-js-btn');
+          .closest('.button-remove-product')
+          .getAttribute('data-js-button');
         const selIdBtnLS = productSelected(idBtnLS, data);
-        const products = getData();
+        const products = getData(STORAGE_KEY);
         const productAdded = checkLocalStorage(selIdBtnLS._id);
-        saveData(products.filter(product => productAdded._id !== product._id));
-        target.closest('.btn-remove-product').classList.add('visually-hidden');
+        saveData(
+          STORAGE_KEY,
+          products.filter(product => productAdded._id !== product._id)
+        );
+        countAddedItems();
         target
-          .closest('.btn-remove-product')
+          .closest('.button-remove-product')
+          .classList.add('visually-hidden');
+        target
+          .closest('.button-remove-product')
           .nextElementSibling.classList.remove('visually-hidden');
       }
     }
@@ -76,7 +87,7 @@ function productSelected(val, data) {
 }
 
 function checkLocalStorage(id) {
-  const listProducts = getData();
+  const listProducts = getData(STORAGE_KEY);
   return listProducts.find(item => item._id === id);
 }
 
@@ -102,12 +113,12 @@ function createMarkup(items) {
         const newName = truncate(name, 14);
 
         return `  <li class="popular-item">
-            <button class="btn-remove-product" data-js-btn=${_id}>
+            <button class="button-remove-product" data-js-button=${_id}>
         <svg class="svg-remove-product" width="12" height="12">
           <use href="${sprite}#check"></use>
         </svg>
       </button>
-      <button class="btn-add-product" type="button" >
+      <button class="button-add-product" type="button" >
         <svg class="svg-add-product" width="12" height="12">
           <use href="${sprite}#shopping-cart"></use>
         </svg>

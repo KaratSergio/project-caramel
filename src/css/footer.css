@@ -145,6 +145,21 @@
   justify-content: center;
 }
 
+
+.footer-socials-text:hover {
+  color: var(--text-color);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.food-boutique:hover,
+.food-boutique:focus{
+  fill: var(--background);
+}
+
+.food-boutique-container:hover {
+  background-color: var(--social-hover);
+}
+
 .footer-social-list {
   gap: 12px;
   margin-bottom: 40px;
@@ -256,10 +271,7 @@
     margin-bottom: 64px;
     max-width: 429px;
   }
-  /* .footer-div {
-    display: flex;
-    gap: 8px;
-  } */
+
   .ppts {
   }
   .footer-p-h {
