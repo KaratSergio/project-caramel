@@ -1,9 +1,10 @@
 import { getPopularProducts, getProductById } from './get-api';
-import { getData, saveData } from './STORAGE';
+import { getData, saveData, countAddedItems, STORAGE_KEY } from './STORAGE';
 import { openModal } from './modal-product';
 import sprite from '../images/icons.svg';
 
 const popularList = document.querySelector('.popular-product-list');
+//const STORAGE_KEY = 'added-item';
 
 getPopularProducts(5)
   .then(data => {
@@ -35,10 +36,11 @@ getPopularProducts(5)
         ).previousElementSibling;
         const btnProductId = elemAdded.getAttribute('data-js-button');
         const selectedProduct = productSelected(btnProductId, data);
-        const listProducts = getData();
+        const listProducts = getData(STORAGE_KEY);
         if (!checkLocalStorage(selectedProduct._id)) {
           listProducts.push(selectedProduct);
-          saveData(listProducts);
+          saveData(STORAGE_KEY, listProducts);
+          countAddedItems();
         }
         target.closest('.button-add-product').classList.add('visually-hidden');
         elemAdded.classList.remove('visually-hidden');
@@ -47,9 +49,13 @@ getPopularProducts(5)
           .closest('.button-remove-product')
           .getAttribute('data-js-button');
         const selIdBtnLS = productSelected(idBtnLS, data);
-        const products = getData();
+        const products = getData(STORAGE_KEY);
         const productAdded = checkLocalStorage(selIdBtnLS._id);
-        saveData(products.filter(product => productAdded._id !== product._id));
+        saveData(
+          STORAGE_KEY,
+          products.filter(product => productAdded._id !== product._id)
+        );
+        countAddedItems();
         target
           .closest('.button-remove-product')
           .classList.add('visually-hidden');
@@ -81,7 +87,7 @@ function productSelected(val, data) {
 }
 
 function checkLocalStorage(id) {
-  const listProducts = getData();
+  const listProducts = getData(STORAGE_KEY);
   return listProducts.find(item => item._id === id);
 }
 
