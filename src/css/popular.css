@@ -48,7 +48,7 @@
   background: var(--background);
 }
 
-.btn-add-product {
+.button-add-product {
   position: absolute;
   top: 12px;
   right: 12px;
@@ -73,12 +73,12 @@
   fill: var(--background);
 }
 
-.btn-add-product:hover,
-.btn-add-product:focus {
+.button-add-product:hover,
+.button-add-product:focus {
   background-color: var(--gray);
 }
 
-.btn-remove-product {
+.button-remove-product {
   position: absolute;
   top: 12px;
   right: 12px;
