@@ -126,7 +126,7 @@ export function createCardMarkup(results) {
           </div>
           <h3 class="title-prod">${name}</h3>
           <div class="feature">
-            <p class="feature-prod">Category:<span class="feature-value">${category}</span></p>
+            <p class="feature-prod">Category:<span class="feature-value">${category.replace(/_/g, ' ')}</span></p>
             <p class="feature-prod">Size:<span class="feature-value">${size}</span></p>
             <p class="feature-prod push">Popularity:<span class="feature-value">${popularity}</span></p>
           </div>
