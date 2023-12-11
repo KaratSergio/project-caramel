@@ -2,12 +2,13 @@ import sprite from '../images/icons.svg';
 import { createNewOrder } from './get-api';
 import successImg from '../images/success_order.png';
 import errorImg from '../images/error.png';
-import { STORAGE_KEY } from './STORAGE';
+import { STORAGE_KEY, getData, saveData } from './STORAGE';
 
 // const STORAGE_KEY = 'added-item';
 
 let dataForm = [];
 let hiddenElements = [];
+const modalInfo = {};
 
 const itemCount = document.querySelector('.js-item-count');
 const emptyBasket = document.querySelector('.js-empty-basket');
@@ -17,7 +18,6 @@ const totalSum = document.querySelector('.total-count-text');
 const checkoutForm = document.querySelector('.js-checkout-form');
 const itemButton = document.querySelector('.js-item-button');
 const headerCount = document.querySelector('#countProducts');
-const modalInfo = {};
 
 checkoutForm.addEventListener('submit', onOrderSubmit);
 itemButton.addEventListener('click', onClick);
@@ -39,24 +39,26 @@ function onLoad() {
 // import { getLocalStorageData, countAddedItems } from './card';
 // let dataForm = [];
 
-// getLocalStorageData()
+// getLocalStorageData();
 // countAddedItems(dataForm);
 
 //  ------- get data for CART from local storage
-export function getLocalStorageData() {
-  const data = localStorage.getItem(STORAGE_KEY);
-  if (!data) return;
-  dataForm = JSON.parse(data);
-}
-function updateLocalStorageData(dataForm) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(dataForm));
-}
+// export function getLocalStorageData() {
+//   const data = localStorage.getItem(STORAGE_KEY);
+//   if (!data) return;
+//   dataForm = JSON.parse(data);
+// }
+
+// function updateLocalStorageData(dataForm) {
+//   localStorage.setItem(STORAGE_KEY, JSON.stringify(dataForm));
+// }
 function updateItemCount(item, count) {
   for (let i = 0; i <= dataForm.length; i += 1) {
     const { _id: itemId } = dataForm[i];
     if (itemId === item) {
       dataForm[i].count = count;
-      updateLocalStorageData(dataForm);
+      // updateLocalStorageData(dataForm);
+      saveData(STORAGE_KEY, dataForm);
       return;
     }
   }
@@ -75,10 +77,11 @@ function checkLoadCount() {
 
 // ------- Created Category without "_"
 export function changeCategory() {
-  getLocalStorageData();
+  dataForm = getData(STORAGE_KEY);
   dataForm.forEach(element => {
     element.category = element.category.split('_').join(' ');
-    updateLocalStorageData(dataForm);
+    // updateLocalStorageData(dataForm);
+    saveData(STORAGE_KEY, dataForm);
   });
 }
 
@@ -95,7 +98,8 @@ function onClick(event) {
     case 'delete-item-button':
       const itemId = idDetect(event);
       deleteSelectedItem(itemId);
-      getLocalStorageData();
+      // getLocalStorageData();
+      getData(STORAGE_KEY);
       itemsContainer.innerHTML = basketItemsMarkup(dataForm, hiddenElements);
       break;
     case 'decrease-button':
@@ -120,7 +124,8 @@ function deleteSelectedItem(item) {
     const { _id: itemId } = dataForm[i];
     if (itemId === item) {
       dataForm.splice(i, 1);
-      updateLocalStorageData(dataForm);
+      // updateLocalStorageData(dataForm);
+      saveData(STORAGE_KEY, dataForm);
       countAddedItems(dataForm);
       totalSumCount(dataForm);
       return;
@@ -288,7 +293,7 @@ function success(response) {
 }
 
 function onError() {
-  modalInfo.message = "Sorry, Go to the main page and try again...";
+  modalInfo.message = 'Sorry, Update page and try again...';
   modalInfo.title = 'Something went wrong';
   modalInfo.image = errorImg;
   createModalMarkup(modalInfo);

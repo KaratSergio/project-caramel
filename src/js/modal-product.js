@@ -1,4 +1,12 @@
-import { getData, saveData } from './STORAGE';
+import {
+  STORAGE_KEY,
+  getData,
+  saveData,
+  countAddedItems,
+  checkAdded,
+  manageButton
+} from './STORAGE';
+// tyt
 
 const addToCartIcon = document.getElementById('addToCartIcon');
 const removeFromIcon = document.getElementById('removeFromIcon');
@@ -7,16 +15,20 @@ removeFromIcon.classList.add('visually-hidden');
 const modalProduct = document.getElementById('modalProduct');
 const closeModalProductBtn = document.getElementById('closeModalProductBtn');
 const addToCartBtn = document.getElementById('addToCartBtn');
-const removeFromBtn = document.getElementById('removeFrom'); 
+const removeFromBtn = document.getElementById('removeFrom');
 const modalProductImage = document.getElementById('modalProductImage');
 const modalProductName = document.getElementById('modalProductName');
 const modalProductCategory = document.getElementById('modalProductCategory');
 const modalProductSize = document.getElementById('modalProductSize');
-const modalProductPopularity = document.getElementById('modalProductPopularity');
-const modalProductDescription = document.getElementById('modalProductDescription');
+const modalProductPopularity = document.getElementById(
+  'modalProductPopularity'
+);
+const modalProductDescription = document.getElementById(
+  'modalProductDescription'
+);
 const modalProductPrice = document.getElementById('modalProductPrice');
 
-let isProductAdded = false;
+// let isProductAdded = false;
 
 export function openModal(product) {
   if (!product || !product.img) {
@@ -26,25 +38,28 @@ export function openModal(product) {
 
   modalProduct.style.display = 'block';
   document.body.style.overflow = 'hidden';
-  document.querySelector('.modal-overlay').style.display = 'flex'; 
+  document.querySelector('.modal-overlay').style.display = 'flex';
   window.addEventListener('click', outsideModalClick);
-
-  addToCartBtn.addEventListener('click', () => {
-    const listProducts = getData();
-    const productAdded = listProducts.find(item => item._id === product._id);
-    if (!productAdded) {
-      listProducts.push(product);
-      saveData(listProducts);
-      updateCartIcon(true);
-      isProductAdded = true;
-    }
-  });
-
-  removeFromBtn.addEventListener('click', () => {
-    manageCart(product, true);
-    updateCartIcon(false);
-    isProductAdded = false;
-  });
+  
+  addToCartBtn.addEventListener('click', addProduct);
+  removeFromBtn.addEventListener('click', removeProduct);
+  const listProducts = getData(STORAGE_KEY);
+  let item = checkAdded(listProducts, product);
+  manageButton(item, addToCartBtn, removeFromBtn);
+  function addProduct() {
+    listProducts.push(product);
+    recheckCart(listProducts);
+  }
+  function removeProduct() {
+    listProducts.splice(item, 1);
+    recheckCart(listProducts);
+  }
+  function recheckCart(item) {
+    saveData(STORAGE_KEY, listProducts);
+    countAddedItems();
+    item = checkAdded(listProducts, product);
+    manageButton(item, addToCartBtn, removeFromBtn);
+  }
 
   modalProductImage.src = product.img;
   modalProductName.textContent = product.name;
@@ -65,28 +80,28 @@ export function openModal(product) {
   window.addEventListener('click', outsideModalClick);
 }
 
-function manageCart(product, remove = false) {
-  const listProducts = getData();
-  const productInCart = listProducts.find(item => item._id === product._id);
+// function manageCart(product, remove = false) {
+//   const listProducts = getData();
+//   const productInCart = listProducts.find(item => item._id === product._id);
 
-  if (remove) {
-    if (productInCart) {
-      saveData(listProducts.filter(item => item._id !== product._id));
-    }
-  } else {
-    if (!productInCart) {
-      listProducts.push(product);
-      saveData(listProducts);
-    }
-  }
-}
+//   if (remove) {
+//     if (productInCart) {
+//       saveData(listProducts.filter(item => item._id !== product._id));
+//     }
+//   } else {
+//     if (!productInCart) {
+//       listProducts.push(product);
+//       saveData(listProducts);
+//     }
+//   }
+// }
 
 function closeModal() {
   document.body.style.overflow = '';
   modalProduct.style.display = 'none';
-  document.querySelector('.modal-overlay').style.display = 'none'; 
+  document.querySelector('.modal-overlay').style.display = 'none';
   window.removeEventListener('click', outsideModalClick);
-  isProductAdded = false;
+  // isProductAdded = false;
 }
 
 closeModalProductBtn.addEventListener('click', closeModal);
@@ -102,33 +117,33 @@ function outsideModalClick(event) {
   }
 }
 
-function updateCartIcon(itemAdded) {
-  const listProducts = getData();
+// function updateCartIcon(itemAdded) {
+//   const listProducts = getData();
 
-  if (itemAdded) {
-    addToCartIcon.classList.add('added-to-cart');
-    removeFromIcon.classList.remove('added-to-cart');
-  } else {
-    addToCartIcon.classList.remove('added-to-cart');
-    removeFromIcon.classList.add('added-to-cart');
-  }
+//   if (itemAdded) {
+//     // console.log(addToCartIcon);
+//     addToCartIcon.classList.add('added-to-cart');
+//     removeFromIcon.classList.remove('added-to-cart');
+//   } else {
+//     // console.log(addToCartIcon);
+//     addToCartIcon.classList.remove('added-to-cart');
+//     removeFromIcon.classList.add('added-to-cart');
+//   }
 
-  if (listProducts.length > 0) {
-    removeFromBtn.classList.remove('visually-hidden');
-    addToCartBtn.classList.add('visually-hidden');
-  } else {
-    removeFromBtn.classList.add('visually-hidden');
-    addToCartBtn.classList.remove('visually-hidden');
-  }
-}
+//   if (listProducts.length > 0) {
+//     removeFromBtn.classList.remove('visually-hidden');
+//     addToCartBtn.classList.add('visually-hidden');
+//   } else {
+//     removeFromBtn.classList.add('visually-hidden');
+//     addToCartBtn.classList.remove('visually-hidden');
+//   }
+// }
 
-
-document.addEventListener('DOMContentLoaded', () => {
-  const listProducts = getData();
-  const productAdded = listProducts.find(item => item._id === product._id);
-  if (productAdded) {
-    isProductAdded = true;
-  }
-  updateCartIcon(isProductAdded);
-});
-
+// document.addEventListener('DOMContentLoaded', () => {
+//   const listProducts = getData();
+//   const productAdded = listProducts.find(item => item._id === product._id);
+//   if (productAdded) {
+//     isProductAdded = true;
+//   }
+//   updateCartIcon(isProductAdded);
+// });
