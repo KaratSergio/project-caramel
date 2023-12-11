@@ -1,10 +1,10 @@
-export const STORAGE_KEY = 'added-item';
-export function saveData(data) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+
+export function saveData(key, data) {
+  localStorage.setItem(key, JSON.stringify(data));
 }
-export function getData() {
+export function getData(key) {
   try {
-    const result = localStorage.getItem(STORAGE_KEY);
+    const result = localStorage.getItem(key);
     return result ? JSON.parse(result) : [];
   } catch (error) {
     console.log(error);
