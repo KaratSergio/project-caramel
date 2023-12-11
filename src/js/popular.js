@@ -3,13 +3,13 @@ import { getData, saveData } from './STORAGE';
 import { openModal } from './modal-product';
 import sprite from '../images/icons.svg';
 
-const popularList = document.querySelector('.popular-list');
+const popularList = document.querySelector('.popular-product-list');
 
 getPopularProducts(5)
   .then(data => {
     popularList.insertAdjacentHTML('beforeend', createMarkup(data));
 
-    const productAdded = document.getElementsByClassName('product-added');
+    const productAdded = document.getElementsByClassName('btn-remove-product');
 
     [...productAdded].forEach(elem => {
       const idBtn = elem.getAttribute('data-js-btn');
@@ -27,8 +27,9 @@ getPopularProducts(5)
         const popularProductId = popularCard.getAttribute('data-js-product-id');
 
         onSHowModal(popularProductId);
-      } else if (target.closest('.btn-add')) {
-        const elemAdded = target.closest('.btn-add').previousElementSibling;
+      } else if (target.closest('.btn-add-product')) {
+        const elemAdded =
+          target.closest('.btn-add-product').previousElementSibling;
         const btnProductId = elemAdded.getAttribute('data-js-btn');
         const selectedProduct = productSelected(btnProductId, data);
         const listProducts = getData();
@@ -36,19 +37,19 @@ getPopularProducts(5)
           listProducts.push(selectedProduct);
           saveData(listProducts);
         }
-        target.closest('.btn-add').classList.add('visually-hidden');
+        target.closest('.btn-add-product').classList.add('visually-hidden');
         elemAdded.classList.remove('visually-hidden');
-      } else if (target.closest('.product-added')) {
+      } else if (target.closest('.btn-remove-product')) {
         const idBtnLS = target
-          .closest('.product-added')
+          .closest('.btn-remove-product')
           .getAttribute('data-js-btn');
         const selIdBtnLS = productSelected(idBtnLS, data);
         const products = getData();
         const productAdded = checkLocalStorage(selIdBtnLS._id);
         saveData(products.filter(product => productAdded._id !== product._id));
-        target.closest('.product-added').classList.add('visually-hidden');
+        target.closest('.btn-remove-product').classList.add('visually-hidden');
         target
-          .closest('.product-added')
+          .closest('.btn-remove-product')
           .nextElementSibling.classList.remove('visually-hidden');
       }
     }
@@ -101,19 +102,19 @@ function createMarkup(items) {
         const newName = truncate(name, 14);
 
         return `  <li class="popular-item">
-            <span class="product-added" data-js-btn=${_id}>
-        <svg class="svg-added" width="12" height="12">
+            <button class="btn-remove-product" data-js-btn=${_id}>
+        <svg class="svg-remove-product" width="12" height="12">
           <use href="${sprite}#check"></use>
         </svg>
-      </span>
-      <button class="btn-add" type="button" >
-        <svg class="svg-add" width="12" height="12">
+      </button>
+      <button class="btn-add-product" type="button" >
+        <svg class="svg-add-product" width="12" height="12">
           <use href="${sprite}#shopping-cart"></use>
         </svg>
       </button>
         <div class="popular-card" data-js-product-id=${_id}>
           <div class="popular-box-img">
-            <img src="${img}" alt="${name}" loading="lazy"  width="56" />
+            <img src="${img}" alt="${name}" loading="lazy"  width="56" height="56" />
           </div>
           <div class="popular-description">
             <h3 class="popular-card-title">${newName}</h3>
