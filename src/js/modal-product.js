@@ -48,17 +48,14 @@ export function openModal(product) {
 
   modalProductImage.src = product.img;
   modalProductName.textContent = product.name;
-
   modalProductCategory.innerHTML = `Category: <span id="priceText">$ ${product.category}</span>`;
   document.getElementById('priceText').style.color = 'black';
   modalProductSize.innerHTML = `Size: <span id="priceTexte">$ ${product.size}</span>`;
   document.getElementById('priceTexte').style.color = 'black';
   modalProductPopularity.innerHTML = `Popularity: <span id="priceTex">$ ${product.popularity}</span>`;
   document.getElementById('priceTex').style.color = 'black';
-
   modalProductDescription.textContent = `${product.desc}`;
   modalProductPrice.textContent = `$ ${product.price}`;
-
   modalProduct.style.display = 'block';
   document.body.style.overflow = 'hidden';
   document.querySelector('.modal-overlay').style.display = 'block';
@@ -121,8 +118,6 @@ function updateCartIcon(itemAdded) {
     addToCartBtn.classList.remove('visually-hidden');
   }
 }
-
-
 document.addEventListener('DOMContentLoaded', () => {
   const listProducts = getData();
   const productAdded = listProducts.find(item => item._id === product._id);

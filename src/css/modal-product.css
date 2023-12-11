@@ -1,6 +1,5 @@
 #modalProduct {
   display: none;
-
   position: fixed;
   top: 50%;
   left: 50%;
@@ -35,7 +34,6 @@
 .product-info {
   display: block;
   margin-bottom: 0%;
-  /* height: 328px; */
 }
 
 .product-image {
@@ -53,12 +51,10 @@
   max-width: 160px;
   max-height: 160px;
 }
-
 .product-details {
   flex-grow: 1;
   max-width: 295px;
 }
-
 #modalProductName {
   margin-bottom: 10px;
   font-family: Neue Montreal;
@@ -84,20 +80,16 @@
   overflow-y: auto;
   margin-bottom: 40px;
 }
-
 #modalProductDescription::-webkit-scrollbar {
   width: 4px;
 }
-
 #modalProductDescription::-webkit-scrollbar-thumb {
   background-color: #808080;
   border-radius: 4px;
 }
-
 #modalProductDescription::-webkit-scrollbar-track {
   background-color: #f0f0f0;
 }
-
 .modal-overlay {
   display: none;
   position: fixed;
@@ -108,7 +100,6 @@
   background: rgba(1, 1, 1, 0.4);
   z-index: 999;
 }
-
 .product-bloc {
   display: flex;
   display: flex;
@@ -138,7 +129,6 @@
   height: 40px;
   justify-content: space-between;
 }
-
 .product-add .buy-btn {
   padding: 12px 24px;
   justify-content: center;
@@ -155,41 +145,34 @@
 .buy-svg {
   color: #e8e8e2;
 }
-
 @media screen and (min-width: 768px) {
   #modalProduct {
     z-index: 9999;
-
     max-width: 600px;
     height: 380px;
     padding: 40px;
   }
-
   .close {
     top: 24px;
     right: 24px;
     width: 28px;
     height: 28px;
   }
-
   .pro {
     flex-direction: row;
     margin-bottom: 48px;
     justify-content: start;
   }
-
   .product-image {
     margin-bottom: 0px;
     margin-right: 24px;
     width: 240px;
     height: 212px;
   }
-
   #modalProductName {
     font-size: 20px;
     line-height: 1.2;
   }
-
   #modalProductPrice {
     font-size: 20px;
     line-height: 1.2;
@@ -197,20 +180,16 @@
   }
   #modalProductDescription {
     margin-bottom: 0px;
-
     margin-top: 24px;
     font-size: 16px;
     max-height: 118px;
   }
-
   .product-bloc {
     margin-bottom: 10px;
   }
-
   .product-add {
     width: 520px;
   }
-
   .product-add .buy-btn {
     padding: 10px 28px;
   }
