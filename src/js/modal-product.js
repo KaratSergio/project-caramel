@@ -1,5 +1,6 @@
 import { getData, saveData } from './STORAGE';
 
+const modalOverlay = document.querySelector('.modal-overlay');
 const addToCartIcon = document.getElementById('addToCartIcon');
 const removeFromIcon = document.getElementById('removeFromIcon');
 removeFromIcon.classList.add('visually-hidden');
@@ -28,6 +29,10 @@ export function openModal(product) {
   document.body.style.overflow = 'hidden';
   document.querySelector('.modal-overlay').style.display = 'flex'; 
   window.addEventListener('click', outsideModalClick);
+
+  modalOverlay.style.display = 'flex'; 
+  modalOverlay.addEventListener('click', closeModal);
+ 
 
   addToCartBtn.addEventListener('click', () => {
     const listProducts = getData();
@@ -84,6 +89,10 @@ function closeModal() {
   document.querySelector('.modal-overlay').style.display = 'none'; 
   window.removeEventListener('click', outsideModalClick);
   isProductAdded = false;
+
+  modalOverlay.style.display = 'none'; 
+  modalOverlay.removeEventListener('click', closeModal); 
+ 
 }
 
 closeModalProductBtn.addEventListener('click', closeModal);
