@@ -30,13 +30,13 @@ export async function newDisplayPagination(options) {
   if (totalPages === 0) {
     productsList.innerHTML =
     `<div class="basket-text-container">
-    <p class="basket-text-bold">
-      Nothing was found for the selected <span class="color">filters...</span>
-    </p>
-    <p class="basket-text">
-      Try adjusting your search parameters or browse our range by other criteria to find the perfect product for you.
-    </p>
-</div>`
+      <p class="basket-text-bold">
+        Nothing was found for the selected <span class="color">filters...</span>
+      </p>
+      <p class="basket-text">
+        Try adjusting your search parameters or browse our range by other criteria to find the perfect product for you.
+      </p>
+    </div>`
   }
 
   saveData('firstGet', results);
@@ -48,9 +48,16 @@ export async function newDisplayPagination(options) {
       totalItems: results.length * totalPages,
       itemsPerPage: paginationSearchParams.limit,
       visiblePages: 5,
+      page: 1,
       centerAlign: true,
       usageStatistics: false
     };
+
+    if (window.matchMedia("(max-width: 375px)").matches) {
+      options.visiblePages = 3
+    } else if (window.matchMedia("(min-width: 768px)").matches) {
+      options.visiblePages = 5
+    }
 
     const pagination = new Pagination(paginationContainer, options);
 
