@@ -131,3 +131,4 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   updateCartIcon(isProductAdded);
 });
+
