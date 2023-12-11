@@ -1,3 +1,5 @@
+import sprite from '../../images/icons.svg';
+
 export function createMarkup(items = [], idProducts = []) {
   return items
     .map(item => {
@@ -14,7 +16,7 @@ export function createMarkup(items = [], idProducts = []) {
         item.is10PercentOff &&
         ` <div class="card-product-label">
       <svg>
-      <use href="./images/icons.svg#icon-discount"></use>
+      <use href="${sprite}#icon-discount"></use>
       </svg>
       </div>`
       }
@@ -27,13 +29,13 @@ export function createMarkup(items = [], idProducts = []) {
     <div class="card-product-info">
         <h3 class="card-product-title">${newName}</h3>
         <div class="card-product-info-right">
-            <p class="card-product-price">$${item.price}</p>
+            <p class="card-product-price">&#36; ${item.price}</p>
             <button type="button" class="card-product-btn" >
             <svg class="card-product-svg ${check}" width="18" height="18">
-            <use href="./images/icons.svg#check"></use>
+            <use href="${sprite}#check"></use>
           </svg>
           <svg class="card-product-svg ${card}" width="18" height="18">
-          <use href="./images/icons.svg#shopping-cart"></use>
+          <use href="${sprite}#shopping-cart"></use>
         </svg>
             </button>
         </div>

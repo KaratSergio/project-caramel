@@ -1,9 +1,6 @@
 import { getProducts } from '../get-api';
-<<<<<<< Updated upstream
-import { getData, saveData } from './api/storage';
-=======
+
 import { STORAGE_KEY, countAddedItems, getData, saveData } from '../STORAGE';
->>>>>>> Stashed changes
 import { createMarkup } from './markup-discount';
 import { openModal } from '../modal-product';
 

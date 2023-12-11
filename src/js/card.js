@@ -1,11 +1,15 @@
 import sprite from '../images/icons.svg';
-// import { forEach } from 'lodash';
 import { createNewOrder } from './get-api';
+import successImg from '../images/success_order.png';
+import errorImg from '../images/error.png';
+import { STORAGE_KEY, getData, saveData } from './STORAGE';
 
-const STORAGE_KEY = 'added-item';
+// const STORAGE_KEY = 'added-item';
+
 let dataForm = [];
+let hiddenElements = [];
+const modalInfo = {};
 
-const pathSvg = document.querySelector('.js-basket-icon');
 const itemCount = document.querySelector('.js-item-count');
 const emptyBasket = document.querySelector('.js-empty-basket');
 const filledBasket = document.querySelector('.js-filled-basket');
@@ -15,9 +19,6 @@ const checkoutForm = document.querySelector('.js-checkout-form');
 const itemButton = document.querySelector('.js-item-button');
 const headerCount = document.querySelector('#countProducts');
 
-const path = pathSvg.ownerDocument.location;
-console.dir(path);
-
 checkoutForm.addEventListener('submit', onOrderSubmit);
 itemButton.addEventListener('click', onClick);
 
@@ -25,25 +26,63 @@ onLoad();
 
 function onLoad() {
   try {
-    getLocalStorageData();
+    changeCategory();
     countAddedItems(dataForm);
-
-    counterItem(event, 0);
-
-
-    itemsContainer.innerHTML = basketItemsMarkup(dataForm);
+    checkLoadCount();
+    itemsContainer.innerHTML = basketItemsMarkup(dataForm, hiddenElements);
     totalSumCount(dataForm);
-    // totalSum.textContent = `$${totalSumCount(dataForm)}`;
   } catch (error) {
-    // add notifix message about something wrong
-    console.log(error.message);
+    onError(error);
   }
 }
 
-function getLocalStorageData() {
-  const data = localStorage.getItem(STORAGE_KEY);
-  if (!data) return;
-  dataForm = JSON.parse(data);
+// import { getLocalStorageData, countAddedItems } from './card';
+// let dataForm = [];
+
+// getLocalStorageData();
+// countAddedItems(dataForm);
+
+//  ------- get data for CART from local storage
+// export function getLocalStorageData() {
+//   const data = localStorage.getItem(STORAGE_KEY);
+//   if (!data) return;
+//   dataForm = JSON.parse(data);
+// }
+
+// function updateLocalStorageData(dataForm) {
+//   localStorage.setItem(STORAGE_KEY, JSON.stringify(dataForm));
+// }
+function updateItemCount(item, count) {
+  for (let i = 0; i <= dataForm.length; i += 1) {
+    const { _id: itemId } = dataForm[i];
+    if (itemId === item) {
+      dataForm[i].count = count;
+      // updateLocalStorageData(dataForm);
+      saveData(STORAGE_KEY, dataForm);
+      return;
+    }
+  }
+}
+
+function checkLoadCount() {
+  hiddenElements = [];
+  dataForm.forEach(element => {
+    if (element.count < 2 || element.count === undefined) {
+      hiddenElements.push({ hide: 'hide', disabled: 'disabled' });
+    } else {
+      hiddenElements.push({ hide: '', disabled: '' });
+    }
+  });
+}
+
+// ------- Created Category without "_"
+export function changeCategory() {
+  dataForm = getData(STORAGE_KEY);
+  dataForm.forEach(element => {
+    element.category = element.category.split('_').join(' ');
+    // updateLocalStorageData(dataForm);
+    saveData(STORAGE_KEY, dataForm);
+  });
 }
 
 function onClick(event) {
@@ -52,7 +91,6 @@ function onClick(event) {
     return;
   }
   const itemTarget = clickTarget.attributes.class.value;
-
   switch (itemTarget) {
     case 'basket-clear-container':
       clearBasket();
@@ -60,8 +98,9 @@ function onClick(event) {
     case 'delete-item-button':
       const itemId = idDetect(event);
       deleteSelectedItem(itemId);
-      getLocalStorageData();
-      itemsContainer.innerHTML = basketItemsMarkup(dataForm);
+      // getLocalStorageData();
+      getData(STORAGE_KEY);
+      itemsContainer.innerHTML = basketItemsMarkup(dataForm, hiddenElements);
       break;
     case 'decrease-button':
       if (!true) {
@@ -80,24 +119,27 @@ function clearBasket() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(dataForm));
   countAddedItems(dataForm);
 }
-
-function countAddedItems(item) {
-  itemCount.textContent = item.length;
-  headerCount.textContent = `Cart (${item.length})`;
-  isBasketEmpty(item.length);
-}
-
 function deleteSelectedItem(item) {
   for (let i = 0; i <= dataForm.length; i += 1) {
     const { _id: itemId } = dataForm[i];
     if (itemId === item) {
       dataForm.splice(i, 1);
-      updateLocalStorageData(dataForm);
+      // updateLocalStorageData(dataForm);
+      saveData(STORAGE_KEY, dataForm);
       countAddedItems(dataForm);
       totalSumCount(dataForm);
       return;
     }
   }
+}
+
+//  ------- Created count into header
+export function countAddedItems(item) {
+  if (itemCount) {
+    itemCount.textContent = item.length;
+  }
+  headerCount.textContent = `Cart (${item.length})`;
+  isBasketEmpty(item.length);
 }
 
 function idDetect(event) {
@@ -113,15 +155,13 @@ function counterItem(event, increment) {
     parentItem.children.counter.textContent = item;
     updateItemCount(itemId, item);
     totalSumCount(dataForm);
-    // totalSum.textContent = `$${totalSumCount(dataForm)}`;
     if (item <= 1) {
       lockDecrese(parentItem);
       return;
     }
     unlockDecrese(parentItem);
   } catch (error) {
-    // add notifix message about something wrong
-    console.log(error.message);
+    onError(error);
   }
 }
 
@@ -129,25 +169,9 @@ function lockDecrese(parentItem) {
   parentItem.children.decrease.children[0].classList.add('hide');
   parentItem.children.decrease.disabled = true;
 }
-
 function unlockDecrese(parentItem) {
   parentItem.children.decrease.children[0].classList.remove('hide');
   parentItem.children.decrease.disabled = false;
-}
-
-function updateItemCount(item, count) {
-  for (let i = 0; i <= dataForm.length; i += 1) {
-    const { _id: itemId } = dataForm[i];
-    if (itemId === item) {
-      dataForm[i].count = count;
-      updateLocalStorageData(dataForm);
-      return;
-    }
-  }
-}
-
-function updateLocalStorageData(dataForm) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(dataForm));
 }
 
 function isBasketEmpty(itemAdded) {
@@ -161,7 +185,11 @@ function isBasketEmpty(itemAdded) {
   }
 }
 
-function basketItemsMarkup(array) {
+function basketItemsMarkup(array, hiddenArr) {
+  for (let i = 0; i < array.length; i += 1) {
+    array[i].hide = hiddenArr[i].hide;
+    array[i].disabled = hiddenArr[i].disabled;
+  }
   return array
     .map(
       ({
@@ -173,9 +201,10 @@ function basketItemsMarkup(array) {
         is10PercentOff,
         price,
         count = 1,
+        hide = '',
+        disabled = '',
       }) =>
-        `
-        <li class="item-container" data-id="${id}">
+        `<li class="item-container" data-id="${id}">
           <div class="item-img-link">
             <img class="item-img" src="${img}" alt="${name}" loading="lazy" />
           </div>
@@ -197,8 +226,8 @@ function basketItemsMarkup(array) {
             <div class="total-item-container">
               <p class="item-price">$${price}</p>
               <div class="item-counter-container">
-                <button class="decrease-button" disabled name="decrease" type="button">
-                  <svg class="decrease-icon hide" width="18" height="18">
+                <button class="decrease-button" ${disabled} name="decrease" type="button">
+                  <svg class="decrease-icon ${hide}" width="18" height="18">
                     <use href="${sprite}#minus"></use>
                   </svg>
                 </button>
@@ -228,7 +257,6 @@ function totalSumCount(array) {
 //  Email validation
 const EMAIL_REGEXP =
   /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
-const input = document.querySelector('.email-input');
 
 async function onOrderSubmit(event) {
   try {
@@ -237,34 +265,89 @@ async function onOrderSubmit(event) {
     if (!isEmailValid(email)) {
       throw new Error(`Your E-mail is not valid`);
     }
-
     let order = [];
-    // if count abcent than 1
     dataForm.forEach(({ _id: productId, count: amount = 1 }) => {
       order.push({ productId, amount });
     });
     const apiResponse = await createNewOrder(email, order);
-
-    // add modal message about success
     success(apiResponse);
   } catch (error) {
-    // add modal message about something wrong
-    onError();
+    onError(`Your E-mail is not valid`);
   }
 }
+
 function isEmailValid(value) {
   return EMAIL_REGEXP.test(value);
 }
+// ------- order to Modal window
 
 function success(response) {
+  console.dir(modalInfo);
+  modalInfo.message = response.message;
+  modalInfo.title = 'Order success';
+  modalInfo.image = successImg;
+  createModalMarkup(modalInfo);
+  lockScroll();
+  openModalWindow();
+  resetCart();
+}
+
+function onError() {
+  modalInfo.message = 'Sorry, Update page and try again...';
+  modalInfo.title = 'Something went wrong';
+  modalInfo.image = errorImg;
+  createModalMarkup(modalInfo);
+  lockScroll();
+  openModalWindow();
+}
+
+// ------- Modal window
+
+function createModalMarkup(event) {
+  modalWindow.innerHTML = `<img class="modal-img" src="${event.image}" alt="${event.title}">
+      <div class="modal-title-message">${event.title}</div>
+      <div class="modal-text">${event.message}</div>`;
+}
+
+const openModalBtn = document.querySelector('[js-modal-open]');
+const closeModalBtn = document.querySelector('[data-modal-close]');
+const modal = document.querySelector('[data-modal]');
+const modalWindow = document.querySelector('#js-modal-info');
+const backdrop = document.querySelector('.backdrop');
+
+function openModalWindow() {
+  try {
+    openModalBtn.addEventListener('click', toggleModal);
+    backdrop.addEventListener('click', toggleModal);
+    document.addEventListener('keydown', escClick);
+    closeModalBtn.addEventListener('click', toggleModal);
+  } catch (error) {
+    onError(error);
+  }
+}
+function toggleModal() {
+  document.removeEventListener('keydown', escClick);
+  backdrop.removeEventListener('click', toggleModal);
+  modal.classList.toggle('is-hidden');
+  unlockScroll();
+  modalWindow.innerHTML = '';
+}
+function escClick(event) {
+  if (event.code === 'Escape') {
+    toggleModal();
+  }
+}
+
+function lockScroll() {
+  document.body.style.overflow = 'hidden';
+}
+function unlockScroll() {
+  document.body.style.overflow = '';
+}
+
+function resetCart() {
   clearBasket();
   checkoutForm.reset();
-
-  console.log(response);
-}
-function onError(response) {
-  console.log(response);
 }
 
-// const BASE_URL = 'https://food-boutique.b.goit.study/api/';
-// axios.defaults.baseURL = BASE_URL;
+openModalWindow(modalInfo);

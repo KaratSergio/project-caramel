@@ -1,4 +1,5 @@
 <section class="container">
+  <h2 class="visually-hidden">Shopping Cart</h2>
   <!-- <h1><a href="../cart.html">HERO</a></h1> -->
   <div class="title-container">
     <div class="basket-border">
@@ -56,8 +57,19 @@
             placeholder="Enter your email"
           />
         </label>
-        <button class="checkout-button" type="submit">Checkout</button>
+        <button class="checkout-button" js-modal-open type="submit">Checkout</button>
       </form>
+    </div>
+  </div>
+
+  <div class="backdrop is-hidden" data-modal>
+    <div class="modal-window">
+      <button class="modal-close-button" type="button" data-modal-close>
+        <svg class="close-icon" width="28" height="28">
+          <use href="./images/icons.svg#delete-icon"></use>
+        </svg>
+      </button>
+      <div id="js-modal-info" clacc="modal-info"></div>
     </div>
   </div>
 </section>
