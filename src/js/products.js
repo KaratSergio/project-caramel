@@ -146,3 +146,6 @@ export function createCardMarkup(results) {
     })
     .join('');
 }
+
+
+

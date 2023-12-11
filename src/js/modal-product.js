@@ -122,7 +122,6 @@ function updateCartIcon(itemAdded) {
   }
 }
 
-
 document.addEventListener('DOMContentLoaded', () => {
   const listProducts = getData();
   const productAdded = listProducts.find(item => item._id === product._id);
