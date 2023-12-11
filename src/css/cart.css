@@ -87,7 +87,6 @@
 }
 
 .basket-text-bold {
-  color: #010101;
   font-size: 20px;
   font-weight: 500;
   line-height: 1.2;
@@ -156,7 +155,6 @@
 }
 
 .basket-clear-text {
-  color: var(--text-color);
   font-size: 14px;
   font-weight: 500;
   line-height: 1.28571;
@@ -313,7 +311,6 @@
 }
 
 .item-title {
-  color: var(--text-color);
   font-size: 18px;
   font-weight: 500;
   line-height: 1.11;
@@ -342,7 +339,6 @@
 
 .item-parameter-list {
   display: flex;
-  /* flex-wrap: wrap; */
   align-items: baseline;
   margin-bottom: 44px;
   column-gap: 2px;
@@ -363,7 +359,6 @@
   color: rgba(1, 1, 1, 0.3);
   font-size: 8px;
   line-height: 1.16667;
-  /* margin-right: 2px; */
 }
 @media screen and (min-width: 375px) {
   .item-parameter {
@@ -371,7 +366,6 @@
   }}
 
 .item-parameter {
-  color: var(--text-color);
   margin-right: 0px;
   font-size: 10px;
   line-height: 1.16667;
@@ -402,7 +396,6 @@
 }
 
 .item-price {
-  color: var(--text-color);
   font-size: 18px;
   font-weight: 500;
   line-height: 1.11;
@@ -462,7 +455,6 @@
   }
 }
 .item-counter {
-  color: var(--text-color);
   font-size: 16px;
   line-height: 1.125;
 }
@@ -516,10 +508,9 @@
 }
 
 .total-title {
-  color: var(--text-color);
   font-size: 24px;
   font-weight: 500;
-  line-height: 1.16667;
+  line-height: 1.17;
   text-transform: uppercase;
 }
 @media screen and (min-width: 768px) {
@@ -560,7 +551,6 @@
 }
 
 .total-main-text {
-  color: var(--text-color);
   font-size: 18px;
   font-weight: 500;
   line-height: 1.11;
@@ -585,7 +575,6 @@
 }
 
 .total-count-text {
-  color: var(--text-color);
   font-size: 24px;
   font-weight: 500;
   line-height: 1.16667;
@@ -640,7 +629,6 @@
 .email-input {
   border: none;
   background-color: inherit;
-  color: var(--text-color);
 }
 @media screen and (min-width: 768px) {
   .email-label {
@@ -662,7 +650,7 @@
 }
 .email-label:hover,
 .email-label:focus-within {
-  border: 1px solid #6d8434;
+  border: 1px solid var(--gray);
 }
 
 .checkout-button {
@@ -797,7 +785,6 @@
 }
 
 .modal-title-message {
-  color: var(--text-color);
   text-align: center;
   font-size: 18px;
   font-weight: 500;

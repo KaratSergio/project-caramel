@@ -69,10 +69,9 @@ body {
 }
 
 @font-face {
-  font-family: 'FONTSPRING DEMO - Quincy CF';
-  src: url('../fonts/FONTSPRINGDEMO-QuincyCFBlackRegular.woff2') format('woff2'),
-    url('../fonts/FONTSPRINGDEMO-QuincyCFBlackRegular.woff') format('woff');
+  font-family: 'Quincy CF';
+  src: url('../fonts/QuincyCF-Black.woff2') format('woff2'),
+      url('../fonts/QuincyCF-Black.ttf') format('truetype');
   font-weight: 900;
   font-style: normal;
-  font-display: swap;
 }
