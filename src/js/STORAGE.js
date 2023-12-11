@@ -1,4 +1,4 @@
-const STORAGE_KEY = 'added-item';
+export const STORAGE_KEY = 'added-item';
 export function saveData(data) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
 }
