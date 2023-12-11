@@ -7,17 +7,13 @@ removeFromIcon.classList.add('visually-hidden');
 const modalProduct = document.getElementById('modalProduct');
 const closeModalProductBtn = document.getElementById('closeModalProductBtn');
 const addToCartBtn = document.getElementById('addToCartBtn');
-const removeFromBtn = document.getElementById('removeFrom');
+const removeFromBtn = document.getElementById('removeFrom'); 
 const modalProductImage = document.getElementById('modalProductImage');
 const modalProductName = document.getElementById('modalProductName');
 const modalProductCategory = document.getElementById('modalProductCategory');
 const modalProductSize = document.getElementById('modalProductSize');
-const modalProductPopularity = document.getElementById(
-  'modalProductPopularity'
-);
-const modalProductDescription = document.getElementById(
-  'modalProductDescription'
-);
+const modalProductPopularity = document.getElementById('modalProductPopularity');
+const modalProductDescription = document.getElementById('modalProductDescription');
 const modalProductPrice = document.getElementById('modalProductPrice');
 
 let isProductAdded = false;
@@ -30,7 +26,7 @@ export function openModal(product) {
 
   modalProduct.style.display = 'block';
   document.body.style.overflow = 'hidden';
-  document.querySelector('.modal-overlay').style.display = 'flex';
+  document.querySelector('.modal-overlay').style.display = 'flex'; 
   window.addEventListener('click', outsideModalClick);
 
   addToCartBtn.addEventListener('click', () => {
@@ -88,7 +84,7 @@ function manageCart(product, remove = false) {
 function closeModal() {
   document.body.style.overflow = '';
   modalProduct.style.display = 'none';
-  document.querySelector('.modal-overlay').style.display = 'none';
+  document.querySelector('.modal-overlay').style.display = 'none'; 
   window.removeEventListener('click', outsideModalClick);
   isProductAdded = false;
 }
@@ -125,6 +121,7 @@ function updateCartIcon(itemAdded) {
     addToCartBtn.classList.remove('visually-hidden');
   }
 }
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const listProducts = getData();
