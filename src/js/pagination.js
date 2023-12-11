@@ -4,6 +4,7 @@ import {getProductsByParams} from './get-api';
 
 const paginationContainer = document.querySelector('#pagination');
 const productsList = document.querySelector('.list-prod-container');
+const filterNomatches = document.querySelector('.filter-nomatches-container')
 
 
 
@@ -28,15 +29,8 @@ export async function newDisplayPagination(options) {
   const {results, totalPages} = await getProductsByParams(paginationSearchParams)
 
   if (totalPages === 0) {
-    productsList.innerHTML =
-    `<div class="basket-text-container">
-      <p class="basket-text-bold">
-        Nothing was found for the selected <span class="color">filters...</span>
-      </p>
-      <p class="basket-text">
-        Try adjusting your search parameters or browse our range by other criteria to find the perfect product for you.
-      </p>
-    </div>`
+    productsList.classList.add('visually-hidden')
+    filterNomatches.classList.remove('visually-hidden')
   }
 
   saveData('firstGet', results);
