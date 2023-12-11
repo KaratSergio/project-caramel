@@ -1,6 +1,5 @@
 import sprite from '../images/icons.svg';
-// import { first, result } from 'lodash';
-// import { getProductsByParams } from './get-api';
+// import { getData, saveData } from './STORAGE';
 
 import { openModal } from './modal-product';
 import { getProductById } from './get-api';
@@ -136,10 +135,10 @@ export function createCardMarkup(results) {
             <button class="buy-btn" type="button">
             <svg class="card-product-svg ${check}" width="18" height="18">
             <use href="${sprite}#check"></use>
-             </svg>
-             <svg class="card-product-svg ${card}" width="18" height="18">
-             <use href="${sprite}#shopping-cart"></use>
-             </svg>
+            </svg>
+            <svg class="card-product-svg ${card}" width="18" height="18">
+            <use href="${sprite}#shopping-cart"></use>
+            </svg>
             </button>
           </div>
         </li>

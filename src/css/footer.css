@@ -15,8 +15,8 @@
 }
 .form-p {
   color: var(--background);
-  font-size: 18px;
-  line-height: 24px;
+  font-size: 14px;
+  line-height: 1.29;
   margin-bottom: 20px;
 }
 .footer-input {
@@ -67,12 +67,19 @@
   width: 44px;
   height: 44px;
 }
+
+.footer-socials-item:hover,
+.footer-socials-item:focus {
+  background-color: var(--social-hover);
+}
+
+
 .footer-div-text {
-  width: 410px;
+  width: 310px;
 }
 .footer-p-h {
   color: var(--background);
-  font-size: 40px;
+  font-size: 24px;
   font-weight: 500;
   line-height: 44px;
   letter-spacing: -0.8px;
@@ -80,8 +87,9 @@
 }
 .footer-p-text {
   color: var(--transparent-footer-text);
-  font-size: 18px;
-  line-height: 24px;
+  font-size: 14px;
+  line-height: 1.29;
+  width: 335px;
 }
 
 .footer-form {
@@ -89,8 +97,8 @@
 }
 .footer-p {
   color: var(--background);
-  line-height: 18px;
-  opacity: 0.9;
+  font-size: 14px;
+  line-height: 1.29;
 }
 .footer-div {
   display: flex;
@@ -186,25 +194,31 @@
   font-weight: 500;
   line-height: 24px;
 }
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 768px) {
   .conteiner-div {
-    display: block;
+    display: flex;
     margin-bottom: 80px;
+    gap: 78px;
   }
   .footer-div-text,
   .footer-media {
     margin-bottom: 40px;
   }
-  .footer-div {
-    display: block;
+  /* .footer-div {
+    display: flex;
     gap: 8px;
-  }
+  } */
   .ppts {
     margin-top: 8px;
   }
+  .footer-p-h {
+    font-size: 40px;
+  }
+  .footer-p-text {
+    font-size: 18px;
+    line-height: 1.33;
+    width: 329px;
 }
-
-@media screen and (min-width: 768px) {
 }
 @media screen and (min-width: 1440px) {
   .footer-form-text {
