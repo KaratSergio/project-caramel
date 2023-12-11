@@ -3,12 +3,15 @@ import { saveData, displayProducts } from './products';
 import {getProductsByParams} from './get-api';
 
 const paginationContainer = document.querySelector('#pagination');
+const productsList = document.querySelector('.list-prod-container');
 
 
 
-newDisplayPagination()
+newDisplayPagination("first", "get")
 
-export async function newDisplayPagination(keyword, category) {
+export async function newDisplayPagination(options) {
+
+  const { keyword, category } = options
 
   const paginationSearchParams = {
     keyword: keyword || '',
@@ -23,6 +26,18 @@ export async function newDisplayPagination(keyword, category) {
     paginationSearchParams.limit = 8
   }
   const {results, totalPages} = await getProductsByParams(paginationSearchParams)
+
+  if (totalPages === 0) {
+    productsList.innerHTML =
+    `<div class="basket-text-container">
+    <p class="basket-text-bold">
+      Nothing was found for the selected <span class="color">filters...</span>
+    </p>
+    <p class="basket-text">
+      Try adjusting your search parameters or browse our range by other criteria to find the perfect product for you.
+    </p>
+</div>`
+  }
 
   saveData('firstGet', results);
 
