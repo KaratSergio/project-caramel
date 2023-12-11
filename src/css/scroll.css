@@ -1,19 +1,18 @@
 .scroll-to-top-btn {
   fill: currentColor;
   position: fixed;
-  bottom: 50px;
-  right: 50px;
+  bottom: 25px;
+  right: 10px;
   background-color: var(--gray);
   color: var(--background);
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
+  width: 30px;
+  height: 30px;
   cursor: pointer;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
   z-index: 9999;
-  box-shadow: 0 0px 10px 1px rgba(0, 0, 0, 0.3);
-
+  box-shadow: 0 0px 10px 1px rgba(0, 0, 0, 0.5);
   transition: opacity 0.3s ease-in-out,
     background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -24,10 +23,50 @@
 
 .scroll-to-top-btn .arrow-up {
   position: relative;
-  top: 17%;
-  left: 17%;
+  top: -17%;
+  left: 19%;
+  width: 20px;
 }
 
 .scroll-to-top-btn.show {
-  opacity: 1;
+  opacity: 0.5;
+}
+
+@media screen and (min-width: 768px) {
+  .scroll-to-top-btn .arrow-up {
+    top: 2px;
+    left: 8px;
+    width: 30px;
+  }
+
+  .scroll-to-top-btn {
+    bottom: 25px;
+    right: 7px;
+    width: 45px;
+    height: 45px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .scroll-to-top-btn .arrow-up {
+    top: 17%;
+    left: 17%;
+    width: 40px;
+  }
+
+  .scroll-to-top-btn {
+    bottom: 50px;
+    right: 35px;
+    width: 60px;
+    height: 60px;
+  }
+
+  .scroll-to-top-btn.show {
+    opacity: 0.75;
+  }
+
+  .scroll-to-top-btn:hover {
+    background-color: var(--dark-gray);
+    opacity: 1;
+  }
 }
