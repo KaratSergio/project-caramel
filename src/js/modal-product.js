@@ -1,4 +1,12 @@
-import { getData, saveData } from './STORAGE';
+import {
+  STORAGE_KEY,
+  getData,
+  saveData,
+  countAddedItems,
+  checkAdded,
+  manageButton
+} from './STORAGE';
+// tyt
 
 const addToCartIcon = document.getElementById('addToCartIcon');
 const removeFromIcon = document.getElementById('removeFromIcon');
@@ -22,7 +30,7 @@ const modalProductPrice = document.getElementById('modalProductPrice');
 const modalOverlay = document.querySelector('.modal-overlay'); //! new
 const scrollToTopBtnEl = document.getElementById('scrollToTopBtn'); //!new
 
-let isProductAdded = false;
+// let isProductAdded = false;
 
 export function openModal(product) {
   if (!product || !product.img) {
@@ -34,6 +42,28 @@ export function openModal(product) {
   document.body.style.overflow = 'hidden';
   document.querySelector('.modal-overlay').style.display = 'flex';
   window.addEventListener('click', outsideModalClick);
+
+  
+  addToCartBtn.addEventListener('click', addProduct);
+  removeFromBtn.addEventListener('click', removeProduct);
+  const listProducts = getData(STORAGE_KEY);
+  let item = checkAdded(listProducts, product);
+  manageButton(item, addToCartBtn, removeFromBtn);
+  function addProduct() {
+    listProducts.push(product);
+    recheckCart(listProducts);
+  }
+  function removeProduct() {
+    listProducts.splice(item, 1);
+    recheckCart(listProducts);
+  }
+  function recheckCart(item) {
+    saveData(STORAGE_KEY, listProducts);
+    countAddedItems();
+    item = checkAdded(listProducts, product);
+    manageButton(item, addToCartBtn, removeFromBtn);
+  }
+
   scrollToTopBtnEl.style.display = 'none'; //!new
 
   addToCartBtn.addEventListener('click', () => {
@@ -52,6 +82,7 @@ export function openModal(product) {
     updateCartIcon(false);
     isProductAdded = false;
   });
+
 
   modalProductImage.src = product.img;
   modalProductName.textContent = product.name;
@@ -75,29 +106,32 @@ export function openModal(product) {
   window.addEventListener('click', outsideModalClick);
 }
 
-function manageCart(product, remove = false) {
-  const listProducts = getData();
-  const productInCart = listProducts.find(item => item._id === product._id);
+// function manageCart(product, remove = false) {
+//   const listProducts = getData();
+//   const productInCart = listProducts.find(item => item._id === product._id);
 
-  if (remove) {
-    if (productInCart) {
-      saveData(listProducts.filter(item => item._id !== product._id));
-    }
-  } else {
-    if (!productInCart) {
-      listProducts.push(product);
-      saveData(listProducts);
-    }
-  }
-}
+//   if (remove) {
+//     if (productInCart) {
+//       saveData(listProducts.filter(item => item._id !== product._id));
+//     }
+//   } else {
+//     if (!productInCart) {
+//       listProducts.push(product);
+//       saveData(listProducts);
+//     }
+//   }
+// }
 
 function closeModal() {
   document.body.style.overflow = '';
   modalProduct.style.display = 'none';
   document.querySelector('.modal-overlay').style.display = 'none';
   window.removeEventListener('click', outsideModalClick);
+  // isProductAdded = false;
+
   isProductAdded = false;
   scrollToTopBtnEl.style.display = 'block'; //! new
+
 }
 
 closeModalProductBtn.addEventListener('click', closeModal);
@@ -119,6 +153,38 @@ function outsideModalClick(event) {
     closeModal();
   }
 }
+
+
+// function updateCartIcon(itemAdded) {
+//   const listProducts = getData();
+
+//   if (itemAdded) {
+//     // console.log(addToCartIcon);
+//     addToCartIcon.classList.add('added-to-cart');
+//     removeFromIcon.classList.remove('added-to-cart');
+//   } else {
+//     // console.log(addToCartIcon);
+//     addToCartIcon.classList.remove('added-to-cart');
+//     removeFromIcon.classList.add('added-to-cart');
+//   }
+
+//   if (listProducts.length > 0) {
+//     removeFromBtn.classList.remove('visually-hidden');
+//     addToCartBtn.classList.add('visually-hidden');
+//   } else {
+//     removeFromBtn.classList.add('visually-hidden');
+//     addToCartBtn.classList.remove('visually-hidden');
+//   }
+// }
+
+// document.addEventListener('DOMContentLoaded', () => {
+//   const listProducts = getData();
+//   const productAdded = listProducts.find(item => item._id === product._id);
+//   if (productAdded) {
+//     isProductAdded = true;
+//   }
+//   updateCartIcon(isProductAdded);
+// });
 
 function updateCartIcon(itemAdded) {
   const listProducts = getData();
