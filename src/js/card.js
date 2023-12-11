@@ -282,12 +282,13 @@ function success(response) {
   modalInfo.title = 'Order success';
   modalInfo.image = successImg;
   createModalMarkup(modalInfo);
+  lockScroll();
   openModalWindow();
   resetCart();
 }
 
-function onError(response) {
-  modalInfo.message = response.message;
+function onError() {
+  modalInfo.message = "Sorry, Go to the main page and try again...";
   modalInfo.title = 'Something went wrong';
   modalInfo.image = errorImg;
   createModalMarkup(modalInfo);
@@ -311,7 +312,6 @@ const backdrop = document.querySelector('.backdrop');
 
 function openModalWindow() {
   try {
-    console.log();
     openModalBtn.addEventListener('click', toggleModal);
     backdrop.addEventListener('click', toggleModal);
     document.addEventListener('keydown', escClick);
@@ -321,7 +321,6 @@ function openModalWindow() {
   }
 }
 function toggleModal() {
-  // unlockScroll();
   document.removeEventListener('keydown', escClick);
   backdrop.removeEventListener('click', toggleModal);
   modal.classList.toggle('is-hidden');
