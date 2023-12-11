@@ -33,6 +33,7 @@ const scrollToTopBtnEl = document.getElementById('scrollToTopBtn'); //!new
 // let isProductAdded = false;
 
 export function openModal(product) {
+  try{
   if (!product || !product.img) {
     console.error('Product data is missing or incomplete.');
     return;
@@ -103,7 +104,10 @@ export function openModal(product) {
   modalProduct.style.display = 'block';
   document.body.style.overflow = 'hidden';
   document.querySelector('.modal-overlay').style.display = 'block';
-  window.addEventListener('click', outsideModalClick);
+    window.addEventListener('click', outsideModalClick);
+  } catch (error) {
+    console.log("no proructs")
+  }
 }
 
 // function manageCart(product, remove = false) {
@@ -129,7 +133,7 @@ function closeModal() {
   window.removeEventListener('click', outsideModalClick);
   // isProductAdded = false;
 
-  isProductAdded = false;
+  // isProductAdded = false;
   scrollToTopBtnEl.style.display = 'block'; //! new
 
 }
