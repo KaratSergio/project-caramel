@@ -1,26 +1,12 @@
 import sprite from '../images/icons.svg';
-// import { getData, saveData } from './STORAGE';
-
+import { getData, saveData } from './STORAGE';
 import { openModal } from './modal-product';
 import { getProductById } from './get-api';
 
 const productsList = document.querySelector('.list-prod');
 const STORAGE_KEY = 'added-item';
-const GetLocal = 'firstGet';
-
-// LocalStorage
-export function saveData(key, data) {
-  localStorage.setItem(key, JSON.stringify(data));
-}
-export function getData(GetLocal) {
-  try {
-    const result = localStorage.getItem(GetLocal);
-    return result ? JSON.parse(result) : [];
-  } catch (error) {
-    console.log(error);
-  }
-}
-
+const itemsCard = [];
+saveData(STORAGE_KEY, itemsCard);
 // Markup
 export function addMarkup(el, markup) {
   el.innerHTML = markup;
@@ -33,14 +19,9 @@ export async function displayProducts(results) {
 }
 
 // достаем дані з локал
-const items = getData(GetLocal);
-console.log(items);
-
+const items = getData('firstset');
 const productId = getIdProducts(items);
-console.log(productId);
-
 const toggle = productId.includes(items._id);
-console.log(toggle);
 
 productsList.addEventListener('click', onClick);
 productsList.addEventListener('click', onShowModal);
@@ -50,30 +31,21 @@ function onClick(event) {
   if (!btnEl) {
     return;
   }
-
   const cardEl = event.target.closest('.prod-item');
   const icons = btnEl.querySelectorAll('svg');
   const id = cardEl.getAttribute('data-js-product-id');
-  console.log(id);
-  
-  // getProductById(id)
-  //         .then(res => {
-  //           openModal(res);
-  //         })
-  //         .catch(error => {
-  //           console.error(error);
-  //         });
-  // отримуєм дані з локалки для зрівнняня
-  const items = getData(GetLocal);
-  console.log(items);
-  // перевіряєм і додаєм до локал покищо не віднімає
-  if (items.find(item => id === item._id)) {
-    const updatedItems = items.filter(item => id !== item._id);
-    saveData(STORAGE_KEY, updatedItems);
-  } else {
-    const data = products.find(item => id === item._id);
-    items.push(data);
+
+  const items = getData(STORAGE_KEY);
+  const existingItemIndex = items.findIndex(item => item._id === id);
+  if (existingItemIndex !== -1) {
+    items.splice(existingItemIndex, 1);
     saveData(STORAGE_KEY, items);
+  } else {
+    const newItem = getData('firstset').find(item => item._id === id);
+    if (newItem) {
+      items.push(newItem);
+      saveData(STORAGE_KEY, items);
+    }
   }
 
   icons.forEach(element => {
@@ -83,26 +55,21 @@ function onClick(event) {
 
 function onShowModal(event) {
   const cardEl = event.target.closest('.prod-item');
-  // console.log(cardEl);
+
   const btnEl = event.target.closest('.buy-btn');
-  // console.log(btnEl);
 
   if (!cardEl || btnEl) {
     return;
   }
   const idProduct = cardEl.getAttribute('data-js-product-id');
-  
-  // console.log(idProduct);
-  const dataID = items.find(item => idProduct === item._id);
-  // console.log(dataID);
+
   getProductById(idProduct)
-  .then(res => {
-    openModal(res);
-  })
-  .catch(error => {
-    console.error(error);
-  });
-  // openModal(dataID);
+    .then(res => {
+      openModal(res);
+    })
+    .catch(error => {
+      console.error(error);
+    });
 }
 
 function getIdProducts(items = []) {
@@ -161,11 +128,7 @@ export function createCardMarkup(results) {
 }
 
 function onVisible(is10PercentOff) {
-  console.log(is10PercentOff);
-  if (is10PercentOff === false) {
+  if (is10PercentOff === true) {
     return 'visible';
   } else return 'hidden';
 }
-
-
-
