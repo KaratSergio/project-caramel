@@ -296,6 +296,7 @@
 }
 
 .buy-btn {
+  display: flex;
   padding: 12px 24px;
   justify-content: center;
   align-items: center;
