@@ -64,9 +64,11 @@
   .scroll-to-top-btn.show {
     opacity: 0.75;
   }
+  .scroll-to-top-btn.show:hover {
+    opacity: 1;
+  }
 
   .scroll-to-top-btn:hover {
     background-color: var(--dark-gray);
-    opacity: 1;
   }
 }
