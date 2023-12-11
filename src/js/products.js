@@ -110,23 +110,35 @@ function getIdProducts(items = []) {
 }
 
 export function createCardMarkup(results) {
-  const check = toggle ? '' : 'is-hidden';
-
-  const card = toggle ? 'is-hidden' : '';
-
   return results
-    .map(({ _id, name, img, category, size, price, popularity }) => {
-      return `
+    .map(
+      ({
+        _id,
+        name,
+        img,
+        category,
+        size,
+        price,
+        popularity,
+        is10PercentOff,
+      }) => {
+        const check = toggle ? '' : 'is-hidden';
+        const card = toggle ? 'is-hidden' : '';
+        const visibility = onVisible(is10PercentOff);
+        return `
         <li class="prod-item" data-js-product-id=${_id}>   
           <div class="prod-pic">
-            <svg class="discont-prod" width="60" height="60" style="visibility: hidden;">
-              <use href="${sprite}#shopping-cart"></use>
+            <svg class="discont-prod" width="60" height="60" style="visibility: ${visibility};">
+              <use href="${sprite}#icon-discount"></use>
             </svg>
             <img class="prod-img" src=${img} alt=${name} loading="lazy">
           </div>
           <h3 class="title-prod">${name}</h3>
           <div class="feature">
-            <p class="feature-prod">Category:<span class="feature-value">${category}</span></p>
+            <p class="feature-prod">Category:<span class="feature-value">${category.replace(
+              /_/g,
+              ' '
+            )}</span></p>
             <p class="feature-prod">Size:<span class="feature-value">${size}</span></p>
             <p class="feature-prod push">Popularity:<span class="feature-value">${popularity}</span></p>
           </div>
@@ -143,6 +155,17 @@ export function createCardMarkup(results) {
           </div>
         </li>
       `;
-    })
+      }
+    )
     .join('');
 }
+
+function onVisible(is10PercentOff) {
+  console.log(is10PercentOff);
+  if (is10PercentOff === false) {
+    return 'visible';
+  } else return 'hidden';
+}
+
+
+

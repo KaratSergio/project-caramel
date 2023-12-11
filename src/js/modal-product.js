@@ -27,6 +27,8 @@ const modalProductDescription = document.getElementById(
   'modalProductDescription'
 );
 const modalProductPrice = document.getElementById('modalProductPrice');
+const modalOverlay = document.querySelector('.modal-overlay'); //! new
+const scrollToTopBtnEl = document.getElementById('scrollToTopBtn'); //!new
 
 // let isProductAdded = false;
 
@@ -40,6 +42,7 @@ export function openModal(product) {
   document.body.style.overflow = 'hidden';
   document.querySelector('.modal-overlay').style.display = 'flex';
   window.addEventListener('click', outsideModalClick);
+
   
   addToCartBtn.addEventListener('click', addProduct);
   removeFromBtn.addEventListener('click', removeProduct);
@@ -61,14 +64,37 @@ export function openModal(product) {
     manageButton(item, addToCartBtn, removeFromBtn);
   }
 
+  scrollToTopBtnEl.style.display = 'none'; //!new
+
+  addToCartBtn.addEventListener('click', () => {
+    const listProducts = getData();
+    const productAdded = listProducts.find(item => item._id === product._id);
+    if (!productAdded) {
+      listProducts.push(product);
+      saveData(listProducts);
+      updateCartIcon(true);
+      isProductAdded = true;
+    }
+  });
+
+  removeFromBtn.addEventListener('click', () => {
+    manageCart(product, true);
+    updateCartIcon(false);
+    isProductAdded = false;
+  });
+
+
   modalProductImage.src = product.img;
   modalProductName.textContent = product.name;
 
-  modalProductCategory.innerHTML = `Category: <span id="priceText">$ ${product.category}</span>`;
+  modalProductCategory.innerHTML = `Category: <span id="priceText"> ${product.category.replace(
+    /_/g,
+    ' '
+  )}</span>`;
   document.getElementById('priceText').style.color = 'black';
-  modalProductSize.innerHTML = `Size: <span id="priceTexte">$ ${product.size}</span>`;
+  modalProductSize.innerHTML = `Size: <span id="priceTexte"> ${product.size}</span>`;
   document.getElementById('priceTexte').style.color = 'black';
-  modalProductPopularity.innerHTML = `Popularity: <span id="priceTex">$ ${product.popularity}</span>`;
+  modalProductPopularity.innerHTML = `Popularity: <span id="priceTex"> ${product.popularity}</span>`;
   document.getElementById('priceTex').style.color = 'black';
 
   modalProductDescription.textContent = `${product.desc}`;
@@ -102,6 +128,10 @@ function closeModal() {
   document.querySelector('.modal-overlay').style.display = 'none';
   window.removeEventListener('click', outsideModalClick);
   // isProductAdded = false;
+
+  isProductAdded = false;
+  scrollToTopBtnEl.style.display = 'block'; //! new
+
 }
 
 closeModalProductBtn.addEventListener('click', closeModal);
@@ -111,11 +141,19 @@ document.addEventListener('keydown', function (event) {
   }
 });
 
+// function outsideModalClick(event) {
+//   if (event.target === modalProduct) {
+//     closeModal();
+//   }
+// }
+
+// !new
 function outsideModalClick(event) {
-  if (event.target === modalProduct) {
+  if (event.target === modalOverlay) {
     closeModal();
   }
 }
+
 
 // function updateCartIcon(itemAdded) {
 //   const listProducts = getData();
@@ -147,3 +185,32 @@ function outsideModalClick(event) {
 //   }
 //   updateCartIcon(isProductAdded);
 // });
+
+function updateCartIcon(itemAdded) {
+  const listProducts = getData();
+
+  if (itemAdded) {
+    addToCartIcon.classList.add('added-to-cart');
+    removeFromIcon.classList.remove('added-to-cart');
+  } else {
+    addToCartIcon.classList.remove('added-to-cart');
+    removeFromIcon.classList.add('added-to-cart');
+  }
+
+  if (listProducts.length > 0) {
+    removeFromBtn.classList.remove('visually-hidden');
+    addToCartBtn.classList.add('visually-hidden');
+  } else {
+    removeFromBtn.classList.add('visually-hidden');
+    addToCartBtn.classList.remove('visually-hidden');
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const listProducts = getData();
+  const productAdded = listProducts.find(item => item._id === product._id);
+  if (productAdded) {
+    isProductAdded = true;
+  }
+  updateCartIcon(isProductAdded);
+});

@@ -8,8 +8,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 155px;
-  height: 38px;
+  width: 190px;
+  height: 53px;
   cursor: pointer;
 font-family: 'Quincy CF';
   font-size: 18px;
@@ -105,8 +105,8 @@ font-family: 'Quincy CF';
 
 @media screen and (min-width: 768px) {
   .header-logo {
-    width: 200px;
-    height: 44px;
+    width: 220px;
+    height: 60px;
   }
   .header__shop-icon-container {
     width: 32px;
