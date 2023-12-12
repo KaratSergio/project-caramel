@@ -1,15 +1,15 @@
 :root {
-  --background: #E8E8E2;
+  --background: #e8e8e2;
   --text-color: #010101;
-  --white: #FAFAFA;
-  --gray: #6D8434;
-  --dark-gray: #586F1F;
+  --white: #fafafa;
+  --gray: #6d8434;
+  --dark-gray: #586f1f;
   --transparent-text: rgba(1, 1, 1, 0.3);
   --transparent-text-special: rgba(1, 1, 1, 0.5);
-  --transparent-footer-text:  rgba(232, 232, 226, 0.7);
+  --transparent-footer-text: rgba(232, 232, 226, 0.7);
   --transparent-border: rgba(232, 232, 226, 0.3);
   --transparent-fon: rgba(1, 1, 1, 0.4);
-  --social-hover: #E8E8E280;
+  --social-hover: #e8e8e280;
   --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   --animation-duration: 250ms;
 }
@@ -74,7 +74,7 @@ body {
 @font-face {
   font-family: 'Quincy CF';
   src: url('../fonts/QuincyCF-Black.woff2') format('woff2'),
-      url('../fonts/QuincyCF-Black.ttf') format('truetype');
+    url('../fonts/QuincyCF-Black.ttf') format('truetype');
   font-weight: 900;
   font-style: normal;
   font-display: swap;
