@@ -66,6 +66,7 @@ export function changeOtherIcon(id, element) {
   if (productCartBtn.length !== 0) {
     changeIcon(element, productCartBtn, 'is-hidden');
   }
+  countAddedItems();
 }
 
 export function recheckCart(item) {
