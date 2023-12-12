@@ -56,3 +56,18 @@
     background-color: var(--dark-gray);
   }
 }
+
+
+body::-webkit-scrollbar {
+  width: 5px;
+}
+@media screen and (min-width: 768px) {
+  body::-webkit-scrollbar {
+    width: 9px;
+  }
+}
+body::-webkit-scrollbar-thumb {
+  background: rgba(1, 1, 1, 0.08);
+  border-radius: 20px;
+  height: 90px;
+}
