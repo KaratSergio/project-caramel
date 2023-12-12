@@ -61,10 +61,10 @@
   align-items: center;
   gap: 10px;
   border: none;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color var(--animation-duration) var(--timing-function);
 }
 .svg-add-product {
-  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: fill var(--animation-duration) var(--timing-function);
   fill: var(--gray);
 }
 

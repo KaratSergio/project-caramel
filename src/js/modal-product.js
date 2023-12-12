@@ -97,7 +97,7 @@ function closeModal() {
   modalProduct.style.display = 'none';
   document.querySelector('.modal-overlay').style.display = 'none';
 
-  scrollToTopBtnEl.style.display = 'block'; //! new
+  scrollToTopBtnEl.style.display = 'flex'; //! new
 }
 
 closeModalProductBtn.addEventListener('click', closeModal);

@@ -31,6 +31,7 @@
   line-height: 1.28;
   margin-bottom: 12px;
   outline: transparent;
+  transition: border-color var(--animation-duration) var(--timing-function);
 }
 .filter-form input::placeholder {
   color: var(--text-color);
@@ -40,6 +41,7 @@
 .filter-form input:focus {
   border-color: var(--gray);
 }
+
 .search-btn {
   height: 40px;
   background-color: var(--light-green) transparent;
@@ -58,25 +60,41 @@
   fill: var(--text-color);
 }
 .filter-select-container {
-  display: flex;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 .filter-select {
   background-color: transparent;
+  max-width: 335px;
   width: 100%;
   padding: 14px 20px;
   justify-content: center;
   align-items: center;
   border-radius: 30px;
   border: 1px solid rgba(1, 1, 1, 0.3);
+  color: var(--text-color);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.28;
   cursor: pointer;
   outline: transparent;
   appearance: none;
   margin-bottom: 12px;
+  transition: border-color var(--animation-duration) var(--timing-function);
 }
+.filter-select option {
+  color: rgba(1, 1, 1, 0.5);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+}
+
 .filter-select:hover,
 .filter-select:focus {
-  border: 1px solid var(--gray);
+  border-color: var(--gray);
 }
 .filter-icon-select {
   position: absolute;
@@ -96,11 +114,16 @@
   justify-content: center;
   align-items: center;
   border-radius: 30px;
-  border: none;
+  border: 1px solid var(--white);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.28;
   cursor: pointer;
   outline: transparent;
   appearance: none;
   background-color: var(--white);
+  transition: border-color var(--animation-duration) var(--timing-function);
 }
 .filter-sort:hover,
 .filter-sort:focus {
@@ -151,10 +174,7 @@
     display: flex;
     position: relative;
     margin-top: 8px;
-  }
-
-  .filter-select {
-    width: 169px;
+    width: 189px;
   }
 
   .filter-sort-container {
@@ -179,140 +199,3 @@
     margin-bottom: 60px;
   }
 }
-
-/***************************/
-/***************************/
-/***************************/
-/* 
-.hidden {
-  display: none;
-}
-.filter {
-  margin-bottom: 40px;
-}
-
-.filter-title {
-  color: rgba(1, 1, 1, 0.3);
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 18px;
-  margin-top: 74px;
-}
-
-.input-container {
-  display: flex;
-  position: relative;
-  margin-top: 8px;
-}
-
-.search-btn {
-  position: absolute;
-  background-color: var(--light-green) transparent;
-  right: 0;
-  border: none;
-  padding: 14px 20px;
-}
-.down-icon {
-  position: absolute;
-  background-color: var(--light-green) transparent;
-  right: 20;
-  top: 17;
-  border: none;
-}
-
-.search-icon,
-.down-icon {
-  fill: var(--black);
-}
-
-.input-container input {
-  flex: 1;
-  background-color: var(--light-green);
-  padding: 14px 20px;
-  border-radius: 30px;
-  border: 1px solid rgba(1, 1, 1, 0.3);
-  color: var(--black);
-  font-family: Neue Montreal;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 18px;
-}
-
-.input-container input::placeholder {
-  color: var(--black);
-}
-
-.categories {
-  width: 100%;
-  background-color: transparent;
-  padding: 14px 20px;
-  border-radius: 30px;
-  border: 1px solid rgba(1, 1, 1, 0.3);
-  color: var(--black);
-  font-family: Neue Montreal;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 18px;
-  margin-bottom: 12px;
-  appearance: none;
-  z-index: 1;
-}
-
-select option {
-  color: rgba(1, 1, 1, 0.5);
-  font-family: Neue Montreal;
-  font-size: 14px;
-  line-height: 1.28em;
-}
-
-input:focus,
-select:focus {
-  outline: none;
-  border-color: var(--primary-color);
-}
-
-@media only screen and (min-width: 768px) {
-  .img-container {
-    width: 296px;
-  }
-
-  .filter {
-    display: flex;
-    flex-direction: row;
-    gap: 8px;
-  }
-
-  .submit-form {
-    width: 269px;
-  }
-
-  .categories {
-    width: 169px;
-  }
-}
-@media screen and (min-width: 1280) {
-  .filter-box {
-    margin-right: 40px;
-  }
-}
-
-.filter-box__list {
-  display: flex;
-  flex-wrap: wrap;
-  column-gap: 20px;
-  row-gap: 40px;
-}
-@media only screen and (min-width: 768px) {
-  .filter-box {
-    margin-bottom: 50px;
-  }
-}
-@media only screen and (min-width: 1280px) {
-  .filter-box__list {
-    width: 925px;
-    border-radius: 10px;
-  }
-} */

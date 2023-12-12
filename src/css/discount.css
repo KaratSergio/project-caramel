@@ -67,6 +67,12 @@
   border-radius: 30px;
   background-color: var(--gray);
   border: none;
+  transition: background var(--animation-duration) var(--timing-function);
+}
+
+.card-product-btn:hover,
+.card-product-btn:focus {
+  background: var(--dark-gray);
 }
 
 .is-hidden {

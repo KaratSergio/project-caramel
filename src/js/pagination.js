@@ -78,6 +78,7 @@ export async function newDisplayPagination(options) {
     };
     const pagination = new Pagination(paginationContainer, options);
 
+
     pagination.on('afterMove', async e => {
       paginationSearchParams.page = e.page;
       const { results } = await getProductsByParams(paginationSearchParams);

@@ -11,12 +11,15 @@
   width: 190px;
   height: 53px;
   cursor: pointer;
-font-family: 'Quincy CF';
+  font-family: 'Quincy CF';
   font-size: 18px;
   font-weight: 900;
   line-height: 1.11;
   letter-spacing: -0.36px;
   border: none;
+  transition: background-color var(--animation-duration) var(--timing-function),
+    color var(--animation-duration) var(--timing-function);
+  border-radius: 9px;
 }
 .header__shop-icon-container {
   background-color: var(--gray);
@@ -27,15 +30,16 @@ font-family: 'Quincy CF';
   align-items: center;
   justify-content: center;
   margin-right: 8px;
+  transition: background-color var(--animation-duration) var(--timing-function);
 }
 .cart-shop-icon {
   fill: var(--background);
+  transition: fill var(--animation-duration) var(--timing-function);
 }
 .header-logo:hover,
 .header-logo:focus {
   background-color: var(--gray);
   color: var(--background);
-  border-radius: 9px;
 }
 
 .box-hover:hover .cart-shop-icon {
@@ -63,6 +67,7 @@ font-family: 'Quincy CF';
   justify-content: center;
   align-items: center;
   margin-right: 6px;
+  transition: background-color var(--animation-duration) var(--timing-function);
 }
 
 .header-home:hover,
@@ -92,6 +97,7 @@ font-family: 'Quincy CF';
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background-color var(--animation-duration) var(--timing-function);
 }
 
 .header__icon-container:hover,
