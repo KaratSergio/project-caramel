@@ -9,6 +9,8 @@
   --transparent-border: rgba(232, 232, 226, 0.3);
   --transparent-fon: rgba(1, 1, 1, 0.4);
   --social-hover: #E8E8E280;
+  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  --animation-duration: 250ms;
 }
 
 body {

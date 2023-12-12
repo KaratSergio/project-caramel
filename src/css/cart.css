@@ -1,8 +1,3 @@
-:root {
-  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  --animation-duration: 250ms;
-}
-
 .title-container {
   display: flex;
   align-items: center;
@@ -100,10 +95,7 @@
   display: flex;
   flex-direction: column;
 }
-@media screen and (min-width: 768px) {
-  .basket-container {
-  }
-}
+
 @media screen and (min-width: 1440px) {
   .basket-container {
     justify-content: space-between;
@@ -193,14 +185,11 @@
 .items-block-container::-webkit-scrollbar-thumb {
   background: rgba(1, 1, 1, 0.08);
   border-radius: 20px;
-  height: 90px;
 }
-.items-block-container::-webkit-scrollbar-thumb:vertical {
-  height: 90px;
-}
+
 @media screen and (min-width: 768px) {
   .items-block-container {
-  max-height: 608px;
+    max-height: 608px;
     min-width: 672px;
     margin-bottom: 60px;
   }
@@ -439,19 +428,19 @@
 }
 .decrease-icon {
   stroke: var(--text-color);
-  scale: 0.8;
+  transform: scale(0.8);
 }
 @media screen and (min-width: 768px) {
   .decrease-icon {
-    scale: 1;
+    transform: scale(1);
   }
 }
 .decrease-icon:hover {
-  scale: 1;
+  transform: scale(1);
 }
 @media screen and (min-width: 1440px) {
   .decrease-icon:hover {
-    scale: 1.2;
+    transform: scale(1.2);
   }
 }
 .item-counter {
@@ -467,19 +456,19 @@
 
 .increase-icon {
   stroke: var(--text-color);
-  scale: 0.8;
+  transform: scale(0.8);
 }
 @media screen and (min-width: 768px) {
   .increase-icon {
-    scale: 1;
+    transform: scale(1);
   }
 }
 .increase-icon:hover {
-  scale: 1;
+  transform: scale(1);
 }
 @media screen and (min-width: 1440px) {
   .increase-icon:hover {
-    scale: 1.2;
+    transform: scale(1.2);
   }
 }
 
@@ -496,10 +485,7 @@
 .basket-total-container {
   margin-top: 0px;
 }
-@media screen and (min-width: 768px) {
-  .basket-total-container {
-  }
-}
+
 @media screen and (min-width: 1440px) {
   .basket-total-container {
     min-width: 590px;
@@ -577,7 +563,7 @@
 .total-count-text {
   font-size: 24px;
   font-weight: 500;
-  line-height: 1.16667;
+  line-height: 1.17;
 }
 @media screen and (min-width: 768px) {
   .total-count-text {
@@ -610,7 +596,7 @@
   gap: 8px;
 
   color: rgba(1, 1, 1, 0.5);
-  line-height: 1.28571;
+  line-height: 1.29;
 }
 @media screen and (min-width: 375px) {
   .email-label {
@@ -666,7 +652,7 @@
 
   color: var(--background);
   font-weight: 500;
-  line-height: 1.28571;
+  line-height: 1.29;
   transition: background-color var(--animation-duration) var(--timing-function);
 }
 .checkout-button:hover,
@@ -681,7 +667,7 @@
 @media screen and (min-width: 768px) {
   .checkout-button {
     min-width: 215px;
-    padding: 15px auto;
+    padding: 15px 0;
     font-size: 20px;
     line-height: 1.2;
   }
@@ -770,7 +756,7 @@
 .modal-close-button:hover .close-icon,
 .modal-close-button:focus .close-icon {
   fill: var(--gray);
-  scale: 1.2;
+  transform: scale(1.2);
 }
 
 .modal-info{
