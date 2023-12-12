@@ -112,7 +112,7 @@
   line-height: 1.116;
 }
 .popular-card-text {
-  color: var(--transparent-text);
+  color: var(--transparent-text-special);
   font-size: 12px;
   font-weight: 400;
   line-height: 14px;
