@@ -119,6 +119,10 @@
 }
 
 .basket-clear-container {
+   font-size: 14px;
+  font-weight: 500;
+  line-height: 1.29;
+  
   display: flex;
   align-items: center;
   justify-content: end;
@@ -146,11 +150,11 @@
   }
 }
 
-.basket-clear-text {
+/* .basket-clear-text {
   font-size: 14px;
   font-weight: 500;
-  line-height: 1.28571;
-}
+  line-height: 1.29;
+} */
 @media screen and (min-width: 768px) {
   .basket-clear-text {
     font-size: 16px;

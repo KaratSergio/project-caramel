@@ -187,7 +187,7 @@ function basketItemsMarkup(array, hiddenArr) {
           <div class="item-info">
             <div class="item-title-container">
               <h4 class="item-title">${name}</h4>
-              <button type="button" class="delete-item-button aria-label="Delete"">
+              <button type="button" class="delete-item-button" aria-label="Delete">
                 <svg class="delete-item-icon" width="20" height="20">
                   <use href="${sprite}#delete-icon"></use>
                 </svg>
