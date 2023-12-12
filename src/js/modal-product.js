@@ -4,9 +4,9 @@ import {
   saveData,
   countAddedItems,
   checkAdded,
-  manageButton
+  manageButton,
+  changeOtherIcon,
 } from './STORAGE';
-// tyt
 
 const addToCartIcon = document.getElementById('addToCartIcon');
 const removeFromIcon = document.getElementById('removeFromIcon');
@@ -33,109 +33,71 @@ const scrollToTopBtnEl = document.getElementById('scrollToTopBtn'); //!new
 // let isProductAdded = false;
 
 export function openModal(product) {
-  try{
-  if (!product || !product.img) {
-    console.error('Product data is missing or incomplete.');
-    return;
-  }
+  try {
+    if (!product || !product.img) {
+      console.error('Product data is missing or incomplete.');
+      return;
+    }
 
-  modalProduct.style.display = 'block';
-  document.body.style.overflow = 'hidden';
-  document.querySelector('.modal-overlay').style.display = 'flex';
-  window.addEventListener('click', outsideModalClick);
+    modalProduct.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    document.querySelector('.modal-overlay').style.display = 'flex';
+    window.addEventListener('click', outsideModalClick);
 
-  
-  addToCartBtn.addEventListener('click', addProduct);
-  removeFromBtn.addEventListener('click', removeProduct);
-  const listProducts = getData(STORAGE_KEY);
-  let item = checkAdded(listProducts, product);
-  manageButton(item, addToCartBtn, removeFromBtn);
-  function addProduct() {
-    listProducts.push(product);
-    recheckCart(listProducts);
-  }
-  function removeProduct() {
-    listProducts.splice(item, 1);
-    recheckCart(listProducts);
-  }
-  function recheckCart(item) {
-    saveData(STORAGE_KEY, listProducts);
-    countAddedItems();
-    item = checkAdded(listProducts, product);
+    addToCartBtn.addEventListener('click', addProduct);
+    removeFromBtn.addEventListener('click', removeProduct);
+    const listProducts = getData(STORAGE_KEY);
+    let item = checkAdded(listProducts, product);
     manageButton(item, addToCartBtn, removeFromBtn);
-  }
+    function addProduct() {
+      listProducts.push(product);
+      recheckCart(listProducts);
+    }
+    function removeProduct() {
+      listProducts.splice(item, 1);
+      recheckCart(listProducts);
+    }
+    function recheckCart(item) {
+      saveData(STORAGE_KEY, listProducts);
+      countAddedItems();
+      item = checkAdded(listProducts, product);
+      changeOtherIcon(product._id, item);
+      manageButton(item, addToCartBtn, removeFromBtn);
+    }
 
-  scrollToTopBtnEl.style.display = 'none'; //!new
+    scrollToTopBtnEl.style.display = 'none'; //!new
 
-  // addToCartBtn.addEventListener('click', () => {
-  //   const listProducts = getData();
-  //   const productAdded = listProducts.find(item => item._id === product._id);
-  //   if (!productAdded) {
-  //     listProducts.push(product);
-  //     saveData(listProducts);
-  //     updateCartIcon(true);
-  //     isProductAdded = true;
-  //   }
-  // });
+    modalProductImage.src = product.img;
+    modalProductName.textContent = product.name;
 
-  // removeFromBtn.addEventListener('click', () => {
-  //   manageCart(product, true);
-  //   updateCartIcon(false);
-  //   isProductAdded = false;
-  // });
+    modalProductCategory.innerHTML = `Category: <span id="priceText"> ${product.category.replace(
+      /_/g,
+      ' '
+    )}</span>`;
+    document.getElementById('priceText').style.color = 'black';
+    modalProductSize.innerHTML = `Size: <span id="priceTexte"> ${product.size}</span>`;
+    document.getElementById('priceTexte').style.color = 'black';
+    modalProductPopularity.innerHTML = `Popularity: <span id="priceTex"> ${product.popularity}</span>`;
+    document.getElementById('priceTex').style.color = 'black';
 
+    modalProductDescription.textContent = `${product.desc}`;
+    modalProductPrice.textContent = `$ ${product.price}`;
 
-  modalProductImage.src = product.img;
-  modalProductName.textContent = product.name;
-
-  modalProductCategory.innerHTML = `Category: <span id="priceText"> ${product.category.replace(
-    /_/g,
-    ' '
-  )}</span>`;
-  document.getElementById('priceText').style.color = 'black';
-  modalProductSize.innerHTML = `Size: <span id="priceTexte"> ${product.size}</span>`;
-  document.getElementById('priceTexte').style.color = 'black';
-  modalProductPopularity.innerHTML = `Popularity: <span id="priceTex"> ${product.popularity}</span>`;
-  document.getElementById('priceTex').style.color = 'black';
-
-  modalProductDescription.textContent = `${product.desc}`;
-  modalProductPrice.textContent = `$ ${product.price}`;
-
-  modalProduct.style.display = 'block';
-  document.body.style.overflow = 'hidden';
-  document.querySelector('.modal-overlay').style.display = 'block';
+    modalProduct.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    document.querySelector('.modal-overlay').style.display = 'block';
     window.addEventListener('click', outsideModalClick);
   } catch (error) {
-    console.log("no proructs")
+    console.log('no proructs');
   }
 }
-
-// function manageCart(product, remove = false) {
-//   const listProducts = getData();
-//   const productInCart = listProducts.find(item => item._id === product._id);
-
-//   if (remove) {
-//     if (productInCart) {
-//       saveData(listProducts.filter(item => item._id !== product._id));
-//     }
-//   } else {
-//     if (!productInCart) {
-//       listProducts.push(product);
-//       saveData(listProducts);
-//     }
-//   }
-// }
 
 function closeModal() {
   document.body.style.overflow = '';
   modalProduct.style.display = 'none';
   document.querySelector('.modal-overlay').style.display = 'none';
-  window.removeEventListener('click', outsideModalClick);
-  // isProductAdded = false;
 
-  // isProductAdded = false;
   scrollToTopBtnEl.style.display = 'block'; //! new
-
 }
 
 closeModalProductBtn.addEventListener('click', closeModal);
@@ -157,64 +119,3 @@ function outsideModalClick(event) {
     closeModal();
   }
 }
-
-
-// function updateCartIcon(itemAdded) {
-//   const listProducts = getData();
-
-//   if (itemAdded) {
-//     // console.log(addToCartIcon);
-//     addToCartIcon.classList.add('added-to-cart');
-//     removeFromIcon.classList.remove('added-to-cart');
-//   } else {
-//     // console.log(addToCartIcon);
-//     addToCartIcon.classList.remove('added-to-cart');
-//     removeFromIcon.classList.add('added-to-cart');
-//   }
-
-//   if (listProducts.length > 0) {
-//     removeFromBtn.classList.remove('visually-hidden');
-//     addToCartBtn.classList.add('visually-hidden');
-//   } else {
-//     removeFromBtn.classList.add('visually-hidden');
-//     addToCartBtn.classList.remove('visually-hidden');
-//   }
-// }
-
-// document.addEventListener('DOMContentLoaded', () => {
-//   const listProducts = getData();
-//   const productAdded = listProducts.find(item => item._id === product._id);
-//   if (productAdded) {
-//     isProductAdded = true;
-//   }
-//   updateCartIcon(isProductAdded);
-// });
-
-// function updateCartIcon(itemAdded) {
-//   const listProducts = getData();
-
-//   if (itemAdded) {
-//     addToCartIcon.classList.add('added-to-cart');
-//     removeFromIcon.classList.remove('added-to-cart');
-//   } else {
-//     addToCartIcon.classList.remove('added-to-cart');
-//     removeFromIcon.classList.add('added-to-cart');
-//   }
-
-//   if (listProducts.length > 0) {
-//     removeFromBtn.classList.remove('visually-hidden');
-//     addToCartBtn.classList.add('visually-hidden');
-//   } else {
-//     removeFromBtn.classList.add('visually-hidden');
-//     addToCartBtn.classList.remove('visually-hidden');
-//   }
-// }
-
-// document.addEventListener('DOMContentLoaded', () => {
-//   const listProducts = getData();
-//   const productAdded = listProducts.find(item => item._id === product._id);
-//   if (productAdded) {
-//     // isProductAdded = true;
-//   }
-//   updateCartIcon(isProductAdded);
-// });

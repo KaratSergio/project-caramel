@@ -63,6 +63,7 @@ export async function newDisplayPagination(options) {
     pagination.on('afterMove', async e => {
       paginationSearchParams.page = e.page;
       const { results } = await getProductsByParams(paginationSearchParams);
+      saveData(FIRST_SET, results);
       displayProducts(results);
     });
   }

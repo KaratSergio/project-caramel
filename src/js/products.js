@@ -1,12 +1,20 @@
 import sprite from '../images/icons.svg';
-import { getData, saveData } from './STORAGE';
+import {
+  STORAGE_KEY,
+  FIRST_SET_KEY,
+  getData,
+  saveData,
+  changeOtherIcon,
+} from './STORAGE';
 import { openModal } from './modal-product';
 import { getProductById } from './get-api';
 
 const productsList = document.querySelector('.list-prod');
-const STORAGE_KEY = 'added-item';
-const itemsCard = [];
-saveData(STORAGE_KEY, itemsCard);
+// достаем дані з локал
+const items = getData(STORAGE_KEY);
+// const productId = getIdProducts(items);     //////// ????????
+// const toggle = productId.includes(items._id); //////// ???????? allways FALSE or TRUE
+
 // Markup
 export function addMarkup(el, markup) {
   el.innerHTML = markup;
@@ -18,37 +26,39 @@ export async function displayProducts(results) {
   addMarkup(productsList, markup);
 }
 
-// достаем дані з локал
-const items = getData('firstset');
-const productId = getIdProducts(items);
-const toggle = productId.includes(items._id);
-
 productsList.addEventListener('click', onClick);
 productsList.addEventListener('click', onShowModal);
+
+// const STORAGE_KEY = 'added-item';
+// const itemsCard = [];
+// saveData(STORAGE_KEY, itemsCard);
 
 function onClick(event) {
   const btnEl = event.target.closest('.buy-btn');
   if (!btnEl) {
     return;
   }
-  const cardEl = event.target.closest('.prod-item');
-  const icons = btnEl.querySelectorAll('svg');
-  const id = cardEl.getAttribute('data-js-product-id');
 
+  const cardEl = event.target.closest('.prod-item');
+  const id = cardEl.getAttribute('data-js-product-id');
+  const icons = btnEl.querySelectorAll("svg[data-js-product='" + id + "']");
   const items = getData(STORAGE_KEY);
-  const existingItemIndex = items.findIndex(item => item._id === id);
+  let existingItemIndex = items.findIndex(item => item._id === id);
   if (existingItemIndex !== -1) {
     items.splice(existingItemIndex, 1);
-    saveData(STORAGE_KEY, items);
+    existingItemIndex = -1;
   } else {
-    const newItem = getData('firstset').find(item => item._id === id);
+    const newItem = getData(FIRST_SET_KEY).find(item => item._id === id); // find FIRST_SET_KEY
     if (newItem) {
       items.push(newItem);
-      saveData(STORAGE_KEY, items);
+      existingItemIndex = 0;
     }
   }
-
-  icons.forEach(element => {
+  saveData(STORAGE_KEY, items);
+  changeOtherIcon(id, existingItemIndex);
+}
+export function changeIcons(arr) {
+  arr.forEach(element => {
     element.classList.toggle('is-hidden');
   });
 }
@@ -72,9 +82,9 @@ function onShowModal(event) {
     });
 }
 
-function getIdProducts(items = []) {
-  return items.map(item => item._id);
-}
+// function getIdProducts(items = []) {
+//   return items.map(item => item._id);
+// }
 
 export function createCardMarkup(results) {
   return results
@@ -89,13 +99,18 @@ export function createCardMarkup(results) {
         popularity,
         is10PercentOff,
       }) => {
-        const check = toggle ? '' : 'is-hidden';
-        const card = toggle ? 'is-hidden' : '';
+        const storageData = getData(STORAGE_KEY);
+        const check = storageData.find(item => item._id === _id)
+          ? ''
+          : 'is-hidden';
+        const card = storageData.find(item => item._id === _id)
+          ? 'is-hidden'
+          : '';
         const visibility = onVisible(is10PercentOff);
         return `
         <li class="prod-item" data-js-product-id=${_id}>   
           <div class="prod-pic">
-            <svg class="discont-prod" width="60" height="60" style="visibility: ${visibility};">
+            <svg class="discont-prod" width="60" height="60" data-js-label-discont="${is10PercentOff}" style="visibility: ${visibility};">
               <use href="${sprite}#icon-discount"></use>
             </svg>
             <img class="prod-img" src=${img} alt=${name} loading="lazy">
@@ -112,10 +127,12 @@ export function createCardMarkup(results) {
           <div class="buing-prod">
             <p class="price-prod">&#36; ${price}</p>
             <button class="buy-btn" type="button">
-            <svg class="card-product-svg ${check}" width="18" height="18">
+            <svg class="card-product-svg ${check}" 
+            data-js-product="${_id}" width="18" height="18">
             <use href="${sprite}#check"></use>
             </svg>
-            <svg class="card-product-svg ${card}" width="18" height="18">
+            <svg class="card-product-svg ${card}" 
+            data-js-product="${_id}" width="18" height="18">
             <use href="${sprite}#shopping-cart"></use>
             </svg>
             </button>

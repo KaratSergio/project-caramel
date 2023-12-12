@@ -28,6 +28,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
+  cursor: pointer;  /*Думаю надо дoбавить эту строчку, Проверьте*/ 
 }
 
 .prod-img {
