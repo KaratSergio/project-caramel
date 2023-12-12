@@ -68,8 +68,8 @@
   fill: var(--gray);
 }
 
-.svg-add-product:hover,
-.svg-add-product:focus {
+.button-add-product:hover > .svg-add-product,
+.button-add-product:focus > .svg-add-product {
   fill: var(--background);
 }
 
