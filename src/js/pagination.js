@@ -42,23 +42,28 @@ export async function newDisplayPagination(options) {
 
   displayProducts(results);
 
-  if (totalPages > 1) {
-    const options = {
+  if (totalPages >= 1) {
+
+    productsList.classList.remove('visually-hidden');
+    paginationContainer.classList.remove('visually-hidden');
+    filterNomatches.classList.add('visually-hidden');
+
+    const optionsP = {
       totalItems: results.length * totalPages,
       itemsPerPage: paginationSearchParams.limit,
       visiblePages: 5,
-      page: 1,
+      page: paginationSearchParams.page,
       centerAlign: true,
       usageStatistics: false,
     };
 
-    if (window.matchMedia('(max-width: 375px)').matches) {
-      options.visiblePages = 3;
+    if (window.matchMedia('(max-width: 767px)').matches) {
+      optionsP.visiblePages = 3;
     } else if (window.matchMedia('(min-width: 768px)').matches) {
-      options.visiblePages = 5;
+      optionsP.visiblePages = 5;
     }
 
-    const pagination = new Pagination(paginationContainer, options);
+    const pagination = new Pagination(paginationContainer, optionsP);
 
     pagination.on('afterMove', async e => {
       paginationSearchParams.page = e.page;
