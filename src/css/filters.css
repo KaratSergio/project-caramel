@@ -31,6 +31,7 @@
   line-height: 1.28;
   margin-bottom: 12px;
   outline: transparent;
+  transition: border-color var(--animation-duration) var(--timing-function);
 }
 .filter-form input::placeholder {
   color: var(--text-color);
@@ -73,6 +74,7 @@
   outline: transparent;
   appearance: none;
   margin-bottom: 12px;
+  transition: border-color var(--animation-duration) var(--timing-function);
 }
 .filter-select:hover,
 .filter-select:focus {
@@ -96,11 +98,12 @@
   justify-content: center;
   align-items: center;
   border-radius: 30px;
-  border: none;
+  border: 1px solid var(--white);
   cursor: pointer;
   outline: transparent;
   appearance: none;
   background-color: var(--white);
+  transition: border-color var(--animation-duration) var(--timing-function);
 }
 .filter-sort:hover,
 .filter-sort:focus {

@@ -53,6 +53,7 @@
   font-weight: 500;
   color: #010101;
   background-color: var(--background);
+  transition: color var(--animation-duration) var(--timing-function);
 }
 
 .footer-button:hover,
@@ -80,6 +81,7 @@
   letter-spacing: -0.02em;
 
   font-style: normal;
+  transition: text-shadow var(--animation-duration) var(--timing-function);
 }
 
 .footer-social-list {
@@ -88,6 +90,7 @@
 .footer-socials-item {
   width: 44px;
   height: 44px;
+  transition: background-color var(--animation-duration) var(--timing-function);
 }
 
 .footer-socials-item:hover,
@@ -143,10 +146,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: box-shadow var(--animation-duration) var(--timing-function),
+    text-shadow var(--animation-duration) var(--timing-function);
 }
 
-.footer-socials-text:hover
-.footer-socials-text:focus {
+.footer-socials-text:hover .footer-socials-text:focus {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
