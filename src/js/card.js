@@ -4,8 +4,6 @@ import successImg from '../images/success_order.png';
 import errorImg from '../images/error.png';
 import { STORAGE_KEY, getData, saveData } from './STORAGE';
 
-// const STORAGE_KEY = 'added-item';
-
 let dataForm = [];
 let hiddenElements = [];
 const modalInfo = {};
@@ -36,28 +34,11 @@ function onLoad() {
   }
 }
 
-// import { getLocalStorageData, countAddedItems } from './card';
-// let dataForm = [];
-
-// getLocalStorageData();
-// countAddedItems(dataForm);
-
-//  ------- get data for CART from local storage
-// export function getLocalStorageData() {
-//   const data = localStorage.getItem(STORAGE_KEY);
-//   if (!data) return;
-//   dataForm = JSON.parse(data);
-// }
-
-// function updateLocalStorageData(dataForm) {
-//   localStorage.setItem(STORAGE_KEY, JSON.stringify(dataForm));
-// }
 function updateItemCount(item, count) {
   for (let i = 0; i <= dataForm.length; i += 1) {
     const { _id: itemId } = dataForm[i];
     if (itemId === item) {
       dataForm[i].count = count;
-      // updateLocalStorageData(dataForm);
       saveData(STORAGE_KEY, dataForm);
       return;
     }
@@ -75,12 +56,10 @@ function checkLoadCount() {
   });
 }
 
-// ------- Created Category without "_"
 export function changeCategory() {
   dataForm = getData(STORAGE_KEY);
   dataForm.forEach(element => {
     element.category = element.category.split('_').join(' ');
-    // updateLocalStorageData(dataForm);
     saveData(STORAGE_KEY, dataForm);
   });
 }
@@ -98,7 +77,6 @@ function onClick(event) {
     case 'delete-item-button':
       const itemId = idDetect(event);
       deleteSelectedItem(itemId);
-      // getLocalStorageData();
       getData(STORAGE_KEY);
       itemsContainer.innerHTML = basketItemsMarkup(dataForm, hiddenElements);
       break;
@@ -124,7 +102,6 @@ function deleteSelectedItem(item) {
     const { _id: itemId } = dataForm[i];
     if (itemId === item) {
       dataForm.splice(i, 1);
-      // updateLocalStorageData(dataForm);
       saveData(STORAGE_KEY, dataForm);
       countAddedItems(dataForm);
       totalSumCount(dataForm);
@@ -133,7 +110,6 @@ function deleteSelectedItem(item) {
   }
 }
 
-//  ------- Created count into header
 export function countAddedItems(item) {
   if (itemCount) {
     itemCount.textContent = item.length;
@@ -254,7 +230,6 @@ function totalSumCount(array) {
   totalSum.textContent = `$${totalPrice.toFixed(2)}`;
 }
 
-//  Email validation
 const EMAIL_REGEXP =
   /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
 
@@ -279,7 +254,6 @@ async function onOrderSubmit(event) {
 function isEmailValid(value) {
   return EMAIL_REGEXP.test(value);
 }
-// ------- order to Modal window
 
 function success(response) {
   console.dir(modalInfo);
@@ -300,8 +274,6 @@ function onError() {
   lockScroll();
   openModalWindow();
 }
-
-// ------- Modal window
 
 function createModalMarkup(event) {
   modalWindow.innerHTML = `<img class="modal-img" src="${event.image}" alt="${event.title}">

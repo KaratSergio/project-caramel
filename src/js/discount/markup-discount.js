@@ -30,11 +30,13 @@ export function createMarkup(items = [], idProducts = []) {
         <h3 class="card-product-title">${newName}</h3>
         <div class="card-product-info-right">
             <p class="card-product-price">&#36; ${item.price}</p>
-            <button type="button" class="card-product-btn" >
-            <svg class="card-product-svg ${check}" width="18" height="18">
+            <button type="button" class="card-product-btn">
+            <svg class="card-product-svg ${check}" 
+            data-js-discont="${item._id}" width="18" height="18">
             <use href="${sprite}#check"></use>
           </svg>
-          <svg class="card-product-svg ${card}" width="18" height="18">
+          <svg class="card-product-svg ${card}" 
+          data-js-discont="${item._id}" width="18" height="18">
           <use href="${sprite}#shopping-cart"></use>
         </svg>
             </button>

@@ -1,5 +1,5 @@
 import { getProducts } from '../get-api';
-import { STORAGE_KEY, countAddedItems, getData, saveData } from '../STORAGE';
+import { STORAGE_KEY, countAddedItems, getData, saveData, changeOtherIcon } from '../STORAGE';
 import { createMarkup } from './markup-discount';
 import { openModal } from '../modal-product';
 
@@ -47,16 +47,18 @@ function onClick(event) {
       items.filter(item => id !== item._id)
     );
     countAddedItems();
+    changeOtherIcon(id, -1);
   } else {
     const data = products.find(item => id === item._id);
     items.push(data);
     saveData(STORAGE_KEY, items);
     countAddedItems();
+    changeOtherIcon(id, 0);
   }
 
-  icons.forEach(element => {
-    element.classList.toggle('is-hidden');
-  });
+  // icons.forEach(element => {
+  //   element.classList.toggle('is-hidden');
+  // });
 }
 
 function onShowModal(event) {

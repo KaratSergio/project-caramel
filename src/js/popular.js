@@ -1,5 +1,5 @@
 import { getPopularProducts, getProductById } from './get-api';
-import { getData, saveData, countAddedItems, STORAGE_KEY } from './STORAGE';
+import { getData, saveData, countAddedItems, STORAGE_KEY, changeOtherIcon } from './STORAGE';
 import { openModal } from './modal-product';
 import sprite from '../images/icons.svg';
 
@@ -17,6 +17,8 @@ getPopularProducts(5)
     [...productAdded].forEach(elem => {
       const idBtn = elem.getAttribute('data-js-button');
       const selIdBtn = productSelected(idBtn, data);
+
+      
       if (checkLocalStorage(selIdBtn._id)) {
         elem.nextElementSibling.classList.add('visually-hidden');
       }
@@ -41,6 +43,7 @@ getPopularProducts(5)
           listProducts.push(selectedProduct);
           saveData(STORAGE_KEY, listProducts);
           countAddedItems();
+          changeOtherIcon(selectedProduct._id, 0);
         }
         target.closest('.button-add-product').classList.add('visually-hidden');
         elemAdded.classList.remove('visually-hidden');
@@ -56,6 +59,7 @@ getPopularProducts(5)
           products.filter(product => productAdded._id !== product._id)
         );
         countAddedItems();
+        changeOtherIcon(selIdBtnLS._id, -1);
         target
           .closest('.button-remove-product')
           .classList.add('visually-hidden');
@@ -88,6 +92,7 @@ function productSelected(val, data) {
 
 function checkLocalStorage(id) {
   const listProducts = getData(STORAGE_KEY);
+  
   return listProducts.find(item => item._id === id);
 }
 
@@ -108,17 +113,20 @@ function createMarkup(items) {
         price,
         is10PercentOff,
       }) => {
-        
         const firstDigit = parseInt(popularity.toString()[0]);
         const newName = truncate(name, 14);
 
         return `  <li class="popular-item">
-            <button class="button-remove-product" data-js-button=${_id}><span class="visually-hidden">Remove product</span>
+
+            <button class="button-remove-product" data-js-button=${_id} type="button" >
+
         <svg class="svg-remove-product" width="12" height="12">
           <use href="${sprite}#check"></use>
         </svg>
       </button>
-      <button class="button-add-product" type="button" ><span class="visually-hidden">Add product</span>
+
+      <button class="button-add-product" data-js-button=${_id} type="button" >
+
         <svg class="svg-add-product" width="12" height="12">
           <use href="${sprite}#shopping-cart"></use>
         </svg>
