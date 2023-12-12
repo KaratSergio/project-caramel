@@ -281,7 +281,7 @@ function createModalMarkup(event) {
       <div class="modal-text">${event.message}</div>`;
 }
 
-const openModalBtn = document.querySelector('[js-modal-open]');
+const openModalBtn = document.querySelector('[data-js-modal-open]');
 const closeModalBtn = document.querySelector('[data-modal-close]');
 const modal = document.querySelector('[data-modal]');
 const modalWindow = document.querySelector('#js-modal-info');

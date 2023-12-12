@@ -30,8 +30,8 @@
   </div>
   <div class="basket-container js-filled-basket">
     <div class="basket-item-container js-item-button">
-      <button class="basket-clear-container" type="button">
-        <p class="basket-clear-text">Delete all</p>
+      <button class="basket-clear-container basket-clear-text" type="button">
+        Delete all
         <svg class="delete-icon" width="24" height="24">
           <use href="./images/icons.svg#delete-icon"></use>
         </svg>
@@ -57,7 +57,7 @@
             placeholder="Enter your email"
           />
         </label>
-        <button class="checkout-button" js-modal-open type="submit">Checkout</button>
+        <button class="checkout-button" data-js-modal-open type="submit">Checkout</button>
       </form>
     </div>
   </div>
@@ -69,7 +69,7 @@
           <use href="./images/icons.svg#delete-icon"></use>
         </svg>
       </button>
-      <div id="js-modal-info" clacc="modal-info"></div>
+      <div id="js-modal-info" class="modal-info"></div>
     </div>
   </div>
 </section>
