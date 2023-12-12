@@ -113,12 +113,12 @@ function createMarkup(items) {
         const newName = truncate(name, 14);
 
         return `  <li class="popular-item">
-            <button class="button-remove-product" data-js-button=${_id}>
+            <button class="button-remove-product" data-js-button=${_id}><span class="visually-hidden">Remove product</span>
         <svg class="svg-remove-product" width="12" height="12">
           <use href="${sprite}#check"></use>
         </svg>
       </button>
-      <button class="button-add-product" type="button" >
+      <button class="button-add-product" type="button" ><span class="visually-hidden">Add product</span>
         <svg class="svg-add-product" width="12" height="12">
           <use href="${sprite}#shopping-cart"></use>
         </svg>
