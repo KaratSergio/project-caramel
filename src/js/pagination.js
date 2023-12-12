@@ -43,6 +43,11 @@ export async function newDisplayPagination(options) {
   displayProducts(results);
 
   if (totalPages >= 1) {
+
+    productsList.classList.remove('visually-hidden');
+    paginationContainer.classList.remove('visually-hidden');
+    filterNomatches.classList.add('visually-hidden');
+
     const optionsP = {
       totalItems: results.length * totalPages,
       itemsPerPage: paginationSearchParams.limit,
