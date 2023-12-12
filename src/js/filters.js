@@ -104,7 +104,7 @@ export function createMarkupCard(results) {
             <svg class="discont-prod" width="60" height="60" style="visibility: hidden;">
               <use href="./images/icons.svg#shopping-cart"></use>
             </svg>
-            <img class="prod-img" src=${img} alt=${name} loading="lazy">
+            <img class="prod-img" src=${img} alt=${name} width="140" height="140" loading="lazy" aria-label=${name}>
           </div>
           <h3 class="title-prod">${name}</h3>
           <div class="feature">
@@ -114,7 +114,7 @@ export function createMarkupCard(results) {
           </div>
           <div class="buing-prod">
             <p class="price-prod">&#36; ${price}</p>
-            <button class="buy-btn" type="button">
+            <button class="buy-btn" type="button" aria-label="Buy ${name}">
               <svg class="buy-svg" width="18" height="18">
                 <use href="./images/icons.svg#shopping-cart"></use>"></use>
               </svg>

@@ -113,7 +113,7 @@ export function createCardMarkup(results) {
             <svg class="discont-prod" width="60" height="60" data-js-label-discont="${is10PercentOff}" style="visibility: ${visibility};">
               <use href="${sprite}#icon-discount"></use>
             </svg>
-            <img class="prod-img" src=${img} alt=${name} loading="lazy">
+            <img class="prod-img" src=${img} alt=${name} width="140" height="140" loading="lazy">
           </div>
           <h3 class="title-prod">${name}</h3>
           <div class="feature">
@@ -126,7 +126,7 @@ export function createCardMarkup(results) {
           </div>
           <div class="buing-prod">
             <p class="price-prod">&#36; ${price}</p>
-            <button class="buy-btn" type="button">
+            <button class="buy-btn" type="button" aria-label="Buy">
             <svg class="card-product-svg ${check}" 
             data-js-product="${_id}" width="18" height="18">
             <use href="${sprite}#check"></use>

@@ -187,7 +187,7 @@ function basketItemsMarkup(array, hiddenArr) {
           <div class="item-info">
             <div class="item-title-container">
               <h4 class="item-title">${name}</h4>
-              <button type="button" class="delete-item-button">
+              <button type="button" class="delete-item-button aria-label="Delete"">
                 <svg class="delete-item-icon" width="20" height="20">
                   <use href="${sprite}#delete-icon"></use>
                 </svg>
@@ -202,13 +202,13 @@ function basketItemsMarkup(array, hiddenArr) {
             <div class="total-item-container">
               <p class="item-price">$${price}</p>
               <div class="item-counter-container">
-                <button class="decrease-button" ${disabled} name="decrease" type="button">
+                <button class="decrease-button" ${disabled} name="decrease" type="button aria-label="decrease"">
                   <svg class="decrease-icon ${hide}" width="18" height="18">
                     <use href="${sprite}#minus"></use>
                   </svg>
                 </button>
                 <p class="item-counter" name="counter">${count}</p>
-                <button class="increase-button" name="increase" type="button">
+                <button class="increase-button" name="increase" type="button" aria-label="increase">
                   <svg class="increase-icon" width="18" height="18">
                     <use href="${sprite}#plus"></use>
                   </svg>

@@ -77,4 +77,5 @@ body {
       url('../fonts/QuincyCF-Black.ttf') format('truetype');
   font-weight: 900;
   font-style: normal;
+  font-display: swap;
 }

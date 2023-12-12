@@ -118,14 +118,14 @@ function createMarkup(items) {
 
         return `  <li class="popular-item">
 
-            <button class="button-remove-product" data-js-button=${_id} type="button" >
+            <button class="button-remove-product" data-js-button=${_id} type="button" aria-label="Delete" >
 
         <svg class="svg-remove-product" width="12" height="12">
           <use href="${sprite}#check"></use>
         </svg>
       </button>
 
-      <button class="button-add-product" data-js-button=${_id} type="button" >
+      <button class="button-add-product" data-js-button=${_id} type="button" aria-label="Add" >
 
         <svg class="svg-add-product" width="12" height="12">
           <use href="${sprite}#shopping-cart"></use>
