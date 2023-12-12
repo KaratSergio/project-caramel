@@ -70,7 +70,7 @@
 }
 
 .footer-socials-text {
-  color: var(--background);
+  color: var(--white);
   width: 157px;
   margin-left: 8px;
   font-family: 'Quincy CF';
@@ -145,18 +145,21 @@
   justify-content: center;
 }
 
-
-.footer-socials-text:hover {
+.footer-socials-text:hover
+.footer-socials-text:focus {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.food-boutique:hover,
-.food-boutique:focus{
-  fill: var(--background);
+.footer-socials-link:hover .footer-socials-text {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.footer-socials-link:hover > .food-boutique-container {
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.food-boutique-container:hover {
-  background-color: var(--social-hover);
+.food-boutique-container:hover,
+.food-boutique-container:focus {
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .footer-social-list {
