@@ -7,8 +7,23 @@
 }
 
 .pagination-container {
+  margin-top: 80px;
+  margin-bottom: 40px;
   min-height: 40px;
-  justify-content: center;
+}
+
+@media screen and (min-width: 767px) and (max-width: 899px) {
+  .pagination-container {
+    margin-top: 50px;
+    margin-bottom: 100px;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .pagination-container {
+    margin-top: 40px;
+    margin-bottom: 61px;
+  }
 }
 
 @media screen and (min-width: 768px) {
