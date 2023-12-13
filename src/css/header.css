@@ -7,8 +7,6 @@
 .header-logo {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 190px;
   height: 53px;
   cursor: pointer;
   font-family: 'Quincy CF';
@@ -119,6 +117,9 @@
   .header-logo {
     width: 220px;
     height: 60px;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: -0.48px;
   }
   .header__shop-icon-container {
     width: 32px;
@@ -129,12 +130,6 @@
   }
   .header-cart span {
     display: block;
-  }
-
-  .header-logo {
-    font-size: 24px;
-    line-height: 1;
-    letter-spacing: -0.48px;
   }
 
   .header-logo__img {
