@@ -43,7 +43,7 @@
   width: 40px;
   height: 40px;
 
-  margin: 0 10px;
+  margin: 0 4px;
   padding: 0 16px;
 
   color: #a3a3a3;
@@ -53,7 +53,7 @@
   font-weight: 500;
   line-height: 1.42;
   text-decoration: none;
-  border-radius: 40px;
+  border-radius: 50%;
 }
 
 .tui-pagination .tui-page-btn:hover {
@@ -204,13 +204,6 @@
   width: 14px;
 }
 
-/* ////////////////////////////////////////////// */
-/* ////////////////////////////////////////////// */
-/* ////////////////////////////////////////////// */
-/* ////////////////////////////////////////////// */
-/* ////////////////////////////////////////////// */
-/* ////////////////////////////////////////////// */
-/* ////////////////////////////////////////////// */
 
 span.tui-page-btn.tui-is-disabled.tui-first {
   display: none;
@@ -237,7 +230,7 @@ a.tui-page-btn.tui-first-child {
   position: relative;
   width: 40px;
   height: 40px;
-  margin: 0 10px;
+  margin: 0 4px;
   padding: 0 16px;
   color: #a3a3a3;
   font-family: Neue Montreal;
@@ -245,7 +238,7 @@ a.tui-page-btn.tui-first-child {
   font-weight: 500;
   line-height: 1.42;
   text-decoration: none;
-  border-radius: 40px;
+  border-radius: 50%;
 }
 
 .tui-pagination .tui-page-btn.tui-prev-is-ellip:hover {
@@ -270,4 +263,19 @@ a.tui-page-btn.tui-last-child {
 
 .tui-pagination > a:nth-last-child(2) {
   order: 1;
+}
+
+@media screen and (max-width: 767px) {
+  .tui-pagination .tui-prev {
+    width: 30px;
+  }
+
+  .tui-pagination .tui-next {
+    width: 30px;
+  }
+
+  .tui-pagination .tui-prev-is-ellip,
+.tui-pagination .tui-next-is-ellip {
+  width: 5.5px;
+}
 }

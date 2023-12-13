@@ -44,16 +44,11 @@ export async function newDisplayPagination(options) {
   if (totalPages) {
     let points = 1;
     if (totalPages > 3) {
-      points = 3;
+      points = 5;
     }
-    // const pagination = new Pagination('pagination', options);
 
-    if (window.matchMedia('(max-width: 375px)').matches) {
+    if (window.matchMedia('(max-width: 480px)').matches) {
       points = 3;
-    } else if (window.matchMedia('(min-width: 768px)').matches) {
-      /////////////////////////////////////
-      points = 3;
-      /////////////////////////////////
     }
     const options = {
       totalItems: results.length * totalPages,
@@ -63,7 +58,6 @@ export async function newDisplayPagination(options) {
       centerAlign: true,
       usageStatistics: false,
 
-      //////////////////////////////////////////////
       template: {
         moveButton:
           '<a href="#" class="tui-page-btn need-hide tui-{{type}}">' +
@@ -74,7 +68,6 @@ export async function newDisplayPagination(options) {
           '<span class="tui-ico-ellip">...</span>' +
           '</span>',
       },
-      /////////////////////////////////////////////
     };
     const pagination = new Pagination(paginationContainer, options);
 
