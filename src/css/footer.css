@@ -24,7 +24,6 @@
   display: flex;
   padding: 12px 18px 12px 18px;
   align-items: center;
-  /* gap: 10px; */
   border-radius: 30px;
   border: 1px solid var(--background);
   width: 100%;
@@ -90,6 +89,7 @@
   width: 44px;
   height: 44px;
   transition: background-color var(--animation-duration) var(--timing-function);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);;
 }
 
 .footer-socials-item:hover,
@@ -109,12 +109,14 @@
   letter-spacing: -0.02em;
   margin-bottom: 14px;
   max-width: 335px;
+  text-shadow: var(--text-shadow);
 }
 .footer-p-text {
   color: var(--transparent-footer-text);
   font-size: 14px;
   line-height: 1.29;
   max-width: 335px;
+  text-shadow: var(--text-shadow);
 }
 
 .footer-form {
@@ -125,6 +127,7 @@
   font-size: 14px;
   line-height: 1.29;
   margin-bottom: 8px;
+  text-shadow: var(--text-shadow);
 }
 
 .food-boutique {
@@ -304,6 +307,7 @@
   .footer-button {
     padding: 12px 149px;
     width: 336px;
+    box-shadow: 1px 0px 6px rgba(0, 0, 0, 0.5);;
   }
 
   .footer-socials-text {
@@ -338,6 +342,7 @@
     color: var(--background);
     font-size: 18px;
     line-height: 1.33;
+    text-shadow: var(--text-shadow);
   }
 
   .footer-input {
