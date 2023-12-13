@@ -38,6 +38,15 @@
   position: absolute;
   right: 8px;
   top: -7px;
+
+
+
+  animation-name: rotation;
+  animation-duration: 25s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+
+
 }
 
 @media (min-device-pixel-ratio: 2),

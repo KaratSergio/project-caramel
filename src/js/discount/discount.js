@@ -39,7 +39,6 @@ function onClick(event) {
 
   const id = cardEl.dataset.id;
 
-  //   console.log(data);
   const items = getData(STORAGE_KEY);
   if (items.find(item => id === item._id)) {
     saveData(
@@ -55,10 +54,6 @@ function onClick(event) {
     countAddedItems();
     changeOtherIcon(id, 0);
   }
-
-  // icons.forEach(element => {
-  //   element.classList.toggle('is-hidden');
-  // });
 }
 
 function onShowModal(event) {
