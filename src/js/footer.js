@@ -2,8 +2,6 @@ import throttle from 'lodash.throttle';
 import { orderSubscriptionToNewProducts } from './get-api';
 
 const form = document.querySelector('.feedback-form');
-form.addEventListener('submit', onPost);
-
 const localStorageKey = 'feedback-form-state';
 const myButton = document.getElementById('footer-button');
 
@@ -28,7 +26,6 @@ function onPost(event) {
     .catch(error => {
       refs.menu.classList.remove('is-hidden');
       refs.two.classList.remove('is-hidden');
-      refs.one.classList.add('is-hidden');
     });
 }
 
@@ -36,6 +33,7 @@ const saveFormState = throttle(() => {
   const formData = {
     email: form.elements.email.value,
   };
+  
   localStorage.setItem(localStorageKey, JSON.stringify(formData));
 }, 500);
 
@@ -107,46 +105,42 @@ document.body.style.overflow = 'auto';
 
   function toggleMenu() {
     refs.menu.classList.toggle('is-hidden');
-
     document.body.classList.toggle('no-scroll');
 
-    document.body.style.overflow = refs.menu.classList.contains('is-hidden')
-      ? 'auto'
-      : 'hidden';
+    if (refs.menu.classList.contains('is-hidden')) {
+      document.body.style.overflow = 'auto';
+    } else {
+      document.body.style.overflow = 'hidden';
+    }
   }
-
-  
-  const closeOnClick = () => {
-    refs.menu.classList.add('is-hidden');
-    document.body.classList.remove('no-scroll');
-    document.body.style.overflow = 'auto';
-    location.reload();
-  };
-
-  const closeOnEsc = (event) => {
-    if (event.key === 'Escape') {
-      closeOnClick();
-    }
-  };
-
-  const closeOnOverlayClick = (event) => {
-    if (event.target === refs.menu) {
-      closeOnClick();
-    }
-  };
 
   const links = Array.from(refs.menu.children);
   links.forEach(link => {
     link.addEventListener('click', closeOnClick);
   });
 
-  
+  function closeOnClick() {
+    refs.menu.classList.add('is-hidden');
+    document.body.classList.remove('no-scroll');
+    document.body.style.overflow = 'auto';
+  }
+
+  refs.openMenuBtn.addEventListener('click', toggleMenu);
+  refs.closeMenuBtn.addEventListener('click', toggleMenu);
+
+  function closeOnEsc(event) {
+    if (event.key === 'Escape') {
+      toggleMenu();
+    }
+  }
+
+  function closeOnOverlayClick(event) {
+    if (event.target === refs.menu) {
+      toggleMenu();
+    }
+  }
+
   document.addEventListener('keydown', closeOnEsc);
   document.addEventListener('click', closeOnOverlayClick);
-
-  // function closeOnClick() {
-  //   refs.menu.classList.add('is-hidden');
-  //   document.body.classList.remove('no-scroll');
-  //   document.body.style.overflow = 'auto';
-  // }
 })();
+
