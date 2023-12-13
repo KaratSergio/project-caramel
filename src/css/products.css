@@ -106,7 +106,7 @@
   cursor: pointer;
   appearance: auto;
   border: none;
-  transition: fill var(--animation-duration) var(--timing-function);
+  transition: background var(--animation-duration) var(--timing-function);
 }
 
 .buy-svg {
@@ -128,7 +128,7 @@
   }
 
   .prod-item {
-    width: calc((100% - 32px) / 2);
+    width: 336px;
   }
 }
 
