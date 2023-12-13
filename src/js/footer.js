@@ -4,7 +4,6 @@ import { orderSubscriptionToNewProducts } from './get-api';
 const form = document.querySelector('.feedback-form');
 form.addEventListener('submit', onPost);
 
-
 const localStorageKey = 'feedback-form-state';
 const myButton = document.getElementById('footer-button');
 
@@ -29,6 +28,7 @@ function onPost(event) {
     .catch(error => {
       refs.menu.classList.remove('is-hidden');
       refs.two.classList.remove('is-hidden');
+      refs.one.classList.add('is-hidden');
     });
 }
 

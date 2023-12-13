@@ -21,6 +21,9 @@
     color var(--animation-duration) var(--timing-function);
   border-radius: 9px;
 }
+.hero-background {
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.15);
+}
 .header__shop-icon-container {
   background-color: var(--gray);
   border-radius: 30px;
