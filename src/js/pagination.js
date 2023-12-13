@@ -20,10 +20,10 @@ export async function newDisplayPagination(options) {
     limit: 9,
   };
 
-  if (window.matchMedia('(max-width: 375px)').matches) {
+  if (window.matchMedia('(max-width: 479px)').matches) {
     paginationSearchParams.limit = 6;
   } else if (
-    window.matchMedia('(min-width: 768px) and (max-width: 900px)').matches
+    window.matchMedia('(min-width: 480px) and (max-width: 900px)').matches
   ) {
     paginationSearchParams.limit = 8;
   }
@@ -35,6 +35,10 @@ export async function newDisplayPagination(options) {
     productsList.classList.add('visually-hidden');
     filterNomatches.classList.remove('visually-hidden');
     paginationContainer.classList.add('visually-hidden');
+  } else {
+    productsList.classList.remove('visually-hidden');
+    filterNomatches.classList.add('visually-hidden');
+    paginationContainer.classList.remove('visually-hidden');
   }
 
   saveData(FIRST_SET, results);
