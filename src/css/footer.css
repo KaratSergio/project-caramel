@@ -18,6 +18,7 @@
   font-size: 14px;
   line-height: 1.29;
   margin-bottom: 20px;
+  text-shadow: var(--text-shadow);
 }
 .footer-input {
   background-color: var(--gray);
@@ -51,9 +52,9 @@
   outline: transparent;
   font-size: 16px;
   font-weight: 500;
-  color: #010101;
   background-color: var(--background);
   transition: color var(--animation-duration) var(--timing-function);
+  text-shadow: var(--text-shadow);
 }
 
 .footer-button:hover,
@@ -108,12 +109,14 @@
   letter-spacing: -0.02em;
   margin-bottom: 14px;
   max-width: 335px;
+  text-shadow: var(--text-shadow);
 }
 .footer-p-text {
   color: var(--transparent-footer-text);
   font-size: 14px;
   line-height: 1.29;
   max-width: 335px;
+  text-shadow: var(--text-shadow);
 }
 
 .footer-form {
