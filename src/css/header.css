@@ -20,6 +20,7 @@
   transition: background-color var(--animation-duration) var(--timing-function),
     color var(--animation-duration) var(--timing-function);
   border-radius: 9px;
+
 }
 .header__shop-icon-container {
   background-color: var(--gray);
@@ -68,6 +69,7 @@
   align-items: center;
   margin-right: 6px;
   transition: background-color var(--animation-duration) var(--timing-function);
+  box-shadow: var(--text-shadow);
 }
 
 .header-home:hover,

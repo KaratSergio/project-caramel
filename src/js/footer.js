@@ -21,10 +21,10 @@ function onPost(event) {
   orderSubscriptionToNewProducts(userEmail)
     .then(data => {
       if (data.message) {
-        console.log(data.message);
         refs.menu.classList.remove('is-hidden');
         refs.one.classList.remove('is-hidden');
       }
+      refs.two.classList.add('is-hidden');
     })
     .catch(error => {
       refs.menu.classList.remove('is-hidden');
@@ -57,7 +57,6 @@ form.addEventListener('submit', evt => {
   const formData = {
     email: form.elements.email.value,
   };
-  console.log(formData);
   localStorage.removeItem(localStorageKey);
   form.reset();
   validateForm();
