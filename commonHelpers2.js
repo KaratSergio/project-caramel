@@ -70,7 +70,7 @@ import{g as l,S as r,b as N,m as J,s as g,d as b,e as y,f as W,F as Z,a as m,h a
         <h3 class="card-product-title">${a}</h3>
         <div class="card-product-info-right">
             <p class="card-product-price">&#36; ${o.price}</p>
-            <button type="button" class="card-product-btn">
+            <button type="button" class="card-product-btn" aria-label="Buy">
             <svg class="card-product-svg ${n}" 
             data-js-discont="${o._id}" width="18" height="18">
             <use href="${m}#check"></use>
