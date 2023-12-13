@@ -26,12 +26,6 @@
   }
 }
 
-@media screen and (min-width: 768px) {
-  .products-container {
-    display: flex;
-    min-height: 1230px;
-  }
-}
 
 .tui-ico-ellipsis,
 .tui-ico-first,
