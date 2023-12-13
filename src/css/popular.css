@@ -61,7 +61,7 @@
   align-items: center;
   gap: 10px;
   border: none;
-  transition: background-color var(--animation-duration) var(--timing-function);
+  transition: fill var(--animation-duration) var(--timing-function);
 }
 .svg-add-product {
   transition: fill var(--animation-duration) var(--timing-function);
