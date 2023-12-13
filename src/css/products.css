@@ -18,8 +18,15 @@
   flex-direction: column;
   display: flex;
   justify-content: space-between;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  transition: scale 3s var(--timing-function);
+  transition: box-shadow 500ms var(--timing-function);
 }
 
+.prod-item:hover {
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  scale: 1.05;
+}
 .prod-pic {
   border-radius: 10px;
   background-color: var(--background);
@@ -29,6 +36,7 @@
   align-items: center;
   position: relative;
   cursor: pointer; /*Думаю надо дoбавить эту строчку, Проверьте*/
+  box-shadow: var(--img-shadow);
 }
 
 .prod-img {
@@ -106,6 +114,7 @@
   cursor: pointer;
   appearance: auto;
   border: none;
+  box-shadow: var(--img-shadow);
   transition: background var(--animation-duration) var(--timing-function);
 }
 
