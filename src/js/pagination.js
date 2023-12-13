@@ -47,7 +47,7 @@ export async function newDisplayPagination(options) {
 
   if (totalPages) {
     let points = 1;
-    if (totalPages > 3) {
+    if (totalPages > 1) {
       points = 5;
     }
 
