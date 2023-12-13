@@ -47,6 +47,7 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
+  box-shadow: var(--img-shadow);
 }
 .product-image img {
   max-width: 160px;
@@ -56,6 +57,10 @@
 .product-details {
   flex-grow: 1;
   max-width: 295px;
+}
+
+#modalProduct {
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
 }
 
 #modalProductName {

@@ -85,6 +85,7 @@
 .footer-social-list {
   display: flex;
 }
+
 .footer-socials-item {
   width: 44px;
   height: 44px;
@@ -213,7 +214,9 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.15);
   padding: 80px 45px;
+
 }
 
 .header-button-close {
