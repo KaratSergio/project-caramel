@@ -46,6 +46,7 @@
   font-weight: 500;
   line-height: 1.16;
   text-transform: uppercase;
+  text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.3);
 }
 @media screen and (min-width: 768px) {
   .title-cart {
@@ -224,6 +225,7 @@
   margin-bottom: 8px;
   background-color: var(--white);
   border-radius: 10px;
+  box-shadow: var(--img-shadow);
 }
 @media screen and (min-width: 768px) {
   .item-img-link {
@@ -651,15 +653,14 @@
   padding: 12px 0;
   justify-content: center;
   align-items: center;
-
   border: none;
   border-radius: 30px;
   background-color: var(--gray);
-
   color: var(--background);
   font-weight: 500;
   line-height: 1.29;
   transition: background-color var(--animation-duration) var(--timing-function);
+  box-shadow: var(--text-shadow);
 }
 .checkout-button:hover,
 .checkout-button:focus {

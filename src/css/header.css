@@ -20,6 +20,7 @@
   transition: background-color var(--animation-duration) var(--timing-function),
     color var(--animation-duration) var(--timing-function);
   border-radius: 9px;
+  text-shadow: var(--text-shadow);
 }
 .hero-background {
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.15);

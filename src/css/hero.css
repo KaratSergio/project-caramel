@@ -13,6 +13,7 @@
   line-height: 1.09;
   letter-spacing: -0.88px;
   margin-bottom: 16px;
+  text-shadow: var(--text-shadow);
 }
 
 .hero-title__text span {
@@ -23,6 +24,7 @@
   font-size: 14px;
   line-height: 1.28;
   width: 292px;
+  text-shadow: var(--img-shadow);
 }
 
 .hero-background {
