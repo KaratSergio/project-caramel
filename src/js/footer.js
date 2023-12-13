@@ -63,6 +63,7 @@ form.addEventListener('submit', evt => {
 });
 
 myButton.addEventListener('click', function () {
+  console.log('Button clicked');
   const savedFormData = localStorage.getItem(localStorageKey);
 
   if (savedFormData) {
@@ -114,14 +115,38 @@ document.body.style.overflow = 'auto';
       : 'hidden';
   }
 
+  
+  const closeOnClick = () => {
+    refs.menu.classList.add('is-hidden');
+    document.body.classList.remove('no-scroll');
+    document.body.style.overflow = 'auto';
+    location.reload();
+  };
+
+  const closeOnEsc = (event) => {
+    if (event.key === 'Escape') {
+      closeOnClick();
+    }
+  };
+
+  const closeOnOverlayClick = (event) => {
+    if (event.target === refs.menu) {
+      closeOnClick();
+    }
+  };
+
   const links = Array.from(refs.menu.children);
   links.forEach(link => {
     link.addEventListener('click', closeOnClick);
   });
 
-  function closeOnClick() {
-    refs.menu.classList.add('is-hidden');
-    document.body.classList.remove('no-scroll');
-    document.body.style.overflow = 'auto';
-  }
+  
+  document.addEventListener('keydown', closeOnEsc);
+  document.addEventListener('click', closeOnOverlayClick);
+
+  // function closeOnClick() {
+  //   refs.menu.classList.add('is-hidden');
+  //   document.body.classList.remove('no-scroll');
+  //   document.body.style.overflow = 'auto';
+  // }
 })();
