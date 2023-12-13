@@ -18,13 +18,13 @@
   display: flex;
   justify-content: space-between;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-  transition: scale 3s var(--timing-function);
-  transition: box-shadow 500ms var(--timing-function);
+  transition: scale 1s var(--timing-function),
+    box-shadow 250ms var(--timing-function);
 }
 
 .prod-item:hover {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-  scale: 1.05;
+  scale: 1.02;
 }
 .prod-pic {
   border-radius: 10px;
