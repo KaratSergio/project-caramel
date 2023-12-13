@@ -2,47 +2,13 @@ import throttle from 'lodash.throttle';
 import { orderSubscriptionToNewProducts } from './get-api';
 
 const form = document.querySelector('.feedback-form');
-const refs = {
-menu: document.querySelector('[data-menu]'),
-one: document.querySelector('[data-one]'),
-two: document.querySelector('[data-two]'),
-};
 form.addEventListener('submit', onPost);
-
-
-//============================================
-
-
-function onPost(event) {
-  event.preventDefault();
-  const userEmail = form.elements.email.value;
-
-  orderSubscriptionToNewProducts(userEmail)
-    .then(data => {
-    console.log(data);
-
-if (data.message.includes("Welcome to the Food Boutique! 🥦🍓 With Food Boutique, you're not just subscribing to food, you're signing up for a fresher, fitter, and happier you. Get ready to elevate your wellness journey, one bite at a time!")) {
-  refs.menu.classList.remove('is-hidden');
-  refs.one.classList.remove('is-hidden');
-} else {
-  refs.menu.classList.remove('is-hidden');
-  refs.two.classList.remove('is-hidden');
-}
-  })
-    .catch(error => {
-    refs.menu.classList.remove('is-hidden');
-    refs.two.classList.remove('is-hidden');
-  });
-}
-
-
-//============================================
 
 
 const localStorageKey = 'feedback-form-state';
 const myButton = document.getElementById('footer-button');
 
-const reff = {
+const refs = {
   menu: document.querySelector('[data-menu]'),
   one: document.querySelector('[data-one]'),
   two: document.querySelector('[data-two]'),
@@ -56,13 +22,13 @@ function onPost(event) {
     .then(data => {
       if (data.message) {
         console.log(data.message);
-        reff.menu.classList.remove('is-hidden');
-        reff.one.classList.remove('is-hidden');
+        refs.menu.classList.remove('is-hidden');
+        refs.one.classList.remove('is-hidden');
       }
     })
     .catch(error => {
-      reff.menu.classList.remove('is-hidden');
-      reff.two.classList.remove('is-hidden');
+      refs.menu.classList.remove('is-hidden');
+      refs.two.classList.remove('is-hidden');
     });
 }
 
