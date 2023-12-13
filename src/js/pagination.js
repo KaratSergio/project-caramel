@@ -39,31 +39,45 @@ export async function newDisplayPagination(options) {
 
   saveData(FIRST_SET, results);
 
-
   displayProducts(results);
 
-  if (totalPages >= 1) {
+  if (totalPages) {
+    let points = 1;
+    if (totalPages > 3) {
+      points = 3;
+    }
+    // const pagination = new Pagination('pagination', options);
 
-    productsList.classList.remove('visually-hidden');
-    paginationContainer.classList.remove('visually-hidden');
-    filterNomatches.classList.add('visually-hidden');
-
-    const optionsP = {
+    if (window.matchMedia('(max-width: 375px)').matches) {
+      points = 3;
+    } else if (window.matchMedia('(min-width: 768px)').matches) {
+      /////////////////////////////////////
+      points = 3;
+      /////////////////////////////////
+    }
+    const options = {
       totalItems: results.length * totalPages,
       itemsPerPage: paginationSearchParams.limit,
-      visiblePages: 5,
-      page: paginationSearchParams.page,
+      visiblePages: points,
+      page: 1,
       centerAlign: true,
       usageStatistics: false,
+
+      //////////////////////////////////////////////
+      template: {
+        moveButton:
+          '<a href="#" class="tui-page-btn need-hide tui-{{type}}">' +
+          `<span class="for-add-text-{{type}}">1</span><span class="tui-ico-{{type}}">{{type}}</span>` +
+          '</a>',
+        moreButton:
+          '<span  class="tui-page-btn tui-{{type}}-is-ellip">' +
+          '<span class="tui-ico-ellip">...</span>' +
+          '</span>',
+      },
+      /////////////////////////////////////////////
     };
+    const pagination = new Pagination(paginationContainer, options);
 
-    if (window.matchMedia('(max-width: 767px)').matches) {
-      optionsP.visiblePages = 3;
-    } else if (window.matchMedia('(min-width: 768px)').matches) {
-      optionsP.visiblePages = 5;
-    }
-
-    const pagination = new Pagination(paginationContainer, optionsP);
 
     pagination.on('afterMove', async e => {
       paginationSearchParams.page = e.page;
@@ -71,6 +85,22 @@ export async function newDisplayPagination(options) {
       saveData(FIRST_SET, results);
       displayProducts(results);
     });
+
+    const firstPage = document.querySelector('.for-add-text-first');
+    const lastPage = document.querySelector('.for-add-text-last');
+    if (firstPage) {
+      const firstPage = document.querySelector('.for-add-text-first');
+      firstPage.textContent = 1;
+    }
+    if (lastPage) {
+      const lastPage = document.querySelector('.for-add-text-last');
+      lastPage.textContent = totalPages
+    }
+    if (totalPages === 1) {
+      paginationContainer.classList.add('visually-hidden');
+    } else {
+      paginationContainer.classList.remove('visually-hidden');
+      }
   }
   return;
 }
