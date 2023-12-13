@@ -10,7 +10,7 @@ import {
 
 const addToCartIcon = document.getElementById('addToCartIcon');
 const removeFromIcon = document.getElementById('removeFromIcon');
-removeFromIcon.classList.add('visually-hidden');
+// removeFromIcon.classList.add('visually-hidden');
 
 const modalProduct = document.getElementById('modalProduct');
 const closeModalProductBtn = document.getElementById('closeModalProductBtn');
