@@ -42,8 +42,31 @@ if (data.message.includes("Welcome to the Food Boutique! 🥦🍓 With Food Bout
 const localStorageKey = 'feedback-form-state';
 const myButton = document.getElementById('footer-button');
 
-const saveFormState = throttle(() => {
+const reff = {
+  menu: document.querySelector('[data-menu]'),
+  one: document.querySelector('[data-one]'),
+  two: document.querySelector('[data-two]'),
+};
 
+form.addEventListener('submit', onPost);
+function onPost(event) {
+  event.preventDefault();
+  const userEmail = form.elements.email.value;
+  orderSubscriptionToNewProducts(userEmail)
+    .then(data => {
+      if (data.message) {
+        console.log(data.message);
+        reff.menu.classList.remove('is-hidden');
+        reff.one.classList.remove('is-hidden');
+      }
+    })
+    .catch(error => {
+      reff.menu.classList.remove('is-hidden');
+      reff.two.classList.remove('is-hidden');
+    });
+}
+
+const saveFormState = throttle(() => {
   const formData = {
     email: form.elements.email.value,
   };
@@ -76,6 +99,7 @@ form.addEventListener('submit', evt => {
 
 myButton.addEventListener('click', function () {
   const savedFormData = localStorage.getItem(localStorageKey);
+
   if (savedFormData) {
     const { email } = JSON.parse(savedFormData);
     form.elements.email.value = email;
@@ -91,7 +115,6 @@ const validateForm = () => {
 };
 
 const isValidEmailFormat = email => {
-
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 };
@@ -118,13 +141,14 @@ document.body.style.overflow = 'auto';
     menu: document.querySelector('[data-menu]'),
   };
 
-
-
   function toggleMenu() {
     refs.menu.classList.toggle('is-hidden');
+
     document.body.classList.toggle('no-scroll');
 
-    document.body.style.overflow = refs.menu.classList.contains('is-hidden') ? 'auto' : 'hidden';
+    document.body.style.overflow = refs.menu.classList.contains('is-hidden')
+      ? 'auto'
+      : 'hidden';
   }
 
   const links = Array.from(refs.menu.children);
@@ -138,4 +162,3 @@ document.body.style.overflow = 'auto';
     document.body.style.overflow = 'auto';
   }
 })();
-
