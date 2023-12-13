@@ -8,25 +8,25 @@ const productsList = document.querySelector('.list-prod-container');
 const filterNomatches = document.querySelector('.filter-nomatches-container');
 const FIRST_SET = 'firstset';
 
-newDisplayPagination('first', 'get');
+newDisplayPagination('first');
 
 export async function newDisplayPagination(options) {
   const { keyword, category } = options;
+  let startLimit = 9;
+  if (window.matchMedia('(max-width: 767px)').matches) {
+    startLimit = 6;
+  } else if (
+    window.matchMedia('(min-width: 768px) and (max-width: 1439px)').matches
+  ) {
+    startLimit = 8;
+  }
 
   const paginationSearchParams = {
     keyword: keyword || '',
     category: category || '',
     page: 1,
-    limit: 9,
+    limit: startLimit,
   };
-
-  if (window.matchMedia('(max-width: 479px)').matches) {
-    paginationSearchParams.limit = 6;
-  } else if (
-    window.matchMedia('(min-width: 480px) and (max-width: 900px)').matches
-  ) {
-    paginationSearchParams.limit = 8;
-  }
   const { results, totalPages } = await getProductsByParams(
     paginationSearchParams
   );
@@ -48,11 +48,11 @@ export async function newDisplayPagination(options) {
   if (totalPages) {
     let points = 1;
     if (totalPages > 1) {
-      points = 5;
-    }
-
-    if (window.matchMedia('(max-width: 480px)').matches) {
-      points = 3;
+      if (window.matchMedia('(max-width: 767px)').matches) {
+        points = 3;
+      } else if (window.matchMedia('(min-width: 768px)').matches) {
+        points = 5;
+      }
     }
     const options = {
       totalItems: results.length * totalPages,
@@ -75,7 +75,6 @@ export async function newDisplayPagination(options) {
     };
     const pagination = new Pagination(paginationContainer, options);
 
-
     pagination.on('afterMove', async e => {
       paginationSearchParams.page = e.page;
       const { results } = await getProductsByParams(paginationSearchParams);
@@ -91,13 +90,13 @@ export async function newDisplayPagination(options) {
     }
     if (lastPage) {
       const lastPage = document.querySelector('.for-add-text-last');
-      lastPage.textContent = totalPages
+      lastPage.textContent = totalPages;
     }
     if (totalPages === 1) {
       paginationContainer.classList.add('visually-hidden');
     } else {
       paginationContainer.classList.remove('visually-hidden');
-      }
+    }
   }
   return;
 }
