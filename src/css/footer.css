@@ -3,6 +3,7 @@
   min-height: 386px;
   padding-bottom: 20px;
   padding-top: 44px;
+  margin-top: 80px;
 }
 .conteiner-div {
   display: flex;
@@ -262,6 +263,9 @@
   line-height: 1.2;
 }
 @media screen and (min-width: 768px) {
+  .footer {
+    margin-top: 100px;
+  }
   .mob-container {
     width: 490px;
     padding: 90px 81px 162px;
@@ -344,6 +348,10 @@
   }
 }
 @media screen and (min-width: 1440px) {
+  .footer {
+    margin-top: 0;
+  }
+
   .footer-p-text {
     font-size: 18px;
     line-height: 1.33;
