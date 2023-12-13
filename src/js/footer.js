@@ -28,11 +28,11 @@ if (data.message.includes("Welcome to the Food Boutique! 🥦🍓 With Food Bout
   refs.menu.classList.remove('is-hidden');
   refs.two.classList.remove('is-hidden');
 }
-    })
+  })
     .catch(error => {
-      refs.menu.classList.remove('is-hidden');
-      refs.two.classList.remove('is-hidden');
-    });
+    refs.menu.classList.remove('is-hidden');
+    refs.two.classList.remove('is-hidden');
+  });
 }
 
 
