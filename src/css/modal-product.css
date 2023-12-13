@@ -5,7 +5,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 9999;
-  max-width: 335px;
+  width: calc(100% - 40px);
   height: 535px;
   background: var(--white);
   padding: 40px 20px;
@@ -79,7 +79,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: 1.25;
-  max-height: 54px;
+  height: 54px;
   overflow-y: auto;
   margin-bottom: 40px;
 }
@@ -133,7 +133,6 @@
 .product-add {
   display: flex;
   align-items: flex-end;
-  width: 295px;
   height: 40px;
   justify-content: space-between;
 }
