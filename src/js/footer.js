@@ -95,10 +95,8 @@ const autoFillForm = () => {
 
 autoFillForm();
 
-//прокрутка
 document.body.style.overflow = 'auto';
 
-// Модалка
 (() => {
   const refs = {
     openMenuBtn: document.querySelector('[data-menu-open]'),
