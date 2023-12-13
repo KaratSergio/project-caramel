@@ -54,7 +54,7 @@
   font-weight: 500;
   background-color: var(--background);
   transition: color var(--animation-duration) var(--timing-function);
-  text-shadow: var(--text-shadow);
+  box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.2);
 }
 
 .footer-button:hover,
