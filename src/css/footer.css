@@ -126,8 +126,6 @@
   line-height: 1.29;
   margin-bottom: 8px;
 }
-.footer-div {
-}
 
 .food-boutique {
   fill: var(--gray);
@@ -181,7 +179,6 @@
 }
 .mob-menu {
   position: fixed;
-
   top: 0;
   z-index: 20;
   width: 100vw;
@@ -325,8 +322,6 @@
     max-width: 429px;
   }
 
-  .ppts {
-  }
   .footer-p-h {
     font-size: 40px;
     max-width: 429px;
