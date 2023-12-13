@@ -1,6 +1,7 @@
 import { getProductsCategories } from './get-api';
 import { newDisplayPagination } from './pagination';
 import axios from 'axios';
+
 //import Choices from 'choices.js';
 
 class FoodApi {
