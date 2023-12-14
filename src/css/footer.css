@@ -4,6 +4,7 @@
   padding-bottom: 20px;
   padding-top: 44px;
 }
+
 .conteiner-div {
   display: flex;
   margin-bottom: 80px;
@@ -121,8 +122,6 @@
   font-size: 14px;
   line-height: 1.29;
   margin-bottom: 8px;
-}
-.footer-div {
 }
 
 .food-boutique {
@@ -275,8 +274,6 @@
     max-width: 429px;
   }
 
-  .ppts {
-  }
   .footer-p-h {
     font-size: 40px;
     max-width: 429px;

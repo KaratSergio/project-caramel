@@ -3,6 +3,7 @@ import { displayProducts } from './products';
 import { getProductsByParams } from './get-api';
 import { saveData } from './STORAGE';
 
+const paginationMainContainer = document.querySelector('.pagination-container')
 const paginationContainer = document.querySelector('#pagination');
 const productsList = document.querySelector('.list-prod-container');
 const filterNomatches = document.querySelector('.filter-nomatches-container');
@@ -34,11 +35,11 @@ export async function newDisplayPagination(options) {
   if (totalPages === 0) {
     productsList.classList.add('visually-hidden');
     filterNomatches.classList.remove('visually-hidden');
-    paginationContainer.classList.add('visually-hidden');
+    paginationMainContainer.classList.add('visually-hidden');
   } else {
     productsList.classList.remove('visually-hidden');
     filterNomatches.classList.add('visually-hidden');
-    paginationContainer.classList.remove('visually-hidden');
+    paginationMainContainer.classList.remove('visually-hidden');
   }
 
   saveData(FIRST_SET, results);
@@ -94,9 +95,9 @@ export async function newDisplayPagination(options) {
       lastPage.textContent = totalPages
     }
     if (totalPages === 1) {
-      paginationContainer.classList.add('visually-hidden');
+      paginationMainContainer.classList.add('visually-hidden');
     } else {
-      paginationContainer.classList.remove('visually-hidden');
+      paginationMainContainer.classList.remove('visually-hidden');
       }
   }
   return;
