@@ -538,6 +538,7 @@
   color: rgba(1, 1, 1, 0.7);
   text-align: center;
   line-height: 1.28571;
+  font-size: 14px;
 }
 
 /*  */
@@ -552,6 +553,10 @@
   }
 }
 @media screen and (min-width: 768px) {
+  .modal-text {
+    font-size: 18px;
+  }
+
   .title-container {
     margin-bottom: 24px;
     margin-top: 107px;
