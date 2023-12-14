@@ -131,9 +131,12 @@ document.body.style.overflow = 'auto';
 
   function closeOnEsc(event) {
     if (event.key === 'Escape') {
-      toggleMenu();
+      refs.menu.classList.add('is-hidden');
+      document.body.classList.remove('no-scroll');
+      if (refs.menu.classList.contains('is-hidden')) {
+        document.body.style.overflow = 'auto';
+      }
     }
   }
-
   document.addEventListener('keydown', closeOnEsc);
 })();

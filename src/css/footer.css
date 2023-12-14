@@ -376,4 +376,7 @@
     width: 912px;
     justify-content: space-between;
   }
+  .footer-div-text{
+    margin-bottom: 0px;
+  }
 }
