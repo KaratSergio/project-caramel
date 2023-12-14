@@ -8,7 +8,6 @@ import {
   changeOtherIcon,
 } from './STORAGE';
 
-// const addToCartIcon = document.getElementById('addToCartIcon');
 const removeFromIcon = document.getElementById('removeFromIcon');
 const modalProduct = document.getElementById('modalProduct');
 const closeModalProductBtn = document.getElementById('closeModalProductBtn');
@@ -34,10 +33,7 @@ export function openModal(product) {
   
   modalProduct.style.display = 'block';
   document.body.style.overflow = 'hidden';
-  
   modalOverlay.style.display = 'flex';
-  // modalOverlay.classList.add('flex-elem'); 
-
   window.addEventListener('click', outsideModalClick);
 
   const listProducts = getData(STORAGE_KEY);
@@ -86,10 +82,7 @@ export function openModal(product) {
 function closeModal() {
   document.body.style.overflow = '';
   modalProduct.style.display = 'none';
-
   modalOverlay.style.display = 'none';
-  // modalOverlay.classList.remove('flex-elem');
-
   scrollToTopBtnEl.style.display = 'flex';
 
   // addToCartBtn.removeEventListener('click', addProduct);

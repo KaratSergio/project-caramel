@@ -4,7 +4,6 @@ import { openModal } from './modal-product';
 import sprite from '../images/icons.svg';
 
 const popularList = document.querySelector('.popular-product-list');
-//const STORAGE_KEY = 'added-item';
 
 let counter = 5;
 if (window.matchMedia('(min-width: 768px) and (max-width: 1439px)').matches) {
