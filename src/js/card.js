@@ -306,7 +306,11 @@ function toggleModal() {
 }
 function escClick(event) {
   if (event.code === 'Escape') {
-    toggleModal();
+     document.removeEventListener('keydown', escClick);
+     backdrop.removeEventListener('click', toggleModal);
+     modal.classList.add('is-hidden');
+     unlockScroll();
+     modalWindow.innerHTML = '';
   }
 }
 
