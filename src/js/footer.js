@@ -26,6 +26,7 @@ function onPost(event) {
     .catch(error => {
       refs.menu.classList.remove('is-hidden');
       refs.two.classList.remove('is-hidden');
+      refs.one.classList.add('is-hidden');
     });
 }
 
@@ -134,13 +135,5 @@ document.body.style.overflow = 'auto';
     }
   }
 
-  function closeOnOverlayClick(event) {
-    if (event.target === refs.menu) {
-      toggleMenu();
-    }
-  }
-
   document.addEventListener('keydown', closeOnEsc);
-  document.addEventListener('click', closeOnOverlayClick);
 })();
-
