@@ -141,12 +141,7 @@
 }
 
 @media screen and (min-width: 1440px) {
-  .main-container {
-    display: flex;
-    max-width: 1440px;
-    padding: 0 100px;
-  }
-
+  
   .prod-item {
     width: 295px;
   }
@@ -154,6 +149,7 @@
   .list-prod {
     gap: 40px 20px;
     margin-right: 40px;
+    margin-bottom: 40px;
   }
 
   .list-prod-container {
