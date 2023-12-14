@@ -131,7 +131,7 @@
   top: 25%;
   right: 20px;
   fill: var(--text-color);
-  z-index: 3;
+  z-index: -3;
 }
 .input-hidden {
   display: none;
