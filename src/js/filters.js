@@ -49,8 +49,8 @@ class LocalStorage {
   }
 
   clearLocalStorage() {
-    localStorage.reset('products');
-    localStorage.reset('options');
+    localStorage.removeItem('products');
+    localStorage.removeItem('options');
   }
   defaultApiOptions() {
     const defaultOptions = {
@@ -64,31 +64,63 @@ class LocalStorage {
 }
 
 const filterForm = document.querySelector('.filter-form');
+
+const select = document.querySelector('.select');
 const filterSelect = document.querySelector('.filter-select');
-const filterSearch = document.querySelector('filter-search');
+const filterSelectList = document.querySelector('.filter-select-list');
 
 const foodApi = new FoodApi();
 const localStorageManager = new LocalStorage();
 
-getProductsCategories().then(categories => {
-  categories.forEach(category => {
-    const option = document.createElement('option');
+function chooseCategory() {
+  getProductsCategories().then(categories => {
+    categories.forEach(category => {
+      const option = document.createElement('li');
+      option.className = 'filter-select-item';
+      option.dataset.value = category;
 
-    option.value = category;
-    option.textContent = category.split('_').join(' ');
-    filterSelect.append(option);
+      option.textContent = category.split('_').join(' ');
+      filterSelectList.append(option);
+    });
+
+    const showAllOption = document.createElement('li');
+    showAllOption.className = 'filter-select-item';
+    showAllOption.textContent = 'Show All';
+    showAllOption.dataset.value = '';
+    filterSelectList.append(showAllOption);
+
+    setTimeout(selectItems, 0);
+
+    filterSelect.addEventListener('input', changeCategoryCards);
+  });
+}
+chooseCategory();
+
+function selectItems() {
+  const filterSelectItem = filterSelectList.querySelectorAll(
+    '.filter-select-item'
+  );
+
+  select.addEventListener('click', function () {
+    filterSelectList.classList.toggle('filter-select-list-visible');
   });
 
-  const showAllOption = createShowAll();
-  filterSelect.append(showAllOption);
-});
-
-export function createShowAll() {
-  const showAllOption = document.createElement('option');
-  showAllOption.textContent = 'Show All';
-  showAllOption.value = '';
-  return showAllOption;
+  filterSelectItem.forEach(listItem => {
+    listItem.addEventListener('click', function (e) {
+      e.stopPropagation();
+      select.textContent = this.textContent;
+      filterSelect.value = this.dataset.value;
+      filterSelectList.classList.remove('filter-select-list-visible');
+      changeCategoryCards();
+    });
+  });
 }
+
+document.addEventListener('click', function (e) {
+  if (e.target !== select) {
+    filterSelectList.classList.remove('filter-select-list-visible');
+  }
+});
 
 filterForm.addEventListener('submit', function (event) {
   event.preventDefault();
@@ -121,9 +153,9 @@ filterForm.addEventListener('submit', function (event) {
   filterForm.reset();
 });
 
-filterSelect.addEventListener('change', function () {
-  const selectedItem = filterSelect.value;
-
+function changeCategoryCards() {
+  let selectedItem = filterSelect.value;
+  console.log(filterSelect.value);
   try {
     let options = JSON.parse(localStorage.getItem('options')) || {};
     if (selectedItem === 'show-all') {
@@ -133,7 +165,7 @@ filterSelect.addEventListener('change', function () {
       options.category = selectedItem;
       foodApi.category = selectedItem;
       foodApi
-        .getFoodList()
+        .getFoodList(options)
         .then(function (data) {
           localStorageManager.updateLsWithList(data, options);
 
@@ -146,4 +178,4 @@ filterSelect.addEventListener('change', function () {
   } catch (error) {
     console.error('Error:', error.message);
   }
-});
+}

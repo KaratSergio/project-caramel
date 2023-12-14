@@ -19,16 +19,23 @@
           </button>
         </div>
       </form>
-      <div class="filter-select-container">
-        <select class="filter-select" name="categories">
-          <option value="select" label="Categories" disabled selected hidden>
-            Categories
-          </option>
-        </select>
 
-        <svg class="filter-icon-select" width="20" height="20">
-          <use href="./images/icons.svg#icon-down"></use>
-        </svg>
+      <div class="filter-select-container">
+        <div class="select-container">
+          <button class="select" aria-label="Select">
+            Categories
+            <svg class="filter-icon-select" width="20" height="20">
+              <use href="./images/icons.svg#icon-down"></use>
+            </svg>
+          </button>
+          <ul class="filter-select-list"></ul>
+          <input
+            type="text"
+            name="category"
+            value=""
+            class="filter-select input-hidden"
+          />
+        </div>
       </div>
 
       <div class="filter-sort-container">
