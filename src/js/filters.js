@@ -2,8 +2,6 @@ import { getProductsCategories } from './get-api';
 import { newDisplayPagination } from './pagination';
 import axios from 'axios';
 
-//import Choices from 'choices.js';
-
 class FoodApi {
   constructor() {
     this.URL = `https://food-boutique.b.goit.study/api`;
@@ -67,8 +65,6 @@ class LocalStorage {
 
 const filterForm = document.querySelector('.filter-form');
 const filterSelect = document.querySelector('.filter-select');
-
-// const filterSelectOptions = document.querySelector('.options');
 const filterSearch = document.querySelector('filter-search');
 
 const foodApi = new FoodApi();
@@ -77,7 +73,6 @@ const localStorageManager = new LocalStorage();
 getProductsCategories().then(categories => {
   categories.forEach(category => {
     const option = document.createElement('option');
-    // option.className = 'option';
 
     option.value = category;
     option.textContent = category.split('_').join(' ');
@@ -90,25 +85,10 @@ getProductsCategories().then(categories => {
 
 export function createShowAll() {
   const showAllOption = document.createElement('option');
-  // showAllOption.className = 'option';
   showAllOption.textContent = 'Show All';
   showAllOption.value = '';
   return showAllOption;
 }
-
-// const filterSelectTitle = document.querySelector('.select-btn-text');
-// const optionsAll = document.getElementsByClassName('option'); //HTMLCollection []
-// console.log(optionsAll);
-// let optionsList = Array.from(optionsAll);
-
-// console.log(optionsList);
-
-// optionsList.forEach(optionEl => {
-//   optionEl.addEventListener('click', () => {
-//     filterSelectTitle.innerText = optionEl;
-//     console.log(selectedOption);
-//   });
-// });
 
 filterForm.addEventListener('submit', function (event) {
   event.preventDefault();

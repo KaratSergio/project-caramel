@@ -10,17 +10,12 @@ import { openModal } from './modal-product';
 import { getProductById } from './get-api';
 
 const productsList = document.querySelector('.list-prod');
-// достаем дані з локал
 const items = getData(STORAGE_KEY);
-// const productId = getIdProducts(items);     //////// ????????
-// const toggle = productId.includes(items._id); //////// ???????? allways FALSE or TRUE
 
-// Markup
 export function addMarkup(el, markup) {
   el.innerHTML = markup;
 }
 
-// передаєм на пвгінацію для відмальовки карток
 export async function displayProducts(results) {
   const markup = createCardMarkup(results);
   addMarkup(productsList, markup);
@@ -28,10 +23,6 @@ export async function displayProducts(results) {
 
 productsList.addEventListener('click', onClick);
 productsList.addEventListener('click', onShowModal);
-
-// const STORAGE_KEY = 'added-item';
-// const itemsCard = [];
-// saveData(STORAGE_KEY, itemsCard);
 
 function onClick(event) {
   const btnEl = event.target.closest('.buy-btn');
@@ -48,7 +39,7 @@ function onClick(event) {
     items.splice(existingItemIndex, 1);
     existingItemIndex = -1;
   } else {
-    const newItem = getData(FIRST_SET_KEY).find(item => item._id === id); // find FIRST_SET_KEY
+    const newItem = getData(FIRST_SET_KEY).find(item => item._id === id); 
     if (newItem) {
       items.push(newItem);
       existingItemIndex = 0;
@@ -65,7 +56,6 @@ export function changeIcons(arr) {
 
 function onShowModal(event) {
   const cardEl = event.target.closest('.prod-item');
-
   const btnEl = event.target.closest('.buy-btn');
 
   if (!cardEl || btnEl) {
@@ -81,10 +71,6 @@ function onShowModal(event) {
       console.error(error);
     });
 }
-
-// function getIdProducts(items = []) {
-//   return items.map(item => item._id);
-// }
 
 export function createCardMarkup(results) {
   return results

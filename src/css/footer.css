@@ -3,6 +3,7 @@
   min-height: 386px;
   padding-bottom: 20px;
   padding-top: 44px;
+  margin-top: 80px;
 }
 
 .conteiner-div {
@@ -18,7 +19,6 @@
   font-size: 14px;
   line-height: 1.29;
   margin-bottom: 20px;
-  text-shadow: var(--text-shadow);
 }
 .footer-input {
   background-color: var(--gray);
@@ -51,9 +51,9 @@
   outline: transparent;
   font-size: 16px;
   font-weight: 500;
+  color: #010101;
   background-color: var(--background);
   transition: color var(--animation-duration) var(--timing-function);
-  box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.2);
 }
 
 .footer-button:hover,
@@ -86,6 +86,12 @@
   display: flex;
 }
 
+.footer-socials-item {
+  width: 44px;
+  height: 44px;
+  transition: background-color var(--animation-duration) var(--timing-function);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);;
+}
 
 .footer-socials-item:hover,
 .footer-socials-item:focus {
@@ -122,6 +128,7 @@
   font-size: 14px;
   line-height: 1.29;
   margin-bottom: 8px;
+  text-shadow: var(--text-shadow);
 }
 
 .food-boutique {
@@ -170,15 +177,12 @@
   width: 44px;
   height: 44px;
   padding: 8px;
-  transition: background-color var(--animation-duration) var(--timing-function);
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 }
 .is-hidden {
   display: none;
 }
 .mob-menu {
   position: fixed;
-
   top: 0;
   z-index: 20;
   width: 100vw;
@@ -188,26 +192,48 @@
   transition: transform 500ms ease-in-out;
 }
 
-.mob-container,
-.mob-container-two {
+.mob-container {
   border-radius: 20px;
   background: var(--background);
-  max-width: 490px;
-  margin: 0 20px;
-  height: 400px;
+  width: calc(100% - 40px);
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  padding: 100px 45px 166px;
+  background-image: url(../images/rectangle.png);
+  background-position: right bottom;
+  background-size: auto;
+  background-repeat: no-repeat;
+}
+
+.mob-container-two {
+  border-radius: 20px;
+  background: var(--background);
+  width: calc(100% - 40px);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.15);
+  padding: 80px 45px;
+
 }
 
 .header-button-close {
-  display: block;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 22px;
+  height: 22px;
   border: none;
-  margin-left: 428px;
-  margin-right: 24px;
-  margin-top: 22px;
-  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: inherit;
+  padding: 0;
+  cursor: pointer;
+  transition: fill var(--animation-duration) var(--timing-function);
 }
 
 .header-close-icon {
@@ -217,19 +243,17 @@
 .modal-h-p {
   width: 245px;
   text-align: center;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 500;
-  line-height: 24px;
-  margin-top: 38px;
+  line-height: 1.2;
 }
 .modal-p-p {
-  width: 328px;
   color: rgba(1, 1, 1, 0.7);
   text-align: center;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
-  line-height: 20px;
-  margin-top: 20px;
+  line-height: 1.29;
+  margin-top: 14px;
 }
 .modal-div {
   display: flex;
@@ -238,11 +262,39 @@
 }
 .span-modal {
   color: var(--gray);
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 500;
-  line-height: 24px;
+  line-height: 1.2;
 }
 @media screen and (min-width: 768px) {
+  .footer {
+    margin-top: 100px;
+  }
+  .mob-container {
+    width: 490px;
+    padding: 90px 81px 162px;
+  }
+
+  .mob-container-two {
+    width: 469px;
+    padding: 100px 60px;
+  }
+
+  .modal-h-p {
+    font-size: 24px;
+    line-height: 1;
+  }
+  .modal-p-p {
+    font-size: 16px;
+    line-height: 1.25;
+    margin-top: 20px;
+  }
+
+  .span-modal {
+    font-size: 24px;
+    line-height: 1;
+  }
+
   .footer-p {
     margin-bottom: 0;
   }
@@ -256,6 +308,7 @@
   .footer-button {
     padding: 12px 149px;
     width: 336px;
+    box-shadow: 1px 0px 6px rgba(0, 0, 0, 0.5);;
   }
 
   .footer-socials-text {
@@ -290,6 +343,7 @@
     color: var(--background);
     font-size: 18px;
     line-height: 1.33;
+    text-shadow: var(--text-shadow);
   }
 
   .footer-input {
@@ -298,6 +352,10 @@
   }
 }
 @media screen and (min-width: 1440px) {
+  .footer {
+    margin-top: 0;
+  }
+
   .footer-p-text {
     font-size: 18px;
     line-height: 1.33;

@@ -41,8 +41,6 @@
   width: 40px;
   height: 40px;
 
-  /* margin: 0 4px; */
-  /* padding: 0 16px; */
 
   color: #a3a3a3;
   font-family: Neue Montreal;
@@ -118,12 +116,6 @@
   line-height: 1;
 }
 
-/* .tui-pagination .tui-ico-first {
-  width: 11px;
-  height: 10px;
-  background-position: 0px 0px;
-} */
-
 .tui-pagination .tui-ico-prev {
   width: 6px;
   height: 10px;
@@ -136,18 +128,11 @@
   background-position: -13px -24px;
 }
 
-/* .tui-pagination .tui-ico-last {
-  width: 11px;
-  height: 10px;
-  background-position: 0px -12px;
-} */
 
 .tui-pagination .tui-ico-ellip {
   width: 10px;
   height: 2px;
-  /* margin-top: 4px; */
   vertical-align: top;
-  /* background-position: 0px -24px; */
 }
 
 .tui-pagination .tui-is-disabled:hover {

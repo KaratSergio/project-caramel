@@ -17,6 +17,11 @@
   max-width: 335px;
   height: 232px;
   position: relative;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  transition: box-shadow var(--animation-duration) var(--timing-function);
+}
+.card-product-discount:hover {
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.15);
 }
 .card-product-label {
   width: 60px;
@@ -36,20 +41,6 @@
   animation-timing-function: linear;
 }
 
-/* @keyframes rotation {
-  0% {
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-  }
-} */
-
 .card-product-wrapper {
   border-radius: 10px;
   background: var(--background);
@@ -58,6 +49,7 @@
   justify-content: center;
   max-width: 304px;
   height: 150px;
+  box-shadow: var(--img-shadow);
 }
 
 .card-product-info {
@@ -88,6 +80,7 @@
   border-radius: 30px;
   background-color: var(--gray);
   border: none;
+  box-shadow: var(--img-shadow);
   transition: fill var(--animation-duration) var(--timing-function);
 }
 

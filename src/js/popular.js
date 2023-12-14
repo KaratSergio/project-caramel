@@ -4,76 +4,81 @@ import { openModal } from './modal-product';
 import sprite from '../images/icons.svg';
 
 const popularList = document.querySelector('.popular-product-list');
-//const STORAGE_KEY = 'added-item';
 
-getPopularProducts(5)
-  .then(data => {
-    popularList.insertAdjacentHTML('beforeend', createMarkup(data));
+let counter = 5;
+if (window.matchMedia('(min-width: 768px) and (max-width: 1439px)').matches) {
+  counter = 6;
+}
+  getPopularProducts(counter)
+    .then(data => {
+      popularList.insertAdjacentHTML('beforeend', createMarkup(data));
 
-    const productAdded = document.getElementsByClassName(
-      'button-remove-product'
-    );
+      const productAdded = document.getElementsByClassName(
+        'button-remove-product'
+      );
 
-    [...productAdded].forEach(elem => {
-      const idBtn = elem.getAttribute('data-js-button');
-      const selIdBtn = productSelected(idBtn, data);
+      [...productAdded].forEach(elem => {
+        const idBtn = elem.getAttribute('data-js-button');
+        const selIdBtn = productSelected(idBtn, data);
 
-      
-      if (checkLocalStorage(selIdBtn._id)) {
-        elem.nextElementSibling.classList.add('visually-hidden');
-      }
-    });
-
-    function onClick(event) {
-      let target = event.target;
-
-      if (target.closest('.popular-card')) {
-        const popularCard = target.closest('.popular-card');
-        const popularProductId = popularCard.getAttribute('data-js-product-id');
-
-        onSHowModal(popularProductId);
-      } else if (target.closest('.button-add-product')) {
-        const elemAdded = target.closest(
-          '.button-add-product'
-        ).previousElementSibling;
-        const btnProductId = elemAdded.getAttribute('data-js-button');
-        const selectedProduct = productSelected(btnProductId, data);
-        const listProducts = getData(STORAGE_KEY);
-        if (!checkLocalStorage(selectedProduct._id)) {
-          listProducts.push(selectedProduct);
-          saveData(STORAGE_KEY, listProducts);
-          countAddedItems();
-          changeOtherIcon(selectedProduct._id, 0);
+        if (checkLocalStorage(selIdBtn._id)) {
+          elem.nextElementSibling.classList.add('visually-hidden');
         }
-        target.closest('.button-add-product').classList.add('visually-hidden');
-        elemAdded.classList.remove('visually-hidden');
-      } else if (target.closest('.button-remove-product')) {
-        const idBtnLS = target
-          .closest('.button-remove-product')
-          .getAttribute('data-js-button');
-        const selIdBtnLS = productSelected(idBtnLS, data);
-        const products = getData(STORAGE_KEY);
-        const productAdded = checkLocalStorage(selIdBtnLS._id);
-        saveData(
-          STORAGE_KEY,
-          products.filter(product => productAdded._id !== product._id)
-        );
-        countAddedItems();
-        changeOtherIcon(selIdBtnLS._id, -1);
-        target
-          .closest('.button-remove-product')
-          .classList.add('visually-hidden');
-        target
-          .closest('.button-remove-product')
-          .nextElementSibling.classList.remove('visually-hidden');
-      }
-    }
+      });
 
-    popularList.addEventListener('click', onClick);
-  })
-  .catch(error => {
-    console.error(error);
-  });
+      function onClick(event) {
+        let target = event.target;
+
+        if (target.closest('.popular-card')) {
+          const popularCard = target.closest('.popular-card');
+          const popularProductId =
+            popularCard.getAttribute('data-js-product-id');
+
+          onSHowModal(popularProductId);
+        } else if (target.closest('.button-add-product')) {
+          const elemAdded = target.closest(
+            '.button-add-product'
+          ).previousElementSibling;
+          const btnProductId = elemAdded.getAttribute('data-js-button');
+          const selectedProduct = productSelected(btnProductId, data);
+          const listProducts = getData(STORAGE_KEY);
+          if (!checkLocalStorage(selectedProduct._id)) {
+            listProducts.push(selectedProduct);
+            saveData(STORAGE_KEY, listProducts);
+            countAddedItems();
+            changeOtherIcon(selectedProduct._id, 0);
+          }
+          target
+            .closest('.button-add-product')
+            .classList.add('visually-hidden');
+          elemAdded.classList.remove('visually-hidden');
+        } else if (target.closest('.button-remove-product')) {
+          const idBtnLS = target
+            .closest('.button-remove-product')
+            .getAttribute('data-js-button');
+          const selIdBtnLS = productSelected(idBtnLS, data);
+          const products = getData(STORAGE_KEY);
+          const productAdded = checkLocalStorage(selIdBtnLS._id);
+          saveData(
+            STORAGE_KEY,
+            products.filter(product => productAdded._id !== product._id)
+          );
+          countAddedItems();
+          changeOtherIcon(selIdBtnLS._id, -1);
+          target
+            .closest('.button-remove-product')
+            .classList.add('visually-hidden');
+          target
+            .closest('.button-remove-product')
+            .nextElementSibling.classList.remove('visually-hidden');
+        }
+      }
+
+      popularList.addEventListener('click', onClick);
+    })
+    .catch(error => {
+      console.error(error);
+    });
 
 function onSHowModal(dataId) {
   getProductById(dataId)
