@@ -6,8 +6,8 @@ The project is a web application for an online product store that provides users
 with the ability to view various products, filter them by categories and
 keywords, place orders and subscribe to the newsletter of new products.
 
-This is a link to the frontend deploy
-[![GitHub Pages](https://karatsergio.github.io/project-caramel/)]
+<a href="https://karatsergio.github.io/project-caramel/">This is a link to the
+frontend deploy</a>
 
 ## Table of contents
 
@@ -42,47 +42,26 @@ products.
 ## Our team
 
 1. **Serhii Safonov** - `team-lead`,`розробник`
-
    <a href="https://github.com/KaratSergio">git-hub profile</a>
-
 2. **Dmytro Bronitskyi** - `scrum-master`,`розробник`
-
    <a href="https://github.com/DimaBronytskyy">git-hub profile</a>
-
-3. **Serhii Busha** - `розробник`
-
-<a href="https://github.com/rango198">git-hub profile</a>
-
-4. **Anatolii Bylyk** - `розробник`
-
-<a href="https://github.com/BizonNT">git-hub profile</a>
-
+3. **Serhii Busha** - `розробник` <a href="https://github.com/rango198">git-hub
+   profile</a>
+4. **Anatolii Bylyk** - `розробник` <a href="https://github.com/BizonNT">git-hub
+   profile</a>
 5. **Anastasiia Rodzina** - `розробник`
-
    <a href="https://github.com/Anastasiia-Rodzina">git-hub profile</a>
-
 6. **Oleksandra Koshyl** - `розробник`
-
    <a href="https://github.com/sashasashkina">git-hub profile</a>
-
 7. **Natalia Potushynska** - `розробник`
-
    <a href="https://github.com/NataliaPot">git-hub profile</a>
-
 8. **Anna Voitsekhovska** - `розробник`
-
    <a href="https://github.com/Anna4voit">git-hub profile</a>
-
 9. **Oleg Tymoshenko** - `розробник`
-
    <a href="https://github.com/djurik2008">git-hub profile</a>
-
 10. **Mykola Mytsyk** - `розробник`
-
     <a href="https://github.com/mykolamytsyk">git-hub profile</a>
-
 11. **Oleksandr Shkliar** - `розробник`
-
     <a href="https://github.com/Alex11SW">git-hub profile</a>
 
 ## API Documentation

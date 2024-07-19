@@ -7,8 +7,8 @@
 категоріями і ключовими словами, оформляти замовлення і підписуватися на
 розсилку нових продуктів.
 
-Посилання на розгорнутий фронтенд
-[![GitHub Pages](https://karatsergio.github.io/project-caramel/)]
+<a href="https://karatsergio.github.io/project-caramel/">Посилання на
+розгорнутий фронтенд</a>
 
 ## Зміст
 
@@ -43,47 +43,26 @@
 ## Наша команда
 
 1. **Сафонов Сергій** - `team-lead`,`розробник`
-
    <a href="https://github.com/KaratSergio">git-hub профіль</a>
-
 2. **Дмитро Броніцький** - `scrum-master`,`розробник`
-
    <a href="https://github.com/DimaBronytskyy">git-hub профіль</a>
-
-3. **Сергій Буша** - `розробник`
-
-<a href="https://github.com/rango198">git-hub профіль</a>
-
-4. **Анатолій Білик** - `розробник`
-
-<a href="https://github.com/BizonNT">git-hub профіль</a>
-
+3. **Сергій Буша** - `розробник` <a href="https://github.com/rango198">git-hub
+   профіль</a>
+4. **Анатолій Білик** - `розробник` <a href="https://github.com/BizonNT">git-hub
+   профіль</a>
 5. **Анастасія Родзіна** - `розробник`
-
    <a href="https://github.com/Anastasiia-Rodzina">git-hub профіль</a>
-
 6. **Олександра Кошиль** - `розробник`
-
    <a href="https://github.com/sashasashkina">git-hub профіль</a>
-
 7. **Наталія Потушинська** - `розробник`
-
    <a href="https://github.com/NataliaPot">git-hub профіль</a>
-
 8. **Анна Войтцеховська** - `розробник`
-
    <a href="https://github.com/Anna4voit">git-hub профіль</a>
-
 9. **Олег Тимошенко** - `розробник`
-
    <a href="https://github.com/djurik2008">git-hub профіль</a>
-
 10. **Микола Мицик** - `розробник`
-
     <a href="https://github.com/mykolamytsyk">git-hub профіль</a>
-
 11. **Олександр Шкляр** - `розробник`
-
     <a href="https://github.com/Alex11SW">git-hub профіль</a>
 
 ## Документація API
@@ -91,7 +70,7 @@
 Для детальних описів запитів та взаємодій з API перегляньте
 [документацію Food Boutique](https://food-boutique.b.goit.study/api-docs/)
 
-<img src="./src/public/swagger.png" alt="Документація API TaskPro" width="1100" height="657">
+<img src="./src/public/swagger.png" alt="Документація API Food Boutique" width="1100" height="657">
 
 ## Вимоги
 
