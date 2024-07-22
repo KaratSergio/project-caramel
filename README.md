@@ -41,28 +41,28 @@ products.
 
 ## Our team
 
-1. **Serhii Safonov** - `team-lead`,`розробник`
-   <a href="https://github.com/KaratSergio">git-hub profile</a>
-2. **Dmytro Bronitskyi** - `scrum-master`,`розробник`
-   <a href="https://github.com/DimaBronytskyy">git-hub profile</a>
-3. **Serhii Busha** - `розробник` <a href="https://github.com/rango198">git-hub
+1. **Serhii Safonov** - `team-lead`,`developer`
+   <a href="https://github.com/KaratSergio">github profile</a>
+2. **Dmytro Bronitskyi** - `scrum-master`,`developer`
+   <a href="https://github.com/DimaBronytskyy">github profile</a>
+3. **Serhii Busha** - `developer` <a href="https://github.com/rango198">github
    profile</a>
-4. **Anatolii Bylyk** - `розробник` <a href="https://github.com/BizonNT">git-hub
+4. **Anatolii Bylyk** - `developer` <a href="https://github.com/BizonNT">github
    profile</a>
-5. **Anastasiia Rodzina** - `розробник`
-   <a href="https://github.com/Anastasiia-Rodzina">git-hub profile</a>
-6. **Oleksandra Koshyl** - `розробник`
-   <a href="https://github.com/sashasashkina">git-hub profile</a>
-7. **Natalia Potushynska** - `розробник`
-   <a href="https://github.com/NataliaPot">git-hub profile</a>
-8. **Anna Voitsekhovska** - `розробник`
-   <a href="https://github.com/Anna4voit">git-hub profile</a>
-9. **Oleg Tymoshenko** - `розробник`
-   <a href="https://github.com/djurik2008">git-hub profile</a>
-10. **Mykola Mytsyk** - `розробник`
-    <a href="https://github.com/mykolamytsyk">git-hub profile</a>
-11. **Oleksandr Shkliar** - `розробник`
-    <a href="https://github.com/Alex11SW">git-hub profile</a>
+5. **Anastasiia Rodzina** - `developer`
+   <a href="https://github.com/Anastasiia-Rodzina">github profile</a>
+6. **Oleksandra Koshyl** - `developer`
+   <a href="https://github.com/sashasashkina">github profile</a>
+7. **Natalia Potushynska** - `developer`
+   <a href="https://github.com/NataliaPot">github profile</a>
+8. **Anna Voitsekhovska** - `developer`
+   <a href="https://github.com/Anna4voit">github profile</a>
+9. **Oleg Tymoshenko** - `developer`
+   <a href="https://github.com/djurik2008">github profile</a>
+10. **Mykola Mytsyk** - `developer`
+    <a href="https://github.com/mykolamytsyk">github profile</a>
+11. **Oleksandr Shkliar** - `developer`
+    <a href="https://github.com/Alex11SW">github profile</a>
 
 ## API Documentation
 

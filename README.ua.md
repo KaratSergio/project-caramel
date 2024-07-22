@@ -43,27 +43,27 @@
 ## Наша команда
 
 1. **Сафонов Сергій** - `team-lead`,`розробник`
-   <a href="https://github.com/KaratSergio">git-hub профіль</a>
+   <a href="https://github.com/KaratSergio">github профіль</a>
 2. **Дмитро Броніцький** - `scrum-master`,`розробник`
-   <a href="https://github.com/DimaBronytskyy">git-hub профіль</a>
-3. **Сергій Буша** - `розробник` <a href="https://github.com/rango198">git-hub
+   <a href="https://github.com/DimaBronytskyy">github профіль</a>
+3. **Сергій Буша** - `розробник` <a href="https://github.com/rango198">github
    профіль</a>
-4. **Анатолій Білик** - `розробник` <a href="https://github.com/BizonNT">git-hub
+4. **Анатолій Білик** - `розробник` <a href="https://github.com/BizonNT">github
    профіль</a>
 5. **Анастасія Родзіна** - `розробник`
-   <a href="https://github.com/Anastasiia-Rodzina">git-hub профіль</a>
+   <a href="https://github.com/Anastasiia-Rodzina">github профіль</a>
 6. **Олександра Кошиль** - `розробник`
-   <a href="https://github.com/sashasashkina">git-hub профіль</a>
+   <a href="https://github.com/sashasashkina">github профіль</a>
 7. **Наталія Потушинська** - `розробник`
-   <a href="https://github.com/NataliaPot">git-hub профіль</a>
+   <a href="https://github.com/NataliaPot">github профіль</a>
 8. **Анна Войтцеховська** - `розробник`
-   <a href="https://github.com/Anna4voit">git-hub профіль</a>
+   <a href="https://github.com/Anna4voit">github профіль</a>
 9. **Олег Тимошенко** - `розробник`
-   <a href="https://github.com/djurik2008">git-hub профіль</a>
+   <a href="https://github.com/djurik2008">github профіль</a>
 10. **Микола Мицик** - `розробник`
-    <a href="https://github.com/mykolamytsyk">git-hub профіль</a>
+    <a href="https://github.com/mykolamytsyk">github профіль</a>
 11. **Олександр Шкляр** - `розробник`
-    <a href="https://github.com/Alex11SW">git-hub профіль</a>
+    <a href="https://github.com/Alex11SW">github профіль</a>
 
 ## Документація API
 
